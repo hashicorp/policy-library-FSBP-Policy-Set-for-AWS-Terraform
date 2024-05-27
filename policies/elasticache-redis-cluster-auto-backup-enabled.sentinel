@@ -28,16 +28,8 @@ get_violations = func(resources) {
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticache_cluster).resources
 aws_elasticache_cluster_violations = get_violations(resources)
 
-aws_elasticache_cluster_rule = rule {
-	aws_elasticache_cluster_violations is empty
-}
-
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticache_replication_group).resources
 aws_elasticache_replication_group_violations = get_violations(resources)
-
-aws_elasticache_replication_group_rule = rule {
-	aws_elasticache_replication_group_violations is empty
-}
 
 violations = aws_elasticache_cluster_violations + aws_elasticache_replication_group_violations
 summary = {
@@ -59,4 +51,12 @@ print(report.generate_policy_report(summary))
 
 main = rule {
 	aws_elasticache_cluster_rule and aws_elasticache_replication_group_rule
+}
+
+aws_elasticache_cluster_rule = rule {
+	aws_elasticache_cluster_violations is empty
+}
+
+aws_elasticache_replication_group_rule = rule {
+	aws_elasticache_replication_group_violations is empty
 }
