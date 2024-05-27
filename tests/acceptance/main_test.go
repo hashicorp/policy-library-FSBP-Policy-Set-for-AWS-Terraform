@@ -13,7 +13,7 @@ import (
 
 const (
 	testGitHubOrg  = "hashicorp"
-	testRepository = "policy-library-aws-cis-v3.0.0-terraform"
+	testRepository = "policy-library-aws-fsbp-terraform"
 
 	awsAccessKeyIDEnvVar     = "AWS_ACCESS_KEY_ID"
 	awsSecretAccessKeyEnvVar = "AWS_SECRET_ACCESS_KEY"
