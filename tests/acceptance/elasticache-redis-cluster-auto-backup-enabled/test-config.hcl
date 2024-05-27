@@ -1,4 +1,4 @@
-name = "elasticache-redis-cluster-auto-bacup-enabled"
+name = "elasticache-redis-cluster-auto-backup-enabled"
 
 disabled = false
 
