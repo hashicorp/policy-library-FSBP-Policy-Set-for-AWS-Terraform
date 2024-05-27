@@ -28,15 +28,15 @@ This result means that all resources have passed the policy check for the policy
 
 ✓ Found 0 resource violations
 
-elasticache-redis-cluster-auto-backup-enabled.sentinel:52:1 - Rule "main"
+elasticache-redis-cluster-auto-backup-enabled.sentinel:60:1 - Rule "main"
   Value:
     true
 
-elasticache-redis-cluster-auto-backup-enabled.sentinel:56:1 - Rule "aws_elasticache_cluster_rule"
+elasticache-redis-cluster-auto-backup-enabled.sentinel:52:1 - Rule "aws_elasticache_cluster_rule"
   Value:
     true
 
-elasticache-redis-cluster-auto-backup-enabled.sentinel:60:1 - Rule "aws_elasticache_replication_group_rule"
+elasticache-redis-cluster-auto-backup-enabled.sentinel:56:1 - Rule "aws_elasticache_replication_group_rule"
   Value:
     true
 ```
@@ -67,11 +67,11 @@ Found 1 resource violations
      | Attribute 'snapshot_retention_limit' must be greater than 0 for aws_elasticache_cluster resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-1 for more details.
 
 
-elasticache-redis-cluster-auto-backup-enabled.sentinel:52:1 - Rule "main"
+elasticache-redis-cluster-auto-backup-enabled.sentinel:60:1 - Rule "main"
   Value:
     false
 
-elasticache-redis-cluster-auto-backup-enabled.sentinel:56:1 - Rule "aws_elasticache_cluster_rule"
+elasticache-redis-cluster-auto-backup-enabled.sentinel:52:1 - Rule "aws_elasticache_cluster_rule"
   Value:
     false
 ```
