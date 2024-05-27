@@ -49,14 +49,14 @@ print(report.generate_policy_report(summary))
 
 # Rules
 
-main = rule {
-	aws_elasticache_cluster_rule and aws_elasticache_replication_group_rule
-}
-
 aws_elasticache_cluster_rule = rule {
 	aws_elasticache_cluster_violations is empty
 }
 
 aws_elasticache_replication_group_rule = rule {
 	aws_elasticache_replication_group_violations is empty
+}
+
+main = rule {
+	aws_elasticache_cluster_rule and aws_elasticache_replication_group_rule
 }
