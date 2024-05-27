@@ -17,14 +17,14 @@ case "Elasticache auto backup enabled in nested module" {
 }
 
 case "Elasticache backup disabled for resource aws_elasticache_cluster" {
-  path = "cases/elasticache-cluster-auto-backup-disabed"
+  path = "cases/elasticache-cluster-auto-backup-disabled"
   expectation {
     result = false
   }
 }
 
 case "Elasticache backup disabled for resource aws_elasticache_replication_group" {
-  path = "cases/elasticache-replication-group-auto-backup-disabed"
+  path = "cases/elasticache-replication-group-auto-backup-disabled"
   expectation {
     result = false
   }
