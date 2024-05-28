@@ -1,4 +1,4 @@
-# Acceptance tests for CIS v3.0.0 policies
+# Acceptance tests for FSBP policies
 
 This directory contains multiple folders(one for each policy) containing test configs needed for the [sentinel-terraform-test-framework](https://github.com/hashicorp/sentinel-terraform-test-framework) to effectively run acceptance tests for various policies.
 
