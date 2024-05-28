@@ -12,3 +12,8 @@ policy "elasticache-redis-cluster-auto-backup-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-backup-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
+  source = "./policies/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel"
+  enforcement_level = "advisory"
+}
