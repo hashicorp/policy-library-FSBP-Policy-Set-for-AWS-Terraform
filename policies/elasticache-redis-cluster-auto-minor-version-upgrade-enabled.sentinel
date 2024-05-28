@@ -28,11 +28,12 @@ get_violations = func(resources) {
 }
 
 # Variables
-resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticache_cluster).resources
-aws_elasticache_cluster_violations = get_violations(resources)
+planned_resources = tf.plan(tfplan.planned_values.resources)
+elasticache_clusters = planned_resources.type(const.resource_aws_elasticache_cluster).resources
+aws_elasticache_cluster_violations = get_violations(elasticache_clusters)
 
-resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticache_replication_group).resources
-aws_elasticache_replication_group_violations = get_violations(resources)
+elasticache_replication_groups = planned_resources.type(const.resource_aws_elasticache_replication_group).resources
+aws_elasticache_replication_group_violations = get_violations(elasticache_replication_groups)
 
 violations = aws_elasticache_cluster_violations + aws_elasticache_replication_group_violations
 summary = {
