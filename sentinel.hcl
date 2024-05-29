@@ -17,3 +17,8 @@ policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
+  source = "./policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
+  enforcement_level = "advisory"
+}

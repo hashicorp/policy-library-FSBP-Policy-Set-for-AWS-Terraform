@@ -1,0 +1,117 @@
+# This policy checks if the task definition with host networking mode has
+# unprivileged or user container definitions.
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+const = {
+	"policy_name":                             "ecs-task-definition-secure-networking-mode-and-user-definitions",
+	"non_privileged_container_definition_msg": "Attribute 'privileged' should be true for container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-1 for more details.",
+	"user_container_definition_msg":           "Attribute 'user' should be non empty and should not be 'root' for container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-1 for more details.",
+	"resource_aws_ecs_task_definition":        "aws_ecs_task_definition",
+	"host_network_mode":                       "host",
+	"privileged":                              "privileged",
+	"user":                                    "user",
+	"root":                                    "root",
+}
+
+# Functions
+
+parse_container_definitions = func(task_definition) {
+	container_definitions = maps.get(task_definition, "values.container_definitions", "")
+
+	# We don't care about empty container definitions
+	if container_definitions is empty {
+		return []
+	}
+
+	return json.unmarshal(container_definitions)
+}
+
+build_violation_object = func(res, message) {
+	return {
+		"address":        res.address,
+		"module_address": res.module_address,
+		"message":        message,
+	}
+}
+
+# Variables
+
+planned_resources = tf.plan(tfplan.planned_values.resources)
+task_definitions = planned_resources.type(const.resource_aws_ecs_task_definition).resources
+
+task_definitions_with_host_networking_mode = collection.reject(task_definitions, func(res) {
+	key = "values.network_mode"
+
+	# Networking mode defaults to 'awsvpc'
+	# if not provided.
+	if not maps.has(res, key) {
+		return true
+	}
+
+	return maps.get(res, key) is not const.host_network_mode
+})
+
+non_privileged_container_definitions = collection.reject(task_definitions_with_host_networking_mode, func(res) {
+	container_defs_json = parse_container_definitions(res)
+	if container_defs_json is empty {
+		return true
+	}
+
+	# Find atleast one container definition that has an empty privileged
+	# attribute or set to 'false'
+	return collection.find(container_defs_json, func(container_def) {
+		return maps.get(container_def, const.privileged, false) is not true
+	}) is not defined
+})
+
+user_container_definitions = collection.reject(task_definitions_with_host_networking_mode, func(res) {
+	container_defs_json = parse_container_definitions(res)
+	if container_defs_json is empty {
+		return true
+	}
+
+	# Find atleast one container definition that has an empty user
+	# attribute or set to 'root'
+	return collection.find(container_defs_json, func(container_def) {
+		user_attr = maps.get(container_def, const.user, "")
+		return user_attr is const.root or user_attr is empty
+	}) is not defined
+})
+
+non_privileged_container_definition_violations = map non_privileged_container_definitions as _, res {
+	build_violation_object(res, const.non_privileged_container_definition_msg)
+}
+
+user_container_definition_violations = map user_container_definitions as _, res {
+	build_violation_object(res, const.user_container_definition_msg)
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations":  non_privileged_container_definition_violations + user_container_definition_violations,
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+check_non_privileged_container_definitions = rule {
+	non_privileged_container_definitions is empty
+}
+
+check_user_container_definitions = rule {
+	user_container_definitions is empty
+}
+
+main = rule {
+	check_non_privileged_container_definitions and check_user_container_definitions
+}

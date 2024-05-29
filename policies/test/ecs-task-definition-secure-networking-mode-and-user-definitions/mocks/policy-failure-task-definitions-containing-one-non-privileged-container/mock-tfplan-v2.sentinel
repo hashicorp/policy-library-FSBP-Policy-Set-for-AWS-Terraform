@@ -1,0 +1,51 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_ecs_task_definition.service": {
+			"address":        "aws_ecs_task_definition.service",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "service",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ecs_task_definition",
+			"values": {
+				"container_definitions": "[{\"cpu\":10,\"essential\":true,\"image\":\"service-first\",\"memory\":512,\"name\":\"first\",\"portMappings\":[{\"containerPort\":80,\"hostPort\":80}],\"privileged\":false,\"user\":\"5996\"}]",
+				"cpu":                   null,
+				"ephemeral_storage":     [],
+				"execution_role_arn":    null,
+				"family":                "service",
+				"inference_accelerator": [],
+				"ipc_mode":              null,
+				"memory":                null,
+				"network_mode":          "host",
+				"pid_mode":              null,
+				"placement_constraints": [
+					{
+						"expression": "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]",
+						"type":       "memberOf",
+					},
+				],
+				"proxy_configuration":      [],
+				"requires_compatibilities": null,
+				"runtime_platform":         [],
+				"skip_destroy":             false,
+				"tags":                     null,
+				"task_role_arn":            null,
+				"track_latest":             false,
+				"volume": [
+					{
+						"docker_volume_configuration":                  [],
+						"efs_volume_configuration":                     [],
+						"fsx_windows_file_server_volume_configuration": [],
+						"host_path": "/ecs/service-storage",
+						"name":      "service-storage",
+					},
+				],
+			},
+		},
+	},
+}
