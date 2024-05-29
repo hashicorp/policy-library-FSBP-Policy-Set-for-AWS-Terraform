@@ -1,7 +1,7 @@
 terraform {
   cloud {
     workspaces {
-      name = "elasticache-redis-cluster-auto-backup-enabled"
+      name = "elasticache-redis-cluster-auto-failover-enabled"
     }
   }
 }
