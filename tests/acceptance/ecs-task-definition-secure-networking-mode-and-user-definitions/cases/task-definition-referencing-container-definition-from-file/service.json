@@ -1,0 +1,33 @@
+[
+    {
+      "name": "my-container",
+      "image": "nginx:latest",
+      "cpu": 256,
+      "memory": 512,
+      "essential": true,
+      "privileged": true,
+      "user": "44566",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "ENV_VAR_NAME",
+          "value": "value"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/my-log-group",
+          "awslogs-region": "us-west-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+  

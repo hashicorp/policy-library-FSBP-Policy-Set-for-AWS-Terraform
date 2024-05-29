@@ -1,0 +1,19 @@
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_ecs_task_definition" "service" {
+  family                = "service"
+  network_mode          = "host"
+  container_definitions = file("${path.module}/service.json")
+
+  volume {
+    name      = "service-storage"
+    host_path = "/ecs/service-storage"
+  }
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [us-west-2a, us-west-2b]"
+  }
+}

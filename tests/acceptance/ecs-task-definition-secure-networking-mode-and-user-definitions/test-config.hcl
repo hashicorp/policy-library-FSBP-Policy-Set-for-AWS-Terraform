@@ -22,3 +22,10 @@ case "Task definition containing multiple valid container definitions" {
         result = true
     }
 }
+
+case "Task definition containing valid container definitions referenced from a file" {
+    path = "cases/task-definition-referencing-container-definition-from-file"
+    expectation {
+        result = true
+    }
+}
