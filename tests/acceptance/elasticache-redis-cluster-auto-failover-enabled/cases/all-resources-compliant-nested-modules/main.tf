@@ -4,7 +4,7 @@ provider "aws" {
 
 
 module "elasticache_replication_group" {
-  source                   = "./elasticache_replication_group_backup_enabled"
+  source                   = "./elasticache-replication-group-failover-enabled"
   replication_group_id     = "tf-rep-group-1"
   snapshot_retention_limit = 7
 }
