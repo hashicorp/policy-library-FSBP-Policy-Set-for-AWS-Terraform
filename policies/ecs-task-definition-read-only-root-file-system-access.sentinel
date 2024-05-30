@@ -1,0 +1,68 @@
+# This policy checks if the task definition with host networking mode has
+# unprivileged or user container definitions.
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+const = {
+	"policy_name":                      "ecs-task-definition-read-only-root-file-system-access",
+	"message":                          "Attribute 'readonlyRootFilesystem' should be true for container definitions for the given task definition. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-5 for more details.",
+	"resource_aws_ecs_task_definition": "aws_ecs_task_definition",
+	"read_only_root_file_system_attr":  "readonlyRootFilesystem",
+}
+
+# Functions
+
+parse_container_definitions = func(task_definition) {
+	container_definitions = maps.get(task_definition, "values.container_definitions", "")
+
+	# We don't care about empty container definitions
+	if container_definitions is empty {
+		return []
+	}
+
+	return json.unmarshal(container_definitions)
+}
+
+# Variables
+
+task_definitions = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_ecs_task_definition).resources
+
+task_definitions_with_non_readonly_container_defs = collection.reject(task_definitions, func(res) {
+	container_defs_json = parse_container_definitions(res)
+	if container_defs_json is empty {
+		return true
+	}
+
+	# Find atleast one container definition that has an empty readonlyRootFilesystem
+	# attribute or set to 'false'
+	return collection.find(container_defs_json, func(container_def) {
+		return maps.get(container_def, const.read_only_root_file_system_attr, false) is not true
+	}) is not defined
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map task_definitions_with_non_readonly_container_defs as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	task_definitions_with_non_readonly_container_defs is empty
+}
