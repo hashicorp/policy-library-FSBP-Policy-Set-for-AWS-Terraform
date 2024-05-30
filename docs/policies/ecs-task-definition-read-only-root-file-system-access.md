@@ -18,8 +18,8 @@ trace:
       Pass - ecs-task-definition-read-only-root-file-system-access.sentinel
 
       Description:
-        This policy checks if the task definition with host networking mode has
-        unprivileged or user container definitions.
+        This policy checks if the container definitions have the 'readOnlyRootFileSystem' 
+        set to true.
 
       Print messages:
 
@@ -42,8 +42,8 @@ trace:
       Fail - ecs-task-definition-read-only-root-file-system-access.sentinel
 
       Description:
-        This policy checks if the task definition with host networking mode has
-        unprivileged or user container definitions.
+        This policy checks if the container definitions have the 'readOnlyRootFileSystem' 
+        set to true.
 
       Print messages:
 

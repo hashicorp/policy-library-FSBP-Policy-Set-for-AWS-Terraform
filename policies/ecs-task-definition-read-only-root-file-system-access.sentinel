@@ -1,5 +1,5 @@
-# This policy checks if the task definition with host networking mode has
-# unprivileged or user container definitions.
+# This policy checks if the container definitions have the 'readOnlyRootFileSystem'
+# set to true.
 
 import "tfplan/v2" as tfplan
 import "tfresources" as tf
