@@ -18,6 +18,11 @@ policy "ecs-task-definition-read-only-root-file-system-access" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definition-no-secrets-as-environment-variables" {
+  source = "./policies/ecs-task-definition-no-secrets-as-environment-variables.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-cluster-auto-backup-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-backup-enabled.sentinel"
   enforcement_level = "advisory"
