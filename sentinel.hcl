@@ -28,11 +28,6 @@ policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
   enforcement_level = "advisory"
 }
 
-policy "elasticache-redis-cluster-auto-failover-enabled" {
-  source = "./policies/elasticache-redis-cluster-auto-failover-enabled.sentinel"
-  enforcement_level = "advisory"
-}
-
 policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
   source = "./policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
   enforcement_level = "advisory"
