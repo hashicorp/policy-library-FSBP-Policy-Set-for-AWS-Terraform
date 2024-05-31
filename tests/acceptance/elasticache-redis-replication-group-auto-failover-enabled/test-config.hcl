@@ -1,4 +1,4 @@
-name = "elasticache-redis-cluster-auto-failover-enabled"
+name = "elasticache-redis-replication-group-auto-failover-enabled"
 
 disabled = false
 

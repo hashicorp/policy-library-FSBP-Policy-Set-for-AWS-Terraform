@@ -10,7 +10,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                                "elasticache-redis-cluster-auto-failover-enabled",
+	"policy_name":                                "elasticache-redis-replication-group-auto-failover-enabled",
 	"resource_aws_elasticache_replication_group": "aws_elasticache_replication_group",
 }
 

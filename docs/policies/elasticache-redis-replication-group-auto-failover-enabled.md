@@ -1,4 +1,4 @@
-#  Amazon ElastiCache for Redis cluster should have automatic failovers enabled
+#  Amazon ElastiCache for Redis replication-group should have automatic failovers enabled
 
 | Provider            | Category     |
 |---------------------|--------------|
