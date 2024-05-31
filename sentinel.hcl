@@ -33,6 +33,16 @@ policy "elasticache-redis-cluster-auto-failover-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
+  source = "./policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticache-redis-replication-group-auto-failover-enabled" {
+  source = "./policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-encryption-at-rest-enabled" {
   source = "./policies/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel"
   enforcement_level = "advisory"
