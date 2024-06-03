@@ -1,0 +1,52 @@
+# This policy checks if resources of type 'aws_ecs_service' have
+# the 'assign_public_ip' attribute under networking configuration
+# set to true
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":              "ecs-service-no-public-ip-assignment",
+	"message":                  "ECS services should not have public IPs assigned to them. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-2 for more details",
+	"resource_aws_ecs_service": "aws_ecs_service",
+}
+
+# Variables
+
+aws_ecs_services = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_ecs_service).resources
+
+ecs_services_with_assigned_public_ips = collection.reject(aws_ecs_services, func(res) {
+	networking_configurations = maps.get(res, "values.network_configuration", [])
+
+	# Ignore services with empty networking configuration
+	if networking_configurations is empty {
+		return true
+	}
+
+	return collection.matches(networking_configurations, {"assign_public_ip": true}) is empty
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map ecs_services_with_assigned_public_ips as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	ecs_services_with_assigned_public_ips is empty
+}

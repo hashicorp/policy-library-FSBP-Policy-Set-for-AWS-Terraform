@@ -28,6 +28,11 @@ policy "ecs-task-definition-no-secrets-as-environment-variables" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-service-no-public-ip-assignment" {
+  source = "./policies/ecs-service-no-public-ip-assignment.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-cluster-auto-backup-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-backup-enabled.sentinel"
   enforcement_level = "advisory"
