@@ -23,6 +23,11 @@ policy "ecs-task-definition-read-only-root-file-system-access" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definition-restrict-process-id" {
+  source = "./policies/ecs-task-definition-restrict-process-id.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-no-secrets-as-environment-variables" {
   source = "./policies/ecs-task-definition-no-secrets-as-environment-variables.sentinel"
   enforcement_level = "advisory"
@@ -37,7 +42,6 @@ policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel"
   enforcement_level = "advisory"
 }
-
 
 policy "elasticache-redis-replication-group-auto-failover-enabled" {
   source = "./policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel"
