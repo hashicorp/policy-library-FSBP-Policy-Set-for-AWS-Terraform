@@ -8,6 +8,11 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
+policy "ecs-cluster-enable-container-insights" {
+  source = "./policies/ecs-cluster-enable-container-insights.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
   source = "./policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
   enforcement_level = "advisory"
