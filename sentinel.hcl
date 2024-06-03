@@ -38,3 +38,8 @@ policy "elasticache-redis-replication-group-encryption-at-rest-enabled" {
   source = "./policies/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
+  source = "./policies/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel"
+  enforcement_level = "advisory"
+}
