@@ -28,6 +28,11 @@ policy "ecs-task-definition-no-secrets-as-environment-variables" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-non-privileged-container-definitions" {
+  source = "./policies/ecs-non-privileged-container-definitions.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-cluster-auto-backup-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-backup-enabled.sentinel"
   enforcement_level = "advisory"
