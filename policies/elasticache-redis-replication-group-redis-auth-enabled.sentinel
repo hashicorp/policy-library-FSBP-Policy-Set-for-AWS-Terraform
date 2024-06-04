@@ -19,12 +19,8 @@ const = {
 # Functions
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		engine_version_key = "values.engine_version"
-		if not maps.has(res, engine_version_key) {
-			return true
-		}
-		engine_version = maps.get(res, engine_version_key)
-		if engine_version is null or engine_version >= "6.0" {
+		engine_version = maps.get(res, "values.engine_version", "")
+		if engine_version is empty or engine_version >= "6.0" {
 			return true
 		}
 		auth_token_key = "config.auth_token.constant_value"
