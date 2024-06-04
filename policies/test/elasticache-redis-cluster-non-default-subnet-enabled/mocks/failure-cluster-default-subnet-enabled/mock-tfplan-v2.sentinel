@@ -1,0 +1,38 @@
+terraform_version = "1.7.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_elasticache_cluster.example": {
+			"address":        "aws_elasticache_cluster.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_elasticache_cluster",
+			"values": {
+				"auto_minor_version_upgrade": "true",
+				"cluster_id":                 "cluster-example",
+				"engine":                     "redis",
+				"engine_version":             "3.2.10",
+				"final_snapshot_identifier":  null,
+				"log_delivery_configuration": [],
+				"node_type":                  "cache.m4.large",
+				"notification_topic_arn":     null,
+				"num_cache_nodes":            1,
+				"outpost_mode":               null,
+				"parameter_group_name":       "default.redis3.2",
+				"port":                       6379,
+				"preferred_availability_zones": null,
+				"snapshot_arns":                null,
+				"snapshot_name":                null,
+				"snapshot_retention_limit":     7,
+				"tags": null,
+			},
+		},
+	},
+}

@@ -77,3 +77,8 @@ policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "elasticache-redis-cluster-non-default-subnet-enabled" {
+  source = "./policies/elasticache-redis-cluster-non-default-subnet-enabled.sentinel"
+  enforcement_level = "advisory"
+}

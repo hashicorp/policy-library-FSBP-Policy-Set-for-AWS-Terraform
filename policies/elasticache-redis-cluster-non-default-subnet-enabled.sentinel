@@ -1,5 +1,5 @@
-# This policy requires that the `snapshot_retention_limit` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group`
-# resource is greater than 0.
+# This policy requires that the `subnet_group_name` attribute of the `aws_elasticache_cluster` or `aws_elasticache_replication_group`
+# resource is set.
 
 # Imports
 
@@ -11,7 +11,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                                "elasticache-redis-cluster-auto-backup-enabled",
+	"policy_name":                                "elasticache-redis-cluster-non-default-subnet-enabled",
 	"resource_aws_elasticache_cluster":           "aws_elasticache_cluster",
 	"resource_aws_elasticache_replication_group": "aws_elasticache_replication_group",
 }
@@ -22,7 +22,7 @@ get_violations = func(resources) {
 		if res.type is const.resource_aws_elasticache_cluster and maps.get(res, "values.replication_group_id", "") is not empty {
 			return true
 		}
-		return maps.get(res, "values.snapshot_retention_limit", 0) > 0
+		return maps.get(res, "values.subnet_group_name", "") is not empty
 	})
 }
 
@@ -41,7 +41,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'snapshot_retention_limit' must be greater than 0 for " + v.type + " resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-1 for more details.",
+			"message":        "Attribute 'subnet_group_name' must be set for " + v.type + " resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-7 for more details.",
 		}
 	},
 }
