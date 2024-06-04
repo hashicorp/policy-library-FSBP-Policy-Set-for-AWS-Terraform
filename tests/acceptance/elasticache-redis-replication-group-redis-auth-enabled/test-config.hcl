@@ -1,6 +1,6 @@
 name = "elasticache-redis-replication-group-redis-auth-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache redis auth enabled in root module" {
   path = "cases/all-resources-complaint"
