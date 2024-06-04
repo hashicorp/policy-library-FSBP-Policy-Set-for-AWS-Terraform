@@ -1,0 +1,70 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "",
+	},
+}
+
+resources = {
+	"aws_elasticache_replication_group.example": {
+		"address": "aws_elasticache_replication_group.example",
+		"config": {
+			"automatic_failover_enabled": {
+				"constant_value": true,
+			},
+			"description": {
+				"constant_value": "example description",
+			},
+			"engine_version": {
+				"constant_value": "5.0.6",
+			},
+			"node_type": {
+				"constant_value": "cache.m4.large",
+			},
+			"num_cache_clusters": {
+				"constant_value": 2,
+			},
+			"parameter_group_name": {
+				"constant_value": "default.redis3.2",
+			},
+			"port": {
+				"constant_value": 6379,
+			},
+			"preferred_cache_cluster_azs": {
+				"constant_value": [
+					"us-west-2a",
+					"us-west-2b",
+				],
+			},
+			"replication_group_id": {
+				"constant_value": "tf-rep-group-1",
+			},
+			"snapshot_retention_limit": {
+				"constant_value": 7,
+			},
+			"transit_encryption_enabled": {
+				"constant_value": true,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elasticache_replication_group",
+	},
+}

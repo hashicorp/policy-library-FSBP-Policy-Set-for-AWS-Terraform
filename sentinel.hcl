@@ -5,7 +5,7 @@ import "module" "report" {
 // Replace the source with the appropriate plugin binary
 // based on the environment where you run policies.
 import "plugin" "tfresources" {
-  source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
+  source = "./plugins/darwin/arm64/sentinel-plugin-tfresources"
 }
 
 policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
@@ -46,5 +46,10 @@ policy "elasticache-redis-replication-group-encryption-at-rest-enabled" {
 
 policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
   source = "./policies/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticache-redis-replication-group-redis-auth-enabled" {
+  source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
 }

@@ -1,0 +1,62 @@
+# This policy requires that the `aws_elasticache_replication_group` resource with `engine_version`
+# less than 6.0 has `auth_token` set.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                                "elasticache-redis-replication-group-redis-auth-enabled",
+	"resource_aws_elasticache_replication_group": "aws_elasticache_replication_group",
+}
+
+# Functions
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		engine_version_key = "values.engine_version"
+		if not maps.has(res, engine_version_key) {
+			return true
+		}
+		engine_version = maps.get(res, engine_version_key)
+		if engine_version is null or engine_version >= "6.0" {
+			return true
+		}
+		auth_token_key = "config.auth_token.constant_value"
+		config_resources = tf.config(tfconfig.resources).address(res.address).resources
+		if config_resources is empty {
+			return true
+		}
+		return maps.has(config_resources[0], auth_token_key) and maps.get(config_resources[0], auth_token_key) is not ""
+	})
+}
+
+# Variables
+elasticache_replication_groups = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elasticache_replication_group).resources
+violations = get_violations(elasticache_replication_groups)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Attribute 'auth_token' must be set when attribute 'engine_version' < 6.0 for 'aws_elasticache_replication_group' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-6 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

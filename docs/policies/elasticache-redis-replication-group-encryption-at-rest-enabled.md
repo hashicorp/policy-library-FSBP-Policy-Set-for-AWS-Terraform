@@ -8,7 +8,7 @@
 
 This control checks if ElastiCache for Redis replication groups are encrypted at rest. This control fails if an ElastiCache for Redis replication group isn't encrypted at rest.
 
-This rule is covered by the [elasticache-redis-replication-group-encryption-at-rest-enabled](../../policies/elasticache-redis-replication-group-encryption-at-rest-enabled) policy.
+This rule is covered by the [elasticache-redis-replication-group-encryption-at-rest-enabled](../../policies/elasticache-redis-replication-group-encryption-at-rest-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
