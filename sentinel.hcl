@@ -23,6 +23,11 @@ policy "ecs-task-definition-read-only-root-file-system-access" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definition-restrict-process-id" {
+  source = "./policies/ecs-task-definition-restrict-process-id.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-no-secrets-as-environment-variables" {
   source = "./policies/ecs-task-definition-no-secrets-as-environment-variables.sentinel"
   enforcement_level = "advisory"
@@ -30,6 +35,11 @@ policy "ecs-task-definition-no-secrets-as-environment-variables" {
 
 policy "ecs-service-no-public-ip-assignment" {
   source = "./policies/ecs-service-no-public-ip-assignment.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-non-privileged-container-definitions" {
+  source = "./policies/ecs-non-privileged-container-definitions.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -43,7 +53,6 @@ policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
   enforcement_level = "advisory"
 }
 
-
 policy "elasticache-redis-replication-group-auto-failover-enabled" {
   source = "./policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel"
   enforcement_level = "advisory"
@@ -56,5 +65,10 @@ policy "elasticache-redis-replication-group-encryption-at-rest-enabled" {
 
 policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
   source = "./policies/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticache-redis-replication-group-redis-auth-enabled" {
+  source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
 }

@@ -1,0 +1,45 @@
+# This policy checks if the 'pidMode' attribute for resources of
+# type 'aws_ecs_task_definition' is equal to 'host'
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                      "ecs-task-definition-restrict-process-id",
+	"message":                          "Containers in a task definition should not share the same process namespace as that of the host. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecs-controls.html#ecs-3 for more details.",
+	"resource_aws_ecs_task_definition": "aws_ecs_task_definition",
+	"host": "host",
+}
+
+# Variables
+
+aws_ecs_task_definitions = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_ecs_task_definition).resources
+
+invalid_task_definitions = collection.reject(aws_ecs_task_definitions, func(res) {
+	return maps.get(res, "values.pid_mode", "") is not const.host
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map invalid_task_definitions as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	invalid_task_definitions is empty
+}

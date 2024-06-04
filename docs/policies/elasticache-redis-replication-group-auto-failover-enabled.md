@@ -8,12 +8,12 @@
 
 This control checks if ElastiCache for Redis replication groups have automatic failover enabled. This control fails if automatic failover isn't enabled for a Redis replication group.
 
-This rule is covered by the [elasticache-redis-cluster-auto-failover-enabled](../../policies/elasticache-redis-cluster-auto-failover-enabled) policy.
+This rule is covered by the [elasticache-redis-replication-group-auto-failover-enabled](../../policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
 trace:
-      Pass - elasticache-redis-cluster-auto-failover-enabled.sentinel
+      Pass - elasticache-redis-replication-group-auto-failover-enabled.sentinel
 
       Description:
         This policy requires that the `automatic_failover_enabled` attribute of the
@@ -23,11 +23,11 @@ trace:
 
       → → Overall Result: true
 
-      This result means that all resources have passed the policy check for the policy elasticache-redis-cluster-auto-failover-enabled.
+      This result means that all resources have passed the policy check for the policy elasticache-redis-replication-group-auto-failover-enabled.
 
       ✓ Found 0 resource violations
 
-      elasticache-redis-cluster-auto-failover-enabled.sentinel:47:1 - Rule "main"
+      elasticache-redis-replication-group-auto-failover-enabled.sentinel:47:1 - Rule "main"
         Value:
           true
 ```
@@ -37,7 +37,7 @@ trace:
 ## Policy Results (Fail)
 ```bash
 trace:
-    Fail - elasticache-redis-cluster-auto-failover-enabled.sentinel
+    Fail - elasticache-redis-replication-group-auto-failover-enabled.sentinel
 
     Description:
       This policy requires that the `automatic_failover_enabled` attribute of the
@@ -47,7 +47,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy elasticache-redis-cluster-auto-failover-enabled.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy elasticache-redis-replication-group-auto-failover-enabled.
 
     Found 1 resource violations
 
@@ -57,7 +57,7 @@ trace:
         | Attribute 'automatic_failover_enabled' must be true for 'aws_elasticache_replication_group' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elasticache-controls.html#elasticache-3 for more details.
 
 
-    elasticache-redis-cluster-auto-failover-enabled.sentinel:47:1 - Rule "main"
+    elasticache-redis-replication-group-auto-failover-enabled.sentinel:47:1 - Rule "main"
       Value:
         false
 ```
