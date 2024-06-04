@@ -22,7 +22,8 @@ get_violations = func(resources) {
 		if res.type is const.resource_aws_elasticache_cluster and maps.get(res, "values.replication_group_id", "") is not empty {
 			return true
 		}
-		return maps.get(res, "values.snapshot_retention_limit", 0) > 0
+		snapshot_retention_limit = maps.get(res, "values.snapshot_retention_limit", 0)
+		return snapshot_retention_limit is not null and snapshot_retention_limit > 0
 	})
 }
 
