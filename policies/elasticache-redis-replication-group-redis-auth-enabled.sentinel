@@ -28,7 +28,7 @@ get_violations = func(resources) {
 		if config_resources is empty {
 			return true
 		}
-		return maps.has(config_resources[0], auth_token_key) and maps.get(config_resources[0], auth_token_key) is not ""
+		return maps.get(config_resources[0], auth_token_key, "") is not ""
 	})
 }
 
