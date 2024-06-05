@@ -13,6 +13,11 @@ policy "ecs-cluster-enable-container-insights" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-fargate-service-platform-compatibility" {
+  source = "./policies/ecs-fargate-service-platform-compatibility.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-log-configuration-present" {
   source = "./policies/ecs-task-definition-log-configuration-present.sentinel"
   enforcement_level = "advisory"
