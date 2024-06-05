@@ -3,5 +3,5 @@ resource "aws_ecs_service" "name" {
 
   launch_type = "fargate"
 
-  platform_version = "1.2.3"
+  platform_version = "1.2.0"
 }
