@@ -12,7 +12,7 @@ case "Point in time recovery enabled" {
 case "Point in time recovery enabled nested module" {
     path = "./cases/point-in-time-recovery-enabled-nested-module"
     expectation {
-        result = false
+        result = true
     }
 }
 
