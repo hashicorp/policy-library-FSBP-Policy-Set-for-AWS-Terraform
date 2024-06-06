@@ -10,7 +10,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                 "dynamo-db-accelerator-clusters-encryption-at-rest-enabled",
+	"policy_name":              "dynamo-db-accelerator-clusters-encryption-at-rest-enabled",
 	"resource_aws_dax_cluster": "aws_dax_cluster",
 }
 
