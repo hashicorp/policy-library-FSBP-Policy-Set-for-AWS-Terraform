@@ -3,7 +3,7 @@ name = "dynamo-db-tables-point-in-time-recovery-enabled"
 disabled = false
 
 case "Point in time recovery enabled" {
-    path = "./cases/point-in-time recovery-enabled"
+    path = "./cases/point-in-time-recovery-enabled"
     expectation {
         result = true
     }

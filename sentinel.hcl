@@ -97,3 +97,8 @@ policy "docdb-cluster-storage-encrypted" {
   source = "./policies/docdb-cluster-storage-encrypted.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "dynamo-db-accelerator-clusters-encryption-at-rest-enabled" {
+  source = "./policies/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
