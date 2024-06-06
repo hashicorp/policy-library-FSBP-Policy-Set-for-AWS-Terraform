@@ -87,3 +87,8 @@ policy "elasticache-redis-cluster-non-default-subnet-enabled" {
   source = "./policies/elasticache-redis-cluster-non-default-subnet-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "dynamo-db-tables-point-in-time-recovery-enabled" {
+  source = "./policies/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
+  enforcement_level = "advisory"
+}
