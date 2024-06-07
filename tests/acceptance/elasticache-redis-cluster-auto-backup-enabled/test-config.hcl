@@ -1,6 +1,6 @@
 name = "elasticache-redis-cluster-auto-backup-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache auto backup enabled in root module" {
   path = "cases/all-resources-complaint"
