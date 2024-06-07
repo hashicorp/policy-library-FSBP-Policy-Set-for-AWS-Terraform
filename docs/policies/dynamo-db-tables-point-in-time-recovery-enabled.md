@@ -1,4 +1,4 @@
-#  Amazon Dynamo DB should have point in time recovery enabled
+#  Amazon Dynamo DB tables should have point in time recovery enabled
 
 | Provider            | Category     |
 |---------------------|--------------|
