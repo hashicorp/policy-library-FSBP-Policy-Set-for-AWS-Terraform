@@ -92,3 +92,8 @@ policy "dynamo-db-tables-point-in-time-recovery-enabled" {
   source = "./policies/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "docdb-cluster-storage-encrypted" {
+  source = "./policies/docdb-cluster-storage-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
