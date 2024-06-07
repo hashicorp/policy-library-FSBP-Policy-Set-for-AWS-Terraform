@@ -1,6 +1,6 @@
 name = "ecs-task-definition-read-only-root-file-system-access"
 
-disabled = true
+disabled = false
 
 case "Task definition with valid container definitions" {
     path = "cases/task-definition-with-valid-container-definitions"
