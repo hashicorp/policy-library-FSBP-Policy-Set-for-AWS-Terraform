@@ -1,0 +1,37 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_eks_cluster.this": {
+			"address":        "aws_eks_cluster.this",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "this",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_eks_cluster",
+			"values": {
+				"enabled_cluster_log_types": null,
+				"encryption_config":         [],
+				"name":                      "test",
+				"outpost_config":            [],
+				"role_arn":                  "arn:aws:iam::123456789012:role/test-role",
+				"tags":                      null,
+				"timeouts":                  null,
+				"version":                   "0.28",
+				"vpc_config": [
+					{
+						"endpoint_private_access": false,
+						"endpoint_public_access":  true,
+						"security_group_ids":      null,
+						"subnet_ids": [
+							"test-subnet-id",
+						],
+					},
+				],
+			},
+		},
+	},
+}
