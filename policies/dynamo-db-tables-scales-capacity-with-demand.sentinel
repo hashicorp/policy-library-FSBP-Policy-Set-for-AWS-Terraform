@@ -109,16 +109,11 @@ write_scaling_policies = filter planned_resources.type(const.resource_aws_appaut
 }
 
 violations = collection.reject(dynamodb_tables, func(table) {
-	print(read_scaling_target_exists(read_scaling_targets, table))
-	print(write_scaling_target_exists(write_scaling_targets, table))
-	print("aahel", read_scaling_policy_exists(read_scaling_policies, table))
-	print("guha", write_scaling_policy_exists(write_scaling_policies, table))
 	return read_scaling_target_exists(read_scaling_targets, table) and
 		write_scaling_target_exists(write_scaling_targets, table) and
 		read_scaling_policy_exists(read_scaling_policies, table) and
 		write_scaling_policy_exists(write_scaling_policies, table)
 })
-print("violations", violations)
 
 summary = {
 	"policy_name": const.policy_name,
