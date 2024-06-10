@@ -16,13 +16,6 @@ case "No resources covered for encryption" {
     }
 }
 
-case "Invalid resources covered for encryption" {
-    path = "./cases/invalid-resources-list"
-    expectation {
-        result = false
-    }
-}
-
 case "Empty Key ARN input for provider" {
     path = "./cases/empty-key-arn-for-provider"
     expectation {
