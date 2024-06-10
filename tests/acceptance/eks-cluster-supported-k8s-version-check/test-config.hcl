@@ -3,7 +3,7 @@ name = "eks-cluster-supported-k8s-version-check"
 disabled = false
 
 case "Empty kubernetes version input" {
-    path = "./cases/restricted-public-access"
+    path = "./cases/empty-version-input"
     expectation {
         result = true
     }
