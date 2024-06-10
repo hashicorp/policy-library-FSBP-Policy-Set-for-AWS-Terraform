@@ -8,6 +8,11 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
+policy "eks-cluster-encrypted-kubernetes-secrets" {
+  source = "./policies/eks-cluster-encrypted-kubernetes-secrets.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-audit-logging-enabled" {
   source = "./policies/eks-cluster-audit-logging-enabled.sentinel"
   enforcement_level = "advisory"
