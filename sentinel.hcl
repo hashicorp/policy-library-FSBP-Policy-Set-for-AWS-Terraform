@@ -152,3 +152,8 @@ policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
   source = "./policies/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "dynamo-db-tables-scales-capacity-with-demand" {
+  source = "./policies/dynamo-db-tables-scales-capacity-with-demand.sentinel"
+  enforcement_level = "advisory"
+}
