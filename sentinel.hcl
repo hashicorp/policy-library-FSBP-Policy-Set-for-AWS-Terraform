@@ -117,3 +117,8 @@ policy "dynamo-db-tables-delete-protection-enabled" {
   source = "./policies/dynamo-db-tables-delete-protection-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
+  source = "./policies/elasticbeanstalk-enhanced-health-reporting-disabled.sentinel"
+  enforcement_level = "advisory"
+}
