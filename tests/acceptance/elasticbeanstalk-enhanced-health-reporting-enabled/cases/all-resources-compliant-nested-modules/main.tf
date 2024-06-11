@@ -4,5 +4,5 @@ provider "aws" {
 
 
 module "elasticbeanstalk-healthreporting" {
-  source        = "./elasticbeanstalk-enhanced-health-reporting-enabled"
+  source = "./elasticbeanstalk-enhanced-health-reporting-enabled"
 }

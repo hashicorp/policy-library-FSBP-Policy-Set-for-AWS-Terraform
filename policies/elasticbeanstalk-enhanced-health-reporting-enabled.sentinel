@@ -11,17 +11,17 @@ import "collection/maps" as maps
 # Constants
 const = {
 	"policy_name":                                "elasticbeanstalk-enhanced-health-reporting-enabled",
-	"resource_aws_elastic_beanstalk_environment":           "aws_elastic_beanstalk_environment",
+	"resource_aws_elastic_beanstalk_environment": "aws_elastic_beanstalk_environment",
 }
 
 # Functions
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		settings = maps.get(res.values,"setting",[])
-		return collection.find(settings,func(setting){
-			return  setting.namespace is "aws:elasticbeanstalk:healthreporting:system" and
-					setting.name is "SystemType" and 
-					setting.value is "enhanced"
+		settings = maps.get(res.values, "setting", [])
+		return collection.find(settings, func(setting) {
+			return setting.namespace is "aws:elasticbeanstalk:healthreporting:system" and
+				setting.name is "SystemType" and
+				setting.value is "enhanced"
 		}) is defined
 	})
 }
@@ -44,7 +44,6 @@ summary = {
 # Outputs
 
 print(report.generate_policy_report(summary))
-
 
 main = rule {
 	violations is empty
