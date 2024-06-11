@@ -1,4 +1,4 @@
-name = "elasticbeanstalk-enhanced-health-reporting-disabled"
+name = "elasticbeanstalk-enhanced-health-reporting-enabled"
 
 disabled = false
 
