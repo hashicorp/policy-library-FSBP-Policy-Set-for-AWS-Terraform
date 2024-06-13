@@ -93,6 +93,11 @@ policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-instance-should-be-private" {
+  source = "./policies/rds-instance-should-be-private.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
@@ -120,5 +125,10 @@ policy "dynamo-db-accelerator-clusters-encryption-at-rest-enabled" {
 
 policy "dynamo-db-tables-delete-protection-enabled" {
   source = "./policies/dynamo-db-tables-delete-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
+  source = "./policies/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel"
   enforcement_level = "advisory"
 }
