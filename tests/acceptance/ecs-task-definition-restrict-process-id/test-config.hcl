@@ -1,6 +1,6 @@
 name = "ecs-task-definition-restrict-process-id"
 
-disabled = true
+disabled = false
 
 case "Task definition with no pid_mode configured" {
     path = "./cases/task-definition-no-pid"
