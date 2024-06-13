@@ -1,0 +1,30 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_ecr_repository.name": {
+			"address":        "aws_ecr_repository.name",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "name",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_ecr_repository",
+			"values": {
+				"encryption_configuration": [],
+				"force_delete":             null,
+				"image_scanning_configuration": [
+					{
+						"scan_on_push": true,
+					},
+				],
+				"image_tag_mutability": "MUTABLE",
+				"name":                 "foo",
+				"tags":                 null,
+				"timeouts":             null,
+			},
+		},
+	},
+}

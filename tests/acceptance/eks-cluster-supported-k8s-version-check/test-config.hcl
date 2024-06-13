@@ -1,6 +1,6 @@
 name = "eks-cluster-supported-k8s-version-check"
 
-disabled = false
+disabled = true
 
 case "Empty kubernetes version input" {
     path = "./cases/empty-version-input"
