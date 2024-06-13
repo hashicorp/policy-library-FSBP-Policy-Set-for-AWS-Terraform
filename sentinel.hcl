@@ -13,6 +13,11 @@ policy "eks-cluster-supported-k8s-version-check" {
   enforcement_level = "advisory"
 }
 
+policy "eks-cluster-encrypted-kubernetes-secrets" {
+  source = "./policies/eks-cluster-encrypted-kubernetes-secrets.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-audit-logging-enabled" {
   source = "./policies/eks-cluster-audit-logging-enabled.sentinel"
   enforcement_level = "advisory"
