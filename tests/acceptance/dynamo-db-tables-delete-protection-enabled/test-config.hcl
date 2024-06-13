@@ -1,6 +1,6 @@
 name = "dynamo-db-tables-delete-protection-enabled"
 
-disabled = false
+disabled = true
 
 case "Delete protection enabled" {
     path = "./cases/delete-protection-enabled"

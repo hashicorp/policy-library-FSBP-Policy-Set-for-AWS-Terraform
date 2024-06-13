@@ -8,6 +8,11 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
+policy "ecr-tag-immutability-configured" {
+  source = "./policies/ecr-tag-immutability-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-supported-k8s-version-check" {
   source = "./policies/eks-cluster-supported-k8s-version-check.sentinel"
   enforcement_level = "advisory"

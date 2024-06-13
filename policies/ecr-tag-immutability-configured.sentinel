@@ -1,0 +1,45 @@
+# This policy checks if resources of type 'aws_ecr_repository' have
+# tag immutability configured
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                 "ecr-tag-immutability-configured",
+	"message":                     "ECR private repositories should have tag immutability configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecr-controls.html#ecr-2 for more details.",
+	"resource_aws_ecr_repository": "aws_ecr_repository",
+	"immutable":                   "IMMUTABLE",
+}
+
+# Variables
+
+aws_ecr_repos = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_ecr_repository).resources
+
+invalid_ecr_repos = collection.reject(aws_ecr_repos, func(res) {
+	return maps.get(res, "values.image_tag_mutability", "") is const.immutable
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map invalid_ecr_repos as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	invalid_ecr_repos is empty
+}
