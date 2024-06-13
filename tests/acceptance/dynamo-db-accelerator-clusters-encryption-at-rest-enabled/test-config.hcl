@@ -1,6 +1,6 @@
 name = "dynamo-db-accelerator-clusters-encryption-at-rest-enabled"
 
-disabled = true
+disabled = false
 
 case "Server side encryption enabled" {
     path = "./cases/server-side-encryption-enabled"
