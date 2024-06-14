@@ -11,6 +11,8 @@ Data in RDS snapshots should be encrypted at rest for an added layer of security
 
 This control checks whether an RDS DB snapshot is encrypted. The control fails if an RDS DB snapshot isn't encrypted.
 
+This rule is covered by the [rds-encryption-at-rest-enabled](../../policies/rds-encryption-at-rest-enabled.sentinel) policy.
+
 ## Policy Results (Pass)
 ```bash
 trace:
