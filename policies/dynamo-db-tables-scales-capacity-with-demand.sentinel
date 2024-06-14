@@ -44,75 +44,53 @@ const = {
 }
 
 # Functions
-read_scaling_target_exists = func(read_scaling_targets, table) {
-	return any read_scaling_targets as _, target {
+scaling_target_exists = func(scaling_targets, table, min_capacity, max_capacity) {
+	return any scaling_targets as _, target {
 		target.values.resource_id is "table/" + table.values.name and
-			target.values.min_capacity >= min_read_capacity and
-			target.values.max_capacity <= max_read_capacity
+			target.values.min_capacity >= min_capacity and
+			target.values.max_capacity <= max_capacity
 	}
 }
 
-write_scaling_target_exists = func(write_scaling_targets, table) {
-	return any write_scaling_targets as _, target {
-		target.values.resource_id is "table/" + table.values.name and
-			target.values.min_capacity >= min_write_capacity and
-			target.values.max_capacity <= max_write_capacity
-	}
-}
-
-read_scaling_policy_exists = func(read_scaling_policies, table) {
+scaling_policy_exists = func(read_scaling_policies, table, min_target_utilization, max_target_utilization) {
 	return any read_scaling_policies as _, policy {
 		policy.values.resource_id is "table/" + table.values.name and
 			maps.get(policy, "values.target_tracking_scaling_policy_configuration", []) is not empty and
-			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) >= min_target_read_utilization and
-			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) <= max_target_read_utilization
+			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) >= min_target_utilization and
+			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) <= max_target_utilization
 	}
 }
 
-write_scaling_policy_exists = func(write_scaling_policies, table) {
-	return any write_scaling_policies as _, policy {
-		policy.values.resource_id is "table/" + table.values.name and
-			maps.get(policy, "values.target_tracking_scaling_policy_configuration", []) is not empty and
-			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) >= min_target_write_utilization and
-			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) <= max_target_write_utilization
-	}
+find_sclaing_policies_by_metric = func(metric_type) {
+	return collection.reject(planned_resources.type(const.resource_aws_appautoscaling_policy).resources, func(resource) {
+		return maps.get(resource, "values.target_tracking_scaling_policy_configuration", []) is empty or maps.get(resource.values.target_tracking_scaling_policy_configuration[0], "predefined_metric_specification", []) is empty or
+			maps.get(resource.values.target_tracking_scaling_policy_configuration[0].predefined_metric_specification[0], "predefined_metric_type", "") is not metric_type
+	})
 }
 
 # Variables
 planned_resources = tf.plan(tfplan.planned_values.resources)
 
 # Filter for DynamoDB tables with PROVISIONED billing mode
-dynamodb_tables = filter planned_resources.type(const.resource_aws_dynamodb_table).resources as _, resource {
-	maps.get(resource, "values.billing_mode", "") is "PROVISIONED"
-}
+dynamodb_tables = collection.reject(planned_resources.type(const.resource_aws_dynamodb_table).resources, func(resource) {
+	return maps.get(resource, "values.billing_mode", "") is not "PROVISIONED"
+})
 
 # Filter for auto-scaling targets for read capacity
-read_scaling_targets = filter planned_resources.type(const.resource_aws_appautoscaling_target).resources as _, resource {
-	maps.get(resource, "values.scalable_dimension", "") is "dynamodb:table:ReadCapacityUnits"
-}
+read_scaling_targets = collection.reject(planned_resources.type(const.resource_aws_appautoscaling_target).resources, func(resource) {
+	return maps.get(resource, "values.scalable_dimension", "") is not "dynamodb:table:ReadCapacityUnits"
+})
 
 # Filter for auto-scaling targets for write capacity
-write_scaling_targets = filter planned_resources.type(const.resource_aws_appautoscaling_target).resources as _, resource {
-	maps.get(resource, "values.scalable_dimension", "") is "dynamodb:table:WriteCapacityUnits"
-}
-
-# Filter for auto-scaling policies for read capacity
-read_scaling_policies = filter planned_resources.type(const.resource_aws_appautoscaling_policy).resources as _, resource {
-	maps.get(resource, "values.target_tracking_scaling_policy_configuration", []) is not empty and maps.get(resource.values.target_tracking_scaling_policy_configuration[0], "predefined_metric_specification", []) is not empty and
-		maps.get(resource.values.target_tracking_scaling_policy_configuration[0].predefined_metric_specification[0], "predefined_metric_type", "") is "DynamoDBReadCapacityUtilization"
-}
-
-# Filter for auto-scaling policies for write capacity
-write_scaling_policies = filter planned_resources.type(const.resource_aws_appautoscaling_policy).resources as _, resource {
-	maps.get(resource, "values.target_tracking_scaling_policy_configuration", []) is not empty and maps.get(resource.values.target_tracking_scaling_policy_configuration[0], "predefined_metric_specification", []) is not empty and
-		maps.get(resource.values.target_tracking_scaling_policy_configuration[0].predefined_metric_specification[0], "predefined_metric_type", "") is "DynamoDBWriteCapacityUtilization"
-}
+write_scaling_targets = collection.reject(planned_resources.type(const.resource_aws_appautoscaling_target).resources, func(resource) {
+	return maps.get(resource, "values.scalable_dimension", "") is not "dynamodb:table:WriteCapacityUnits"
+})
 
 violations = collection.reject(dynamodb_tables, func(table) {
-	return read_scaling_target_exists(read_scaling_targets, table) and
-		write_scaling_target_exists(write_scaling_targets, table) and
-		read_scaling_policy_exists(read_scaling_policies, table) and
-		write_scaling_policy_exists(write_scaling_policies, table)
+	return scaling_target_exists(read_scaling_targets, table, min_read_capacity, max_read_capacity) and
+		scaling_target_exists(write_scaling_targets, table, min_write_capacity, max_write_capacity) and
+		scaling_policy_exists(find_sclaing_policies_by_metric("DynamoDBReadCapacityUtilization"), table, min_target_read_utilization, max_target_read_utilization) and
+		scaling_policy_exists(find_sclaing_policies_by_metric("DynamoDBWriteCapacityUtilization"), table, min_target_read_utilization, max_target_write_utilization)
 })
 
 summary = {
