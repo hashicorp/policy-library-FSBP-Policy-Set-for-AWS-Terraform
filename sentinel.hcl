@@ -53,3 +53,8 @@ policy "rds-instance-should-be-private" {
   source = "./policies/rds-instance-should-be-private.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "rds-encryption-at-rest-enabled" {
+  source = "./policies/rds-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
