@@ -8,7 +8,7 @@
 
 This control evaluates if an Amazon ElastiCache for Redis cluster has automatic backups scheduled. The control fails if the SnapshotRetentionLimit for the Redis cluster is less than the specified time period. Unless you provide a custom parameter value for the snapshot retention period, Security Hub uses a default value of 1 day.
 
-This rule is covered by the [elasticache-redis-cluster-auto-backup-enabled](../../policies/elasticache-redis-cluster-auto-backup-enabled) policy.
+This rule is covered by the [elasticache-redis-cluster-auto-backup-enabled](../../policies/elasticache-redis-cluster-auto-backup-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

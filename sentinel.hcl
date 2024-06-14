@@ -8,6 +8,41 @@ import "plugin" "tfresources" {
   source = "./plugins/linux/amd64/sentinel-plugin-tfresources"
 }
 
+policy "eks-cluster-supported-k8s-version-check" {
+  source = "./policies/eks-cluster-supported-k8s-version-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "eks-cluster-encrypted-kubernetes-secrets" {
+  source = "./policies/eks-cluster-encrypted-kubernetes-secrets.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "eks-cluster-audit-logging-enabled" {
+  source = "./policies/eks-cluster-audit-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "eks-cluster-endpoints-restrict-public-access" {
+  source = "./policies/eks-cluster-endpoints-restrict-public-access.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-cluster-enable-container-insights" {
+  source = "./policies/ecs-cluster-enable-container-insights.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-fargate-service-platform-compatibility" {
+  source = "./policies/ecs-fargate-service-platform-compatibility.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-task-definition-log-configuration-present" {
+  source = "./policies/ecs-task-definition-log-configuration-present.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-secure-networking-mode-and-user-definitions" {
   source = "./policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel"
   enforcement_level = "advisory"
@@ -18,8 +53,23 @@ policy "ecs-task-definition-read-only-root-file-system-access" {
   enforcement_level = "advisory"
 }
 
+policy "ecs-task-definition-restrict-process-id" {
+  source = "./policies/ecs-task-definition-restrict-process-id.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "ecs-task-definition-no-secrets-as-environment-variables" {
   source = "./policies/ecs-task-definition-no-secrets-as-environment-variables.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-service-no-public-ip-assignment" {
+  source = "./policies/ecs-service-no-public-ip-assignment.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "ecs-non-privileged-container-definitions" {
+  source = "./policies/ecs-non-privileged-container-definitions.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -32,7 +82,6 @@ policy "elasticache-redis-cluster-auto-minor-version-upgrade-enabled" {
   source = "./policies/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel"
   enforcement_level = "advisory"
 }
-
 
 policy "elasticache-redis-replication-group-auto-failover-enabled" {
   source = "./policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel"
@@ -56,5 +105,40 @@ policy "rds-instance-should-be-private" {
 
 policy "rds-encryption-at-rest-enabled" {
   source = "./policies/rds-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticache-redis-replication-group-redis-auth-enabled" {
+  source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticache-redis-cluster-non-default-subnet-enabled" {
+  source = "./policies/elasticache-redis-cluster-non-default-subnet-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dynamo-db-tables-point-in-time-recovery-enabled" {
+  source = "./policies/dynamo-db-tables-point-in-time-recovery-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "docdb-cluster-storage-encrypted" {
+  source = "./policies/docdb-cluster-storage-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dynamo-db-accelerator-clusters-encryption-at-rest-enabled" {
+  source = "./policies/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dynamo-db-tables-delete-protection-enabled" {
+  source = "./policies/dynamo-db-tables-delete-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
+  source = "./policies/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel"
   enforcement_level = "advisory"
 }
