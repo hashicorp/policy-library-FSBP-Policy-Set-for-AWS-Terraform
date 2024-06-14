@@ -1,4 +1,4 @@
-# This policy requires that `aws_dynamodb_table` resources with 'billling_mode' attribute set to 'PROVISIONED'
+# This policy requires that `aws_dynamodb_table` resources with 'billing_mode' attribute set to 'PROVISIONED'
 # have autoscaling configured
 
 # Imports
