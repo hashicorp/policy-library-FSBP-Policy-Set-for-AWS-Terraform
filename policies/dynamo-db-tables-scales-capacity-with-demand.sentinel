@@ -45,20 +45,20 @@ const = {
 
 # Functions
 scaling_target_exists = func(scaling_targets, table, min_capacity, max_capacity) {
-	return any scaling_targets as _, target {
-		target.values.resource_id is "table/" + table.values.name and
+	return collection.find(scaling_targets, func(target) {
+		return target.values.resource_id is "table/" + table.values.name and
 			target.values.min_capacity >= min_capacity and
 			target.values.max_capacity <= max_capacity
-	}
+	}) is defined
 }
 
 scaling_policy_exists = func(read_scaling_policies, table, min_target_utilization, max_target_utilization) {
-	return any read_scaling_policies as _, policy {
-		policy.values.resource_id is "table/" + table.values.name and
+	return collection.find(read_scaling_policies, func(policy) {
+		return policy.values.resource_id is "table/" + table.values.name and
 			maps.get(policy, "values.target_tracking_scaling_policy_configuration", []) is not empty and
 			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) >= min_target_utilization and
 			maps.get(policy.values.target_tracking_scaling_policy_configuration[0], "target_value", 0) <= max_target_utilization
-	}
+	}) is defined
 }
 
 find_sclaing_policies_by_metric = func(metric_type) {
