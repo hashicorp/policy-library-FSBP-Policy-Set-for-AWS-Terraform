@@ -156,4 +156,14 @@ policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
 policy "dynamo-db-tables-scales-capacity-with-demand" {
   source = "./policies/dynamo-db-tables-scales-capacity-with-demand.sentinel"
   enforcement_level = "advisory"
+  params = {
+      min_read_capacity = 1
+      max_read_capacity = 40000
+      min_write_capacity = 1
+      max_write_capacity = 40000
+      min_target_read_utilization = 20
+      max_target_read_utilization = 90
+      min_target_write_utilization = 20
+      max_target_write_utilization = 90
+ }
 }
