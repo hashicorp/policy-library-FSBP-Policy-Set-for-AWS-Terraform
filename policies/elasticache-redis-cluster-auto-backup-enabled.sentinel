@@ -19,8 +19,11 @@ const = {
 # Functions
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		key = "values.snapshot_retention_limit"
-		return maps.has(res, key) and maps.get(res, key) is not null and maps.get(res, key) > 0
+		if res.type is const.resource_aws_elasticache_cluster and maps.get(res, "values.replication_group_id", "") is not empty {
+			return true
+		}
+		snapshot_retention_limit = maps.get(res, "values.snapshot_retention_limit", 0)
+		return snapshot_retention_limit is not null and snapshot_retention_limit > 0
 	})
 }
 

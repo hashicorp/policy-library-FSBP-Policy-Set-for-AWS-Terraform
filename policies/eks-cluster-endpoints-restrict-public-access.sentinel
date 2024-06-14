@@ -1,0 +1,51 @@
+# This policy checks if 'aws_eks_cluster' resources have
+# their unrestricted public endpoint access
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":              "eks-cluster-endpoints-restrict-public-access",
+	"message":                  "Attribute 'endpoint_public_access' must be false for aws_eks_cluster resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/eks-controls.html#eks-1 for more details.",
+	"resource_aws_eks_cluster": "aws_eks_cluster",
+	"vpc_config":               "vpc_config",
+	"endpoint_public_access":   "endpoint_public_access",
+}
+
+# Variables
+
+eks_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_eks_cluster).resources
+
+eks_clusters_with_unrestricted_public_endpoints = collection.reject(eks_clusters, func(res) {
+	vpc_config = maps.get(res["values"], const.vpc_config, [])
+	if vpc_config is empty {
+		return true
+	}
+
+	return maps.get(vpc_config[0], const.endpoint_public_access, true) is false
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map eks_clusters_with_unrestricted_public_endpoints as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	eks_clusters_with_unrestricted_public_endpoints is empty
+}
