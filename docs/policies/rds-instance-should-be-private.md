@@ -6,7 +6,7 @@
 
 ## Description
 
-This control checks whether Amazon RDS instances are publicly accessible by evaluating the PubliclyAccessible field in the instance configuration item.## Policy Results (Pass)
+This control checks whether Amazon RDS instances are publicly accessible by evaluating the PubliclyAccessible field in the instance configuration item.
 
 ```bash
 trace:
