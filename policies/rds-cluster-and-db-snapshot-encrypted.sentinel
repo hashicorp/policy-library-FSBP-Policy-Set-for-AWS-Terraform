@@ -22,8 +22,9 @@ const = {
 
 # Variables
 
-db_instance_resources = tf.config(tfconfig.resources).type(const.resource_aws_db_instance).resources
-rds_cluster_resources = tf.config(tfconfig.resources).type(const.resource_aws_rds_cluster).resources
+resources = tf.config(tfconfig.resources)
+db_instance_resources = resources.type(const.resource_aws_db_instance).resources
+rds_cluster_resources = resources.type(const.resource_aws_rds_cluster).resources
 
 db_instance_violations = collection.reject(db_instance_resources, func(res) {
 	storage_encrypted_value = maps.get(res, "config.storage_encrypted.constant_value", false)
