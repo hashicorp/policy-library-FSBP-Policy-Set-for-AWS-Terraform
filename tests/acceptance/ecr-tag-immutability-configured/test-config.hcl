@@ -1,6 +1,6 @@
 name = "ecr-tag-immutability-configured"
 
-disabled = true
+disabled = false
 
 case "Tag immutability configured" {
     path = "./cases/immutability-configured"
