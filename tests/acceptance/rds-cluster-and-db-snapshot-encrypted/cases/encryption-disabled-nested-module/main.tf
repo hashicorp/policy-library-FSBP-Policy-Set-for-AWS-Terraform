@@ -1,0 +1,3 @@
+module "rds" {
+  source = "./rds"
+}
