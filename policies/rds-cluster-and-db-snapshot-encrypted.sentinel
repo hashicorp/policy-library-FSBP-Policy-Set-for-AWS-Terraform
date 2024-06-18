@@ -1,4 +1,5 @@
-# This policy requires resources of type `aws_db_instance` have attribute "storage_encrypted" set to true.
+# This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` have attribute "storage_encrypted" set to true and has kms_key_id
+# This will make sure snapshots are encrypted
 
 # Imports
 
