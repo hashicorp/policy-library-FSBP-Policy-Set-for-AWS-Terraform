@@ -15,14 +15,14 @@ case "RDS DB instance and Cluster encryption is disabled" {
     }
 }
 
-case ""RDS DB instance and Cluster encryption is enabled. Resources in nested module" {
+case "RDS DB instance and Cluster encryption is enabled. Resources in nested module" {
     path = "cases/encryption-enabled-nested-module"
     expectation {
         result = true
     }
 }
 
-case ""RDS DB instance and Cluster encryption is disabled. Resources in nested module" {
+case "RDS DB instance and Cluster encryption is disabled. Resources in nested module" {
     path = "cases/encryption-disabled-nested-module"
     expectation {
         result = false
