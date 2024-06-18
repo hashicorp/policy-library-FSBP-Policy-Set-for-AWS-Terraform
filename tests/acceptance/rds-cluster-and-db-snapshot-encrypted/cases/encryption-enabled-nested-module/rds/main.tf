@@ -8,8 +8,8 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
-  storage_encrypted = true
-  kms_key_id = aws_kms_key.example.id
+  storage_encrypted    = true
+  kms_key_id           = aws_kms_key.example.id
 }
 
 resource "aws_rds_cluster" "default" {
@@ -22,8 +22,8 @@ resource "aws_rds_cluster" "default" {
   master_password         = "bar"
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
-  storage_encrypted = true
-  kms_key_id = aws_kms_key.example.id
+  storage_encrypted       = true
+  kms_key_id              = aws_kms_key.example.id
 }
 
 data "aws_caller_identity" "current" {}
