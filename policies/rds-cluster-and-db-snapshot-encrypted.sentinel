@@ -12,7 +12,7 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":              "rds-encryption-at-rest-enabled",
+	"policy_name":              "rds-cluster-and-db-snapshot-encrypted",
 	"message":                  "Attribute 'storage_encrypted' must be set to true and kms_key_id must be set for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-4 for more details.",
 	"resource_aws_db_instance": "aws_db_instance",
 	"resource_aws_rds_cluster": "aws_rds_cluster",
@@ -42,7 +42,7 @@ db_cluster_resources_violations = collection.reject(rds_cluster_resources, func(
 violations = db_instance_violations + db_cluster_resources_violations
 
 summary = {
-	"policy_name": "rds-encryption-at-rest-enabled",
+	"policy_name": "rds-cluster-and-db-snapshot-encrypted",
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
