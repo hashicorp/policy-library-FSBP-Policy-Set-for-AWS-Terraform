@@ -123,6 +123,11 @@ policy "rds-cluster-and-db-snapshot-encrypted" {
   enforcement_level = "advisory"
 }
 
+policy "rds-should-be-configured-with-mutli-az" {
+  source = "./policies/rds-should-be-configured-with-multi-az.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"

@@ -1,4 +1,4 @@
-# AWS RDS instance should be private
+# AWS RDS instance should be configured with Multi AZ
 
 | Provider            | Category     |
 |---------------------|--------------|
@@ -6,29 +6,35 @@
 
 ## Description
 
-This control checks whether Amazon RDS instances are publicly accessible by evaluating the PubliclyAccessible field in the instance configuration item.
+This control checks whether high availability is enabled for your RDS DB instances.
 
-This rule is covered by the [rds-instance-should-be-private](../../policies/rds-instance-should-be-private.sentinel) policy.
+RDS DB instances should be configured for multiple Availability Zones (AZs). This ensures the availability of the data stored. 
+Multi-AZ deployments allow for automated failover if there is an issue with AZ availability and during regular RDS maintenance.
+
+
+This rule is covered by the [rds-should-be-configured-with-multi-az](../../policies/rds-should-be-configured-with-multi-az.sentinel) policy.
 
 ```bash
 trace:
 
-    Pass - rds-instance-should-be-private.sentinel
+    Pass - rds-should-be-configured-with-mutli-az.sentinel
 
     Description:
-      This policy checks if the aws rds instances are publicly accessible
+      This policy requires resources of type `aws_db_instance` to have `multi_az`
+      set to true
 
     Print messages:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy rds-instance-should-be-private.
+    This result means that all resources have passed the policy check for the policy rds-should-be-configured-with-multi-az.
 
     ✓ Found 0 resource violations
 
-    rds-instance-should-be-private.sentinel:51:1 - Rule "main"
+    rds-should-be-configured-with-mutli-az.sentinel:45:1 - Rule "main"
       Value:
         true
+
 
 ```
 
@@ -61,7 +67,6 @@ trace:
     rds-should-be-configured-with-mutli-az.sentinel:45:1 - Rule "main"
       Value:
         false
-        
 ```
 
 ---

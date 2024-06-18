@@ -1,6 +1,6 @@
 # This policy requires resources of type `aws_db_instance` to have `multi_az` set to true
 
- Imports
+# Imports
 
 import "tfplan/v2" as tfplan
 import "tfresources" as tf
