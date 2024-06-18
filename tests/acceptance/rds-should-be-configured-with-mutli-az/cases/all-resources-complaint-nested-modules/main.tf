@@ -3,5 +3,5 @@ provider "aws" {
 }
 
 module "rds-1" {
-  source              = "./rds"
+  source = "./rds"
 }

@@ -8,9 +8,9 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
-  storage_encrypted = true
-  multi_az = true
-  kms_key_id = aws_kms_key.example.id
+  storage_encrypted    = true
+  multi_az             = true
+  kms_key_id           = aws_kms_key.example.id
 }
 
 data "aws_caller_identity" "current" {}
