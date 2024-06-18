@@ -13,6 +13,11 @@ policy "ecr-tag-immutability-configured" {
   enforcement_level = "advisory"
 }
 
+policy "ecr-image-scanning-enabled" {
+  source = "./policies/ecr-image-scanning-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-supported-k8s-version-check" {
   source = "./policies/eks-cluster-supported-k8s-version-check.sentinel"
   enforcement_level = "advisory"
@@ -105,6 +110,11 @@ policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
 
 policy "rds-instance-should-be-private" {
   source = "./policies/rds-instance-should-be-private.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "rds-encryption-at-rest-enabled" {
+  source = "./policies/rds-encryption-at-rest-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
