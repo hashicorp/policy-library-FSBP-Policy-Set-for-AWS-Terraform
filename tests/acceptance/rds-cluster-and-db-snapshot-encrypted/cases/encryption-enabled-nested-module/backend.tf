@@ -1,7 +1,7 @@
 terraform {
   cloud {
     workspaces {
-      name = "rds-encryption-at-rest-enabled"
+      name = "rds-cluster-and-db-snapshot-encrypted"
     }
   }
 }
