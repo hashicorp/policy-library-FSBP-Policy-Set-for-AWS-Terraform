@@ -11,12 +11,12 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":                      "rds-encryption-at-rest-enabled",
-	"message":                          "Attribute 'storage_encrypted' must be set to true and kms_key_id must be set for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-4 for more details.",
-	"resource_aws_db_instance":         "aws_db_instance",
-	"resource_aws_rds_cluster":         "aws_rds_cluster",
-	"storage_encrypted":                "storage_encrypted",
-	"kms_key_id":                       "kms_key_id",
+	"policy_name":              "rds-encryption-at-rest-enabled",
+	"message":                  "Attribute 'storage_encrypted' must be set to true and kms_key_id must be set for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-4 for more details.",
+	"resource_aws_db_instance": "aws_db_instance",
+	"resource_aws_rds_cluster": "aws_rds_cluster",
+	"storage_encrypted":        "storage_encrypted",
+	"kms_key_id":               "kms_key_id",
 }
 
 # Variables
@@ -31,10 +31,10 @@ db_instance_violations = collection.reject(db_instance_resources, func(res) {
 	return storage_encrypted_value is true and (kms_key_id_constant_value is not empty or kms_key_id_references is not empty)
 })
 db_cluster_resources_violations = collection.reject(db_instance_resources, func(res) {
-    storage_encrypted_value = maps.get(res, "config.storage_encrypted.constant_value", false)
-    kms_key_id_constant_value = maps.get(res, "config.kms_key_id.constant_value", "")
-    kms_key_id_references = maps.get(res, "config.kms_key_id.references", [])
-    return storage_encrypted_value is true and (kms_key_id_constant_value is not empty or kms_key_id_references is not empty)
+	storage_encrypted_value = maps.get(res, "config.storage_encrypted.constant_value", false)
+	kms_key_id_constant_value = maps.get(res, "config.kms_key_id.constant_value", "")
+	kms_key_id_references = maps.get(res, "config.kms_key_id.references", [])
+	return storage_encrypted_value is true and (kms_key_id_constant_value is not empty or kms_key_id_references is not empty)
 })
 
 violations = db_instance_violations + db_cluster_resources_violations
