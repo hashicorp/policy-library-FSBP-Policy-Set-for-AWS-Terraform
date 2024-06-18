@@ -1,0 +1,146 @@
+resources = {
+	"aws_db_instance.default": {
+		"address": "aws_db_instance.default",
+		"config": {
+			"allocated_storage": {
+				"constant_value": 10,
+			},
+			"db_name": {
+				"constant_value": "mydb",
+			},
+			"engine": {
+				"constant_value": "mysql",
+			},
+			"engine_version": {
+				"constant_value": "8.0",
+			},
+			"instance_class": {
+				"constant_value": "db.t3.micro",
+			},
+			"kms_key_id": {
+				"constant_value": "",
+			},
+			"parameter_group_name": {
+				"constant_value": "default.mysql8.0",
+			},
+			"password": {
+				"constant_value": "foobarbaz",
+			},
+			"skip_final_snapshot": {
+				"constant_value": true,
+			},
+			"storage_encrypted": {
+				"constant_value": true,
+			},
+			"username": {
+				"constant_value": "foo",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "default",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_db_instance",
+	},
+	"aws_kms_key.example": {
+		"address": "aws_kms_key.example",
+		"config": {
+			"deletion_window_in_days": {
+				"constant_value": 20,
+			},
+			"description": {
+				"constant_value": "An example symmetric encryption KMS key",
+			},
+			"enable_key_rotation": {
+				"constant_value": true,
+			},
+			"policy": {
+				"references": [
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+					"data.aws_caller_identity.current.account_id",
+					"data.aws_caller_identity.current",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_kms_key",
+	},
+	"aws_rds_cluster.default": {
+		"address": "aws_rds_cluster.default",
+		"config": {
+			"availability_zones": {
+				"constant_value": [
+					"us-west-2a",
+					"us-west-2b",
+					"us-west-2c",
+				],
+			},
+			"backup_retention_period": {
+				"constant_value": 5,
+			},
+			"cluster_identifier": {
+				"constant_value": "aurora-cluster-demo",
+			},
+			"database_name": {
+				"constant_value": "mydb",
+			},
+			"engine": {
+				"constant_value": "aurora-mysql",
+			},
+			"engine_version": {
+				"constant_value": "5.7.mysql_aurora.2.03.2",
+			},
+			"kms_key_id": {
+				"constant_value": "",
+			},
+			"master_password": {
+				"constant_value": "bar",
+			},
+			"master_username": {
+				"constant_value": "foo",
+			},
+			"preferred_backup_window": {
+				"constant_value": "07:00-09:00",
+			},
+			"storage_encrypted": {
+				"constant_value": true,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "default",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_rds_cluster",
+	},
+	"data.aws_caller_identity.current": {
+		"address":             "data.aws_caller_identity.current",
+		"config":              {},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "current",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_caller_identity",
+	},
+}

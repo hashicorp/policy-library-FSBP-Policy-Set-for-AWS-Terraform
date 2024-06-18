@@ -108,6 +108,11 @@ policy "rds-encryption-at-rest-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-cluster-and-db-snapshot-encrypted" {
+  source = "./policies/rds-cluster-and-db-snapshot-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"

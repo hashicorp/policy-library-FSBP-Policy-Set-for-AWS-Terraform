@@ -1,4 +1,4 @@
-# AWS RDS cluster snapshots and database snapshots should be encrypted at rest
+# AWS RDS DB instances should have encryption at-rest enabled
 
 | Provider            | Category     |
 |---------------------|--------------|
