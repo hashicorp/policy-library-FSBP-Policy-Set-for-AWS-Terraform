@@ -12,12 +12,12 @@ RDS DB instances should be configured for multiple Availability Zones (AZs). Thi
 Multi-AZ deployments allow for automated failover if there is an issue with AZ availability and during regular RDS maintenance.
 
 
-This rule is covered by the [rds-should-be-configured-with-multi-az](../../policies/rds-should-be-configured-with-multi-az.sentinel) policy.
+This rule is covered by the [rds-ensure-multi-az-configuration](../../policies/rds-ensure-multi-az-configuration.sentinel) policy.
 
 ```bash
 trace:
 
-    Pass - rds-should-be-configured-with-mutli-az.sentinel
+    Pass - rds-ensure-multi-az-configuration.sentinel
 
     Description:
       This policy requires resources of type `aws_db_instance` to have `multi_az`
@@ -27,11 +27,11 @@ trace:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy rds-should-be-configured-with-multi-az.
+    This result means that all resources have passed the policy check for the policy rds-ensure-multi-az-configuration.
 
     ✓ Found 0 resource violations
 
-    rds-should-be-configured-with-mutli-az.sentinel:45:1 - Rule "main"
+    rds-ensure-multi-az-configuration.sentinel:45:1 - Rule "main"
       Value:
         true
 
@@ -44,7 +44,7 @@ trace:
 ```bash
 trace:
 
-    Fail - rds-should-be-configured-with-mutli-az.sentinel
+    Fail - rds-ensure-multi-az-configuration.sentinel
 
     Description:
       This policy requires resources of type `aws_db_instance` to have `multi_az`
@@ -54,7 +54,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-should-be-configured-with-multi-az.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-ensure-multi-az-configuration.
 
     Found 1 resource violations
 
@@ -64,7 +64,7 @@ trace:
          | Attribute 'multi_az' must be set to true for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-5 for more details.
 
 
-    rds-should-be-configured-with-mutli-az.sentinel:45:1 - Rule "main"
+    rds-ensure-multi-az-configuration.sentinel:45:1 - Rule "main"
       Value:
         false
 ```

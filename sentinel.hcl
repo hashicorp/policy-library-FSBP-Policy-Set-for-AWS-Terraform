@@ -123,8 +123,8 @@ policy "rds-cluster-and-db-snapshot-encrypted" {
   enforcement_level = "advisory"
 }
 
-policy "rds-should-be-configured-with-multi-az" {
-  source = "./policies/rds-should-be-configured-with-multi-az.sentinel"
+policy "rds-ensure-multi-az-configuration" {
+  source = "./policies/rds-ensure-multi-az-configuration.sentinel"
   enforcement_level = "advisory"
 }
 

@@ -1,4 +1,4 @@
-name = "rds-should-be-configured-with-multi-az"
+name = "rds-ensure-multi-az-configuration"
 
 disabled = false
 

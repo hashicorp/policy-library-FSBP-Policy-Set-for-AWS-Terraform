@@ -11,8 +11,8 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":              "rds-should-be-configured-with-multi-az",
-	"message":                  "Attribute 'multi_az' must be set to true for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-5 for more details.",
+	"policy_name":              "rds-ensure-multi-az-configuration",
+	"message":                  "Attribute 'multi_az' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-5 for more details.",
 	"resource_aws_db_instance": "aws_db_instance",
 	"multi_az":                 "multi_az",
 }
@@ -26,7 +26,7 @@ violations = collection.reject(resources, func(res) {
 })
 
 summary = {
-	"policy_name": "rds-should-be-configured-with-multi-az",
+	"policy_name": "rds-ensure-multi-az-configuration",
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
