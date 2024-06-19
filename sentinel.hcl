@@ -177,3 +177,8 @@ policy "dynamo-db-tables-scales-capacity-with-demand" {
       max_target_write_utilization = 90
  }
 }
+
+policy "elasticbeanstalk-managed-platform-updates-enabled" {
+  source = "./policies/elasticbeanstalk-managed-platform-updates-enabled.sentinel"
+  enforcement_level = "advisory"
+}
