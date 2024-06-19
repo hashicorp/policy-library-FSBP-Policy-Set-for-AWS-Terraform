@@ -38,27 +38,26 @@ trace:
 ```bash
 trace:
 
-    Fail - rds-should-be-configured-with-mutli-az.sentinel
+    Fail - rds-instance-should-be-private.sentinel
 
     Description:
-      This policy requires resources of type `aws_db_instance` to have `multi_az`
-      set to true
+      This policy checks if the aws rds instances are publicly accessible
 
     Print messages:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-should-be-configured-with-multi-az.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-instance-should-be-private.
 
     Found 1 resource violations
 
     → Module name: root
        ↳ Resource Address: aws_db_instance.default
          | ✗ failed
-         | Attribute 'multi_az' must be set to true for 'aws_db_instance' and 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-5 for more details.
+         | Attribute 'publicly_accessible' should be false for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-2 for more details.
 
 
-    rds-should-be-configured-with-mutli-az.sentinel:45:1 - Rule "main"
+    rds-instance-should-be-private.sentinel:51:1 - Rule "main"
       Value:
         false
         
