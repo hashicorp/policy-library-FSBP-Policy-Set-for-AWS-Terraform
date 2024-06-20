@@ -15,7 +15,7 @@ const = {
 	"message":                  "Attribute 'monitoring_interval' must be set to set to any value in (1, 5, 10, 15, 30, 60) for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-6 for more details.",
 	"resource_aws_db_instance": "aws_db_instance",
 	"monitoring_interval":      "monitoring_interval",
-	"allowed_custom_values":    [1, 5, 10, 15, 30, 60]
+	"allowed_custom_values":    [1, 5, 10, 15, 30, 60],
 }
 
 # Variables
