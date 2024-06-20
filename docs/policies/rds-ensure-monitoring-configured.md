@@ -57,7 +57,7 @@ trace:
     → Module name: root
        ↳ Resource Address: aws_db_instance.default
          | ✗ failed
-         | Attribute 'monitoring_interval' must be set to set to any value in (1, 5, 10, 15, 30, 60) for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-6 for more details.
+         | Attribute 'monitoring_interval' must be set to any value in (1, 5, 10, 15, 30, 60) for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-6 for more details.
 
 
     rds-ensure-monitoring-configured.sentinel:46:1 - Rule "main"
