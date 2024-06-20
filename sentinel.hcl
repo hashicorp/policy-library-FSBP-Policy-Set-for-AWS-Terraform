@@ -192,3 +192,8 @@ policy "elasticbeanstalk-managed-platform-updates-enabled" {
   source = "./policies/elasticbeanstalk-managed-platform-updates-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "elasticbeanstalk-cloudwatch-log-streaming-enabled" {
+  source = "./policies/elasticbeanstalk-cloudwatch-log-streaming-enabled.sentinel"
+  enforcement_level = "advisory"
+}
