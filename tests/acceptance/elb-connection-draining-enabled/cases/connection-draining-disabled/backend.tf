@@ -1,7 +1,7 @@
 terraform {
   cloud {
     workspaces {
-      name = "connection-draining-enabled"
+      name = "elb-connection-draining-enabled"
     }
   }
 }
