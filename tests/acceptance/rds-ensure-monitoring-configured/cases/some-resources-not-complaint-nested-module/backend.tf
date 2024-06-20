@@ -1,7 +1,7 @@
 terraform {
   cloud {
     workspaces {
-      name = "rds-ensure-multi-az-configuration"
+      name = "rds-ensure-monitoring-configured"
     }
   }
 }
