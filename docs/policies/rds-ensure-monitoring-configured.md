@@ -1,8 +1,8 @@
 # AWS RDS instance should have monitoring configured
 
-| Provider            | Category     |
-|---------------------|--------------|
-| Amazon Web Services | Security     |
+| Provider            | Category   |
+|---------------------|------------|
+| Amazon Web Services | Monitoring |
 
 ## Description
 
