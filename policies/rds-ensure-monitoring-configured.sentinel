@@ -22,8 +22,8 @@ const = {
 
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_db_instance).resources
 violations = collection.reject(resources, func(res) {
-	multi_az = "values.monitoring_interval"
-	return maps.get(res, multi_az, 0) in const.allowed_custom_values
+	monitoring_interval = "values.monitoring_interval"
+	return maps.get(res, monitoring_interval, 0) in const.allowed_custom_values
 })
 
 summary = {
