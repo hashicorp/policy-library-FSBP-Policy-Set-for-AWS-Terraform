@@ -113,6 +113,11 @@ policy "elb-connection-draining-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "elb-cross-zone-load-balancing-enabled" {
+  source = "./policies/elb-cross-zone-load-balancing-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-drop-invalid-http-headers" {
   source = "./policies/elb-drop-invalid-http-headers.sentinel"
   enforcement_level = "advisory"
