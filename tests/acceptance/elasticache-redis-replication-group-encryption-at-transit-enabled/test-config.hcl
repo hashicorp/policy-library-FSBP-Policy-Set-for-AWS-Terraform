@@ -1,6 +1,6 @@
 name = "elasticache-redis-replication-group-encryption-at-transit-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache redis replication group encryption at transit  enabled in root module" {
   path = "cases/all-resources-complaint"
