@@ -123,6 +123,11 @@ policy "elb-drop-invalid-http-headers" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-valid-desync-mitigation-mode" {
+  source = "./policies/elb-ensure-valid-desync-mitigation-mode.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "rds-instance-should-be-private" {
   source = "./policies/rds-instance-should-be-private.sentinel"
   enforcement_level = "advisory"
