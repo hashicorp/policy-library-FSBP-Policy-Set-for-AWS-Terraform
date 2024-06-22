@@ -138,7 +138,7 @@ policy "rds-ensure-multi-az-configuration" {
   enforcement_level = "advisory"
 }
 
-policy "rds-ensure-rds-cluster-deletion-protection-enabled" {
+policy "rds-ensure-cluster-deletion-protection-enabled" {
   source = "./policies/rds-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
   params = {
