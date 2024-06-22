@@ -15,8 +15,8 @@ param resource_type
 # Constants
 
 const = {
-	"policy_name":              "rds-ensure-deletion-protection-enabled",
-	"deletion_protection":      "deletion_protection",
+	"policy_name":         "rds-ensure-deletion-protection-enabled",
+	"deletion_protection": "deletion_protection",
 }
 
 # Variables
@@ -29,7 +29,7 @@ violations = collection.reject(resources, func(res) {
 
 message = "Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details."
 if resource_type == "aws_rds_cluster" {
-    message = "Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details."
+	message = "Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details."
 }
 
 summary = {
