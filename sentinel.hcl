@@ -138,6 +138,22 @@ policy "rds-ensure-multi-az-configuration" {
   enforcement_level = "advisory"
 }
 
+policy "rds-ensure-rds-cluster-deletion-protection-enabled" {
+  source = "./policies/rds-ensure-multi-az-configuration.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    resource_type = "aws_rds_cluster"
+  }
+}
+
+policy "rds-ensure-db-instance-deletion-protection-enabled" {
+  source = "./policies/rds-ensure-multi-az-configuration.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    resource_type = "aws_db_instance"
+  }
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
@@ -191,4 +207,8 @@ policy "dynamo-db-tables-scales-capacity-with-demand" {
 policy "elasticbeanstalk-managed-platform-updates-enabled" {
   source = "./policies/elasticbeanstalk-managed-platform-updates-enabled.sentinel"
   enforcement_level = "advisory"
+}
+
+import "plugin" "tfresources" {
+  source = "./plugins/darwin/arm64/sentinel-plugin-tfresources"
 }

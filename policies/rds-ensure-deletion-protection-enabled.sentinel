@@ -1,0 +1,54 @@
+# This policy requires resources of type `aws_db_instance` to have `multi_az` set to true
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+
+param resource_type
+
+# Constants
+
+const = {
+	"policy_name":              "rds-ensure-deletion-protection-enabled",
+	"deletion_protection":      "deletion_protection",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(resource_type).resources
+violations = collection.reject(resources, func(res) {
+	deletion_protection = "values.deletion_protection"
+	return maps.get(res, deletion_protection, false) is true
+})
+
+message = "Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details."
+if resource_type == "aws_rds_cluster" {
+    message = "Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details."
+}
+
+summary = {
+	"policy_name": "rds-ensure-multi-az-configuration",
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
