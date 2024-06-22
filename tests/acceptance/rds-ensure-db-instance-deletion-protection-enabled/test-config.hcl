@@ -1,4 +1,4 @@
-name = "rds-ensure-deletion-protection-enabled"
+name = "rds-ensure-db-instance-deletion-protection-enable"
 disabled = false
 
 case "RDS DB instance and Cluster deletion protection is enabled" {
