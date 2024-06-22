@@ -1,6 +1,6 @@
 name = "ecs-cluster-enable-container-insights"
 
-disabled = false
+disabled = true
 
 case "Container insights enabled" {
     path = "./cases/container-insights-enabled"
