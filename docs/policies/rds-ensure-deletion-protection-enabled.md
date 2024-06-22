@@ -59,7 +59,7 @@ trace:
     → Module name: root
        ↳ Resource Address: aws_db_instance.default
          | ✗ failed
-         | Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details.
+         | Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details.
 
 
     rds-ensure-db-instance-deletion-protection-enabled.sentinel:52:1 - Rule "main"
@@ -83,7 +83,7 @@ trace:
     → Module name: root
        ↳ Resource Address: aws_rds_cluster.default
          | ✗ failed
-         | Attribute 'deletion_protection' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-8 for more details.
+         | Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details.
 
 
     rds-ensure-rds-cluster-deletion-protection-enabled.sentinel:52:1 - Rule "main"
