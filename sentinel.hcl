@@ -153,6 +153,11 @@ policy "rds-ensure-multi-az-configuration" {
   enforcement_level = "advisory"
 }
 
+policy "rds-ensure-cloudwatch-logs-enabled" {
+  source = "./policies/rds-ensure-cloudwatch-logs-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
