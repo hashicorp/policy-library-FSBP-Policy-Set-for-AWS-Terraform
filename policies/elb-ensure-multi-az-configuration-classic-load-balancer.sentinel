@@ -1,0 +1,49 @@
+# This policy checks if load balancers span across
+# multiple availability zones.
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+
+# min_availability_zones indicates the minimum number of AZs a load balancer must be configured across.
+param min_availability_zones default 2
+
+# Constants
+const = {
+	"policy_name":      "elb-ensure-multi-az-configuration",
+	"resource_aws_elb": "aws_elb",
+}
+
+# Variables
+
+aws_load_balancers = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elb).resources
+
+violations = collection.reject(aws_load_balancers, func(res) {
+	return length(maps.get(res, "values.availability_zones", [])) >= min_availability_zones or
+		length(maps.get(res, "values.subnets", [])) >= min_availability_zones
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        "Classic load balancers of type must have atleast " + string(min_availability_zones) + " availability zones configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-10 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

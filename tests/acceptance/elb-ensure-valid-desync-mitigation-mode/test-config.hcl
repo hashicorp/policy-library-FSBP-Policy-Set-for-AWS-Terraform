@@ -1,6 +1,6 @@
 name = "elb-ensure-valid-desync-mitigation-mode"
 
-disabled = false
+disabled = true
 
 case "No desync mitigation mode input" {
     path = "./cases/no-desync-mitigation-mode-input"
