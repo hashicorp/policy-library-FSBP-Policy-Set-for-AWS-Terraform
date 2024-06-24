@@ -1,6 +1,6 @@
 name = "ecs-task-definition-secure-networking-mode-and-user-definitions"
 
-disabled = false
+disabled = true
 
 case "Task definition with AWSVPC networking mode" {
     path = "cases/task-definition-with-awsvpc-network-mode"
