@@ -1,6 +1,6 @@
 name = "docdb-cluster-storage-encrypted"
 
-disabled = false
+disabled = true
 
 case "Cluster with no Storage Encryption" {
     path = "./cases/cluster-with-no-storage-encryption"

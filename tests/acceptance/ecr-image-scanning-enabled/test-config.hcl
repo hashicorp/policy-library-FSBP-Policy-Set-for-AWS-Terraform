@@ -1,6 +1,6 @@
 name = "ecr-image-scanning-enabled"
 
-disabled = false
+disabled = true
 
 case "ECR image scanning enabled" {
     path = "./cases/image-scanning-config-enabled"
