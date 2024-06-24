@@ -3,5 +3,5 @@ provider "aws" {
 }
 
 module "elb" {
-  source = "./lb"
+  source = "./elb"
 }
