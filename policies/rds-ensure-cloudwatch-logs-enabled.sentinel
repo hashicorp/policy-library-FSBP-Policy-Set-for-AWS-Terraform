@@ -11,33 +11,33 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":                              "rds-ensure-cloudwatch-logs-enabled",
-	"message":                                  "Attribute 'enabled_cloudwatch_logs_exports' must be set to valid values for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.",
-	"resource_aws_db_instance":                 "aws_db_instance",
+	"policy_name":              "rds-ensure-cloudwatch-logs-enabled",
+	"message":                  "Attribute 'enabled_cloudwatch_logs_exports' must be set to valid values for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.",
+	"resource_aws_db_instance": "aws_db_instance",
 	"allowed_logs": {
-        "oracle": ["alert", "audit", "trace", "listener"],
-        "postgres": ["postgresql", "upgrade"],
-        "mysql": ["audit", "error", "general", "slowquery"],
-        "mariadb": ["audit", "error", "general", "slowquery"],
-        "sqlserver": ["error", "agent"],
-        "aurora": ["audit", "error", "general", "slowquery"],
-        "aurora-mysql": ["audit", "error", "general", "slowquery"],
-        "aurora-postgresql": ["postgresql", "upgrade"],
-    },
+		"oracle":            ["alert", "audit", "trace", "listener"],
+		"postgres":          ["postgresql", "upgrade"],
+		"mysql":             ["audit", "error", "general", "slowquery"],
+		"mariadb":           ["audit", "error", "general", "slowquery"],
+		"sqlserver":         ["error", "agent"],
+		"aurora":            ["audit", "error", "general", "slowquery"],
+		"aurora-mysql":      ["audit", "error", "general", "slowquery"],
+		"aurora-postgresql": ["postgresql", "upgrade"],
+	},
 }
 
 # Variables
 
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_db_instance).resources
 violations = collection.reject(resources, func(res) {
-    engine = maps.get(res, "values.engine", "")
-    enabled_logs = maps.get(res, "values.enabled_cloudwatch_logs_exports", [])
-    if engine not in const.allowed_logs {
-        return true
-    }
-    return all const.allowed_logs[engine] as log {
-        log in enabled_logs
-    }
+	engine = maps.get(res, "values.engine", "")
+	enabled_logs = maps.get(res, "values.enabled_cloudwatch_logs_exports", [])
+	if engine not in const.allowed_logs {
+		return true
+	}
+	return all const.allowed_logs[engine] as log {
+		log in enabled_logs
+	}
 })
 
 summary = {
