@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to true
+# This policy requires resources of type `aws_db_instance` to have `enabled_cloudwatch_logs_exports` set to valid array of values.
 
 # Imports
 
@@ -12,7 +12,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                              "rds-ensure-cloudwatch-logs-enabled",
-	"message":                                  "Attribute 'enabled_cloudwatch_logs_exports' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.",
+	"message":                                  "Attribute 'enabled_cloudwatch_logs_exports' must be set to valid values for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-9 for more details.",
 	"resource_aws_db_instance":                 "aws_db_instance",
 	"allowed_logs": {
         "oracle": ["alert", "audit", "trace", "listener"],
@@ -35,12 +35,9 @@ violations = collection.reject(resources, func(res) {
     if engine not in const.allowed_logs {
         return true
     }
-    for const.allowed_logs[engine] as log {
-        if log not in enabled_logs {
-            return false
-        }
+    return all const.allowed_logs[engine] as log {
+        log in enabled_logs
     }
-    return true
 })
 
 summary = {
