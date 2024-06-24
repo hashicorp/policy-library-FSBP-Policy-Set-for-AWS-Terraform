@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_db_instance` to have `multi_az` set to true
+# This policy requires resources of type `aws_db_instance` to have `deletion_protection` set to true
 
 # Imports
 
@@ -10,7 +10,7 @@ import "collection/maps" as maps
 
 # Params
 
-param resource_type
+param resource_type default "aws_db_instance"
 
 # Constants
 
@@ -33,7 +33,7 @@ if resource_type == "aws_db_instance" {
 }
 
 summary = {
-	"policy_name": "rds-ensure-multi-az-configuration",
+	"policy_name": "rds-ensure-deletion-protection-enabled",
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
@@ -50,5 +50,5 @@ print(report.generate_policy_report(summary))
 # Rules
 
 main = rule {
-	violations is empty
+	resource_type in ["aws_db_instance", "aws_rds_cluster"] and violations is empty
 }

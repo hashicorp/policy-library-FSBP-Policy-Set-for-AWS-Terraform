@@ -1,8 +1,8 @@
-# AWS RDS instance should be configured with Multi AZ
+# AWS RDS instance ensure deletion protection enabled
 
-| Provider            | Category  |
-|---------------------|-----------|
-| Amazon Web Services | Security  |
+| Provider            | Category |
+|---------------------|----------|
+| Amazon Web Services | Storage  |
 
 ## Description
 
@@ -13,6 +13,7 @@ This control checks whether your RDS DB instances that use one of the listed dat
 The control fails if an RDS DB instance doesn't have deletion protection enabled.
 
 This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds-ensure-deletion-protection-enabled.sentinel) policy.
+Param which needs to be passed is "resource_type" with value - "aws_db_instance"
 
 ```bash
 trace:
@@ -27,7 +28,7 @@ trace:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy rds-ensure-multi-az-configuration.
+    This result means that all resources have passed the policy check for the policy rds-ensure-deletion-protection-enabled.
 
     ✓ Found 0 resource violations
 
@@ -76,7 +77,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-ensure-multi-az-configuration.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-ensure-deletion-protection-enable.
 
     Found 1 resource violations
 
