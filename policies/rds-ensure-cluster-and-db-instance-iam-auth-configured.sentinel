@@ -31,7 +31,7 @@ violations = collection.reject(resources, func(res) {
 		}
 	}
 	iam_database_authentication_enabled = "values.iam_database_authentication_enabled"
-	return maps.get(res, iam_database_authentication_enabled, false) is true
+	return maps.get(res, iam_database_authentication_enabled, null) is true
 })
 
 message = "Attribute 'iam_database_authentication_enabled' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-12 for more details."
