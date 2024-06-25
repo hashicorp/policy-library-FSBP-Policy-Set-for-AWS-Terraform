@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/policy-success-strictest-desync-mitigation-mode/mock-tfplan-v2.sentinel"
+    source = "./mocks/policy-success-no-desync-mode-input-classic-lb/mock-tfplan-v2.sentinel"
   }
 }
 

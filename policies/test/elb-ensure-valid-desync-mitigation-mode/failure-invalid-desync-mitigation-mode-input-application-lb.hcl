@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/policy-failure-invalid-desync-mitigation-mode-input/mock-tfplan-v2.sentinel"
+    source = "./mocks/policy-failure-invalid-desync-mitigation-mode-input-application-lb/mock-tfplan-v2.sentinel"
   }
 }
 
@@ -12,6 +12,10 @@ mock "report" {
   module {
     source = "../../../modules/mocks/report/report.sentinel"
   }
+}
+
+param "lb_type" {
+  value = "application"
 }
 
 test {

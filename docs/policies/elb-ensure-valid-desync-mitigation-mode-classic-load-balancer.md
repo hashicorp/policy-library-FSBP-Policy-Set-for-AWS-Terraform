@@ -10,12 +10,12 @@ This policy checks whether a Classic Load Balancer is configured with defensive 
 
 HTTP Desync issues can lead to request smuggling and make applications vulnerable to request queue or cache poisoning. In turn, these vulnerabilities can lead to credential hijacking or execution of unauthorized commands. Classic Load Balancers configured with defensive or strictest desync mitigation mode protect your application from security issues that may be caused by HTTP Desync.
 
-This rule is covered by the [elb-ensure-valid-desync-mitigation-mode](../../policies/elb-ensure-valid-desync-mitigation-mode.sentinel) policy.
+This rule is covered by the [elb-ensure-valid-desync-mitigation-mode](../../policies/elb-ensure-valid-desync-mitigation-mode.sentinel) policy with the `classic` as the `lb_type` parameter.
 
 ## Policy Results (Pass)
 ```bash
 trace:
-      Pass - elb-ensure-valid-desync-mitigation-mode.sentinel
+      Pass - elb-ensure-valid-desync-mitigation-mode-classic-load-balancer.sentinel
 
       Description:
         This policy checks if resources of type 'aws_elb' has the
@@ -30,7 +30,7 @@ trace:
 
       ✓ Found 0 resource violations
 
-      elb-ensure-valid-desync-mitigation-mode.sentinel:45:1 - Rule "main"
+      elb-ensure-valid-desync-mitigation-mode-classic-load-balancer.sentinel:45:1 - Rule "main"
         Value:
           true
 ```
@@ -40,7 +40,7 @@ trace:
 ## Policy Results (Fail)
 ```bash
 trace:
-      Fail - elb-ensure-valid-desync-mitigation-mode.sentinel
+      Fail - elb-ensure-valid-desync-mitigation-mode-classic-load-balancer.sentinel
 
       Description:
         This policy checks if resources of type 'aws_elb' has the
@@ -61,7 +61,7 @@ trace:
           | Classic load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-14 for more details.
 
 
-      elb-ensure-valid-desync-mitigation-mode.sentinel:45:1 - Rule "main"
+      elb-ensure-valid-desync-mitigation-mode-classic-load-balancer.sentinel:45:1 - Rule "main"
         Value:
           false
 ```

@@ -1,4 +1,4 @@
-# This policy checks if resources of type 'aws_elb' has the
+# This policy checks if load_balancer resources have the
 # 'desync_mitigation_mode' attribute set to either 'defensive' or
 # 'strictest'
 
@@ -8,22 +8,44 @@ import "report" as report
 import "collection" as collection
 import "collection/maps" as maps
 
+# Params
+
+# lb_type is the type of load balancer resource that will be subjected to this policy check
+param lb_type default "classic"
+
 # Constants
 const = {
 	"policy_name":      "elb-ensure-valid-desync-mitigation-mode",
-	"message":          "Classic load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-14 for more details.",
 	"resource_aws_elb": "aws_elb",
+	"resource_aws_lb":  "aws_lb",
+	"application":      "application",
+	"classic":          "classic",
 	"defensive":        "defensive",
 	"strictest":        "strictest",
 }
 
 # Variables
 
-classic_load_balancers = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elb).resources
+lb_resource = const.resource_aws_elb
+if lb_type is const.application {
+	lb_resource = const.resource_aws_lb
+}
 
-invalid_load_balancers = collection.reject(classic_load_balancers, func(res) {
+load_balancers = tf.plan(tfplan.planned_values.resources).type(lb_resource).resources
+
+invalid_load_balancers = collection.reject(load_balancers, func(res) {
+	load_balancer_type = maps.get(res, "values.load_balancer_type", const.application)
+	if load_balancer_type is not const.application {
+		return true
+	}
+
 	return maps.get(res, "values.desync_mitigation_mode", const.defensive) in [const.defensive, const.strictest]
 })
+
+message = "Classic load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-14 for more details."
+if lb_type is const.application {
+	message = "Application load balancers should be configured with defensive or strictest desync mitigation mode. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-12 for more details."
+}
 
 summary = {
 	"policy_name": const.policy_name,
@@ -42,6 +64,10 @@ print(report.generate_policy_report(summary))
 
 # Rules
 
+validate_lb_resource_type = rule {
+	lb_type in [const.application, const.classic]
+}
+
 main = rule {
-	invalid_load_balancers is empty
+	validate_lb_resource_type and invalid_load_balancers is empty
 }

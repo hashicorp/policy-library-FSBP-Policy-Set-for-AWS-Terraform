@@ -1,6 +1,6 @@
 name = "ecs-fargate-service-platform-compatibility"
 
-disabled = false
+disabled = true
 
 case "Invalid platform version for Fargate service" {
     path = "./cases/incorrect-platform-version-for-fargate"

@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/policy-success-no-desync-mode-input/mock-tfplan-v2.sentinel"
+    source = "./mocks/policy-failure-invalid-desync-mitigation-mode-input-classic-lb/mock-tfplan-v2.sentinel"
   }
 }
 
@@ -16,6 +16,6 @@ mock "report" {
 
 test {
   rules = {
-    main = true
+    main = false
   }
 }
