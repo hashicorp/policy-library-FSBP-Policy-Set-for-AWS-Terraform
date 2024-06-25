@@ -5,6 +5,4 @@ resource "aws_elb" "this" {
     lb_port           = 9090
     lb_protocol       = "tcp"
   }
-
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]
 }
