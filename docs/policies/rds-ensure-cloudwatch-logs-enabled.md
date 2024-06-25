@@ -1,4 +1,4 @@
-# AWS RDS instance should have monitoring configured
+# AWS RDS instance should have logging configured
 
 | Provider            | Category   |
 |---------------------|------------|
