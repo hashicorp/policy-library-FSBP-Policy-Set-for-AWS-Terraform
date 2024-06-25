@@ -35,7 +35,7 @@ violations = collection.reject(resources, func(res) {
 	if engine not in const.allowed_logs {
 		return true
 	}
-	# if attrubute is not set in tf config, it is set to null in plan
+	# if attribute is not set in tf config, it is set to null in plan
 	if enabled_logs is null {
 	    return false
 	}
