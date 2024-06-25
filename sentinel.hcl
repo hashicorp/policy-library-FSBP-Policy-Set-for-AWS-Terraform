@@ -179,6 +179,22 @@ policy "rds-ensure-db-instance-deletion-protection-enabled" {
   }
 }
 
+policy "rds-ensure-cluster-iam-auth-configured" {
+  source = "./policies/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    resource_type = "aws_rds_cluster"
+  }
+}
+
+policy "rds-ensure-db-instance-iam-auth-configured" {
+  source = "./policies/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    resource_type = "aws_db_instance"
+  }
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
