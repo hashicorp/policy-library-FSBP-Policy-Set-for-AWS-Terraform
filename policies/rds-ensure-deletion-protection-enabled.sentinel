@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_db_instance` to have `deletion_protection` set to true
+# This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true
 
 # Imports
 

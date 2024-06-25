@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_db_instance` to have `iam_database_authentication_enabled` set to true
+# This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `iam_database_authentication_enabled` set to true
 
 # Imports
 

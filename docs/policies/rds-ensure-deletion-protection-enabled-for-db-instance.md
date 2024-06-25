@@ -21,8 +21,7 @@ trace:
     Pass - rds-ensure-rds-cluster-deletion-protection-enabled.sentinel
 
     Description:
-      This policy requires resources of type `aws_db_instance` to have `multi_az`
-      set to true
+      This policy requires resources of type `aws_db_instance` and `aws_rds_cluster` to have `deletion_protection` set to true
 
     Print messages:
 
@@ -67,29 +66,6 @@ trace:
       Value:
         false
         
-     Fail - rds-ensure-rds-cluster-deletion-protection-enabled.sentinel
-
-    Description:
-      This policy requires resources of type `aws_db_instance` to have `multi_az`
-      set to true
-
-    Print messages:
-
-    → → Overall Result: false
-
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-ensure-deletion-protection-enable.
-
-    Found 1 resource violations
-
-    → Module name: root
-       ↳ Resource Address: aws_rds_cluster.default
-         | ✗ failed
-         | Attribute 'deletion_protection' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-7 for more details.
-
-
-    rds-ensure-rds-cluster-deletion-protection-enabled.sentinel:52:1 - Rule "main"
-      Value:
-        false
 ```
 
 ---
