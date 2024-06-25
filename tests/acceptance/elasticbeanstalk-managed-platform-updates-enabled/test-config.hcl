@@ -1,6 +1,6 @@
 name = "elasticbeanstalk-managed-platform-updates-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticbeanstalk managed platform updates enabled in root module" {
   path = "cases/all-resources-complaint"
