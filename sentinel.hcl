@@ -123,6 +123,11 @@ policy "elb-drop-invalid-http-headers" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-deletion-protection-enabled" {
+  source = "./policies/elb-ensure-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-multi-az-configuration-classic-load-balancer" {
   source = "./policies/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel"
   enforcement_level = "advisory"

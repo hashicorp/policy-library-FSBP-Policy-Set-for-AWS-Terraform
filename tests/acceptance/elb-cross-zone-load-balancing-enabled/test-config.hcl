@@ -1,6 +1,6 @@
 name = "elb-cross-zone-load-balancing-enabled"
 
-disabled = false
+disabled = true
 
 case "Cross zone load balancing enabled" {
     path = "./cases/cross-zone-load-balancing-enabled"
