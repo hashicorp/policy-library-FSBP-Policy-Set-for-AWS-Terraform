@@ -1,4 +1,4 @@
-name = "elb-ensure-valid-desync-mitigation-mode"
+name = "elb-ensure-valid-desync-mitigation-mode-classic-load-balancer"
 
 disabled = false
 
