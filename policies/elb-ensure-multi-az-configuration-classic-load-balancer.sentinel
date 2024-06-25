@@ -44,6 +44,10 @@ print(report.generate_policy_report(summary))
 
 # Rules
 
+verify_availability_zones_limit = rule {
+	min_availability_zones >= 2 and min_availability_zones <= 6
+}
+
 main = rule {
-	violations is empty
+	verify_availability_zones_limit and violations is empty
 }
