@@ -1,6 +1,6 @@
 name = "elasticache-redis-cluster-non-default-subnet-enabled"
 
-disabled = true
+disabled = false
 
 case "Elasticache non default subnet enabled in root module" {
   path = "cases/all-resources-complaint"

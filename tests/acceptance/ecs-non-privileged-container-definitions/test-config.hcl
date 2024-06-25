@@ -1,6 +1,6 @@
 name = "ecs-non-privileged-container-definitions"
 
-disabled = true
+disabled = false
 
 case "non privileged container definitions" {
     path = "cases/non-privileged-container-definitions"
