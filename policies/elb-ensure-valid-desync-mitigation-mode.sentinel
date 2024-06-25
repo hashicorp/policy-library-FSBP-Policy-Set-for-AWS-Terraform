@@ -34,9 +34,14 @@ if lb_type is const.application {
 load_balancers = tf.plan(tfplan.planned_values.resources).type(lb_resource).resources
 
 invalid_load_balancers = collection.reject(load_balancers, func(res) {
-	load_balancer_type = maps.get(res, "values.load_balancer_type", const.application)
-	if load_balancer_type is not const.application {
-		return true
+	# We only want to check the load balancer type for resources of type 'aws_lb'
+	if lb_resource == const.resource_aws_lb {
+		load_balancer_type = maps.get(res, "values.load_balancer_type", const.application)
+
+		# We are only concerned about load balancers of type application under 'aws_lb'
+		if load_balancer_type is not const.application {
+			return true
+		}
 	}
 
 	return maps.get(res, "values.desync_mitigation_mode", const.defensive) in [const.defensive, const.strictest]
