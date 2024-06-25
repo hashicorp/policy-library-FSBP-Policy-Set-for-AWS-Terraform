@@ -1,6 +1,6 @@
 name = "ecs-service-no-public-ip-assignment"
 
-disabled = true
+disabled = false
 
 case "ECS service with assigned public ip" {
     path = "./cases/ecs-services-with-public-ips"

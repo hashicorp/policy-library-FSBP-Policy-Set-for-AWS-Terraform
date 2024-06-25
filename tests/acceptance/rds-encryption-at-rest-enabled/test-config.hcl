@@ -1,5 +1,5 @@
 name = "rds-encryption-at-rest-enabled"
-disabled = true
+disabled = false
 
 case "RDS encryption is enabled" {
     path = "cases/encryption-enabled"

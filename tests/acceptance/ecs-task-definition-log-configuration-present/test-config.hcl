@@ -1,6 +1,6 @@
 name = "ecs-task-definition-log-configuration-present"
 
-disabled = true
+disabled = false
 
 case "Log configuration and log driver are present" {
     path = "./cases/log-configuration-present"
