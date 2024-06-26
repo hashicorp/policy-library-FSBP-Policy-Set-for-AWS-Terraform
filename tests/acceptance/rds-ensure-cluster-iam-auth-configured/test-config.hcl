@@ -1,29 +1,29 @@
 name = "rds-ensure-cluster-deletion-protection-enabled"
 disabled = false
 
-case "RDS DB instance and Cluster deletion protection is enabled" {
-    path = "cases/deletion-protection-enabled"
+case "RDS DB instance and Cluster iam auth configured" {
+    path = "cases/iam-auth-configured"
     expectation {
         result = true
     }
 }
 
-case "RDS DB instance and Cluster deletion protection is disabled" {
-    path = "cases/deletion-protection-disabled"
+case "RDS DB instance and Cluster iam auth not configured" {
+    path = "cases/iam-auth-not-configured"
     expectation {
         result = false
     }
 }
 
-case "RDS DB instance and Cluster deletion protection is enabled. Resources in nested module" {
-    path = "cases/deletion-protection-enabled-nested-module"
+case "RDS DB instance and Cluster iam auth configured in nested module" {
+    path = "cases/iam-auth-configured-nested-module"
     expectation {
         result = true
     }
 }
 
-case "RDS DB instance and Cluster deletion protection is disabled. Resources in nested module" {
-    path = "cases/deletion-protection-disabled-nested-module"
+case "RDS DB instance and Cluster iam auth not configured in nested module" {
+    path = "cases/iam-auth-not-configured-nested-module"
     expectation {
         result = false
     }
