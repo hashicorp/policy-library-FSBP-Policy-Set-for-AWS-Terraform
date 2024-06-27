@@ -15,9 +15,9 @@ param resource_type default "aws_db_instance"
 # Constants
 
 const = {
-	"policy_name":                         "rds-ensure-db-instance-have-iam-auth-configured",
-	"db_instance_engine_types":            ["mysql", "postgres", "aurora", "aurora-mysql", "aurora-postgresql", "mariadb"],
-	"aws_db_instance":                     "aws_db_instance",
+	"policy_name":              "rds-ensure-db-instance-have-iam-auth-configured",
+	"db_instance_engine_types": ["mysql", "postgres", "aurora", "aurora-mysql", "aurora-postgresql", "mariadb"],
+	"aws_db_instance":          "aws_db_instance",
 }
 
 # Variables
