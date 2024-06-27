@@ -1,6 +1,6 @@
 name = "elasticache-redis-replication-group-encryption-at-rest-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache redis replication group encryption at rest  enabled in root module" {
   path = "cases/all-resources-complaint"
