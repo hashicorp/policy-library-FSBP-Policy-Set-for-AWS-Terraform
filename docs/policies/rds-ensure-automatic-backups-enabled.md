@@ -27,7 +27,7 @@ trace:
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy rds-encryption-at-rest-enabled.
+    This result means that all resources have passed the policy check for the policy rds-ensure-automatic-backups-enabled.
 
     ✓ Found 0 resource violations
 
@@ -51,7 +51,7 @@ trace:
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-encryption-at-rest-enabled.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-ensure-automatic-backups-enabled.
 
     Found 1 resource violations
 

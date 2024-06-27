@@ -26,7 +26,7 @@ violations = collection.reject(resources, func(res) {
 })
 
 summary = {
-	"policy_name": "rds-encryption-at-rest-enabled",
+	"policy_name": "rds-ensure-automatic-backups-enabled",
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
