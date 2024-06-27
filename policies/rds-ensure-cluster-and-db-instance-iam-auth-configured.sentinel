@@ -16,15 +16,15 @@ param resource_type default "aws_db_instance"
 
 const = {
 	"policy_name":                         "rds-ensure-db-instance-have-iam-auth-configured",
-	"iam_database_authentication_enabled": "iam_database_authentication_enabled",
 	"db_instance_engine_types":            ["mysql", "postgres", "aurora", "aurora-mysql", "aurora-postgresql", "mariadb"],
+	"aws_db_instance":                     "aws_db_instance",
 }
 
 # Variables
 
 resources = tf.plan(tfplan.planned_values.resources).type(resource_type).resources
 violations = collection.reject(resources, func(res) {
-	if resource_type == "aws_db_instance" {
+	if resource_type == const.aws_db_instance {
 		engine_type = maps.get(res, "values.engine", "")
 		if engine_type not in const.db_instance_engine_types {
 			return true
@@ -35,7 +35,7 @@ violations = collection.reject(resources, func(res) {
 })
 
 message = "Attribute 'iam_database_authentication_enabled' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-12 for more details."
-if resource_type == "aws_db_instance" {
+if resource_type == const.aws_db_instance {
 	message = "Attribute 'iam_database_authentication_enabled' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-10 for more details."
 }
 
