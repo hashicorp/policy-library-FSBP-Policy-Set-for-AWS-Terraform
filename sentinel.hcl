@@ -179,6 +179,11 @@ policy "rds-ensure-db-instance-deletion-protection-enabled" {
   }
 }
 
+policy "rds-ensure-automatic-backups-enabled" {
+  source = "./policies/rds-ensure-automatic-backups-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
