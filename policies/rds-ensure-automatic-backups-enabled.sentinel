@@ -22,7 +22,7 @@ const = {
 resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_db_instance).resources
 violations = collection.reject(resources, func(res) {
 	backup_retention_period_value = maps.get(res, "values.backup_retention_period", 0)
-	return backup_retention_period_value >= 7 and backup_retention_period <= 35
+	return backup_retention_period_value >= 7 and backup_retention_period_value <= 35
 })
 
 summary = {
