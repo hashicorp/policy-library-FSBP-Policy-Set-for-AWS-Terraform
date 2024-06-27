@@ -3,7 +3,7 @@ resource "aws_db_instance" "this" {
   instance_class    = "db.t3.micro"
 
   backup_retention_period = 8
-  storage_encrypted = true
+  storage_encrypted       = true
 }
 
 provider "aws" {

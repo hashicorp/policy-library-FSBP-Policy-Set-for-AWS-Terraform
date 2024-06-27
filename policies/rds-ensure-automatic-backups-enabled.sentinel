@@ -11,10 +11,10 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":                    "rds-ensure-automatic-backups-enabled",
-	"message":                        "Attribute 'backup_retention_period' must be set to integer between (7, 35) for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-11 for more details.",
-	"resource_aws_db_instance":       "aws_db_instance",
-	"backup_retention_period":        "backup_retention_period",
+	"policy_name":              "rds-ensure-automatic-backups-enabled",
+	"message":                  "Attribute 'backup_retention_period' must be set to integer between (7, 35) for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-11 for more details.",
+	"resource_aws_db_instance": "aws_db_instance",
+	"backup_retention_period":  "backup_retention_period",
 }
 
 # Variables
