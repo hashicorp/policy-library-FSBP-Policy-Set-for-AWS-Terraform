@@ -216,6 +216,11 @@ policy "rds-ensure-automatic-backups-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-ensure-automatic-minor-version-upgrades-enabled" {
+  source = "./policies/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
