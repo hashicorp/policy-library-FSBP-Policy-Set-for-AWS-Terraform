@@ -24,7 +24,7 @@ case "no lifecycle policy configured" {
 }
 
 case "lifecycle policy configured but in different module" {
-    path = "./cases/life-cycle-configured-different-modules"
+    path = "./cases/life-cycle-policy-configured-different-modules"
     expectation {
         result = false
     }
