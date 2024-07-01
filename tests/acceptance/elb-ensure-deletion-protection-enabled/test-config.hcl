@@ -1,6 +1,6 @@
 name = "elb-ensure-deletion-protection-enabled"
 
-disabled = true
+disabled = false
 
 case "Deletion protection enabled" {
     path = "./cases/deletion-protection-enabled"

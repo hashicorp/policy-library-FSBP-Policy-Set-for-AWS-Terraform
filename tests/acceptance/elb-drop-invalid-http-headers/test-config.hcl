@@ -1,6 +1,6 @@
 name = "elb-drop-invalid-http-headers"
 
-disabled = true
+disabled = false
 
 case "NLB configuration" {
     path = "cases/nlb-configuration"
