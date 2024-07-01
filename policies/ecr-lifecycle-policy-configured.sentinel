@@ -1,0 +1,84 @@
+# This policy ensures that resources of type 'aws_ecr_repository' have
+# a lifecycle policy configured
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":                       "ecr-lifecycle-policy-configured",
+	"resource_aws_ecr":                  "aws_ecr_repository",
+	"resource_aws_ecr_lifecycle_policy": "aws_ecr_lifecycle_policy",
+	"module_prefix":                     "module.",
+	"message":                           "ECR repositories should have at least one lifecycle policy configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/ecr-controls.html#ecr-3 for more details.",
+}
+
+# Functions
+
+build_violation_object = func(res) {
+	return {
+		"address":        res.address,
+		"module_address": res.module_address,
+		"message":        const.message,
+	}
+}
+
+get_referenced_resource_address = func(res, attr) {
+	references_list = maps.get(res, attr, [])
+	if references_list is empty {
+		return ""
+	}
+
+	referenced_address = references_list[1]
+	if strings.has_prefix(res.address, const.module_prefix) {
+		referenced_address = res.module_address + "." + referenced_address
+	}
+
+	return referenced_address
+}
+
+# Variables
+
+config_resources = tf.config(tfconfig.resources)
+
+// Get resources of type 'aws_ecr_lifecycle_policy' from tfconfig
+aws_ecr_lifecycle_policies = config_resources.type(const.resource_aws_ecr_lifecycle_policy).resources
+
+// Get referenced ecr repos from the lifecycle policies
+referenced_ecr_repos = []
+for aws_ecr_lifecycle_policies as _, policy {
+	referenced_ecr_addr = get_referenced_resource_address(policy, "config.repository.references")
+	if referenced_ecr_addr is empty {
+		continue
+	}
+
+	append(referenced_ecr_repos, referenced_ecr_addr)
+}
+
+// Get all the ECR repos
+aws_ecr_repos = config_resources.type(const.resource_aws_ecr).resources
+
+violations = []
+for aws_ecr_repos as _, res {
+	if res.address not in referenced_ecr_repos {
+		append(violations, build_violation_object(res))
+	}
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations":  violations,
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

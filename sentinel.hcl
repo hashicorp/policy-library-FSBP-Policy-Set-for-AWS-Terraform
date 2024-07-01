@@ -18,6 +18,11 @@ policy "ecr-image-scanning-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "ecr-lifecycle-policy-configured" {
+  source = "./policies/ecr-lifecycle-policy-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-supported-k8s-version-check" {
   source = "./policies/eks-cluster-supported-k8s-version-check.sentinel"
   enforcement_level = "advisory"
