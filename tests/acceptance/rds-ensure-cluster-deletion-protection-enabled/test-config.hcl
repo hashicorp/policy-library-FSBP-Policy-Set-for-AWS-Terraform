@@ -1,5 +1,5 @@
 name = "rds-ensure-cluster-deletion-protection-enabled"
-disabled = true
+disabled = false
 
 case "RDS DB instance and Cluster deletion protection is enabled" {
     path = "cases/deletion-protection-enabled"
