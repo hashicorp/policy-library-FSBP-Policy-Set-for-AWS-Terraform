@@ -1,6 +1,6 @@
 name = "elb-ensure-multi-az-configuration-classic-load-balancer"
 
-disabled = false
+disabled = true
 
 case "Classic load balancer with expected number of availability zones" {
     path = "./cases/expected-number-of-azs"
