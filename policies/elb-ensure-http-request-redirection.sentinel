@@ -1,0 +1,189 @@
+# This policy ensures that application load balancer in the terraform configurations
+# have a listener rule configured to redirect HTTP requests to HTTPS
+
+import "tfplan/v2" as tfplan
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":                   "elb-ensure-http-request-redirection",
+	"resource_aws_lb":               "aws_lb",
+	"resource_aws_lb_listener":      "aws_lb_listener",
+	"resource_aws_lb_listener_rule": "aws_lb_listener_rule",
+	"application":                   "application",
+	"http":                          "HTTP",
+	"port_80":                       80,
+	"redirect":                      "redirect",
+	"port_443":                      "443",
+	"https":                         "HTTPS",
+	"module_prefix":                 "module.",
+	"message":                       "Application load balancers should be configured to redirect all HTTP requests to HTTPS. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-1 for more details.",
+}
+
+# Functions
+
+is_https_redirection_action_present = func(actions) {
+	return collection.find(actions, func(action) {
+		if action.type is not const.redirect {
+			return false
+		}
+
+		redirection_block_list = maps.get(action, "redirect", [])
+		if redirection_block_list is empty {
+			return false
+		}
+
+		redirection_block = redirection_block_list[0]
+		return redirection_block.port is const.port_443 and
+			redirection_block.protocol is const.https
+	}) is defined
+}
+
+build_violation_object = func(res) {
+	return {
+		"address":        res.address,
+		"module_address": res.module_address,
+		"message":        const.message,
+	}
+}
+
+get_referenced_resource_address = func(res, attr) {
+	references_list = maps.get(res, attr, [])
+	if references_list is empty {
+		return ""
+	}
+
+	referenced_address = references_list[1]
+	if strings.has_prefix(res.address, const.module_prefix) {
+		referenced_address = res.module_address + "." + referenced_address
+	}
+
+	return referenced_address
+}
+
+# Variables
+
+config_resources = tf.config(tfconfig.resources)
+plan_resources = tf.plan(tfplan.planned_values.resources)
+
+// Get resources of type 'aws_lb_listener'
+aws_lb_listeners = plan_resources.type(const.resource_aws_lb_listener).resources
+
+// Filter all aws_lb_listeners that have protocol as HTTP and port as 80
+http_listeners = collection.reject(aws_lb_listeners, func(res) {
+	protocol = maps.get(res, "values.protocol", const.http)
+	port = int(maps.get(res, "values.port", 0))
+
+	// We ignore listeners which don't match these expectations
+	return protocol is not const.http or port is not const.port_80
+})
+
+// Check for inline redirection configuration in the given http listeners
+http_listeners_with_inline_https_redirection = collection.reject(http_listeners, func(res) {
+	return is_https_redirection_action_present(maps.get(res, "values.default_action", [])) is false
+})
+
+// Filter out their addresses into a list for future use
+http_listener_addresses_with_https_redirection = []
+if http_listeners_with_inline_https_redirection is not empty {
+	http_listener_addresses_with_https_redirection = map http_listeners_with_inline_https_redirection as res { res.address }
+}
+
+// Get the list of http listeners that don't have such inline redirection
+// configuration for https.
+http_listeners_without_inline_https_redirection = collection.reject(http_listeners, func(res) {
+	return res.address in http_listener_addresses_with_https_redirection
+})
+
+// Get the configuration for aws_lb_listener_rule resources
+aws_lb_listener_rules_config_list = config_resources.type(const.resource_aws_lb_listener_rule).resources
+if aws_lb_listener_rules_config_list is not empty {
+	// Get the backing aws_lb_listener_rules referencing these listeners in the given config
+	for http_listeners_without_inline_https_redirection as _, listener {
+		// Fetch the listener rule associated with the current aws_lb_listener
+		listener_rules_referencing_http_listener = []
+		for aws_lb_listener_rules_config_list as listener_rule_config {
+			referenced_listener_addr = get_referenced_resource_address(listener_rule_config, "config.listener_arn.references")
+			if referenced_listener_addr is not listener.address {
+				continue
+			}
+
+			listener_rule_from_plan = plan_resources.type(const.resource_aws_lb_listener_rule).address(listener_rule_config.address).resources
+			if listener_rule_from_plan is empty {
+				continue
+			}
+
+			append(listener_rules_referencing_http_listener, listener_rule_from_plan[0])
+		}
+
+		// Now that we have all the aws_lb_listener_rule resources associated with the given
+		// listener, check if they have https redirection configured.
+		listener_rules_with_https_redirection = collection.reject(listener_rules_referencing_http_listener, func(res) {
+			return is_https_redirection_action_present(maps.get(res, "values.action", [])) is false
+		})
+
+		// If there isn't even one listener_rule we ignore the listener.
+		if listener_rules_with_https_redirection is empty {
+			continue
+		}
+
+		// Add the listener to the existing list of http listeners that contained
+		// inline redirection config for https.
+		append(http_listener_addresses_with_https_redirection, listener.address)
+	}
+}
+
+// For every valid listener filtered till now, find out the referenced load balancer
+referenced_valid_load_balancers = []
+for http_listener_addresses_with_https_redirection as _, listener_addr {
+	// Get the aws_lb_listener's config
+	listener_config = config_resources.type(const.resource_aws_lb_listener).address(listener_addr).resources
+	if listener_config is empty {
+		continue
+	}
+
+	// Get the referenced load balancer
+	referenced_lb_address = get_referenced_resource_address(listener_config[0], "config.load_balancer_arn.references")
+	if referenced_lb_address is empty {
+		continue
+	}
+
+	append(referenced_valid_load_balancers, referenced_lb_address)
+}
+
+// Now we get all the load balancers
+aws_load_balancers = plan_resources.type(const.resource_aws_lb).resources
+
+// Filter only application load balancers because that's what we are
+// concerned with in this policy.
+application_load_balancers = collection.reject(aws_load_balancers, func(res) {
+	return maps.get(res, "values.load_balancer_type", const.application) is not const.application
+})
+
+violations = []
+
+for application_load_balancers as _, alb {
+	if alb.address not in referenced_valid_load_balancers {
+		append(violations, build_violation_object(alb))
+	}
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations":  violations,
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

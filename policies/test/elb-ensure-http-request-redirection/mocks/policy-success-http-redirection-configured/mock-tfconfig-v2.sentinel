@@ -1,0 +1,207 @@
+resources = {
+	"module.lb.aws_lb.this": {
+		"address": "module.lb.aws_lb.this",
+		"config": {
+			"load_balancer_type": {
+				"constant_value": "application",
+			},
+			"subnets": {
+				"constant_value": [
+					"subnet-01",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb",
+	},
+	"module.lb.aws_lb.this2": {
+		"address": "module.lb.aws_lb.this2",
+		"config": {
+			"load_balancer_type": {
+				"constant_value": "application",
+			},
+			"subnets": {
+				"constant_value": [
+					"subnet-01",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this2",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb",
+	},
+	"module.lb.aws_lb_listener.this": {
+		"address": "module.lb.aws_lb_listener.this",
+		"config": {
+			"default_action": [
+				{
+					"redirect": [
+						{
+							"port": {
+								"constant_value": "443",
+							},
+							"protocol": {
+								"constant_value": "HTTPS",
+							},
+							"status_code": {
+								"constant_value": "HTTP_301",
+							},
+						},
+					],
+					"type": {
+						"constant_value": "redirect",
+					},
+				},
+				{
+					"forward": [
+						{
+							"target_group": [
+								{
+									"arn": {
+										"constant_value": "arn:aws:acm:us-west-2:123456789012:certificate/abcdefg-1234-5678-abcd-1234abcdefg",
+									},
+								},
+							],
+						},
+					],
+					"type": {
+						"constant_value": "forward",
+					},
+				},
+			],
+			"load_balancer_arn": {
+				"references": [
+					"aws_lb.this.arn",
+					"aws_lb.this",
+				],
+			},
+			"port": {
+				"constant_value": 80,
+			},
+			"protocol": {
+				"constant_value": "HTTP",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb_listener",
+	},
+	"module.lb.aws_lb_listener.this2": {
+		"address": "module.lb.aws_lb_listener.this2",
+		"config": {
+			"default_action": [
+				{
+					"redirect": [
+						{
+							"port": {
+								"constant_value": "443",
+							},
+							"protocol": {
+								"constant_value": "HTTPS",
+							},
+							"status_code": {
+								"constant_value": "HTTP_301",
+							},
+						},
+					],
+					"type": {
+						"constant_value": "redirect",
+					},
+				},
+			],
+			"load_balancer_arn": {
+				"references": [
+					"aws_lb.this2.arn",
+					"aws_lb.this2",
+				],
+			},
+			"port": {
+				"constant_value": 80,
+			},
+			"protocol": {
+				"constant_value": "HTTP",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this2",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb_listener",
+	},
+	"module.lb.aws_lb_listener_rule.this": {
+		"address": "module.lb.aws_lb_listener_rule.this",
+		"config": {
+			"action": [
+				{
+					"redirect": [
+						{
+							"port": {
+								"constant_value": "443",
+							},
+							"protocol": {
+								"constant_value": "HTTPS",
+							},
+							"status_code": {
+								"constant_value": "HTTP_301",
+							},
+						},
+					],
+					"type": {
+						"constant_value": "redirect",
+					},
+				},
+			],
+			"condition": [
+				{
+					"host_header": [
+						{
+							"values": {
+								"constant_value": [
+									"example.com",
+								],
+							},
+						},
+					],
+				},
+			],
+			"listener_arn": {
+				"references": [
+					"aws_lb_listener.this.arn",
+					"aws_lb_listener.this",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.lb",
+		"name":                "this",
+		"provider_config_key": "module.lb:aws",
+		"provisioners":        [],
+		"type":                "aws_lb_listener_rule",
+	},
+}

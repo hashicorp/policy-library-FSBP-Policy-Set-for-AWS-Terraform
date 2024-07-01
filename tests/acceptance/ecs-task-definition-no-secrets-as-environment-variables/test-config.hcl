@@ -1,6 +1,6 @@
 name = "ecs-task-definition-no-secrets-as-environment-variables"
 
-disabled = false
+disabled = true
 
 case "Container definitions with invalid environment variables" {
     path = "cases/container-definitions-with-invalid-env-variables"

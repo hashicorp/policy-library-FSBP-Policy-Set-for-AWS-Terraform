@@ -128,6 +128,11 @@ policy "elb-ensure-deletion-protection-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-http-request-redirection" {
+  source = "./policies/elb-ensure-http-request-redirection.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-multi-az-configuration-classic-load-balancer" {
   source = "./policies/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel"
   enforcement_level = "advisory"
