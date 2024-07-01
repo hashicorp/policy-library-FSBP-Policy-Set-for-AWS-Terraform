@@ -1,6 +1,6 @@
 name = "rds-ensure-monitoring-configured"
 
-disabled = true
+disabled = false
 
 case "RDS instance monitoring is configured" {
   path = "cases/all-resources-complaint"

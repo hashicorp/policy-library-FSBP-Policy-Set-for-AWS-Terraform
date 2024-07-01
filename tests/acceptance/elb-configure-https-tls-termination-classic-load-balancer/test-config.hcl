@@ -19,6 +19,6 @@ case "TLS termination partially enabled" {
 case "Missing SSL certs" {
     path = "./cases/missing-ssl-certs"
     expectation {
-        result = true
+        result = false
     }
 }
