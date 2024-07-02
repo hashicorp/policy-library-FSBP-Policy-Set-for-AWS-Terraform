@@ -236,6 +236,21 @@ policy "dynamo-db-tables-point-in-time-recovery-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "docdb-cluster-backup-retention-check" {
+  source = "./policies/docdb-cluster-backup-retention-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "docdb-cluster-deletion-protection-enabled" {
+  source = "./policies/docdb-cluster-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "docdb-cluster-storage-encrypted" {
+  source = "./policies/docdb-cluster-storage-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "docdb-cluster-storage-encrypted" {
   source = "./policies/docdb-cluster-storage-encrypted.sentinel"
   enforcement_level = "advisory"
