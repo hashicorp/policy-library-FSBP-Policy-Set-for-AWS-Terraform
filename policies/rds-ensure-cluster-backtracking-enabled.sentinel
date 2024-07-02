@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_rds_cluster` to have `backtrack_window` greater than 0
+# This policy requires resources of type `aws_rds_cluster` to have `backtrack_window` greater than 0 for engine "aurora" and "aurora-mysql"
 
 # Imports
 
@@ -12,7 +12,7 @@ import "collection/maps" as maps
 
 const = {
 	"policy_name":                "rds-ensure-cluster-backtracking-enabled",
-	"message":                    "Attribute 'backtrack_window' must be greater than 0 and less than 259200 for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-14 for more details.",
+	"message":                    "Attribute 'backtrack_window' must be greater than 0 for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-14 for more details.",
 	"resource_aws_rds_cluster":   "aws_rds_cluster",
 	"engine":                     ["aurora", "aurora-mysql"],
 }
