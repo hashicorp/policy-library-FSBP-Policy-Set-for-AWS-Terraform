@@ -251,8 +251,8 @@ policy "docdb-cluster-storage-encrypted" {
   enforcement_level = "advisory"
 }
 
-policy "docdb-cluster-storage-encrypted" {
-  source = "./policies/docdb-cluster-storage-encrypted.sentinel"
+policy "docdb-cluster-audit-logging-enabled" {
+  source = "./policies/docdb-cluster-audit-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
 
