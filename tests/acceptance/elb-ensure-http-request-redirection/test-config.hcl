@@ -1,6 +1,6 @@
 name = "elb-ensure-http-request-redirection"
 
-disabled = true
+disabled = false
 
 case "success load balancers with https redirection root module" {
     path = "./cases/lb-with-https-redirection-root-module"
