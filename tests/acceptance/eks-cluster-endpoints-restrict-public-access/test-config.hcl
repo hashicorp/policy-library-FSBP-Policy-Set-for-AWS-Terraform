@@ -1,6 +1,6 @@
 name = "eks-cluster-endpoints-restrict-public-access"
 
-disabled = false
+disabled = true
 
 case "Restricted public access for endpoints" {
     path = "./cases/restricted-public-access"

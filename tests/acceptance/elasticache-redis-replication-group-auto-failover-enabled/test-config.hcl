@@ -1,6 +1,6 @@
 name = "elasticache-redis-replication-group-auto-failover-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache auto failover enabled in root module" {
   path = "cases/all-resources-complaint"

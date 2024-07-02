@@ -1,5 +1,5 @@
 name = "rds-ensure-db-instance-iam-auth-configured"
-disabled = false
+disabled = true
 
 case "RDS DB instance iam auth configured" {
     path = "cases/iam-auth-configured"

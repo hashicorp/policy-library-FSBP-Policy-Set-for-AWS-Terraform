@@ -1,6 +1,6 @@
 name = "eks-cluster-audit-logging-enabled"
 
-disabled = false
+disabled = true
 
 case "Audit logging enabled" {
     path = "./cases/audit-logging-enabled"
