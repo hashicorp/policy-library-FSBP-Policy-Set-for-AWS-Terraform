@@ -1,4 +1,4 @@
-name = "docdb-cluster-backup-retention-check"
+name = "docdb-cluster-audit-logging-enabled"
 
 disabled = false
 
