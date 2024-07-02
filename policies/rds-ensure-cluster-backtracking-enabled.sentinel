@@ -11,10 +11,10 @@ import "collection/maps" as maps
 # Constants
 
 const = {
-	"policy_name":                "rds-ensure-cluster-backtracking-enabled",
-	"message":                    "Attribute 'backtrack_window' must be greater than 0 for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-14 for more details.",
-	"resource_aws_rds_cluster":   "aws_rds_cluster",
-	"engine":                     ["aurora", "aurora-mysql"],
+	"policy_name":              "rds-ensure-cluster-backtracking-enabled",
+	"message":                  "Attribute 'backtrack_window' must be greater than 0 for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-14 for more details.",
+	"resource_aws_rds_cluster": "aws_rds_cluster",
+	"engine":                   ["aurora", "aurora-mysql"],
 }
 
 # Variables
@@ -25,9 +25,8 @@ violations = collection.reject(resources, func(res) {
 	if engine not in const.engine {
 		return true
 	}
-	backtrack_window = "values.backtrack_window"
-    backtrack_window_value = maps.get(res, backtrack_window, null)
-	return backtrack_window_value is not null and backtrack_window_value > 0 
+	backtrack_window = maps.get(res, "values.backtrack_window", null)
+	return backtrack_window is not null and backtrack_window > 0
 })
 
 summary = {
