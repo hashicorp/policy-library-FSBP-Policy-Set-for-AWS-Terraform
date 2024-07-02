@@ -1,0 +1,28 @@
+terraform_version = "1.7.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_emr_block_public_access_configuration.example": {
+			"address":        "aws_emr_block_public_access_configuration.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_emr_block_public_access_configuration",
+			"values": {
+				"block_public_security_group_rules": true,
+				"permitted_public_security_group_rule_range": [
+					{
+						"max_range": 22,
+						"min_range": 22,
+					},
+				],
+			},
+		},
+	},
+}

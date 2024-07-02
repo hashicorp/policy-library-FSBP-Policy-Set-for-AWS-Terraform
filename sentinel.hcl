@@ -310,3 +310,8 @@ policy "elasticbeanstalk-cloudwatch-log-streaming-enabled" {
   source = "./policies/elasticbeanstalk-cloudwatch-log-streaming-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "emr-block-public-access-enabled" {
+  source = "./policies/emr-block-public-access-enabled.sentinel"
+  enforcement_level = "advisory"
+}
