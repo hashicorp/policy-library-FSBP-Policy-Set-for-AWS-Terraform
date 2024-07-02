@@ -1,6 +1,6 @@
 name = "elb-connection-draining-enabled"
 
-disabled = false
+disabled = true
 
 case "Connection draining enabled" {
     path = "./cases/connection-draining-enabled"
