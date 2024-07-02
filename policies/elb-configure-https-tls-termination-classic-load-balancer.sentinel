@@ -1,0 +1,62 @@
+# This policy checks if resources of type 'aws_elb' have listeners
+# configured with HTTPS or TLS termination
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":        "elb-configure-https-tls-termination-classic-load-balancer",
+	"message":            "Classic Load Balancer listeners should be configured with HTTPS or TLS termination. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-3 for more details.",
+	"resource_aws_elb":   "aws_elb",
+	"lb_protocol":        "lb_protocol",
+	"ssl_certificate_id": "ssl_certificate_id",
+	"allowed_protocols":  ["https", "ssl"],
+}
+
+# Variables
+
+classic_load_balancers = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_elb).resources
+
+invalid_load_balancers = collection.reject(classic_load_balancers, func(res) {
+	listeners = maps.get(res, "values.listener", [])
+	// We don't care if there are no listeners
+	if listeners is empty {
+		return true
+	}
+
+	// Check if listeners have LB protocol set to either HTTPS or SSL
+	// and are associated with an ssl_cert_id
+	return collection.reject(listeners, func(listener) {
+		if maps.get(listener, const.lb_protocol) not in const.allowed_protocols {
+			return false
+		}
+
+		return maps.get(listener, const.ssl_certificate_id, "") is not empty
+	}) is empty
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map invalid_load_balancers as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	invalid_load_balancers is empty
+}

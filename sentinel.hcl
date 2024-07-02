@@ -18,6 +18,11 @@ policy "ecr-image-scanning-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "ecr-lifecycle-policy-configured" {
+  source = "./policies/ecr-lifecycle-policy-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "eks-cluster-supported-k8s-version-check" {
   source = "./policies/eks-cluster-supported-k8s-version-check.sentinel"
   enforcement_level = "advisory"
@@ -105,6 +110,11 @@ policy "elasticache-redis-replication-group-encryption-at-rest-enabled" {
 
 policy "elasticache-redis-replication-group-encryption-at-transit-enabled" {
   source = "./policies/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elb-configure-https-tls-termination-classic-load-balancer" {
+  source = "./policies/elb-configure-https-tls-termination-classic-load-balancer.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -246,8 +256,23 @@ policy "dynamo-db-tables-point-in-time-recovery-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "docdb-cluster-backup-retention-check" {
+  source = "./policies/docdb-cluster-backup-retention-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "docdb-cluster-deletion-protection-enabled" {
+  source = "./policies/docdb-cluster-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "docdb-cluster-storage-encrypted" {
   source = "./policies/docdb-cluster-storage-encrypted.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "docdb-cluster-audit-logging-enabled" {
+  source = "./policies/docdb-cluster-audit-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
 

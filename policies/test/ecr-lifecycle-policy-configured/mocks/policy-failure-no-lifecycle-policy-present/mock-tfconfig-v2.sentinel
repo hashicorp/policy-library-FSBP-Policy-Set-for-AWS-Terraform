@@ -1,0 +1,59 @@
+resources = {
+	"module.ecr.aws_ecr_lifecycle_policy.this": {
+		"address": "module.ecr.aws_ecr_lifecycle_policy.this",
+		"config": {
+			"policy": {
+				"constant_value": "{\n    \"rules\": [\n        {\n            \"rulePriority\": 1,\n            \"description\": \"Expire images older than 14 days\",\n            \"selection\": {\n                \"tagStatus\": \"untagged\",\n                \"countType\": \"sinceImagePushed\",\n                \"countUnit\": \"days\",\n                \"countNumber\": 14\n            },\n            \"action\": {\n                \"type\": \"expire\"\n            }\n        }\n    ]\n}\n",
+			},
+			"repository": {
+				"references": [
+					"aws_ecr_repository.this.arn",
+					"aws_ecr_repository.this",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.ecr",
+		"name":                "this",
+		"provider_config_key": "module.ecr:aws",
+		"provisioners":        [],
+		"type":                "aws_ecr_lifecycle_policy",
+	},
+	"module.ecr.aws_ecr_repository.this": {
+		"address": "module.ecr.aws_ecr_repository.this",
+		"config": {
+			"name": {
+				"constant_value": "test-repo",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.ecr",
+		"name":                "this",
+		"provider_config_key": "module.ecr:aws",
+		"provisioners":        [],
+		"type":                "aws_ecr_repository",
+	},
+	"module.ecr.aws_ecr_repository.this2": {
+		"address": "module.ecr.aws_ecr_repository.this2",
+		"config": {
+			"name": {
+				"constant_value": "test-repo-2",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.ecr",
+		"name":                "this2",
+		"provider_config_key": "module.ecr:aws",
+		"provisioners":        [],
+		"type":                "aws_ecr_repository",
+	},
+}
