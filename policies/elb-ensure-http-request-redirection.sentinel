@@ -89,10 +89,7 @@ http_listeners_with_inline_https_redirection = collection.reject(http_listeners,
 })
 
 // Filter out their addresses into a list for future use
-http_listener_addresses_with_https_redirection = []
-if http_listeners_with_inline_https_redirection is not empty {
-	http_listener_addresses_with_https_redirection = map http_listeners_with_inline_https_redirection as res { res.address }
-}
+http_listener_addresses_with_https_redirection = map http_listeners_with_inline_https_redirection as res { res.address }
 
 // Get the list of http listeners that don't have such inline redirection
 // configuration for https.
@@ -161,21 +158,24 @@ aws_load_balancers = plan_resources.type(const.resource_aws_lb).resources
 
 // Filter only application load balancers because that's what we are
 // concerned with in this policy.
-application_load_balancers = collection.reject(aws_load_balancers, func(res) {
-	return maps.get(res, "values.load_balancer_type", const.application) is not const.application
-})
-
-violations = []
-
-for application_load_balancers as _, alb {
-	if alb.address not in referenced_valid_load_balancers {
-		append(violations, build_violation_object(alb))
+invalid_load_balancers = collection.reject(aws_load_balancers, func(res) {
+	lb_type = maps.get(res, "values.load_balancer_type", const.application)
+	if lb_type is not const.application {
+		return true
 	}
-}
+
+	return res.address in referenced_valid_load_balancers
+})
 
 summary = {
 	"policy_name": const.policy_name,
-	"violations":  violations,
+	"violations": map invalid_load_balancers as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
 }
 
 # Outputs
@@ -185,5 +185,5 @@ print(report.generate_policy_report(summary))
 # Rules
 
 main = rule {
-	violations is empty
+	invalid_load_balancers is empty
 }
