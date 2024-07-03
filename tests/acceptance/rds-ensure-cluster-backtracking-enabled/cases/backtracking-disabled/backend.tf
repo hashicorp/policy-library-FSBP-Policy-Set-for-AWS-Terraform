@@ -1,7 +1,7 @@
 terraform {
   cloud {
     workspaces {
-      name = "rds-ensure-cluster-deletion-protection-enabled"
+      name = "rds-ensure-cluster-backtracking-enabled"
     }
   }
 }
