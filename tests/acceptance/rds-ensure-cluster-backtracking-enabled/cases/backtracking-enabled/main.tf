@@ -15,7 +15,7 @@ resource "aws_rds_cluster" "default" {
   storage_encrypted       = true
   kms_key_id              = aws_kms_key.example.id
   deletion_protection     = true
-  backtrack_window = 87
+  backtrack_window        = 87
 }
 
 data "aws_caller_identity" "current" {}
