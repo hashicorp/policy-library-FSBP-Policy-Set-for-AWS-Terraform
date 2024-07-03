@@ -17,13 +17,15 @@ const = {
 # Functions
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		# port range can only be set if block_public_security_group_rules is true
+		if res.values.block_public_security_group_rules is false {
+			return false
+		}
 		if collection.find(maps.get(res, "values.permitted_public_security_group_rule_range", []), func(res) {
 			return res.min_range != 22 or res.max_range != 22
 		}) is defined {
 			return false
 		}
-		return res.values.block_public_security_group_rules is true
+		return true
 	})
 }
 
