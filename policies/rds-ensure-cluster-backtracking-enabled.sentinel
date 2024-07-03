@@ -30,7 +30,7 @@ violations = collection.reject(resources, func(res) {
 })
 
 summary = {
-	"policy_name": "rds-ensure-cluster-backtracking-enabled",
+	"policy_name": const.policy_name,
 	"violations": map violations as _, v {
 		{
 			"address":        v.address,
