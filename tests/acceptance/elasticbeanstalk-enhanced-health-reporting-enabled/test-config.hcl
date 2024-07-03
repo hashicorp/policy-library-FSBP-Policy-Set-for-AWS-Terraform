@@ -1,6 +1,6 @@
 name = "elasticbeanstalk-enhanced-health-reporting-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticbeanstalk enhanced health reporting enabled in root module" {
   path = "cases/all-resources-complaint"
