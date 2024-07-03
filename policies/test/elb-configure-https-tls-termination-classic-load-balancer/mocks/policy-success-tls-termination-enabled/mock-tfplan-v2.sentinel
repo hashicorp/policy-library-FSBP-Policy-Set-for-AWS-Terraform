@@ -1,0 +1,36 @@
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_elb.this": {
+			"address":        "aws_elb.this",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "this",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_elb",
+			"values": {
+				"access_logs":                 [],
+				"connection_draining":         false,
+				"connection_draining_timeout": 300,
+				"cross_zone_load_balancing":   true,
+				"desync_mitigation_mode":      "defensive",
+				"idle_timeout":                60,
+				"listener": [
+					{
+						"instance_port":      5050,
+						"instance_protocol":  "http",
+						"lb_port":            9090,
+						"lb_protocol":        "https",
+						"ssl_certificate_id": "arn:aws:acm:us-west-2:123456789012:certificate/abcdefg-1234-5678-abcd-1234abcdefg",
+					},
+				],
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+	},
+}

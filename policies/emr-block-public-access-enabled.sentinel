@@ -1,0 +1,56 @@
+# This policy requires block public access setting is enabled and any port other than 22 should not be allowed
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name": "emr-block-public-access-enabled",
+	"resource_aws_emr_block_public_access_configuration": "aws_emr_block_public_access_configuration",
+}
+
+# Functions
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		if res.values.block_public_security_group_rules is false {
+			return false
+		}
+		if collection.find(maps.get(res, "values.permitted_public_security_group_rule_range", []), func(res) {
+			return res.min_range != 22 or res.max_range != 22
+		}) is defined {
+			return false
+		}
+		return true
+	})
+}
+
+# Variables
+
+aws_emr_block_public_access_configurations = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_emr_block_public_access_configuration).resources
+violations = get_violations(aws_emr_block_public_access_configurations)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Attribute 'block_public_security_group_rules' must have been set to true and any port other than 22 should not be allowed for 'aws_emr_block_public_access_configuration' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/emr-controls.html#emr-2 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
