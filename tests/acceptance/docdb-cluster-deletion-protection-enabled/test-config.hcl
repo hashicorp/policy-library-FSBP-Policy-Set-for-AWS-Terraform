@@ -1,6 +1,6 @@
 name = "docdb-cluster-deletion-protection-enabled"
 
-disabled = true
+disabled = false
 
 case "Cluster with Deletion Protection Disabled" {
     path = "./cases/cluster-with-deletion-protection-disabled"

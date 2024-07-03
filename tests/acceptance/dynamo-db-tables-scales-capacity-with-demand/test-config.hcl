@@ -1,6 +1,6 @@
 name = "dynamo-db-tables-scales-capacity-with-demand"
 
-disabled = true
+disabled = false
 
 case "ddb autoscale nested module" {
     path = "./cases/ddb-autoscale-nested-module"

@@ -1,6 +1,6 @@
 name = "elasticbeanstalk-cloudwatch-log-streaming-enabled"
 
-disabled = true
+disabled = false
 
 case "Elasticbeanstalk cloudwatch log streaming enabled in root module" {
   path = "cases/all-resources-complaint"
