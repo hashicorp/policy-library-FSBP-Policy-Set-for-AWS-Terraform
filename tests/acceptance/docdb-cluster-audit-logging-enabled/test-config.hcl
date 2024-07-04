@@ -1,6 +1,6 @@
 name = "docdb-cluster-audit-logging-enabled"
 
-disabled = true
+disabled = false
 
 case "Cluster with Audit Logging Enabled" {
     path = "./cases/cluster-with-audit-logging-enabled"

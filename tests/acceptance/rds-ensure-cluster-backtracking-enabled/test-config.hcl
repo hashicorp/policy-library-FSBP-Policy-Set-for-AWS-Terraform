@@ -1,5 +1,5 @@
 name = "rds-ensure-cluster-backtracking-enabled"
-disabled = true
+disabled = false
 
 case "RDS DB Cluster cluster backtracking is enabled" {
     path = "cases/backtracking-enabled"

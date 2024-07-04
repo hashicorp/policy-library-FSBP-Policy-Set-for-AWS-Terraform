@@ -1,5 +1,5 @@
 name = "rds-ensure-cloudwatch-logs-enabled"
-disabled = true
+disabled = false
 
 case "RDS DB Instance Cloudwatch Logs enabled" {
     path = "cases/cloudwatch-logs-enabled"

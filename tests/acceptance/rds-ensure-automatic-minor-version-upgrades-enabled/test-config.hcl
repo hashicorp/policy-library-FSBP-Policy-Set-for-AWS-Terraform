@@ -1,5 +1,5 @@
 name = "rds-ensure-automatic-minor-version-upgrades-enabled"
-disabled = true
+disabled = false
 
 case "RDS DB instance automatic minor upgrades is enabled" {
     path = "cases/minor-upgrades-enabled"
