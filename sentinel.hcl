@@ -143,6 +143,11 @@ policy "elb-ensure-http-request-redirection" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-ssl-listener-acm-cert-classic-load-balancer" {
+  source = "./policies/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-multi-az-configuration-classic-load-balancer" {
   source = "./policies/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel"
   enforcement_level = "advisory"

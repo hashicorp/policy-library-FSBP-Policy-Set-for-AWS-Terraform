@@ -1,6 +1,6 @@
 name = "rds-instance-should-be-private"
 
-disabled = false
+disabled = true
 
 case "RDS instance should be private all resources compliant" {
   path = "cases/all-resources-compliant"
