@@ -9,4 +9,6 @@ resource "aws_elb" "this" {
   }
 }
 
-resource "aws_acm_certificate" "this" {}
+resource "aws_acm_certificate" "this" {
+  domain_name = "foo.com"
+}
