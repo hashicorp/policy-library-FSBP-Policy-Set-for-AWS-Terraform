@@ -320,3 +320,8 @@ policy "emr-block-public-access-enabled" {
   source = "./policies/emr-block-public-access-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-encryption-at-rest-enabled" {
+ source = "./policies/neptune-cluster-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
