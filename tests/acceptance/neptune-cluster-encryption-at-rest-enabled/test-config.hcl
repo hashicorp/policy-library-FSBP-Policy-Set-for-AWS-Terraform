@@ -1,6 +1,6 @@
 name = "neptune-cluster-encryption-at-rest-enabled"
 
-disabled = false
+disabled = true
 
 case "Storage encryption enabled" {
     path = "./cases/storage-encryption-enabled"

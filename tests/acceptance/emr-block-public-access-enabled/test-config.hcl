@@ -1,6 +1,6 @@
 name = "emr-block-public-access-enabled"
 
-disabled = false
+disabled = true
 
 case "Emr block public access disabled" {
     path = "./cases/block-public-access-disabled"

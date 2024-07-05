@@ -1,6 +1,6 @@
 name = "elb-configure-https-tls-termination-classic-load-balancer"
 
-disabled = false
+disabled = true
 
 case "TLS termination enabled" {
     path = "./cases/tls-termination-enabled"

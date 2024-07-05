@@ -133,6 +133,11 @@ policy "elb-drop-invalid-http-headers" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-access-logging-enabled" {
+  source = "./policies/elb-ensure-access-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-deletion-protection-enabled" {
   source = "./policies/elb-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"

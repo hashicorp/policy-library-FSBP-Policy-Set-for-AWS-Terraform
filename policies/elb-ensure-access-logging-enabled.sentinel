@@ -1,0 +1,64 @@
+# This policy checks if resources of type 'aws_lb' and 'aws_elb'
+# have 'access_logging' enabled.
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":      "elb-ensure-access-logging-enabled",
+	"message":          "Application and Classic Load Balancers logging should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-5 for more details.",
+	"resource_aws_lb":  "aws_lb",
+	"resource_aws_elb": "aws_elb",
+	"application":      "application",
+	"enabled":          "enabled",
+}
+
+# Variables
+
+filter_load_balancers_with_access_logging_disabled = func(load_balancers) {
+	return collection.reject(load_balancers, func(res) {
+		access_logs_list = maps.get(res, "values.access_logs", [])
+		if access_logs_list is empty {
+			return false
+		}
+
+		return maps.get(access_logs_list[0], const.enabled, false) is true
+	})
+}
+
+planned_resources = tf.plan(tfplan.planned_values.resources)
+
+classic_load_balancers = planned_resources.type(const.resource_aws_elb).resources
+aws_load_balancers = planned_resources.type(const.resource_aws_lb).resources
+
+application_load_balancers = collection.reject(aws_load_balancers, func(res) {
+	return maps.get(res, "values.load_balancer_type", const.application) is not const.application
+})
+
+load_balancers_with_access_logging_disabled = filter_load_balancers_with_access_logging_disabled(classic_load_balancers)
+load_balancers_with_access_logging_disabled += filter_load_balancers_with_access_logging_disabled(application_load_balancers)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map load_balancers_with_access_logging_disabled as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	load_balancers_with_access_logging_disabled is empty
+}
