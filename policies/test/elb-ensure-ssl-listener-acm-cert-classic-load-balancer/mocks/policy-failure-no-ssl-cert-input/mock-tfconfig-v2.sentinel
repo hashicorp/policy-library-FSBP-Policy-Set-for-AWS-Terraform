@@ -1,21 +1,3 @@
-import "strings"
-
-providers = {
-	"aws": {
-		"alias": "",
-		"config": {
-			"region": {
-				"constant_value": "us-west-2",
-			},
-		},
-		"full_name":           "registry.terraform.io/hashicorp/aws",
-		"module_address":      "",
-		"name":                "aws",
-		"provider_config_key": "aws",
-		"version_constraint":  "",
-	},
-}
-
 resources = {
 	"aws_elb.this": {
 		"address": "aws_elb.this",
@@ -47,21 +29,4 @@ resources = {
 		"provisioners":        [],
 		"type":                "aws_elb",
 	},
-}
-
-provisioners = {}
-
-variables = {}
-
-outputs = {}
-
-module_calls = {}
-
-strip_index = func(addr) {
-	s = strings.split(addr, ".")
-	for s as i, v {
-		s[i] = strings.split(v, "[")[0]
-	}
-
-	return strings.join(s, ".")
 }
