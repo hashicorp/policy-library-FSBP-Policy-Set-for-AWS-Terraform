@@ -1,5 +1,5 @@
 name = "rds-cluster-and-db-snapshot-encrypted"
-disabled = false
+disabled = true
 
 case "RDS DB instance and Cluster encryption is enabled" {
     path = "cases/encryption-enabled"

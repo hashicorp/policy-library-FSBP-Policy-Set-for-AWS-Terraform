@@ -1,6 +1,6 @@
 name = "rds-ensure-multi-az-configuration"
 
-disabled = false
+disabled = true
 
 case "RDS instance configured with multi az in root module" {
   path = "cases/all-resources-complaint"

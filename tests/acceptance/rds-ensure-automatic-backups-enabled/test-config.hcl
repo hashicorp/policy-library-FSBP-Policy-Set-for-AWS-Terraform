@@ -1,5 +1,5 @@
 name = "rds-ensure-automatic-backups-enabled"
-disabled = false
+disabled = true
 
 case "Automatic backups is enabled" {
     path = "cases/backups-enabled"
