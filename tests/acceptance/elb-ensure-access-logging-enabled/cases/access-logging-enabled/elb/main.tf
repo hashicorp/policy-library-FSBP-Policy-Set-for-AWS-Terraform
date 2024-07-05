@@ -21,7 +21,7 @@ resource "aws_lb" "this" {
   subnets = ["subnet-id-1"]
 }
 
-resource "aws_lb" "this" {
+resource "aws_lb" "nlb" {
   load_balancer_type = "network"
   subnets            = ["subnet-id-1"]
 }
