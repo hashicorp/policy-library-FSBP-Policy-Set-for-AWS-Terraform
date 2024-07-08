@@ -330,3 +330,8 @@ policy "neptune-cluster-encryption-at-rest-enabled" {
  source = "./policies/neptune-cluster-encryption-at-rest-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-audit-logs-publishing-enabled" {
+ source = "./policies/neptune-cluster-audit-logs-publishing-enabled.sentinel"
+  enforcement_level = "advisory"
+}
