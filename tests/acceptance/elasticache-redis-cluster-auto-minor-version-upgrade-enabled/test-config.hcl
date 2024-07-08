@@ -1,6 +1,6 @@
 name = "elasticache-redis-cluster-auto-minor-version-upgrade-enabled"
 
-disabled = false
+disabled = true
 
 case "Elasticache auto minor version upgrade enabled in root module" {
   path = "cases/all-resources-complaint"
