@@ -1,6 +1,6 @@
 name = "ecr-lifecycle-policy-configured"
 
-disabled = true
+disabled = false
 
 case "Lifecycle policy configured root module" {
     path = "./cases/life-cycle-policy-configured-root-module"

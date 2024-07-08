@@ -1,6 +1,6 @@
 name = "docdb-cluster-backup-retention-check"
 
-disabled = true
+disabled = false
 
 case "Cluster with Backup Retention Check" {
     path = "./cases/cluster-with-backup-retention-check"
