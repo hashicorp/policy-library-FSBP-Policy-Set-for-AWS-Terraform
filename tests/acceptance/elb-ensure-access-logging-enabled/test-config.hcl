@@ -1,6 +1,6 @@
 name = "elb-ensure-access-logging-enabled"
 
-disabled = true
+disabled = false
 
 case "Access logging enabled" {
     path = "./cases/access-logging-enabled"

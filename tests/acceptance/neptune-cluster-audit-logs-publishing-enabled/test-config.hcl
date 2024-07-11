@@ -1,6 +1,6 @@
 name = "neptune-cluster-audit-logs-publishing-enabled"
 
-disabled = true
+disabled = false
 
 case "Audit Logs export enabled" {
     path = "./cases/audit-logs-export-enabled"

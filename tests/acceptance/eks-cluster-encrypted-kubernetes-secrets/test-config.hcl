@@ -1,6 +1,6 @@
 name = "eks-cluster-encrypted-kubernetes-secrets"
 
-disabled = true
+disabled = false
 
 case "No encryption config present" {
     path = "./cases/no-encryption-config-present"
