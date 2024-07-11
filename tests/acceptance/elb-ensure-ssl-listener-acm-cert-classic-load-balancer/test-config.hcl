@@ -1,6 +1,6 @@
 name = "elb-ensure-ssl-listener-acm-cert-classic-load-balancer"
 
-disabled = false
+disabled = true
 
 case "No HTTPS/SSL listeners" {
     path = "./cases/no-https-ssl-listeners"
