@@ -340,3 +340,8 @@ policy "neptune-cluster-audit-logs-publishing-enabled" {
  source = "./policies/neptune-cluster-audit-logs-publishing-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-deletion-protection-enabled" {
+ source = "./policies/neptune-cluster-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
