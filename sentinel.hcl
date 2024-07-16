@@ -345,3 +345,11 @@ policy "neptune-cluster-deletion-protection-enabled" {
  source = "./policies/neptune-cluster-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-automated-backups-enabled" {
+ source = "./policies/neptune-cluster-automated-backups-enabled.sentinel"
+  enforcement_level = "advisory"
+  params = {
+      backup_retention_period = 7
+  }
+}
