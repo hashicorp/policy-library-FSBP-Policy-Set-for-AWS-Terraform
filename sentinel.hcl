@@ -153,6 +153,11 @@ policy "elb-ensure-ssl-listener-acm-cert-classic-load-balancer" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-ssl-listener-predefined-security-policy" {
+  source = "./policies/elb-ensure-ssl-listener-predefined-security-policy.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-multi-az-configuration-classic-load-balancer" {
   source = "./policies/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel"
   enforcement_level = "advisory"
