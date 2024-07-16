@@ -28,8 +28,8 @@ get_violations = func(resources) {
 
 # Variables
 
-aws_aws_neptune_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_neptune_cluster).resources
-violations = get_violations(aws_aws_neptune_clusters)
+aws_neptune_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_neptune_cluster).resources
+violations = get_violations(aws_neptune_clusters)
 
 summary = {
 	"policy_name": const.policy_name,
