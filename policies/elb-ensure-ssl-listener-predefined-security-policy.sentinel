@@ -102,14 +102,9 @@ classic_load_balancers_with_https_ssl_listeners = collection.reject(classic_load
 
 // All classic_load_balancers_with_https_ssl_listeners should have a backing
 // predefined security policy
-invalid_load_balancers = []
-for classic_load_balancers_with_https_ssl_listeners as _, res {
-	if res.address in referenced_load_balancers {
-		continue
-	}
-
-	append(invalid_load_balancers, res)
-}
+invalid_load_balancers = collection.reject(classic_load_balancers_with_https_ssl_listeners, func(res) {
+	return res.address in referenced_load_balancers
+})
 
 summary = {
 	"policy_name": const.policy_name,
