@@ -1,4 +1,4 @@
-# This policy requires attribute 'deletion_protection' to be set to true for 'aws_neptune_cluster' resources
+# This policy requires attribute 'iam_database_authentication_enabled' to be set to true for 'aws_neptune_cluster' resources
 
 # Imports
 
@@ -10,14 +10,14 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                  "neptune-cluster-deletion-protection-enabled",
+	"policy_name":                  "neptune-cluster-db-auth-enabled",
 	"resource_aws_neptune_cluster": "aws_neptune_cluster",
 }
 
 # Functions
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		return maps.get(res, "values.deletion_protection", false) is true
+		return maps.get(res, "values.iam_database_authentication_enabled", false) is true
 	})
 }
 
@@ -32,7 +32,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'deletion_protection' must have been set to true for 'aws_neptune_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-4 for more details.",
+			"message":        "Attribute 'iam_database_authentication_enabled' must have been set to true for 'aws_neptune_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-7 for more details.",
 		}
 	},
 }

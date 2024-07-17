@@ -358,3 +358,8 @@ policy "neptune-cluster-automated-backups-enabled" {
       backup_retention_period = 7
   }
 }
+
+policy "neptune-cluster-db-auth-enabled" {
+ source = "./policies/neptune-cluster-db-auth-enabled.sentinel"
+ enforcement_level = "advisory"
+}
