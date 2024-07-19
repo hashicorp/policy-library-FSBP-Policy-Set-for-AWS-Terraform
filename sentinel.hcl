@@ -2,6 +2,14 @@ import "module" "report" {
   source = "https://raw.githubusercontent.com/hashicorp/terraform-sentinel-policies/main/common-functions/report/report.sentinel"
 }
 
+import "module" "tfplan-functions" {
+  source = "./modules/tfplan-functions/tfplan-functions.sentinel"
+}
+
+import "module" "tfconfig-functions" {
+  source = "./modules/tfconfig-functions/tfconfig-functions.sentinel"
+}
+
 // Replace the source with the appropriate plugin binary
 // based on the environment where you run policies.
 import "plugin" "tfresources" {
@@ -253,6 +261,21 @@ policy "rds-ensure-automatic-minor-version-upgrades-enabled" {
 
 policy "rds-ensure-cluster-backtracking-enabled" {
   source = "./policies/rds-ensure-cluster-backtracking-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "s3-block-public-access-account-level" {
+    source = "./policies/s3-block-public-access-account-level.sentinel"
+    enforcement_level = "advisory"
+}
+
+policy "s3-block-public-access-bucket-level" {
+    source = "./policies/s3-block-public-access-bucket-level.sentinel"
+    enforcement_level = "advisory"
+}
+
+policy "s3-require-ssl" {
+  source = "./policies/s3-require-ssl.sentinel"
   enforcement_level = "advisory"
 }
 
