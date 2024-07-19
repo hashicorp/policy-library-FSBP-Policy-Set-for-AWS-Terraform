@@ -1,0 +1,48 @@
+# This policy requires attribute 'copy_tags_to_snapshot' to be set to true for 'aws_neptune_cluster' resources
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "neptune-cluster-copy-tags-to-snapshot-enabled",
+	"resource_aws_neptune_cluster": "aws_neptune_cluster",
+}
+
+# Functions
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return maps.get(res, "values.copy_tags_to_snapshot", false) is true
+	})
+}
+
+# Variables
+
+aws_neptune_clusters = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_neptune_cluster).resources
+violations = get_violations(aws_neptune_clusters)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Attribute 'copy_tags_to_snapshot' must have been set to true for 'aws_neptune_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/neptune-controls.html#neptune-8 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

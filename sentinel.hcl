@@ -363,3 +363,8 @@ policy "neptune-cluster-db-auth-enabled" {
  source = "./policies/neptune-cluster-db-auth-enabled.sentinel"
  enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-copy-tags-to-snapshot-enabled" {
+ source = "./policies/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel"
+ enforcement_level = "advisory"
+}
