@@ -391,3 +391,8 @@ policy "neptune-cluster-copy-tags-to-snapshot-enabled" {
  source = "./policies/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel"
  enforcement_level = "advisory"
 }
+
+policy "neptune-cluster-snapshot-encryption-at-rest-enabled" {
+ source = "./policies/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel"
+ enforcement_level = "advisory"
+}
