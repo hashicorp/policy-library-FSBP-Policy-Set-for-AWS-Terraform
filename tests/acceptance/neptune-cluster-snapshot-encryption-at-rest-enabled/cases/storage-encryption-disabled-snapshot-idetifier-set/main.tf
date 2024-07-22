@@ -11,7 +11,7 @@ resource "aws_neptune_cluster" "default" {
   iam_database_authentication_enabled = true
   apply_immediately                   = true
   storage_encrypted                   = false
-  snapshot_identifier =    aws_neptune_cluster_snapshot.example.db_cluster_snapshot_arn
+  snapshot_identifier                 = aws_neptune_cluster_snapshot.example.db_cluster_snapshot_arn
 }
 
 resource "aws_neptune_cluster_snapshot" "example" {
