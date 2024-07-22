@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-snapshot-identifier-not-set/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-success-snapshot-identifier-not-set/mock-tfplan-v2.sentinel"
 	}
 }
 
@@ -18,6 +18,6 @@ mock "report" {
 
 test {
 	rules = {
-		main = false
+		main = true
 	}
 }
