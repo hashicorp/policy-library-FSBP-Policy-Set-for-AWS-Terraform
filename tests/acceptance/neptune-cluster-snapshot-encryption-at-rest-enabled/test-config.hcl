@@ -26,7 +26,7 @@ case "Storage encryption disabled snapshot idetifier set" {
 case "Storage encryption enabled snapshot idetifier not set" {
     path = "./cases/storage-encryption-enabled-snapshot-idetifier-not-set"
     expectation {
-        result = false
+        result = true
     }
 }
 
