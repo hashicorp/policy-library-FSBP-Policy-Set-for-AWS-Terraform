@@ -10,7 +10,7 @@ resource "aws_neptune_cluster" "default" {
   skip_final_snapshot                 = true
   iam_database_authentication_enabled = true
   apply_immediately                   = true
-  snapshot_identifier                 = aws_neptune_cluster_snapshot.example.db_cluster_snapshot_arn
+  snapshot_identifier                 = aws_neptune_cluster_snapshot.example.db_cluster_snapshot_identifier
 }
 
 resource "aws_neptune_cluster" "original" {
