@@ -1,0 +1,55 @@
+resources = {
+	"aws_acm_certificate.this": {
+		"address": "aws_acm_certificate.this",
+		"config": {
+			"domain_name": {
+				"constant_value": "foo.com",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_acm_certificate",
+	},
+	"aws_elb.this": {
+		"address": "aws_elb.this",
+		"config": {
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 5050,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 9090,
+					},
+					"lb_protocol": {
+						"constant_value": "https",
+					},
+					"ssl_certificate_id": {
+						"references": [
+							"aws_acm_certificate.this.arn",
+							"aws_acm_certificate.this",
+						],
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+}

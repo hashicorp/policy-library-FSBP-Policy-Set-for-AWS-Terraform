@@ -1,0 +1,73 @@
+# This policy checks if resources of type 'aws_elb' have
+# HTTPS/SSL listeners configured with certs from acm.
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+const = {
+	"policy_name":         "elb-ensure-ssl-listener-acm-cert-classic-load-balancer",
+	"message":             "Classic Load Balancers with SSL/HTTPS listeners should use a certificate provided by AWS Certificate Manager. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/elb-controls.html#elb-2 for more details.",
+	"resource_aws_elb":    "aws_elb",
+	"protocols":           ["https", "ssl"],
+	"acm_cert_arn_prefix": "arn:aws:acm:",
+}
+
+# Variables
+
+classic_load_balancers = tf.config(tfconfig.resources).type(const.resource_aws_elb).resources
+
+invalid_load_balancers = collection.reject(classic_load_balancers, func(res) {
+	listeners = maps.get(res, "config.listener", [])
+	// We don't care if there are no listeners
+	if listeners is empty {
+		return true
+	}
+
+	// Check if listeners have LB protocol set to either HTTPS or SSL
+	// and are associated with an ssl_cert_id from ACM
+	return collection.reject(listeners, func(listener) {
+		if maps.get(listener, "lb_protocol.constant_value", "") not in const.protocols {
+			return true
+		}
+
+		ssl_cert_constant_value = maps.get(listener, "ssl_certificate_id.constant_value", "")
+		if strings.has_prefix(ssl_cert_constant_value, const.acm_cert_arn_prefix) {
+			return true
+		}
+
+		ssl_cert_references_list = maps.get(listener, "ssl_certificate_id.references", [])
+		print(ssl_cert_references_list)
+		if ssl_cert_references_list is empty {
+			return false
+		}
+
+		return ssl_cert_references_list[0] matches "^data.aws_acm_certificate.(.*)$" or
+			ssl_cert_references_list[0] matches "^aws_acm_certificate.(.*)$"
+	}) is empty
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map invalid_load_balancers as _, res {
+		{
+			"address":        res.address,
+			"module_address": res.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	invalid_load_balancers is empty
+}

@@ -2,6 +2,14 @@ import "module" "report" {
   source = "https://raw.githubusercontent.com/hashicorp/terraform-sentinel-policies/main/common-functions/report/report.sentinel"
 }
 
+import "module" "tfplan-functions" {
+  source = "./modules/tfplan-functions/tfplan-functions.sentinel"
+}
+
+import "module" "tfconfig-functions" {
+  source = "./modules/tfconfig-functions/tfconfig-functions.sentinel"
+}
+
 // Replace the source with the appropriate plugin binary
 // based on the environment where you run policies.
 import "plugin" "tfresources" {
@@ -133,6 +141,11 @@ policy "elb-drop-invalid-http-headers" {
   enforcement_level = "advisory"
 }
 
+policy "elb-ensure-access-logging-enabled" {
+  source = "./policies/elb-ensure-access-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elb-ensure-deletion-protection-enabled" {
   source = "./policies/elb-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
@@ -140,6 +153,16 @@ policy "elb-ensure-deletion-protection-enabled" {
 
 policy "elb-ensure-http-request-redirection" {
   source = "./policies/elb-ensure-http-request-redirection.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elb-ensure-ssl-listener-acm-cert-classic-load-balancer" {
+  source = "./policies/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "elb-ensure-ssl-listener-predefined-security-policy" {
+  source = "./policies/elb-ensure-ssl-listener-predefined-security-policy.sentinel"
   enforcement_level = "advisory"
 }
 
@@ -241,6 +264,21 @@ policy "rds-ensure-cluster-backtracking-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "s3-block-public-access-account-level" {
+    source = "./policies/s3-block-public-access-account-level.sentinel"
+    enforcement_level = "advisory"
+}
+
+policy "s3-block-public-access-bucket-level" {
+    source = "./policies/s3-block-public-access-bucket-level.sentinel"
+    enforcement_level = "advisory"
+}
+
+policy "s3-require-ssl" {
+  source = "./policies/s3-require-ssl.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "elasticache-redis-replication-group-redis-auth-enabled" {
   source = "./policies/elasticache-redis-replication-group-redis-auth-enabled.sentinel"
   enforcement_level = "advisory"
@@ -319,4 +357,42 @@ policy "elasticbeanstalk-cloudwatch-log-streaming-enabled" {
 policy "emr-block-public-access-enabled" {
   source = "./policies/emr-block-public-access-enabled.sentinel"
   enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-encryption-at-rest-enabled" {
+ source = "./policies/neptune-cluster-encryption-at-rest-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-audit-logs-publishing-enabled" {
+ source = "./policies/neptune-cluster-audit-logs-publishing-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-deletion-protection-enabled" {
+ source = "./policies/neptune-cluster-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-automated-backups-enabled" {
+ source = "./policies/neptune-cluster-automated-backups-enabled.sentinel"
+  enforcement_level = "advisory"
+  params = {
+      backup_retention_period = 7
+  }
+}
+
+policy "neptune-cluster-db-auth-enabled" {
+ source = "./policies/neptune-cluster-db-auth-enabled.sentinel"
+ enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-copy-tags-to-snapshot-enabled" {
+ source = "./policies/neptune-cluster-copy-tags-to-snapshot-enabled.sentinel"
+ enforcement_level = "advisory"
+}
+
+policy "neptune-cluster-snapshot-encryption-at-rest-enabled" {
+ source = "./policies/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel"
+ enforcement_level = "advisory"
 }

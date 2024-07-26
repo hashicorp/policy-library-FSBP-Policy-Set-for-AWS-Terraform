@@ -1,0 +1,35 @@
+resources = {
+	"aws_elb.this": {
+		"address": "aws_elb.this",
+		"config": {
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 5050,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 9090,
+					},
+					"lb_protocol": {
+						"constant_value": "https",
+					},
+					"ssl_certificate_id": {
+						"constant_value": "arn:aws:acm:us-west-2:123456789012:certificate/abcd1234-5678-90ab-cdef-EXAMPLE11111",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+}

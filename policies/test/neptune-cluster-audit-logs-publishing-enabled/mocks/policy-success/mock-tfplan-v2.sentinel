@@ -1,0 +1,43 @@
+terraform_version = "1.7.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_neptune_cluster.default": {
+			"address":        "aws_neptune_cluster.default",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "default",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_neptune_cluster",
+			"values": {
+				"apply_immediately":              true,
+				"backup_retention_period":        5,
+				"cluster_identifier":             "neptune-cluster-demo",
+				"copy_tags_to_snapshot":          null,
+				"deletion_protection":            null,
+				"enable_cloudwatch_logs_exports": ["audit"],
+				"engine":                                "neptune",
+				"final_snapshot_identifier":             null,
+				"global_cluster_identifier":             null,
+				"iam_database_authentication_enabled":   true,
+				"iam_roles":                             null,
+				"neptune_cluster_parameter_group_name":  "default.neptune1",
+				"neptune_instance_parameter_group_name": null,
+				"port": 8182,
+				"preferred_backup_window":             "07:00-09:00",
+				"replication_source_identifier":       null,
+				"serverless_v2_scaling_configuration": [],
+				"skip_final_snapshot":                 true,
+				"snapshot_identifier":                 null,
+				"storage_encrypted":                   true,
+				"tags":                                null,
+				"timeouts":                            null,
+			},
+		},
+	},
+}

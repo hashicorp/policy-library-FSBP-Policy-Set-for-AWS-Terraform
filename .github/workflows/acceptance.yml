@@ -1,5 +1,12 @@
 name: Acceptance
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      sentinel-policy-name:
+        type: string
+        description: "Name of the sentinel policy that needs to be tested"
+        required: false
+        default: ""
 
 jobs:
   acceptance:
@@ -8,4 +15,5 @@ jobs:
       tfc-organization: ${{ vars.TF_CLOUD_ORGANIZATION }}
       tfc-project: ${{ vars.TF_CLOUD_PROJECT }}
       tfc-hostname: ${{ vars.TF_CLOUD_HOSTNAME }}
+      sentinel-policy-name: ${{ inputs.sentinel-policy-name }}
     secrets: inherit

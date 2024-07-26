@@ -1,0 +1,84 @@
+resources = {
+	"aws_elb.this": {
+		"address": "aws_elb.this",
+		"config": {
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 443,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 443,
+					},
+					"lb_protocol": {
+						"constant_value": "ssl",
+					},
+					"ssl_certificate_id": {
+						"constant_value": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+	"aws_load_balancer_listener_policy.this": {
+		"address": "aws_load_balancer_listener_policy.this",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.this.name",
+					"aws_elb.this",
+				],
+			},
+			"load_balancer_port": {
+				"constant_value": 443,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_listener_policy",
+	},
+	"aws_load_balancer_policy.this": {
+		"address": "aws_load_balancer_policy.this",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.this.name",
+					"aws_elb.this",
+				],
+			},
+			"policy_name": {
+				"constant_value": "security-policy",
+			},
+			"policy_type_name": {
+				"constant_value": "ELBSecurityPolicy-TLS-1-2-2017-01",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_policy",
+	},
+}

@@ -1,0 +1,32 @@
+resources = {
+	"aws_elb.this": {
+		"address": "aws_elb.this",
+		"config": {
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 443,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 443,
+					},
+					"lb_protocol": {
+						"constant_value": "http",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "this",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+}

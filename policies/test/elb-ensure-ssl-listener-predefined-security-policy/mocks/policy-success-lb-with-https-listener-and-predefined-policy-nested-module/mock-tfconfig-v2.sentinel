@@ -1,0 +1,118 @@
+resources = {
+	"module.elb.aws_elb.this": {
+		"address": "module.elb.aws_elb.this",
+		"config": {
+			"listener": [
+				{
+					"instance_port": {
+						"constant_value": 443,
+					},
+					"instance_protocol": {
+						"constant_value": "http",
+					},
+					"lb_port": {
+						"constant_value": 443,
+					},
+					"lb_protocol": {
+						"constant_value": "ssl",
+					},
+					"ssl_certificate_id": {
+						"constant_value": "arn:aws:iam::000000000000:server-certificate/wu-tang.net",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.elb",
+		"name":                "this",
+		"provider_config_key": "module.elb:aws",
+		"provisioners":        [],
+		"type":                "aws_elb",
+	},
+	"module.elb.aws_load_balancer_listener_policy.this": {
+		"address": "module.elb.aws_load_balancer_listener_policy.this",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.this.name",
+					"aws_elb.this",
+				],
+			},
+			"load_balancer_port": {
+				"constant_value": 443,
+			},
+			"policy_names": {
+				"references": [
+					"aws_load_balancer_policy.this2.policy_name",
+					"aws_load_balancer_policy.this2",
+					"aws_load_balancer_policy.this.policy_name",
+					"aws_load_balancer_policy.this",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.elb",
+		"name":                "this",
+		"provider_config_key": "module.elb:aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_listener_policy",
+	},
+	"module.elb.aws_load_balancer_policy.this": {
+		"address": "module.elb.aws_load_balancer_policy.this",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.this.name",
+					"aws_elb.this",
+				],
+			},
+			"policy_name": {
+				"constant_value": "security-policy",
+			},
+			"policy_type_name": {
+				"constant_value": "ELBSecurityPolicy-TLS-1-2-2017-01",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.elb",
+		"name":                "this",
+		"provider_config_key": "module.elb:aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_policy",
+	},
+	"module.elb.aws_load_balancer_policy.this2": {
+		"address": "module.elb.aws_load_balancer_policy.this2",
+		"config": {
+			"load_balancer_name": {
+				"references": [
+					"aws_elb.this.name",
+					"aws_elb.this",
+				],
+			},
+			"policy_name": {
+				"constant_value": "security-policy-2",
+			},
+			"policy_type_name": {
+				"constant_value": "d-TLS-1-2-2017-01",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.elb",
+		"name":                "this2",
+		"provider_config_key": "module.elb:aws",
+		"provisioners":        [],
+		"type":                "aws_load_balancer_policy",
+	},
+}
