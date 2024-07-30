@@ -217,6 +217,11 @@ policy "rds-ensure-cloudwatch-logs-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-ensure-cluster-multi-az-configured" {
+  source = "./policies/rds-ensure-cluster-multi-az-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "rds-ensure-cluster-deletion-protection-enabled" {
   source = "./policies/rds-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
