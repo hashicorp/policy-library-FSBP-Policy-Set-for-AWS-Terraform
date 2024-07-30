@@ -8,6 +8,9 @@
 
 This control checks whether RDS DB clusters are configured to copy all tags to snapshots when the snapshots are created.
 
+This rule is covered by the [rds-cluster-copy-tags-to-snapshot-configured](../../policies/rds-cluster-copy-tags-to-snapshot-configured.sentinel).
+
+
 ## Policy Results (Pass)
 ```bash
     Pass - rds-cluster-copy-tags-to-snapshot-configured.sentinel
