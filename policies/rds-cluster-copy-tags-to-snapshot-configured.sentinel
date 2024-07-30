@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_rds_cluster` to be configured for multiple availability zones
+# This policy requires resources of type `aws_rds_cluster` to have `copy_tags_to_snapshot` set to true
 
 # Imports
 
