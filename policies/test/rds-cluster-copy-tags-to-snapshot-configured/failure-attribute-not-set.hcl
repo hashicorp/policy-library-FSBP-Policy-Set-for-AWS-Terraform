@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/success/mock-tfplan-v2.sentinel"
+    source = "./mocks/failure-attribute-not-set/mock-tfplan-v2.sentinel"
   }
 }
 
@@ -16,6 +16,6 @@ mock "report" {
 
 test {
   rules = {
-    main = true
+    main = false
   }
 }

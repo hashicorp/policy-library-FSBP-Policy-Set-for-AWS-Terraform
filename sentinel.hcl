@@ -222,6 +222,11 @@ policy "rds-ensure-cluster-multi-az-configured" {
   enforcement_level = "advisory"
 }
 
+policy "rds-cluster-copy-tags-to-snapshot-configured" {
+  source = "./policies/rds-cluster-copy-tags-to-snapshot-configured.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "rds-ensure-cluster-deletion-protection-enabled" {
   source = "./policies/rds-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
