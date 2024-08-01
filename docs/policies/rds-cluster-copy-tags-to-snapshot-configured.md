@@ -27,7 +27,7 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
 
     ✓ Found 0 resource violations
 
-    rds-cluster-copy-tags-to-snapshot-configured:44:1 - Rule "main"
+    rds-cluster-copy-tags-to-snapshot-configured.sentinel:44:1 - Rule "main"
       Value:
         true
 
