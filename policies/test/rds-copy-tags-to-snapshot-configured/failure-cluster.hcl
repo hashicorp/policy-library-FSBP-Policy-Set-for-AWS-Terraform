@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/failure-attribute-not-set/mock-tfplan-v2.sentinel"
+    source = "./mocks/failure-cluster/mock-tfplan-v2.sentinel"
   }
 }
 
@@ -12,6 +12,10 @@ mock "report" {
   module {
     source = "../../../modules/mocks/report/report.sentinel"
   }
+}
+
+param "resource" {
+  value = "aws_rds_cluster"
 }
 
 test {
