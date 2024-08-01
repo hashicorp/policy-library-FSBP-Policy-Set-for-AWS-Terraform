@@ -13,7 +13,7 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
 
 ## Policy Results (Pass)
 ```bash
-    Pass - rds-copy-tags-to-snapshot-configured.sentinel
+    Pass - rds-cluster-copy-tags-to-snapshot-configured.sentinel
 
     Description:
       This policy requires resources of type `aws_rds_cluster` to have
@@ -23,11 +23,11 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
 
     → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy rds-copy-tags-to-snapshot-configured.
+    This result means that all resources have passed the policy check for the policy rds-cluster-copy-tags-to-snapshot-configured.
 
     ✓ Found 0 resource violations
 
-    rds-copy-tags-to-snapshot-configured.sentinel:44:1 - Rule "main"
+    rds-cluster-copy-tags-to-snapshot-configured:44:1 - Rule "main"
       Value:
         true
 
@@ -37,7 +37,7 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
 
 ## Policy Results (Fail)
 ```bash
-    Fail - rds-copy-tags-to-snapshot-configured.sentinel
+    Fail - rds-cluster-copy-tags-to-snapshot-configured.sentinel
 
     Description:
       This policy requires resources of type `aws_rds_cluster` to have
@@ -47,7 +47,7 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
 
     → → Overall Result: false
 
-    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-copy-tags-to-snapshot-configured.
+    This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy rds-cluster-copy-tags-to-snapshot-configured.
 
     Found 1 resource violations
 
@@ -57,7 +57,7 @@ The policy is parameterized and "resource" param value should be "aws_rds_cluste
          | Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.
 
 
-    rds-copy-tags-to-snapshot-configured.sentinel:44:1 - Rule "main"
+    rds-cluster-copy-tags-to-snapshot-configured.sentinel:44:1 - Rule "main"
       Value:
         false
 
