@@ -1,6 +1,6 @@
 mock "tfplan/v2" {
   module {
-    source = "./mocks/failure/mock-tfplan-v2.sentinel"
+    source = "./mocks/success-instance/mock-tfplan-v2.sentinel"
   }
 }
 
@@ -14,8 +14,12 @@ mock "report" {
   }
 }
 
+param "resource" {
+  value = "aws_db_instance"
+}
+
 test {
   rules = {
-    main = false
+    main = true
   }
 }

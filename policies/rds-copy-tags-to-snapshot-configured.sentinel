@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_rds_cluster` to have `copy_tags_to_snapshot` set to true
+# This policy requires resources of type `aws_rds_cluster` and `aws_db_instance` to have `copy_tags_to_snapshot` set to true
 
 # Imports
 
@@ -8,17 +8,24 @@ import "report" as report
 import "collection" as collection
 import "collection/maps" as maps
 
+# Params
+
+param resource default "aws_rds_cluster"
+
 # Constants
 
 const = {
-	"policy_name":              "rds-cluster-copy-tags-to-snapshot-configured",
+	"policy_name":              "rds-copy-tags-to-snapshot-configured",
 	"message":                  "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.",
-	"resource_aws_rds_cluster": "aws_rds_cluster",
 }
 
 # Variables
 
-resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_rds_cluster).resources
+if (resource == "aws_db_instance") {
+    const["message"] = "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-17 for more details."
+}
+
+resources = tf.plan(tfplan.planned_values.resources).type(resource).resources
 violations = collection.reject(resources, func(res) {
 	copy_tags_to_snapshot = maps.get(res, "values.copy_tags_to_snapshot", false)
 	return copy_tags_to_snapshot is true
