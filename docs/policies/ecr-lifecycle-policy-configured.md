@@ -17,23 +17,23 @@ This rule is covered by the [ecr-lifecycle-policy-configured](../../policies/ecr
 ## Policy Results (Pass)
 ```bash
 trace:
-    Pass - network-firewall-logging-enabled.sentinel
+      Pass - ecr-lifecycle-policy-configured.sentinel
 
-    Description:
-      This policy ensures that resources of type 'aws_networkfirewall_firewall' have
-      logging enabled
+      Description:
+        This policy ensures that resources of type 'aws_ecr_repository' have
+        a lifecycle policy configured
 
-    Print messages:
+      Print messages:
 
-    → → Overall Result: true
+      → → Overall Result: true
 
-    This result means that all resources have passed the policy check for the policy network-firewall-logging-enabled.
+      This result means that all resources have passed the policy check for the policy ecr-lifecycle-policy-configured.
 
-    ✓ Found 0 resource violations
+      ✓ Found 0 resource violations
 
-    network-firewall-logging-enabled.sentinel:82:1 - Rule "main"
-      Value:
-        true
+      ecr-lifecycle-policy-configured.sentinel:82:1 - Rule "main"
+        Value:
+          true
 ```
 
 ---
