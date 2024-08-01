@@ -1,4 +1,4 @@
-# This policy requires resources of type `aws_rds_cluster` and `aws_db_instance` to have `copy_tags_to_snapshot` set to true
+# This policy requires resources of type `aws_rds_cluster` or `aws_db_instance` to have `copy_tags_to_snapshot` set to true
 
 # Imports
 
