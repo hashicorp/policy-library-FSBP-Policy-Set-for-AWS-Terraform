@@ -50,5 +50,5 @@ print(report.generate_policy_report(summary))
 # Rules
 
 main = rule {
-	violations is empty
+	resource in ["aws_rds_cluster", "aws_db_instance"] and violations is empty
 }
