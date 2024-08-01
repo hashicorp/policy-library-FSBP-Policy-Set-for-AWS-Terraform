@@ -223,8 +223,19 @@ policy "rds-ensure-cluster-multi-az-configured" {
 }
 
 policy "rds-cluster-copy-tags-to-snapshot-configured" {
-  source = "./policies/rds-cluster-copy-tags-to-snapshot-configured.sentinel"
+  source = "./policies/rds-copy-tags-to-snapshot-configured.sentinel"
   enforcement_level = "advisory"
+  params = {
+    resource = "aws_rds_cluster"
+  }
+}
+
+policy "rds-instance-copy-tags-to-snapshot-configured" {
+  source = "./policies/rds-copy-tags-to-snapshot-configured.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    resource = "aws_db_instance"
+  }
 }
 
 policy "rds-ensure-cluster-deletion-protection-enabled" {
