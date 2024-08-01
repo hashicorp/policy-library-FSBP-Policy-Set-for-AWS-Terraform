@@ -432,3 +432,8 @@ policy "sagemaker-notebook-instance-root-access-check" {
   source = "./policies/sagemaker-notebook-instance-root-access-check.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "network-firewall-logging-enabled" {
+  source = "./policies/network-firewall-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}

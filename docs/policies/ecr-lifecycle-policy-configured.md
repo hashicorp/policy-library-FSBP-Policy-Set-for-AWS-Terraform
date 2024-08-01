@@ -6,6 +6,8 @@
 
 ## Description
 
+DISCLAIMER - This policy works when all resources are present in the same module
+
 This policy checks whether an Amazon ECR repository has at least one lifecycle policy configured. This policy fails if an ECR repository does not have any lifecycle policies configured.
 
 Amazon ECR lifecycle policies enable you to specify the lifecycle management of images in a repository. By configuring lifecycle policies, you can automate the cleanup of unused images and the expiration of images based on age or count. Automating these tasks can help you avoid unintentionally using outdated images in your repository.
@@ -15,23 +17,23 @@ This rule is covered by the [ecr-lifecycle-policy-configured](../../policies/ecr
 ## Policy Results (Pass)
 ```bash
 trace:
-      Pass - ecr-lifecycle-policy-configured.sentinel
+    Pass - network-firewall-logging-enabled.sentinel
 
-      Description:
-        This policy ensures that resources of type 'aws_ecr_repository' have
-        a lifecycle policy configured
+    Description:
+      This policy ensures that resources of type 'aws_networkfirewall_firewall' have
+      logging enabled
 
-      Print messages:
+    Print messages:
 
-      → → Overall Result: true
+    → → Overall Result: true
 
-      This result means that all resources have passed the policy check for the policy ecr-lifecycle-policy-configured.
+    This result means that all resources have passed the policy check for the policy network-firewall-logging-enabled.
 
-      ✓ Found 0 resource violations
+    ✓ Found 0 resource violations
 
-      ecr-lifecycle-policy-configured.sentinel:82:1 - Rule "main"
-        Value:
-          true
+    network-firewall-logging-enabled.sentinel:82:1 - Rule "main"
+      Value:
+        true
 ```
 
 ---
