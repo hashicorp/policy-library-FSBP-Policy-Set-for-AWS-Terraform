@@ -15,14 +15,14 @@ param resource default "aws_rds_cluster"
 # Constants
 
 const = {
-	"policy_name":              "rds-copy-tags-to-snapshot-configured",
-	"message":                  "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.",
+	"policy_name": "rds-copy-tags-to-snapshot-configured",
+	"message":     "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_rds_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-16 for more details.",
 }
 
 # Variables
 
 if (resource == "aws_db_instance") {
-    const["message"] = "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-17 for more details."
+	const["message"] = "Attribute 'copy_tags_to_snapshot' must be set to true for 'aws_db_instance' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-17 for more details."
 }
 
 resources = tf.plan(tfplan.planned_values.resources).type(resource).resources
