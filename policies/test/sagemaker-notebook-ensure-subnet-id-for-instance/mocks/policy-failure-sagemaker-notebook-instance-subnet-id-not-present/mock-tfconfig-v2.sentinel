@@ -1,0 +1,102 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 3.0",
+	},
+}
+
+resources = {
+	"aws_iam_role.test_role": {
+		"address": "aws_iam_role.test_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "test_role",
+			},
+			"tags": {
+				"constant_value": {
+					"tag-key": "tag-value",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "test_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_sagemaker_notebook_instance.simple_notebook_instance": {
+		"address": "aws_sagemaker_notebook_instance.simple_notebook_instance",
+		"config": {
+			"direct_internet_access": {
+				"constant_value": "Disabled",
+			},
+			"instance_type": {
+				"constant_value": "ml.t2.medium",
+			},
+			"name": {
+				"constant_value": "my-notebook-instance",
+			},
+			"role_arn": {
+				"references": [
+					"aws_iam_role.test_role.arn",
+					"aws_iam_role.test_role",
+				],
+			},
+			"root_access": {
+				"constant_value": "Disabled",
+			},
+			"subnet_id": {
+				"constant_value": "",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "foo",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "simple_notebook_instance",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sagemaker_notebook_instance",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

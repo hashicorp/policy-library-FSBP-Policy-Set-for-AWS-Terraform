@@ -417,3 +417,8 @@ policy "neptune-cluster-snapshot-encryption-at-rest-enabled" {
  source = "./policies/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel"
  enforcement_level = "advisory"
 }
+
+policy "sagemaker-notebook-ensure-subnet-id-for-instance" {
+  source = "./policies/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel"
+  enforcement_level = "advisory"
+}

@@ -1,0 +1,153 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 3.0",
+	},
+}
+
+resources = {
+	"module.sagemaker-notebook-instance.aws_iam_role.test_role": {
+		"address": "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "test_role",
+			},
+			"tags": {
+				"constant_value": {
+					"tag-key": "tag-value",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.sagemaker-notebook-instance",
+		"name":                "test_role",
+		"provider_config_key": "module.sagemaker-notebook-instance:aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance": {
+		"address": "module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance",
+		"config": {
+			"direct_internet_access": {
+				"constant_value": "Disabled",
+			},
+			"instance_type": {
+				"constant_value": "ml.t2.medium",
+			},
+			"name": {
+				"constant_value": "notebookinstance",
+			},
+			"role_arn": {
+				"references": [
+					"aws_iam_role.test_role.arn",
+					"aws_iam_role.test_role",
+				],
+			},
+			"subnet_id": {
+				"references": [
+					"aws_subnet.new_subnet.id",
+					"aws_subnet.new_subnet",
+				],
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "foo",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.sagemaker-notebook-instance",
+		"name":                "simple_notebook_instance",
+		"provider_config_key": "module.sagemaker-notebook-instance:aws",
+		"provisioners":        [],
+		"type":                "aws_sagemaker_notebook_instance",
+	},
+	"module.sagemaker-notebook-instance.aws_subnet.new_subnet": {
+		"address": "module.sagemaker-notebook-instance.aws_subnet.new_subnet",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.1.0/24",
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.main.id",
+					"aws_vpc.main",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.sagemaker-notebook-instance",
+		"name":                "new_subnet",
+		"provider_config_key": "module.sagemaker-notebook-instance:aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"module.sagemaker-notebook-instance.aws_vpc.main": {
+		"address": "module.sagemaker-notebook-instance.aws_vpc.main",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.0.0/16",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "module.sagemaker-notebook-instance",
+		"name":                "main",
+		"provider_config_key": "module.sagemaker-notebook-instance:aws",
+		"provisioners":        [],
+		"type":                "aws_vpc",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {
+	"sagemaker-notebook-instance": {
+		"config":             {},
+		"count":              {},
+		"depends_on":         [],
+		"for_each":           {},
+		"module_address":     "",
+		"name":               "sagemaker-notebook-instance",
+		"source":             "./sagemaker-notebook-instance",
+		"version_constraint": "",
+	},
+}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
