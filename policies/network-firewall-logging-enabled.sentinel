@@ -4,6 +4,7 @@
 import "tfconfig/v2" as tfconfig
 import "tfresources" as tf
 import "report" as report
+import "collection" as collection
 import "collection/maps" as maps
 import "strings"
 
@@ -17,14 +18,6 @@ const = {
 }
 
 # Functions
-
-build_violation_object = func(res) {
-	return {
-		"address":        res.address,
-		"module_address": res.module_address,
-		"message":        const.message,
-	}
-}
 
 get_referenced_resource_address = func(res, attr) {
 	references_list = maps.get(res, attr, [])
@@ -61,16 +54,19 @@ for aws_networkfirewall_logging_configurations as _, aws_networkfirewall_logging
 // Get all the aws_networkfirewall_firewall resources
 aws_networkfirewall_firewalls = config_resources.type(const.resource_aws_networkfirewall_firewall).resources
 
-violations = []
-for aws_networkfirewall_firewalls as _, res {
-	if res.address not in referenced_networkfirewall_firewalls {
-		append(violations, build_violation_object(res))
-	}
-}
+violations = collection.reject(aws_networkfirewall_firewalls, func(res) {
+	return res.address in referenced_networkfirewall_firewalls
+})
 
 summary = {
 	"policy_name": const.policy_name,
-	"violations":  violations,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
 }
 
 # Outputs
