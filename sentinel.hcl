@@ -285,6 +285,11 @@ policy "rds-ensure-cluster-backtracking-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-instance-deployed-in-vpc" {
+  source = "./policies/rds-instance-deployed-in-vpc.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "s3-block-public-access-account-level" {
     source = "./policies/s3-block-public-access-account-level.sentinel"
     enforcement_level = "advisory"
