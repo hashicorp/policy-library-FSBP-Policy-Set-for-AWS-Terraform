@@ -13,4 +13,5 @@ resource "aws_db_instance" "default" {
   parameter_group_name  = "default.mysql8.0"
   skip_final_snapshot   = true
   copy_tags_to_snapshot = true
+  vpc_security_group_ids = ["sg-1"]
 }
