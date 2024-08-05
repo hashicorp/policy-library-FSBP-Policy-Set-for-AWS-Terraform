@@ -418,7 +418,22 @@ policy "neptune-cluster-snapshot-encryption-at-rest-enabled" {
  enforcement_level = "advisory"
 }
 
+policy "sagemaker-notebook-no-direct-internet-access" {
+  source = "./policies/sagemaker-notebook-no-direct-internet-access.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "sagemaker-notebook-ensure-subnet-id-for-instance" {
   source = "./policies/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "sagemaker-notebook-instance-root-access-check" {
+  source = "./policies/sagemaker-notebook-instance-root-access-check.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "network-firewall-logging-enabled" {
+  source = "./policies/network-firewall-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }

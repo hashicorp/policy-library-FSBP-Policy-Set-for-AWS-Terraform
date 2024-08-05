@@ -1,0 +1,788 @@
+terraform_version = "1.9.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_role.test_role": {
+			"address":        "aws_iam_role.test_role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "test_role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags": {
+					"tag-key": "tag-value",
+				},
+				"tags_all": {
+					"tag-key": "tag-value",
+				},
+			},
+		},
+		"aws_sagemaker_notebook_instance.simple_notebook_instance": {
+			"address":        "aws_sagemaker_notebook_instance.simple_notebook_instance",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "simple_notebook_instance",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_notebook_instance",
+			"values": {
+				"additional_code_repositories": null,
+				"default_code_repository":      null,
+				"direct_internet_access":       "Enabled",
+				"instance_type":                "ml.t2.medium",
+				"kms_key_id":                   null,
+				"lifecycle_config_name":        null,
+				"name":                         "notebookinstance",
+				"root_access":                  "Disabled",
+				"subnet_id":                    null,
+				"tags": {
+					"Name": "foo",
+				},
+				"tags_all": {
+					"Name": "foo",
+				},
+				"volume_size": 5,
+			},
+		},
+		"module.sagemaker-notebook-instance.aws_iam_role.test_role": {
+			"address":        "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.sagemaker-notebook-instance",
+			"name":           "test_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "test_role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags": {
+					"tag-key": "tag-value",
+				},
+				"tags_all": {
+					"tag-key": "tag-value",
+				},
+			},
+		},
+		"module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance": {
+			"address":        "module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "module.sagemaker-notebook-instance",
+			"name":           "simple_notebook_instance",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_notebook_instance",
+			"values": {
+				"additional_code_repositories": null,
+				"default_code_repository":      null,
+				"direct_internet_access":       "Enabled",
+				"instance_type":                "ml.t2.medium",
+				"kms_key_id":                   null,
+				"lifecycle_config_name":        null,
+				"name":                         "my-notebook-instance",
+				"root_access":                  "Disabled",
+				"subnet_id":                    null,
+				"tags": {
+					"Name": "foo",
+				},
+				"tags_all": {
+					"Name": "foo",
+				},
+				"volume_size": 5,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_iam_role.test_role": {
+		"address": "aws_iam_role.test_role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "test_role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags": {
+					"tag-key": "tag-value",
+				},
+				"tags_all": {
+					"tag-key": "tag-value",
+				},
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags":                {},
+				"tags_all":            {},
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test_role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_sagemaker_notebook_instance.simple_notebook_instance": {
+		"address": "aws_sagemaker_notebook_instance.simple_notebook_instance",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"additional_code_repositories": null,
+				"default_code_repository":      null,
+				"direct_internet_access":       "Enabled",
+				"instance_type":                "ml.t2.medium",
+				"kms_key_id":                   null,
+				"lifecycle_config_name":        null,
+				"name":                         "notebookinstance",
+				"root_access":                  "Disabled",
+				"subnet_id":                    null,
+				"tags": {
+					"Name": "foo",
+				},
+				"tags_all": {
+					"Name": "foo",
+				},
+				"volume_size": 5,
+			},
+			"after_unknown": {
+				"arn": true,
+				"id":  true,
+				"network_interface_id": true,
+				"platform_identifier":  true,
+				"role_arn":             true,
+				"security_groups":      true,
+				"tags":                 {},
+				"tags_all":             {},
+				"url":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "simple_notebook_instance",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_notebook_instance",
+	},
+	"module.sagemaker-notebook-instance.aws_iam_role.test_role": {
+		"address": "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "test_role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags": {
+					"tag-key": "tag-value",
+				},
+				"tags_all": {
+					"tag-key": "tag-value",
+				},
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags":                {},
+				"tags_all":            {},
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.sagemaker-notebook-instance",
+		"name":           "test_role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance": {
+		"address": "module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"additional_code_repositories": null,
+				"default_code_repository":      null,
+				"direct_internet_access":       "Enabled",
+				"instance_type":                "ml.t2.medium",
+				"kms_key_id":                   null,
+				"lifecycle_config_name":        null,
+				"name":                         "my-notebook-instance",
+				"root_access":                  "Disabled",
+				"subnet_id":                    null,
+				"tags": {
+					"Name": "foo",
+				},
+				"tags_all": {
+					"Name": "foo",
+				},
+				"volume_size": 5,
+			},
+			"after_unknown": {
+				"arn": true,
+				"id":  true,
+				"network_interface_id": true,
+				"platform_identifier":  true,
+				"role_arn":             true,
+				"security_groups":      true,
+				"tags":                 {},
+				"tags_all":             {},
+				"url":                  true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "module.sagemaker-notebook-instance",
+		"name":           "simple_notebook_instance",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_notebook_instance",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 3.0",
+			},
+		},
+		"root_module": {
+			"module_calls": {
+				"sagemaker-notebook-instance": {
+					"expressions": {
+						"root_access_variable": {
+							"constant_value": "Disabled",
+						},
+					},
+					"module": {
+						"resources": [
+							{
+								"address": "aws_iam_role.test_role",
+								"expressions": {
+									"assume_role_policy": {},
+									"name": {
+										"constant_value": "test_role",
+									},
+									"tags": {
+										"constant_value": {
+											"tag-key": "tag-value",
+										},
+									},
+								},
+								"mode":                "managed",
+								"name":                "test_role",
+								"provider_config_key": "aws",
+								"schema_version":      0,
+								"type":                "aws_iam_role",
+							},
+							{
+								"address": "aws_sagemaker_notebook_instance.simple_notebook_instance",
+								"expressions": {
+									"instance_type": {
+										"constant_value": "ml.t2.medium",
+									},
+									"name": {
+										"constant_value": "my-notebook-instance",
+									},
+									"role_arn": {
+										"references": [
+											"aws_iam_role.test_role.arn",
+											"aws_iam_role.test_role",
+										],
+									},
+									"root_access": {
+										"references": [
+											"var.root_access_variable",
+										],
+									},
+									"tags": {
+										"constant_value": {
+											"Name": "foo",
+										},
+									},
+								},
+								"mode":                "managed",
+								"name":                "simple_notebook_instance",
+								"provider_config_key": "aws",
+								"schema_version":      0,
+								"type":                "aws_sagemaker_notebook_instance",
+							},
+						],
+						"variables": {
+							"root_access_variable": {},
+						},
+					},
+					"source": "./sagemaker-notebook-instance",
+				},
+			},
+			"resources": [
+				{
+					"address": "aws_iam_role.test_role",
+					"expressions": {
+						"assume_role_policy": {},
+						"name": {
+							"constant_value": "test_role",
+						},
+						"tags": {
+							"constant_value": {
+								"tag-key": "tag-value",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "test_role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_sagemaker_notebook_instance.simple_notebook_instance",
+					"expressions": {
+						"direct_internet_access": {
+							"constant_value": "Enabled",
+						},
+						"instance_type": {
+							"constant_value": "ml.t2.medium",
+						},
+						"name": {
+							"constant_value": "notebookinstance",
+						},
+						"role_arn": {
+							"references": [
+								"aws_iam_role.test_role.arn",
+								"aws_iam_role.test_role",
+							],
+						},
+						"root_access": {
+							"constant_value": "Disabled",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "foo",
+							},
+						},
+					},
+					"mode":                "managed",
+					"name":                "simple_notebook_instance",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_notebook_instance",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"child_modules": [
+				{
+					"address": "module.sagemaker-notebook-instance",
+					"resources": [
+						{
+							"address":        "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+							"mode":           "managed",
+							"name":           "test_role",
+							"provider_name":  "registry.terraform.io/hashicorp/aws",
+							"schema_version": 0,
+							"sensitive_values": {
+								"inline_policy":       [],
+								"managed_policy_arns": [],
+								"tags":                {},
+								"tags_all":            {},
+							},
+							"type": "aws_iam_role",
+							"values": {
+								"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+								"description":           null,
+								"force_detach_policies": false,
+								"max_session_duration":  3600,
+								"name":                  "test_role",
+								"path":                  "/",
+								"permissions_boundary":  null,
+								"tags": {
+									"tag-key": "tag-value",
+								},
+								"tags_all": {
+									"tag-key": "tag-value",
+								},
+							},
+						},
+						{
+							"address":        "module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance",
+							"mode":           "managed",
+							"name":           "simple_notebook_instance",
+							"provider_name":  "registry.terraform.io/hashicorp/aws",
+							"schema_version": 0,
+							"sensitive_values": {
+								"security_groups": [],
+								"tags":            {},
+								"tags_all":        {},
+							},
+							"type": "aws_sagemaker_notebook_instance",
+							"values": {
+								"additional_code_repositories": null,
+								"default_code_repository":      null,
+								"direct_internet_access":       "Enabled",
+								"instance_type":                "ml.t2.medium",
+								"kms_key_id":                   null,
+								"lifecycle_config_name":        null,
+								"name":                         "my-notebook-instance",
+								"root_access":                  "Disabled",
+								"subnet_id":                    null,
+								"tags": {
+									"Name": "foo",
+								},
+								"tags_all": {
+									"Name": "foo",
+								},
+								"volume_size": 5,
+							},
+						},
+					],
+				},
+			],
+			"resources": [
+				{
+					"address":        "aws_iam_role.test_role",
+					"mode":           "managed",
+					"name":           "test_role",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags":                {},
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "test_role",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags": {
+							"tag-key": "tag-value",
+						},
+						"tags_all": {
+							"tag-key": "tag-value",
+						},
+					},
+				},
+				{
+					"address":        "aws_sagemaker_notebook_instance.simple_notebook_instance",
+					"mode":           "managed",
+					"name":           "simple_notebook_instance",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"security_groups": [],
+						"tags":            {},
+						"tags_all":        {},
+					},
+					"type": "aws_sagemaker_notebook_instance",
+					"values": {
+						"additional_code_repositories": null,
+						"default_code_repository":      null,
+						"direct_internet_access":       "Enabled",
+						"instance_type":                "ml.t2.medium",
+						"kms_key_id":                   null,
+						"lifecycle_config_name":        null,
+						"name":                         "notebookinstance",
+						"root_access":                  "Disabled",
+						"subnet_id":                    null,
+						"tags": {
+							"Name": "foo",
+						},
+						"tags_all": {
+							"Name": "foo",
+						},
+						"volume_size": 5,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_iam_role.test_role",
+		},
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_iam_role.test_role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "test_role",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags": {
+						"tag-key": "tag-value",
+					},
+					"tags_all": {
+						"tag-key": "tag-value",
+					},
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags":                {},
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags":                {},
+					"tags_all":            {},
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test_role",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_sagemaker_notebook_instance.simple_notebook_instance",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"additional_code_repositories": null,
+					"default_code_repository":      null,
+					"direct_internet_access":       "Enabled",
+					"instance_type":                "ml.t2.medium",
+					"kms_key_id":                   null,
+					"lifecycle_config_name":        null,
+					"name":                         "notebookinstance",
+					"root_access":                  "Disabled",
+					"subnet_id":                    null,
+					"tags": {
+						"Name": "foo",
+					},
+					"tags_all": {
+						"Name": "foo",
+					},
+					"volume_size": 5,
+				},
+				"after_sensitive": {
+					"security_groups": [],
+					"tags":            {},
+					"tags_all":        {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"id":  true,
+					"network_interface_id": true,
+					"platform_identifier":  true,
+					"role_arn":             true,
+					"security_groups":      true,
+					"tags":                 {},
+					"tags_all":             {},
+					"url":                  true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "simple_notebook_instance",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_notebook_instance",
+		},
+		{
+			"address": "module.sagemaker-notebook-instance.aws_iam_role.test_role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "test_role",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags": {
+						"tag-key": "tag-value",
+					},
+					"tags_all": {
+						"tag-key": "tag-value",
+					},
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags":                {},
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags":                {},
+					"tags_all":            {},
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.sagemaker-notebook-instance",
+			"name":           "test_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_iam_role",
+		},
+		{
+			"address": "module.sagemaker-notebook-instance.aws_sagemaker_notebook_instance.simple_notebook_instance",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"additional_code_repositories": null,
+					"default_code_repository":      null,
+					"direct_internet_access":       "Enabled",
+					"instance_type":                "ml.t2.medium",
+					"kms_key_id":                   null,
+					"lifecycle_config_name":        null,
+					"name":                         "my-notebook-instance",
+					"root_access":                  "Disabled",
+					"subnet_id":                    null,
+					"tags": {
+						"Name": "foo",
+					},
+					"tags_all": {
+						"Name": "foo",
+					},
+					"volume_size": 5,
+				},
+				"after_sensitive": {
+					"security_groups": [],
+					"tags":            {},
+					"tags_all":        {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"id":  true,
+					"network_interface_id": true,
+					"platform_identifier":  true,
+					"role_arn":             true,
+					"security_groups":      true,
+					"tags":                 {},
+					"tags_all":             {},
+					"url":                  true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":           "managed",
+			"module_address": "module.sagemaker-notebook-instance",
+			"name":           "simple_notebook_instance",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"type":           "aws_sagemaker_notebook_instance",
+		},
+	],
+	"terraform_version": "1.9.2",
+	"timestamp":         "2024-07-28T16:42:34Z",
+}

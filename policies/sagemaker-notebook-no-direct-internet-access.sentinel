@@ -1,0 +1,51 @@
+# This policy checks if resources of type 'aws_sagemaker_notebook_instance' have the 'direct_internet_access'
+# attribute set to "Disabled"
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "json"
+
+# Constants
+const = {
+	"policy_name": "sagemaker-notebook-no-direct-internet-access",
+	"message":     "Attribute 'direct_internet_access' should be Disabled for AWS Sagemaker Notebook Instance. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-1 for more details.",
+	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
+	"direct_internet_access_value_enabled":     "Enabled",
+	"direct_internet_access_value_disabled":    "Disabled",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return maps.get(res, "values.direct_internet_access", const.direct_internet_access_value_enabled) is const.direct_internet_access_value_disabled
+	})
+}
+
+# Variables
+
+sagemaker_notebooks = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_sagemaker_notebook_instance).resources
+violations = get_violations(sagemaker_notebooks)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
