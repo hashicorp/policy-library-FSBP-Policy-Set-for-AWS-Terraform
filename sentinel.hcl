@@ -285,6 +285,11 @@ policy "rds-ensure-cluster-backtracking-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "rds-instance-deployed-in-vpc" {
+  source = "./policies/rds-instance-deployed-in-vpc.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "s3-block-public-access-account-level" {
     source = "./policies/s3-block-public-access-account-level.sentinel"
     enforcement_level = "advisory"
@@ -431,6 +436,14 @@ policy "sagemaker-notebook-ensure-subnet-id-for-instance" {
 policy "sagemaker-notebook-instance-root-access-check" {
   source = "./policies/sagemaker-notebook-instance-root-access-check.sentinel"
   enforcement_level = "advisory"
+}
+
+policy "sagemaker-endpoint-config-prod-instance-count-check" {
+  source = "./policies/sagemaker-endpoint-config-prod-instance-count-check.sentinel"
+  enforcement_level = "advisory"
+  params = {
+    initial_instance_count_limit = 1
+  }
 }
 
 policy "network-firewall-logging-enabled" {

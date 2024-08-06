@@ -1,0 +1,58 @@
+# This policy checks if resources of type 'aws_sagemaker_endpoint_configuration' have the 'initial_instance_count'
+# in 'production_variants' attribute greater than 1
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Params
+
+param initial_instance_count_limit default 1
+
+# Constants
+
+const = {
+	"policy_name":                                   "sagemaker-endpoint-config-prod-instance-count-check",
+	"resource_aws_sagemaker_endpoint_configuration": "aws_sagemaker_endpoint_configuration",
+	"resource_production_variants":                  "production_variants",
+	"resource_initial_instance_count":               "initial_instance_count",
+}
+
+# Functions
+
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		production_variants_values = maps.get(res, "values.production_variants", [])
+		return collection.find(production_variants_values, func(variant) {
+			return (maps.get(variant, const.resource_initial_instance_count, 1) <= initial_instance_count_limit)
+		}) is not defined
+	})
+}
+
+# Variables
+
+sagemaker_notebooks = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_sagemaker_endpoint_configuration).resources
+violations = get_violations(sagemaker_notebooks)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Attribute 'initial_instance_count' should be greater than '" + string(initial_instance_count_limit) + "' for AWS Sagemaker Endpoint Configuration. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-4 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	initial_instance_count_limit >= 1 and violations is empty
+}
