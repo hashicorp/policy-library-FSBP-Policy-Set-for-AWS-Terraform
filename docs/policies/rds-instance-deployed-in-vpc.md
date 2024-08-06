@@ -54,8 +54,7 @@ This rule is covered by the [rds-instance-deployed-in-vpc](../../policies/rds-in
     → Module name: root
        ↳ Resource Address: aws_db_instance.default
          | ✗ failed
-         | Attribute 'vpc_security_group_ids' should be present with some values for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.
-
+         | Attribute 'db_subnet_group_name' should be present for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.
 
     rds-instance-deployed-in-vpc.sentinel:50:1 - Rule "main"
       Value:
