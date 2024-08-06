@@ -10,7 +10,7 @@ import "json"
 # Constants
 const = {
 	"policy_name":  "rds-instance-deployed-in-vpc",
-	"message":      "Attribute 'vpc_security_group_ids' should be present with some values for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.",
+	"message":      "Attribute 'db_subnet_group_name' should be present for aws_db_instance resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-18 for more details.",
 	"rds_resource": "aws_db_instance",
 }
 
@@ -28,8 +28,8 @@ build_violation_object = func(res, message) {
 
 rds_resources = tf.plan(tfplan.planned_values.resources).type(const.rds_resource).resources
 violations = collection.reject(rds_resources, func(res) {
-	vpc_security_group_ids_key = "values.vpc_security_group_ids"
-	return length(maps.get(res, vpc_security_group_ids_key, [])) >= 1
+	db_subnet_group_name_key = "values.db_subnet_group_name"
+	return maps.get(res, db_subnet_group_name_key, "") is not empty
 })
 
 rds_violations = map violations as _, res {

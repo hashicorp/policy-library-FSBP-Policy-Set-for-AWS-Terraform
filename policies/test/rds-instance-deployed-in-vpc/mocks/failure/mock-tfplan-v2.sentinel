@@ -51,7 +51,7 @@ planned_values = {
 				"tags":                                null,
 				"timeouts":                            null,
 				"username":                            "foo",
-				"vpc_security_group_ids":              [],
+				"db_subnet_group_name":                "",
 			},
 		},
 	},
