@@ -8,7 +8,7 @@ resource "aws_networkfirewall_firewall_policy" "example" {
   firewall_policy {
     stateless_default_actions          = ["aws:pass"]
     stateless_fragment_default_actions = ["aws:drop"]
-    tls_inspection_configuration_arn = "arn:aws:network-firewall:REGION:ACCT:tls-configuration/example"
+    tls_inspection_configuration_arn   = "arn:aws:network-firewall:REGION:ACCT:tls-configuration/example"
   }
 
   tags = {
