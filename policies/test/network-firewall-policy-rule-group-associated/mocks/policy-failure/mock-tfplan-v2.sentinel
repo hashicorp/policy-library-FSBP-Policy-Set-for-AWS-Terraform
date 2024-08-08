@@ -1,0 +1,101 @@
+terraform_version = "1.7.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_networkfirewall_firewall_policy.example": {
+			"address":        "aws_networkfirewall_firewall_policy.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_firewall_policy",
+			"values": {
+				"description":              null,
+				"encryption_configuration": [],
+				"firewall_policy": [
+					{
+						"policy_variables":              [],
+						"stateful_default_actions":      null,
+						"stateful_engine_options":       [],
+						"stateful_rule_group_reference": [],
+						"stateless_custom_action":       [],
+						"stateless_default_actions": [
+							"aws:pass",
+						],
+						"stateless_fragment_default_actions": [
+							"aws:drop",
+						],
+						"tls_inspection_configuration_arn": "arn:aws:network-firewall:REGION:ACCT:tls-configuration/example",
+					},
+				],
+				"name": "example",
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+			},
+		},
+		"aws_networkfirewall_rule_group.example": {
+			"address":        "aws_networkfirewall_rule_group.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_rule_group",
+			"values": {
+				"capacity":                 100,
+				"description":              null,
+				"encryption_configuration": [],
+				"name": "example",
+				"rule_group": [
+					{
+						"reference_sets": [],
+						"rule_variables": [],
+						"rules_source": [
+							{
+								"rules_source_list": [
+									{
+										"generated_rules_type": "DENYLIST",
+										"target_types": [
+											"HTTP_HOST",
+										],
+										"targets": [
+											"test.example.com",
+										],
+									},
+								],
+								"rules_string":                       null,
+								"stateful_rule":                      [],
+								"stateless_rules_and_custom_actions": [],
+							},
+						],
+						"stateful_rule_options": [],
+					},
+				],
+				"rules": null,
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"type": "STATEFUL",
+			},
+		},
+	},
+}

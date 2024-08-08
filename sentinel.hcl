@@ -455,3 +455,8 @@ policy "network-firewall-logging-enabled" {
   source = "./policies/network-firewall-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "network-firewall-policy-rule-group-associated" {
+  source = "./policies/network-firewall-policy-rule-group-associated.sentinel"
+  enforcement_level = "advisory"
+}

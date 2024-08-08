@@ -1,0 +1,51 @@
+# This policy requires atleast 1 rule group to be enabled for 'aws_networkfirewall_firewall_policy' resources
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":                  "network-firewall-policy-rule-group-associated",
+	"resource_aws_networkfirewall_firewall_policy": "aws_networkfirewall_firewall_policy",
+}
+
+# Functions
+get_violations = func(resources) {
+	return collection.reject(resources, func(res) {
+		return collection.find(res.values.firewall_policy,func(policy){
+			return length(maps.get(policy, "stateless_rule_group_reference", [])) is 0 and 
+		    length(maps.get(policy, "stateful_rule_group_reference ", [])) is 0
+		}) is not defined
+	})
+}
+
+# Variables
+
+aws_networkfirewall_firewall_policies = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_networkfirewall_firewall_policy).resources
+violations = get_violations(aws_networkfirewall_firewall_policies)
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        "Atleast 1 rule group is required for 'aws_networkfirewall_firewall_policy' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/networkfirewall-controls.html#networkfirewall-3 for more details.",
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
