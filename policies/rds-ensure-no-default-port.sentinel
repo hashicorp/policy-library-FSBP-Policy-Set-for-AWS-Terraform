@@ -59,7 +59,7 @@ rds_resources = rds_instances + rds_clusters
 violations = collection.reject(rds_resources, func(res) {
 	engine = maps.get(res, "values.engine", "")
 	default_port = maps.get(const, "default_ports." + engine, -1)
-	return default_port == -1  or maps.get(res, "values.port", default_port) is not default_port
+	return default_port == -1 or maps.get(res, "values.port", default_port) is not default_port
 })
 
 rds_violations = map violations as _, res {
