@@ -290,6 +290,11 @@ policy "rds-instance-deployed-in-vpc" {
   enforcement_level = "advisory"
 }
 
+policy "rds-ensure-no-default-port" {
+  source = "./policies/rds-ensure-no-default-port.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "s3-block-public-access-account-level" {
     source = "./policies/s3-block-public-access-account-level.sentinel"
     enforcement_level = "advisory"

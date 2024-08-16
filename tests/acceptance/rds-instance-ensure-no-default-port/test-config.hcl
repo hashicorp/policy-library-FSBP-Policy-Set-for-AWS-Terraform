@@ -1,4 +1,4 @@
-name = "rds-instance-ensure-no-default-port"
+name = "rds-ensure-no-default-port"
 
 disabled = false
 
