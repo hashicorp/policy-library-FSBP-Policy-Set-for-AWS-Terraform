@@ -12,7 +12,7 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql8.0"
   skip_final_snapshot  = true
-  port = 7051
+  port                 = 7051
 }
 
 resource "aws_rds_cluster" "default" {
@@ -25,5 +25,5 @@ resource "aws_rds_cluster" "default" {
   master_password         = "must_be_eight_characters"
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
-  port = 7052
+  port                    = 7052
 }
