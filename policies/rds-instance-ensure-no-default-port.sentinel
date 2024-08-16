@@ -1,0 +1,85 @@
+# This policy checks if the aws rds instances are publicly accessible
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+const = {
+	"policy_name":  "rds-instance-ensure-no-default-port",
+	"message":      "Attribute 'port' should be defined with non default port value for aws_db_instance and aws_rds_cluster resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-23 for more details.",
+	"rds_instance": "aws_db_instance",
+	"rds_cluster":  "rds_cluster",
+	"default_ports": {
+		"aurora-mysql":          3306,
+		"aurora-postgresql":     5432,
+		"custom-oracle-ee":      1521,
+		"custom-oracle-ee-cdb":  1521,
+		"custom-oracle-se2":     1521,
+		"custom-oracle-se2-cdb": 1521,
+		"custom-sqlserver-ee":   1433,
+		"custom-sqlserver-se":   1433,
+		"custom-sqlserver-web":  1433,
+		"db2-ae":                50000,
+		"db2-se":                50000,
+		"mariadb":               3306,
+		"mysql":                 3306,
+		"oracle":                1521,
+		"oracle-ee":             1521,
+		"oracle-ee-cbd":         1521,
+		"oracle-se2":            1521,
+		"oracle-se2-cbd":        1521,
+		"postgres":              5432,
+		"sqlserver":             1433,
+		"sqlserver-ee":          1433,
+		"sqlserver-se":          1433,
+		"sqlserver-ex":          1433,
+		"sqlserver-web":         1433,
+	},
+}
+
+# Functions
+
+build_violation_object = func(res, message) {
+	return {
+		"address":        res.address,
+		"module_address": res.module_address,
+		"message":        message,
+	}
+}
+
+# Variables
+
+rds_instances = tf.plan(tfplan.planned_values.resources).type(const.rds_instance).resources
+rds_clusters = tf.plan(tfplan.planned_values.resources).type(const.rds_cluster).resources
+rds_resources = rds_instances + rds_clusters
+violations = collection.reject(rds_resources, func(res) {
+	port = "values.port"
+	engine = maps.get(res, "values.engine", "")
+	default_port = maps.get(const, "default_ports." + engine, -1)
+	if default_port == -1 {
+		return true
+	}
+	return maps.get(res, port, default_port) is not default_port
+})
+
+rds_violations = map violations as _, res {
+	build_violation_object(res, const.message)
+}
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations":  rds_violations,
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
