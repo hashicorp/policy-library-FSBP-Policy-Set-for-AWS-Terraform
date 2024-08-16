@@ -52,8 +52,9 @@ build_violation_object = func(res, message) {
 
 # Variables
 
-rds_instances = tf.plan(tfplan.planned_values.resources).type(const.rds_instance).resources
-rds_clusters = tf.plan(tfplan.planned_values.resources).type(const.rds_cluster).resources
+resources = tf.plan(tfplan.planned_values.resources)
+rds_instances = resources.type(const.rds_instance).resources
+rds_clusters = resources.type(const.rds_cluster).resources
 rds_resources = rds_instances + rds_clusters
 violations = collection.reject(rds_resources, func(res) {
 	engine = maps.get(res, "values.engine", "")
