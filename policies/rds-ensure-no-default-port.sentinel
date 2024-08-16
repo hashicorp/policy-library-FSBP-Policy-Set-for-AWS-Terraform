@@ -56,13 +56,12 @@ rds_instances = tf.plan(tfplan.planned_values.resources).type(const.rds_instance
 rds_clusters = tf.plan(tfplan.planned_values.resources).type(const.rds_cluster).resources
 rds_resources = rds_instances + rds_clusters
 violations = collection.reject(rds_resources, func(res) {
-	port = "values.port"
 	engine = maps.get(res, "values.engine", "")
 	default_port = maps.get(const, "default_ports." + engine, -1)
 	if default_port == -1 {
 		return true
 	}
-	return maps.get(res, port, default_port) is not default_port
+	return maps.get(res, "values.port", default_port) is not default_port
 })
 
 rds_violations = map violations as _, res {
