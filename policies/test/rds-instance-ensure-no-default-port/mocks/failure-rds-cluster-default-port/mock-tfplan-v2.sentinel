@@ -99,7 +99,7 @@ planned_values = {
 				"master_password":              "REDACTED_SENSITIVE",
 				"master_username":              "foo",
 				"performance_insights_enabled": null,
-				"port": 7052,
+				"port": 3306,
 				"preferred_backup_window":            "07:00-09:00",
 				"replication_source_identifier":      null,
 				"restore_to_point_in_time":           [],

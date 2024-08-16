@@ -42,7 +42,6 @@ planned_values = {
 				"parameter_group_name":                "default.mysql8.0",
 				"password":                            "REDACTED_SENSITIVE",
 				"performance_insights_enabled":        false,
-				"port":                     7051,
 				"publicly_accessible":      false,
 				"replicate_source_db":      null,
 				"restore_to_point_in_time": [],

@@ -11,7 +11,7 @@ const = {
 	"policy_name":  "rds-instance-ensure-no-default-port",
 	"message":      "Attribute 'port' should be defined with non default port value for aws_db_instance and aws_rds_cluster resource. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-23 for more details.",
 	"rds_instance": "aws_db_instance",
-	"rds_cluster":  "rds_cluster",
+	"rds_cluster":  "aws_rds_cluster",
 	"default_ports": {
 		"aurora-mysql":          3306,
 		"aurora-postgresql":     5432,
