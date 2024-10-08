@@ -1,4 +1,4 @@
-name = "aws-macie-status-should-be-enabled"
+name = "msk-in-cluster-node-require-encrypted-in-transit"
 
 disabled = false
 
