@@ -1,30 +1,28 @@
 # This policy checks if resources of type 'aws_iam_policy_document'
 # contain blocked action patterns such as 'kms:ReEncryptFrom' and 'kms:Decrypt'
 
-import "tfplan/v2" as tfplan
+import "tfstate/v2" as tfstate
 import "tfresources" as tf
 import "report" as report
 import "collection" as collection
 import "collection/maps" as maps
-import "json"
 
 # Constants
 
 const = {
-	"policy_name":             "kms-restrict-iam-inline-policies-decrypt-all-kms-keys",
-	"message":                 "Actions 'kms:ReEncryptFrom' and 'kms:Decrypt' must not be allowed on all 'KMS keys'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kms-controls.html#kms-2 for more details.",
-	"resource_aws_iam_policy": "aws_iam_policy",
+	"policy_name":                      "kms-restrict-iam-inline-policies-decrypt-all-kms-keys",
+	"message":                          "Actions 'kms:ReEncryptFrom' and 'kms:Decrypt' must not be allowed on all 'KMS keys'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/kms-controls.html#kms-2 for more details.",
+	"resource_aws_iam_policy_document": "aws_iam_policy_document",
 }
 
 # Functions
 
 get_violations = func(resources) {
 	return collection.reject(resources, func(res) {
-		policy_json = maps.get(res, "values.policy", "")
-		policies = json.unmarshal(policy_json)
-		for maps.get(policies, "Statement", []) as action {
-			actions = maps.get(action, "Action", [])
-			if "kms:ReEncryptFrom" in actions or "kms:Decrypt" in actions {
+		statements = maps.get(res, "values.statement", [])
+		for statements as statement {
+			actions = maps.get(statement, "actions", [])
+			if actions contains "kms:ReEncryptFrom" or actions contains "kms:Decrypt" {
 				return false
 			}
 		}
@@ -34,8 +32,8 @@ get_violations = func(resources) {
 
 # Variables
 
-iam_inline_policies = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_iam_policy).resources
-violations = get_violations(iam_inline_policies)
+policy_document = tf.state(tfstate.resources).type(const.resource_aws_iam_policy_document).resources
+violations = get_violations(policy_document)
 
 summary = {
 	"policy_name": const.policy_name,

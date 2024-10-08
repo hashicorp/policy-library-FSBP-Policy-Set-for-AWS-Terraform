@@ -1,0 +1,1121 @@
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_dms_replication_instance.this": {
+			"address":        "aws_dms_replication_instance.this",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "this",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_dms_replication_instance",
+			"values": {
+				"allocated_storage":            20,
+				"allow_major_version_upgrade":  null,
+				"apply_immediately":            true,
+				"auto_minor_version_upgrade":   true,
+				"availability_zone":            "us-west-2c",
+				"engine_version":               "3.1.4",
+				"kms_key_arn":                  "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+				"multi_az":                     false,
+				"preferred_maintenance_window": "sun:10:30-sun:14:30",
+				"publicly_accessible":          false,
+				"replication_instance_class":   "dms.t2.micro",
+				"replication_instance_id":      "test-dms-replication-instance-tf",
+				"tags": {
+					"Name": "test",
+				},
+				"tags_all": {
+					"Name": "test",
+				},
+				"timeouts": null,
+				"vpc_security_group_ids": [
+					"sg-12345678",
+				],
+			},
+		},
+		"aws_iam_role.dms-access-for-endpoint": {
+			"address":        "aws_iam_role.dms-access-for-endpoint",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-access-for-endpoint",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-access-for-endpoint",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role.dms-cloudwatch-logs-role": {
+			"address":        "aws_iam_role.dms-cloudwatch-logs-role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-cloudwatch-logs-role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-cloudwatch-logs-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role.dms-vpc-role": {
+			"address":        "aws_iam_role.dms-vpc-role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-vpc-role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-vpc-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role": {
+			"address":        "aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy_attachment",
+			"values": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
+				"role":       "dms-access-for-endpoint",
+			},
+		},
+		"aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole": {
+			"address":        "aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy_attachment",
+			"values": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole",
+				"role":       "dms-cloudwatch-logs-role",
+			},
+		},
+		"aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole": {
+			"address":        "aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "dms-vpc-role-AmazonDMSVPCManagementRole",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy_attachment",
+			"values": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole",
+				"role":       "dms-vpc-role",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_dms_replication_instance.this": {
+		"address": "aws_dms_replication_instance.this",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allocated_storage":            20,
+				"allow_major_version_upgrade":  null,
+				"apply_immediately":            true,
+				"auto_minor_version_upgrade":   true,
+				"availability_zone":            "us-west-2c",
+				"engine_version":               "3.1.4",
+				"kms_key_arn":                  "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+				"multi_az":                     false,
+				"preferred_maintenance_window": "sun:10:30-sun:14:30",
+				"publicly_accessible":          false,
+				"replication_instance_class":   "dms.t2.micro",
+				"replication_instance_id":      "test-dms-replication-instance-tf",
+				"tags": {
+					"Name": "test",
+				},
+				"tags_all": {
+					"Name": "test",
+				},
+				"timeouts": null,
+				"vpc_security_group_ids": [
+					"sg-12345678",
+				],
+			},
+			"after_unknown": {
+				"id":                               true,
+				"network_type":                     true,
+				"replication_instance_arn":         true,
+				"replication_instance_private_ips": true,
+				"replication_instance_public_ips":  true,
+				"replication_subnet_group_id":      true,
+				"tags":     {},
+				"tags_all": {},
+				"vpc_security_group_ids": [
+					false,
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "this",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_dms_replication_instance",
+	},
+	"aws_iam_role.dms-access-for-endpoint": {
+		"address": "aws_iam_role.dms-access-for-endpoint",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-access-for-endpoint",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags_all":            true,
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-access-for-endpoint",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_iam_role.dms-cloudwatch-logs-role": {
+		"address": "aws_iam_role.dms-cloudwatch-logs-role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-cloudwatch-logs-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags_all":            true,
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-cloudwatch-logs-role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_iam_role.dms-vpc-role": {
+		"address": "aws_iam_role.dms-vpc-role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "dms-vpc-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags_all":            true,
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-vpc-role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role": {
+		"address": "aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
+				"role":       "dms-access-for-endpoint",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role_policy_attachment",
+	},
+	"aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole": {
+		"address": "aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole",
+				"role":       "dms-cloudwatch-logs-role",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role_policy_attachment",
+	},
+	"aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole": {
+		"address": "aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole",
+				"role":       "dms-vpc-role",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "dms-vpc-role-AmazonDMSVPCManagementRole",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role_policy_attachment",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_dms_replication_instance.this",
+					"depends_on": [
+						"aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+						"aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+						"aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+					],
+					"expressions": {
+						"allocated_storage": {
+							"constant_value": 20,
+						},
+						"apply_immediately": {
+							"constant_value": true,
+						},
+						"auto_minor_version_upgrade": {
+							"constant_value": true,
+						},
+						"availability_zone": {
+							"constant_value": "us-west-2c",
+						},
+						"engine_version": {
+							"constant_value": "3.1.4",
+						},
+						"kms_key_arn": {
+							"constant_value": "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+						},
+						"multi_az": {
+							"constant_value": false,
+						},
+						"preferred_maintenance_window": {
+							"constant_value": "sun:10:30-sun:14:30",
+						},
+						"publicly_accessible": {
+							"constant_value": false,
+						},
+						"replication_instance_class": {
+							"constant_value": "dms.t2.micro",
+						},
+						"replication_instance_id": {
+							"constant_value": "test-dms-replication-instance-tf",
+						},
+						"tags": {
+							"constant_value": {
+								"Name": "test",
+							},
+						},
+						"vpc_security_group_ids": {
+							"constant_value": [
+								"sg-12345678",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "this",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_dms_replication_instance",
+				},
+				{
+					"address": "aws_iam_role.dms-access-for-endpoint",
+					"expressions": {
+						"assume_role_policy": {
+							"references": [
+								"data.aws_iam_policy_document.dms_assume_role.json",
+								"data.aws_iam_policy_document.dms_assume_role",
+							],
+						},
+						"name": {
+							"constant_value": "dms-access-for-endpoint",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-access-for-endpoint",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_iam_role.dms-cloudwatch-logs-role",
+					"expressions": {
+						"assume_role_policy": {
+							"references": [
+								"data.aws_iam_policy_document.dms_assume_role.json",
+								"data.aws_iam_policy_document.dms_assume_role",
+							],
+						},
+						"name": {
+							"constant_value": "dms-cloudwatch-logs-role",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-cloudwatch-logs-role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_iam_role.dms-vpc-role",
+					"expressions": {
+						"assume_role_policy": {
+							"references": [
+								"data.aws_iam_policy_document.dms_assume_role.json",
+								"data.aws_iam_policy_document.dms_assume_role",
+							],
+						},
+						"name": {
+							"constant_value": "dms-vpc-role",
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-vpc-role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+					"expressions": {
+						"policy_arn": {
+							"constant_value": "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
+						},
+						"role": {
+							"references": [
+								"aws_iam_role.dms-access-for-endpoint.name",
+								"aws_iam_role.dms-access-for-endpoint",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role_policy_attachment",
+				},
+				{
+					"address": "aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+					"expressions": {
+						"policy_arn": {
+							"constant_value": "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole",
+						},
+						"role": {
+							"references": [
+								"aws_iam_role.dms-cloudwatch-logs-role.name",
+								"aws_iam_role.dms-cloudwatch-logs-role",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role_policy_attachment",
+				},
+				{
+					"address": "aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+					"expressions": {
+						"policy_arn": {
+							"constant_value": "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole",
+						},
+						"role": {
+							"references": [
+								"aws_iam_role.dms-vpc-role.name",
+								"aws_iam_role.dms-vpc-role",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "dms-vpc-role-AmazonDMSVPCManagementRole",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role_policy_attachment",
+				},
+				{
+					"address": "data.aws_iam_policy_document.dms_assume_role",
+					"expressions": {
+						"statement": [
+							{
+								"actions": {
+									"constant_value": [
+										"sts:AssumeRole",
+									],
+								},
+								"principals": [
+									{
+										"identifiers": {
+											"constant_value": [
+												"dms.amazonaws.com",
+											],
+										},
+										"type": {
+											"constant_value": "Service",
+										},
+									},
+								],
+							},
+						],
+					},
+					"mode":                "data",
+					"name":                "dms_assume_role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_policy_document",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_dms_replication_instance.this",
+					"mode":           "managed",
+					"name":           "this",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"replication_instance_private_ips": [],
+						"replication_instance_public_ips":  [],
+						"tags":     {},
+						"tags_all": {},
+						"vpc_security_group_ids": [
+							false,
+						],
+					},
+					"type": "aws_dms_replication_instance",
+					"values": {
+						"allocated_storage":            20,
+						"allow_major_version_upgrade":  null,
+						"apply_immediately":            true,
+						"auto_minor_version_upgrade":   true,
+						"availability_zone":            "us-west-2c",
+						"engine_version":               "3.1.4",
+						"kms_key_arn":                  "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+						"multi_az":                     false,
+						"preferred_maintenance_window": "sun:10:30-sun:14:30",
+						"publicly_accessible":          false,
+						"replication_instance_class":   "dms.t2.micro",
+						"replication_instance_id":      "test-dms-replication-instance-tf",
+						"tags": {
+							"Name": "test",
+						},
+						"tags_all": {
+							"Name": "test",
+						},
+						"timeouts": null,
+						"vpc_security_group_ids": [
+							"sg-12345678",
+						],
+					},
+				},
+				{
+					"address":        "aws_iam_role.dms-access-for-endpoint",
+					"mode":           "managed",
+					"name":           "dms-access-for-endpoint",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "dms-access-for-endpoint",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags":                  null,
+					},
+				},
+				{
+					"address":        "aws_iam_role.dms-cloudwatch-logs-role",
+					"mode":           "managed",
+					"name":           "dms-cloudwatch-logs-role",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "dms-cloudwatch-logs-role",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags":                  null,
+					},
+				},
+				{
+					"address":        "aws_iam_role.dms-vpc-role",
+					"mode":           "managed",
+					"name":           "dms-vpc-role",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "dms-vpc-role",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags":                  null,
+					},
+				},
+				{
+					"address":          "aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+					"mode":             "managed",
+					"name":             "dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_iam_role_policy_attachment",
+					"values": {
+						"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
+						"role":       "dms-access-for-endpoint",
+					},
+				},
+				{
+					"address":          "aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+					"mode":             "managed",
+					"name":             "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_iam_role_policy_attachment",
+					"values": {
+						"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole",
+						"role":       "dms-cloudwatch-logs-role",
+					},
+				},
+				{
+					"address":          "aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+					"mode":             "managed",
+					"name":             "dms-vpc-role-AmazonDMSVPCManagementRole",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_iam_role_policy_attachment",
+					"values": {
+						"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole",
+						"role":       "dms-vpc-role",
+					},
+				},
+			],
+		},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.9.4",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":        "data.aws_iam_policy_document.dms_assume_role",
+						"mode":           "data",
+						"name":           "dms_assume_role",
+						"provider_name":  "registry.terraform.io/hashicorp/aws",
+						"schema_version": 0,
+						"sensitive_values": {
+							"statement": [
+								{
+									"actions": [
+										false,
+									],
+									"condition":      [],
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												false,
+											],
+										},
+									],
+									"resources": [],
+								},
+							],
+						},
+						"type": "aws_iam_policy_document",
+						"values": {
+							"id":                        "3935035000",
+							"json":                      "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"dms.amazonaws.com\"\n      }\n    }\n  ]\n}",
+							"minified_json":             "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}]}",
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"source_policy_documents":   null,
+							"statement": [
+								{
+									"actions": [
+										"sts:AssumeRole",
+									],
+									"condition":      [],
+									"effect":         "Allow",
+									"not_actions":    [],
+									"not_principals": [],
+									"not_resources":  [],
+									"principals": [
+										{
+											"identifiers": [
+												"dms.amazonaws.com",
+											],
+											"type": "Service",
+										},
+									],
+									"resources": [],
+									"sid":       "",
+								},
+							],
+							"version": "2012-10-17",
+						},
+					},
+				],
+			},
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"json",
+			],
+			"resource": "data.aws_iam_policy_document.dms_assume_role",
+		},
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_iam_role.dms-cloudwatch-logs-role",
+		},
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_iam_role.dms-vpc-role",
+		},
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_iam_role.dms-access-for-endpoint",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_dms_replication_instance.this",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"allocated_storage":            20,
+					"allow_major_version_upgrade":  null,
+					"apply_immediately":            true,
+					"auto_minor_version_upgrade":   true,
+					"availability_zone":            "us-west-2c",
+					"engine_version":               "3.1.4",
+					"kms_key_arn":                  "arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012",
+					"multi_az":                     false,
+					"preferred_maintenance_window": "sun:10:30-sun:14:30",
+					"publicly_accessible":          false,
+					"replication_instance_class":   "dms.t2.micro",
+					"replication_instance_id":      "test-dms-replication-instance-tf",
+					"tags": {
+						"Name": "test",
+					},
+					"tags_all": {
+						"Name": "test",
+					},
+					"timeouts": null,
+					"vpc_security_group_ids": [
+						"sg-12345678",
+					],
+				},
+				"after_sensitive": {
+					"replication_instance_private_ips": [],
+					"replication_instance_public_ips":  [],
+					"tags":     {},
+					"tags_all": {},
+					"vpc_security_group_ids": [
+						false,
+					],
+				},
+				"after_unknown": {
+					"id":                               true,
+					"network_type":                     true,
+					"replication_instance_arn":         true,
+					"replication_instance_private_ips": true,
+					"replication_instance_public_ips":  true,
+					"replication_subnet_group_id":      true,
+					"tags":     {},
+					"tags_all": {},
+					"vpc_security_group_ids": [
+						false,
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "this",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_dms_replication_instance",
+		},
+		{
+			"address": "aws_iam_role.dms-access-for-endpoint",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "dms-access-for-endpoint",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags_all":            true,
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-access-for-endpoint",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_iam_role.dms-cloudwatch-logs-role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "dms-cloudwatch-logs-role",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags_all":            true,
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-cloudwatch-logs-role",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_iam_role.dms-vpc-role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dms.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "dms-vpc-role",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags_all":            true,
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-vpc-role",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_iam_role_policy_attachment.dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSRedshiftS3Role",
+					"role":       "dms-access-for-endpoint",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-access-for-endpoint-AmazonDMSRedshiftS3Role",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role_policy_attachment",
+		},
+		{
+			"address": "aws_iam_role_policy_attachment.dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSCloudWatchLogsRole",
+					"role":       "dms-cloudwatch-logs-role",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-cloudwatch-logs-role-AmazonDMSCloudWatchLogsRole",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role_policy_attachment",
+		},
+		{
+			"address": "aws_iam_role_policy_attachment.dms-vpc-role-AmazonDMSVPCManagementRole",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDMSVPCManagementRole",
+					"role":       "dms-vpc-role",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "dms-vpc-role-AmazonDMSVPCManagementRole",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role_policy_attachment",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-10-01T10:14:12Z",
+}

@@ -1,0 +1,1149 @@
+terraform_version = "1.9.5"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_networkfirewall_rule_group.example1": {
+			"address":        "aws_networkfirewall_rule_group.example1",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example1",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_rule_group",
+			"values": {
+				"capacity":                 100,
+				"description":              "Stateless Rate Limiting Rule",
+				"encryption_configuration": [],
+				"name":  "example",
+				"rules": null,
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"type": "STATELESS",
+			},
+		},
+		"aws_networkfirewall_rule_group.example2": {
+			"address":        "aws_networkfirewall_rule_group.example2",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example2",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_networkfirewall_rule_group",
+			"values": {
+				"capacity":                 100,
+				"description":              "Stateless Rate Limiting Rule",
+				"encryption_configuration": [],
+				"name": "example",
+				"rule_group": [
+					{
+						"reference_sets": [],
+						"rule_variables": [],
+						"rules_source": [
+							{
+								"rules_source_list": [],
+								"rules_string":      null,
+								"stateful_rule":     [],
+								"stateless_rules_and_custom_actions": [
+									{
+										"custom_action": [
+											{
+												"action_definition": [
+													{
+														"publish_metric_action": [
+															{
+																"dimension": [
+																	{
+																		"value": "2",
+																	},
+																],
+															},
+														],
+													},
+												],
+												"action_name": "ExampleMetricsAction",
+											},
+										],
+										"stateless_rule": [
+											{
+												"priority": 1,
+												"rule_definition": [
+													{
+														"actions": [
+															"ExampleMetricsAction",
+															"aws:pass",
+														],
+														"match_attributes": [
+															{
+																"destination": [
+																	{
+																		"address_definition": "124.1.1.5/32",
+																	},
+																],
+																"destination_port": [
+																	{
+																		"from_port": 443,
+																		"to_port":   443,
+																	},
+																],
+																"protocols": [
+																	6,
+																],
+																"source": [
+																	{
+																		"address_definition": "1.2.3.4/32",
+																	},
+																],
+																"source_port": [
+																	{
+																		"from_port": 443,
+																		"to_port":   443,
+																	},
+																],
+																"tcp_flag": [
+																	{
+																		"flags": [
+																			"SYN",
+																		],
+																		"masks": [
+																			"ACK",
+																			"SYN",
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+							},
+						],
+						"stateful_rule_options": [],
+					},
+				],
+				"rules": null,
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"type": "STATELESS",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_networkfirewall_rule_group.example1": {
+		"address": "aws_networkfirewall_rule_group.example1",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"capacity":                 100,
+				"description":              "Stateless Rate Limiting Rule",
+				"encryption_configuration": [],
+				"name":  "example",
+				"rules": null,
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"type": "STATELESS",
+			},
+			"after_unknown": {
+				"arn": true,
+				"encryption_configuration": [],
+				"id":           true,
+				"rule_group":   true,
+				"tags":         {},
+				"tags_all":     {},
+				"update_token": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example1",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_networkfirewall_rule_group",
+	},
+	"aws_networkfirewall_rule_group.example2": {
+		"address": "aws_networkfirewall_rule_group.example2",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"capacity":                 100,
+				"description":              "Stateless Rate Limiting Rule",
+				"encryption_configuration": [],
+				"name": "example",
+				"rule_group": [
+					{
+						"reference_sets": [],
+						"rule_variables": [],
+						"rules_source": [
+							{
+								"rules_source_list": [],
+								"rules_string":      null,
+								"stateful_rule":     [],
+								"stateless_rules_and_custom_actions": [
+									{
+										"custom_action": [
+											{
+												"action_definition": [
+													{
+														"publish_metric_action": [
+															{
+																"dimension": [
+																	{
+																		"value": "2",
+																	},
+																],
+															},
+														],
+													},
+												],
+												"action_name": "ExampleMetricsAction",
+											},
+										],
+										"stateless_rule": [
+											{
+												"priority": 1,
+												"rule_definition": [
+													{
+														"actions": [
+															"ExampleMetricsAction",
+															"aws:pass",
+														],
+														"match_attributes": [
+															{
+																"destination": [
+																	{
+																		"address_definition": "124.1.1.5/32",
+																	},
+																],
+																"destination_port": [
+																	{
+																		"from_port": 443,
+																		"to_port":   443,
+																	},
+																],
+																"protocols": [
+																	6,
+																],
+																"source": [
+																	{
+																		"address_definition": "1.2.3.4/32",
+																	},
+																],
+																"source_port": [
+																	{
+																		"from_port": 443,
+																		"to_port":   443,
+																	},
+																],
+																"tcp_flag": [
+																	{
+																		"flags": [
+																			"SYN",
+																		],
+																		"masks": [
+																			"ACK",
+																			"SYN",
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+							},
+						],
+						"stateful_rule_options": [],
+					},
+				],
+				"rules": null,
+				"tags": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"tags_all": {
+					"Tag1": "Value1",
+					"Tag2": "Value2",
+				},
+				"type": "STATELESS",
+			},
+			"after_unknown": {
+				"arn": true,
+				"encryption_configuration": [],
+				"id": true,
+				"rule_group": [
+					{
+						"reference_sets": [],
+						"rule_variables": [],
+						"rules_source": [
+							{
+								"rules_source_list": [],
+								"stateful_rule":     [],
+								"stateless_rules_and_custom_actions": [
+									{
+										"custom_action": [
+											{
+												"action_definition": [
+													{
+														"publish_metric_action": [
+															{
+																"dimension": [
+																	{},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+										"stateless_rule": [
+											{
+												"rule_definition": [
+													{
+														"actions": [
+															false,
+															false,
+														],
+														"match_attributes": [
+															{
+																"destination": [
+																	{},
+																],
+																"destination_port": [
+																	{},
+																],
+																"protocols": [
+																	false,
+																],
+																"source": [
+																	{},
+																],
+																"source_port": [
+																	{},
+																],
+																"tcp_flag": [
+																	{
+																		"flags": [
+																			false,
+																		],
+																		"masks": [
+																			false,
+																			false,
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+							},
+						],
+						"stateful_rule_options": [],
+					},
+				],
+				"tags":         {},
+				"tags_all":     {},
+				"update_token": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example2",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_networkfirewall_rule_group",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_networkfirewall_rule_group.example1",
+					"expressions": {
+						"capacity": {
+							"constant_value": 100,
+						},
+						"description": {
+							"constant_value": "Stateless Rate Limiting Rule",
+						},
+						"name": {
+							"constant_value": "example",
+						},
+						"tags": {
+							"constant_value": {
+								"Tag1": "Value1",
+								"Tag2": "Value2",
+							},
+						},
+						"type": {
+							"constant_value": "STATELESS",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example1",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_networkfirewall_rule_group",
+				},
+				{
+					"address": "aws_networkfirewall_rule_group.example2",
+					"expressions": {
+						"capacity": {
+							"constant_value": 100,
+						},
+						"description": {
+							"constant_value": "Stateless Rate Limiting Rule",
+						},
+						"name": {
+							"constant_value": "example",
+						},
+						"rule_group": [
+							{
+								"rules_source": [
+									{
+										"stateless_rules_and_custom_actions": [
+											{
+												"custom_action": [
+													{
+														"action_definition": [
+															{
+																"publish_metric_action": [
+																	{
+																		"dimension": [
+																			{
+																				"value": {
+																					"constant_value": "2",
+																				},
+																			},
+																		],
+																	},
+																],
+															},
+														],
+														"action_name": {
+															"constant_value": "ExampleMetricsAction",
+														},
+													},
+												],
+												"stateless_rule": [
+													{
+														"priority": {
+															"constant_value": 1,
+														},
+														"rule_definition": [
+															{
+																"actions": {
+																	"constant_value": [
+																		"aws:pass",
+																		"ExampleMetricsAction",
+																	],
+																},
+																"match_attributes": [
+																	{
+																		"destination": [
+																			{
+																				"address_definition": {
+																					"constant_value": "124.1.1.5/32",
+																				},
+																			},
+																		],
+																		"destination_port": [
+																			{
+																				"from_port": {
+																					"constant_value": 443,
+																				},
+																				"to_port": {
+																					"constant_value": 443,
+																				},
+																			},
+																		],
+																		"protocols": {
+																			"constant_value": [
+																				6,
+																			],
+																		},
+																		"source": [
+																			{
+																				"address_definition": {
+																					"constant_value": "1.2.3.4/32",
+																				},
+																			},
+																		],
+																		"source_port": [
+																			{
+																				"from_port": {
+																					"constant_value": 443,
+																				},
+																				"to_port": {
+																					"constant_value": 443,
+																				},
+																			},
+																		],
+																		"tcp_flag": [
+																			{
+																				"flags": {
+																					"constant_value": [
+																						"SYN",
+																					],
+																				},
+																				"masks": {
+																					"constant_value": [
+																						"SYN",
+																						"ACK",
+																					],
+																				},
+																			},
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+							},
+						],
+						"tags": {
+							"constant_value": {
+								"Tag1": "Value1",
+								"Tag2": "Value2",
+							},
+						},
+						"type": {
+							"constant_value": "STATELESS",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example2",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_networkfirewall_rule_group",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_networkfirewall_rule_group.example1",
+					"mode":           "managed",
+					"name":           "example1",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"encryption_configuration": [],
+						"rule_group":               [],
+						"tags":                     {},
+						"tags_all":                 {},
+					},
+					"type": "aws_networkfirewall_rule_group",
+					"values": {
+						"capacity":                 100,
+						"description":              "Stateless Rate Limiting Rule",
+						"encryption_configuration": [],
+						"name":  "example",
+						"rules": null,
+						"tags": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"tags_all": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"type": "STATELESS",
+					},
+				},
+				{
+					"address":        "aws_networkfirewall_rule_group.example2",
+					"mode":           "managed",
+					"name":           "example2",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"encryption_configuration": [],
+						"rule_group": [
+							{
+								"reference_sets": [],
+								"rule_variables": [],
+								"rules_source": [
+									{
+										"rules_source_list": [],
+										"stateful_rule":     [],
+										"stateless_rules_and_custom_actions": [
+											{
+												"custom_action": [
+													{
+														"action_definition": [
+															{
+																"publish_metric_action": [
+																	{
+																		"dimension": [
+																			{},
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+												"stateless_rule": [
+													{
+														"rule_definition": [
+															{
+																"actions": [
+																	false,
+																	false,
+																],
+																"match_attributes": [
+																	{
+																		"destination": [
+																			{},
+																		],
+																		"destination_port": [
+																			{},
+																		],
+																		"protocols": [
+																			false,
+																		],
+																		"source": [
+																			{},
+																		],
+																		"source_port": [
+																			{},
+																		],
+																		"tcp_flag": [
+																			{
+																				"flags": [
+																					false,
+																				],
+																				"masks": [
+																					false,
+																					false,
+																				],
+																			},
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+								"stateful_rule_options": [],
+							},
+						],
+						"tags":     {},
+						"tags_all": {},
+					},
+					"type": "aws_networkfirewall_rule_group",
+					"values": {
+						"capacity":                 100,
+						"description":              "Stateless Rate Limiting Rule",
+						"encryption_configuration": [],
+						"name": "example",
+						"rule_group": [
+							{
+								"reference_sets": [],
+								"rule_variables": [],
+								"rules_source": [
+									{
+										"rules_source_list": [],
+										"rules_string":      null,
+										"stateful_rule":     [],
+										"stateless_rules_and_custom_actions": [
+											{
+												"custom_action": [
+													{
+														"action_definition": [
+															{
+																"publish_metric_action": [
+																	{
+																		"dimension": [
+																			{
+																				"value": "2",
+																			},
+																		],
+																	},
+																],
+															},
+														],
+														"action_name": "ExampleMetricsAction",
+													},
+												],
+												"stateless_rule": [
+													{
+														"priority": 1,
+														"rule_definition": [
+															{
+																"actions": [
+																	"ExampleMetricsAction",
+																	"aws:pass",
+																],
+																"match_attributes": [
+																	{
+																		"destination": [
+																			{
+																				"address_definition": "124.1.1.5/32",
+																			},
+																		],
+																		"destination_port": [
+																			{
+																				"from_port": 443,
+																				"to_port":   443,
+																			},
+																		],
+																		"protocols": [
+																			6,
+																		],
+																		"source": [
+																			{
+																				"address_definition": "1.2.3.4/32",
+																			},
+																		],
+																		"source_port": [
+																			{
+																				"from_port": 443,
+																				"to_port":   443,
+																			},
+																		],
+																		"tcp_flag": [
+																			{
+																				"flags": [
+																					"SYN",
+																				],
+																				"masks": [
+																					"ACK",
+																					"SYN",
+																				],
+																			},
+																		],
+																	},
+																],
+															},
+														],
+													},
+												],
+											},
+										],
+									},
+								],
+								"stateful_rule_options": [],
+							},
+						],
+						"rules": null,
+						"tags": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"tags_all": {
+							"Tag1": "Value1",
+							"Tag2": "Value2",
+						},
+						"type": "STATELESS",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_networkfirewall_rule_group.example1",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"capacity":                 100,
+					"description":              "Stateless Rate Limiting Rule",
+					"encryption_configuration": [],
+					"name":  "example",
+					"rules": null,
+					"tags": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"tags_all": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"type": "STATELESS",
+				},
+				"after_sensitive": {
+					"encryption_configuration": [],
+					"rule_group":               [],
+					"tags":                     {},
+					"tags_all":                 {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"encryption_configuration": [],
+					"id":           true,
+					"rule_group":   true,
+					"tags":         {},
+					"tags_all":     {},
+					"update_token": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example1",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_networkfirewall_rule_group",
+		},
+		{
+			"address": "aws_networkfirewall_rule_group.example2",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"capacity":                 100,
+					"description":              "Stateless Rate Limiting Rule",
+					"encryption_configuration": [],
+					"name": "example",
+					"rule_group": [
+						{
+							"reference_sets": [],
+							"rule_variables": [],
+							"rules_source": [
+								{
+									"rules_source_list": [],
+									"rules_string":      null,
+									"stateful_rule":     [],
+									"stateless_rules_and_custom_actions": [
+										{
+											"custom_action": [
+												{
+													"action_definition": [
+														{
+															"publish_metric_action": [
+																{
+																	"dimension": [
+																		{
+																			"value": "2",
+																		},
+																	],
+																},
+															],
+														},
+													],
+													"action_name": "ExampleMetricsAction",
+												},
+											],
+											"stateless_rule": [
+												{
+													"priority": 1,
+													"rule_definition": [
+														{
+															"actions": [
+																"ExampleMetricsAction",
+																"aws:pass",
+															],
+															"match_attributes": [
+																{
+																	"destination": [
+																		{
+																			"address_definition": "124.1.1.5/32",
+																		},
+																	],
+																	"destination_port": [
+																		{
+																			"from_port": 443,
+																			"to_port":   443,
+																		},
+																	],
+																	"protocols": [
+																		6,
+																	],
+																	"source": [
+																		{
+																			"address_definition": "1.2.3.4/32",
+																		},
+																	],
+																	"source_port": [
+																		{
+																			"from_port": 443,
+																			"to_port":   443,
+																		},
+																	],
+																	"tcp_flag": [
+																		{
+																			"flags": [
+																				"SYN",
+																			],
+																			"masks": [
+																				"ACK",
+																				"SYN",
+																			],
+																		},
+																	],
+																},
+															],
+														},
+													],
+												},
+											],
+										},
+									],
+								},
+							],
+							"stateful_rule_options": [],
+						},
+					],
+					"rules": null,
+					"tags": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"tags_all": {
+						"Tag1": "Value1",
+						"Tag2": "Value2",
+					},
+					"type": "STATELESS",
+				},
+				"after_sensitive": {
+					"encryption_configuration": [],
+					"rule_group": [
+						{
+							"reference_sets": [],
+							"rule_variables": [],
+							"rules_source": [
+								{
+									"rules_source_list": [],
+									"stateful_rule":     [],
+									"stateless_rules_and_custom_actions": [
+										{
+											"custom_action": [
+												{
+													"action_definition": [
+														{
+															"publish_metric_action": [
+																{
+																	"dimension": [
+																		{},
+																	],
+																},
+															],
+														},
+													],
+												},
+											],
+											"stateless_rule": [
+												{
+													"rule_definition": [
+														{
+															"actions": [
+																false,
+																false,
+															],
+															"match_attributes": [
+																{
+																	"destination": [
+																		{},
+																	],
+																	"destination_port": [
+																		{},
+																	],
+																	"protocols": [
+																		false,
+																	],
+																	"source": [
+																		{},
+																	],
+																	"source_port": [
+																		{},
+																	],
+																	"tcp_flag": [
+																		{
+																			"flags": [
+																				false,
+																			],
+																			"masks": [
+																				false,
+																				false,
+																			],
+																		},
+																	],
+																},
+															],
+														},
+													],
+												},
+											],
+										},
+									],
+								},
+							],
+							"stateful_rule_options": [],
+						},
+					],
+					"tags":     {},
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"encryption_configuration": [],
+					"id": true,
+					"rule_group": [
+						{
+							"reference_sets": [],
+							"rule_variables": [],
+							"rules_source": [
+								{
+									"rules_source_list": [],
+									"stateful_rule":     [],
+									"stateless_rules_and_custom_actions": [
+										{
+											"custom_action": [
+												{
+													"action_definition": [
+														{
+															"publish_metric_action": [
+																{
+																	"dimension": [
+																		{},
+																	],
+																},
+															],
+														},
+													],
+												},
+											],
+											"stateless_rule": [
+												{
+													"rule_definition": [
+														{
+															"actions": [
+																false,
+																false,
+															],
+															"match_attributes": [
+																{
+																	"destination": [
+																		{},
+																	],
+																	"destination_port": [
+																		{},
+																	],
+																	"protocols": [
+																		false,
+																	],
+																	"source": [
+																		{},
+																	],
+																	"source_port": [
+																		{},
+																	],
+																	"tcp_flag": [
+																		{
+																			"flags": [
+																				false,
+																			],
+																			"masks": [
+																				false,
+																				false,
+																			],
+																		},
+																	],
+																},
+															],
+														},
+													],
+												},
+											],
+										},
+									],
+								},
+							],
+							"stateful_rule_options": [],
+						},
+					],
+					"tags":         {},
+					"tags_all":     {},
+					"update_token": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example2",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_networkfirewall_rule_group",
+		},
+	],
+	"terraform_version": "1.9.5",
+	"timestamp":         "2024-10-01T04:48:54Z",
+}

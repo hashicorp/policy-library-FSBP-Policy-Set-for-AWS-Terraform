@@ -1,0 +1,711 @@
+terraform_version = "1.9.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_mq_broker.example": {
+			"address":        "aws_mq_broker.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_mq_broker",
+			"values": {
+				"apply_immediately":          false,
+				"auto_minor_version_upgrade": false,
+				"broker_name":                "example",
+				"configuration": [
+					{},
+				],
+				"data_replication_primary_broker_arn": null,
+				"deployment_mode":                     "SINGLE_INSTANCE",
+				"encryption_options":                  [],
+				"engine_type":                         "ActiveMQ",
+				"engine_version":                      "5.17.6",
+				"host_instance_type":                  "mq.t2.micro",
+				"ldap_server_metadata":                [],
+				"logs":                                [],
+				"publicly_accessible":                 false,
+				"tags":                                null,
+				"timeouts":                            null,
+				"user":                                "REDACTED_SENSITIVE",
+			},
+		},
+		"aws_mq_configuration.test": {
+			"address":        "aws_mq_configuration.test",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "test",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_mq_configuration",
+			"values": {
+				"data":           "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker xmlns=\"http://activemq.apache.org/schema/core\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>\n  </plugins>\n</broker>\n",
+				"description":    "Example Configuration",
+				"engine_type":    "ActiveMQ",
+				"engine_version": "5.17.6",
+				"name":           "example",
+				"tags":           null,
+			},
+		},
+		"aws_security_group.example": {
+			"address":        "aws_security_group.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_security_group",
+			"values": {
+				"description": "Managed by Terraform",
+				"egress": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description": "",
+						"from_port":   0,
+						"ipv6_cidr_blocks": [
+							"::/0",
+						],
+						"prefix_list_ids": [],
+						"protocol":        "-1",
+						"security_groups": [],
+						"self":            false,
+						"to_port":         0,
+					},
+				],
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_mq_broker.example": {
+		"address": "aws_mq_broker.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"apply_immediately":          false,
+				"auto_minor_version_upgrade": false,
+				"broker_name":                "example",
+				"configuration": [
+					{},
+				],
+				"data_replication_primary_broker_arn": null,
+				"deployment_mode":                     "SINGLE_INSTANCE",
+				"encryption_options":                  [],
+				"engine_type":                         "ActiveMQ",
+				"engine_version":                      "5.17.6",
+				"host_instance_type":                  "mq.t2.micro",
+				"ldap_server_metadata":                [],
+				"logs":                                [],
+				"publicly_accessible":                 false,
+				"tags":                                null,
+				"timeouts":                            null,
+				"user":                                "REDACTED_SENSITIVE",
+			},
+			"after_unknown": {
+				"arn": true,
+				"authentication_strategy": true,
+				"configuration": [
+					{
+						"id":       true,
+						"revision": true,
+					},
+				],
+				"data_replication_mode": true,
+				"encryption_options":    [],
+				"id":                    true,
+				"instances":             true,
+				"ldap_server_metadata":  [],
+				"logs":                  [],
+				"maintenance_window_start_time": true,
+				"pending_data_replication_mode": true,
+				"security_groups":               true,
+				"storage_type":                  true,
+				"subnet_ids":                    true,
+				"tags_all":                      true,
+				"user": [
+					{
+						"groups": [],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_mq_broker",
+	},
+	"aws_mq_configuration.test": {
+		"address": "aws_mq_configuration.test",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"data":           "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker xmlns=\"http://activemq.apache.org/schema/core\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>\n  </plugins>\n</broker>\n",
+				"description":    "Example Configuration",
+				"engine_type":    "ActiveMQ",
+				"engine_version": "5.17.6",
+				"name":           "example",
+				"tags":           null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"authentication_strategy": true,
+				"id":              true,
+				"latest_revision": true,
+				"tags_all":        true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "test",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_mq_configuration",
+	},
+	"aws_security_group.example": {
+		"address": "aws_security_group.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description": "Managed by Terraform",
+				"egress": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description": "",
+						"from_port":   0,
+						"ipv6_cidr_blocks": [
+							"::/0",
+						],
+						"prefix_list_ids": [],
+						"protocol":        "-1",
+						"security_groups": [],
+						"self":            false,
+						"to_port":         0,
+					},
+				],
+				"revoke_rules_on_delete": false,
+				"tags":     null,
+				"timeouts": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"egress": [
+					{
+						"cidr_blocks": [
+							false,
+						],
+						"ipv6_cidr_blocks": [
+							false,
+						],
+						"prefix_list_ids": [],
+						"security_groups": [],
+					},
+				],
+				"id":          true,
+				"ingress":     true,
+				"name":        true,
+				"name_prefix": true,
+				"owner_id":    true,
+				"tags_all":    true,
+				"vpc_id":      true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_security_group",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name": "registry.terraform.io/hashicorp/aws",
+				"name":      "aws",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_mq_broker.example",
+					"expressions": {
+						"auto_minor_version_upgrade": {
+							"constant_value": false,
+						},
+						"broker_name": {
+							"constant_value": "example",
+						},
+						"configuration": [
+							{
+								"id": {
+									"references": [
+										"aws_mq_configuration.test.id",
+										"aws_mq_configuration.test",
+									],
+								},
+								"revision": {
+									"references": [
+										"aws_mq_configuration.test.latest_revision",
+										"aws_mq_configuration.test",
+									],
+								},
+							},
+						],
+						"engine_type": {
+							"constant_value": "ActiveMQ",
+						},
+						"engine_version": {
+							"constant_value": "5.17.6",
+						},
+						"host_instance_type": {
+							"constant_value": "mq.t2.micro",
+						},
+						"security_groups": {
+							"references": [
+								"aws_security_group.example.id",
+								"aws_security_group.example",
+							],
+						},
+						"user": [
+							{
+								"password": {
+									"constant_value": "New-pass123.",
+								},
+								"username": {
+									"constant_value": "ExampleUser",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_mq_broker",
+				},
+				{
+					"address": "aws_mq_configuration.test",
+					"expressions": {
+						"data": {
+							"constant_value": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker xmlns=\"http://activemq.apache.org/schema/core\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>\n  </plugins>\n</broker>\n",
+						},
+						"description": {
+							"constant_value": "Example Configuration",
+						},
+						"engine_type": {
+							"constant_value": "ActiveMQ",
+						},
+						"engine_version": {
+							"constant_value": "5.17.6",
+						},
+						"name": {
+							"constant_value": "example",
+						},
+					},
+					"mode":                "managed",
+					"name":                "test",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_mq_configuration",
+				},
+				{
+					"address": "aws_security_group.example",
+					"expressions": {
+						"egress": {
+							"constant_value": [
+								{
+									"cidr_blocks": [
+										"0.0.0.0/0",
+									],
+									"description": null,
+									"from_port":   0,
+									"ipv6_cidr_blocks": [
+										"::/0",
+									],
+									"prefix_list_ids": null,
+									"protocol":        "-1",
+									"security_groups": null,
+									"self":            null,
+									"to_port":         0,
+								},
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      1,
+					"type":                "aws_security_group",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_mq_broker.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"configuration": [
+							{},
+						],
+						"encryption_options":   [],
+						"instances":            [],
+						"ldap_server_metadata": [],
+						"logs":                 [],
+						"maintenance_window_start_time": [],
+						"security_groups":               [],
+						"subnet_ids":                    [],
+						"tags_all":                      {},
+						"user":                          true,
+					},
+					"type": "aws_mq_broker",
+					"values": {
+						"apply_immediately":          false,
+						"auto_minor_version_upgrade": false,
+						"broker_name":                "example",
+						"configuration": [
+							{},
+						],
+						"data_replication_primary_broker_arn": null,
+						"deployment_mode":                     "SINGLE_INSTANCE",
+						"encryption_options":                  [],
+						"engine_type":                         "ActiveMQ",
+						"engine_version":                      "5.17.6",
+						"host_instance_type":                  "mq.t2.micro",
+						"ldap_server_metadata":                [],
+						"logs":                                [],
+						"publicly_accessible":                 false,
+						"tags":                                null,
+						"timeouts":                            null,
+						"user":                                "REDACTED_SENSITIVE",
+					},
+				},
+				{
+					"address":        "aws_mq_configuration.test",
+					"mode":           "managed",
+					"name":           "test",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"tags_all": {},
+					},
+					"type": "aws_mq_configuration",
+					"values": {
+						"data":           "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker xmlns=\"http://activemq.apache.org/schema/core\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>\n  </plugins>\n</broker>\n",
+						"description":    "Example Configuration",
+						"engine_type":    "ActiveMQ",
+						"engine_version": "5.17.6",
+						"name":           "example",
+						"tags":           null,
+					},
+				},
+				{
+					"address":        "aws_security_group.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 1,
+					"sensitive_values": {
+						"egress": [
+							{
+								"cidr_blocks": [
+									false,
+								],
+								"ipv6_cidr_blocks": [
+									false,
+								],
+								"prefix_list_ids": [],
+								"security_groups": [],
+							},
+						],
+						"ingress":  [],
+						"tags_all": {},
+					},
+					"type": "aws_security_group",
+					"values": {
+						"description": "Managed by Terraform",
+						"egress": [
+							{
+								"cidr_blocks": [
+									"0.0.0.0/0",
+								],
+								"description": "",
+								"from_port":   0,
+								"ipv6_cidr_blocks": [
+									"::/0",
+								],
+								"prefix_list_ids": [],
+								"protocol":        "-1",
+								"security_groups": [],
+								"self":            false,
+								"to_port":         0,
+							},
+						],
+						"revoke_rules_on_delete": false,
+						"tags":     null,
+						"timeouts": null,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_mq_configuration.test",
+		},
+		{
+			"attribute": [
+				"id",
+			],
+			"resource": "aws_security_group.example",
+		},
+		{
+			"attribute": [
+				"latest_revision",
+			],
+			"resource": "aws_mq_configuration.test",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_mq_broker.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"apply_immediately":          false,
+					"auto_minor_version_upgrade": false,
+					"broker_name":                "example",
+					"configuration": [
+						{},
+					],
+					"data_replication_primary_broker_arn": null,
+					"deployment_mode":                     "SINGLE_INSTANCE",
+					"encryption_options":                  [],
+					"engine_type":                         "ActiveMQ",
+					"engine_version":                      "5.17.6",
+					"host_instance_type":                  "mq.t2.micro",
+					"ldap_server_metadata":                [],
+					"logs":                                [],
+					"publicly_accessible":                 false,
+					"tags":                                null,
+					"timeouts":                            null,
+					"user":                                "REDACTED_SENSITIVE",
+				},
+				"after_sensitive": {
+					"configuration": [
+						{},
+					],
+					"encryption_options":   [],
+					"instances":            [],
+					"ldap_server_metadata": [],
+					"logs":                 [],
+					"maintenance_window_start_time": [],
+					"security_groups":               [],
+					"subnet_ids":                    [],
+					"tags_all":                      {},
+					"user":                          true,
+				},
+				"after_unknown": {
+					"arn": true,
+					"authentication_strategy": true,
+					"configuration": [
+						{
+							"id":       true,
+							"revision": true,
+						},
+					],
+					"data_replication_mode": true,
+					"encryption_options":    [],
+					"id":                    true,
+					"instances":             true,
+					"ldap_server_metadata":  [],
+					"logs":                  [],
+					"maintenance_window_start_time": true,
+					"pending_data_replication_mode": true,
+					"security_groups":               true,
+					"storage_type":                  true,
+					"subnet_ids":                    true,
+					"tags_all":                      true,
+					"user": [
+						{
+							"groups": [],
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_mq_broker",
+		},
+		{
+			"address": "aws_mq_configuration.test",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"data":           "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<broker xmlns=\"http://activemq.apache.org/schema/core\">\n  <plugins>\n    <forcePersistencyModeBrokerPlugin persistenceFlag=\"true\"/>\n    <statisticsBrokerPlugin/>\n    <timeStampingBrokerPlugin ttlCeiling=\"86400000\" zeroExpirationOverride=\"86400000\"/>\n  </plugins>\n</broker>\n",
+					"description":    "Example Configuration",
+					"engine_type":    "ActiveMQ",
+					"engine_version": "5.17.6",
+					"name":           "example",
+					"tags":           null,
+				},
+				"after_sensitive": {
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"authentication_strategy": true,
+					"id":              true,
+					"latest_revision": true,
+					"tags_all":        true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "test",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_mq_configuration",
+		},
+		{
+			"address": "aws_security_group.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description": "Managed by Terraform",
+					"egress": [
+						{
+							"cidr_blocks": [
+								"0.0.0.0/0",
+							],
+							"description": "",
+							"from_port":   0,
+							"ipv6_cidr_blocks": [
+								"::/0",
+							],
+							"prefix_list_ids": [],
+							"protocol":        "-1",
+							"security_groups": [],
+							"self":            false,
+							"to_port":         0,
+						},
+					],
+					"revoke_rules_on_delete": false,
+					"tags":     null,
+					"timeouts": null,
+				},
+				"after_sensitive": {
+					"egress": [
+						{
+							"cidr_blocks": [
+								false,
+							],
+							"ipv6_cidr_blocks": [
+								false,
+							],
+							"prefix_list_ids": [],
+							"security_groups": [],
+						},
+					],
+					"ingress":  [],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"egress": [
+						{
+							"cidr_blocks": [
+								false,
+							],
+							"ipv6_cidr_blocks": [
+								false,
+							],
+							"prefix_list_ids": [],
+							"security_groups": [],
+						},
+					],
+					"id":          true,
+					"ingress":     true,
+					"name":        true,
+					"name_prefix": true,
+					"owner_id":    true,
+					"tags_all":    true,
+					"vpc_id":      true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_security_group",
+		},
+	],
+	"terraform_version": "1.9.4",
+	"timestamp":         "2024-08-28T10:12:25Z",
+}

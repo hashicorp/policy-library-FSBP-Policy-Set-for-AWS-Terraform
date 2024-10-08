@@ -495,6 +495,16 @@ policy "redshift-cluster-default-db-name-check" {
  enforcement_level = "advisory"
 }
 
+policy "redshift-cluster-should-be-encrypted-at-rest" {
+  source = "./policies/redshift-cluster-should-be-encrypted-at-rest.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "dms-replication-instances-should-not-be-public" {
+  source = "./policies/dms-replication-instances-should-not-be-public.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "network-firewall-logging-enabled" {
   source = "./policies/network-firewall-logging-enabled.sentinel"
   enforcement_level = "advisory"
@@ -515,6 +525,11 @@ policy "mq-cloudwatch-audit-log-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "mq-auto-minor-version-upgrade-enabled" {
+  source = "./policies/mq-auto-minor-version-upgrade-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "msk-in-cluster-node-require-encrypted-in-transit" {
   source = "./policies/msk-in-cluster-node-require-encrypted-in-transit.sentinel"
   enforcement_level = "advisory"
@@ -532,5 +547,25 @@ policy "kms-restrict-iam-inline-policies-decrypt-all-kms-keys" {
 
 policy "network-firewall-policy-default-action-full-packets" {
   source = "./policies/network-firewall-policy-default-action-full-packets.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "network-firewall-policy-default-action-fragmented-packets" {
+  source = "./policies/network-firewall-policy-default-action-fragmented-packets.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "network-firewall-stateless-rule-group" {
+  source = "./policies/network-firewall-stateless-rule-group.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "network-firewall-should-have-deletion-protection-enabled" {
+  source = "./policies/network-firewall-should-have-deletion-protection-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
+policy "api-gateway-rest-and-websocket-api-logging-enabled" {
+  source = "./policies/api-gateway-rest-and-websocket-api-logging-enabled.sentinel"
   enforcement_level = "advisory"
 }
