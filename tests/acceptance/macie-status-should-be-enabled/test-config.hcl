@@ -1,4 +1,4 @@
-name = "aws-macie-status-should-be-enabled"
+name = "macie-status-should-be-enabled"
 
 disabled = false
 
