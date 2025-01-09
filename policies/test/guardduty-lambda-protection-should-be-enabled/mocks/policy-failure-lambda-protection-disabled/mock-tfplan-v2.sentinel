@@ -1,0 +1,54 @@
+terraform_version = "1.10.2"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_guardduty_detector.MyDetector": {
+			"address":        "aws_guardduty_detector.MyDetector",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "MyDetector",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_guardduty_detector",
+			"values": {
+				"datasources": [
+					{
+						"kubernetes": [
+							{
+								"audit_logs": [
+									{
+										"enable": true,
+									},
+								],
+							},
+						],
+						"malware_protection": [
+							{
+								"scan_ec2_instance_with_findings": [
+									{
+										"ebs_volumes": [
+											{
+												"enable": false,
+											},
+										],
+									},
+								],
+							},
+						],
+						"s3_logs": [
+							{
+								"enable": true,
+							},
+						],
+					},
+				],
+				"enable": false,
+				"tags":   null,
+			},
+		},
+	},
+}
