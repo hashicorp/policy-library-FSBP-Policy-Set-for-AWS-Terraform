@@ -13,7 +13,7 @@ const = {
 	"resource_aws_guardduty_detector": "aws_guardduty_detector",
 	"message":                         "'aws_guardduty_detector' Lambda Protection should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/guardduty-controls.html#guardduty-6 for more details.",
 	"malware_protection":              "malware_protection",
-	"datasources":                 "datasources",
+	"datasources":                     "datasources",
 }
 
 # Functions
