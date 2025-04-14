@@ -1,13 +1,26 @@
 name: CI
+
 on:
   push:
     branches:
-    - main
+      - main
   pull_request:
     branches:
-    - main
-
+      - main
 jobs:
-  ci:
-    uses: hashicorp/policy-library-workflows-common/.github/workflows/ci.yml@main
-    
+  sentinel-fmt-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.1.5
+      - name: Install Sentinel
+        uses: bloominlabs/setup-hashicorp-releases@47e70332de2225670dedad7833c0e19229f751b5
+        with:
+          package: sentinel
+          version: ${{ inputs.sentinel-version }}
+      - name: Sentinel Format
+        run: |
+          sentinel fmt -check=true $(find . -name "*.sentinel" -type f)
+      - name: Sentinel test
+        run: |
+          sentinel test -verbose $(find . -name "*.sentinel" -type f ! -path "*/mocks/*" ! -path "*/example/*" ! -path "*/modules/*")

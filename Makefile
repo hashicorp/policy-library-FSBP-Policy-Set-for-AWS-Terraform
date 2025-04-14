@@ -64,5 +64,5 @@ ifeq ($(strip $(arch)),)
 	@exit 1
 endif
 
-	find './policies/test' -type f -name '*.hcl' -exec sed -i 's|plugins/darwin/arm64|plugins/$(os)/$(arch)|g' {} +
+	find './policies/*/test' -type f -name '*.hcl' -exec sed -i 's|plugins/darwin/arm64|plugins/$(os)/$(arch)|g' {} +
 .PHONY: replace_plugin_paths
