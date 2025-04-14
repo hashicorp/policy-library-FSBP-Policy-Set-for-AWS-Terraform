@@ -20,6 +20,7 @@ jobs:
           version: ${{ inputs.sentinel-version }}
       - name: Sentinel Format
         run: |
+          find './policies/*/test' -type f -name '*.hcl' -exec sed -i 's|plugins/darwin/arm64|plugins/$(os)/$(arch)|g' {} +
           sentinel fmt -check=true $(find . -name "*.sentinel" -type f)
       - name: Sentinel test
         run: |
