@@ -7,12 +7,12 @@ mock "tfplan/v2" {
 
 
 import "plugin" "tfresources" {
-	source = "../../../plugins/darwin/arm64/sentinel-plugin-tfresources"
+	source = "../../../../plugins/darwin/arm64/sentinel-plugin-tfresources"
 }
 
 mock "report" {
 	module {
-		source = "../../../modules/mocks/report/report.sentinel"
+		source = "../../../../modules/mocks/report/report.sentinel"
 	}
 }
 

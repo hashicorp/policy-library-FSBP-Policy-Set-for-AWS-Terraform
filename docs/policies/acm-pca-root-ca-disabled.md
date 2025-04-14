@@ -10,7 +10,7 @@ This control checks if AWS Private CA has a root certificate authority (CA) that
 
 With AWS Private CA, you can create a CA hierarchy that includes a root CA and subordinate CAs. You should minimize the use of the root CA for daily tasks, especially in production environments. The root CA should only be used to issue certificates for intermediate CAs. This allows the root CA to be stored out of harm's way while the intermediate CAs perform the daily task of issuing end-entity certificates.
 
-This rule is covered by the [acm-pca-root-ca-disabled](../../policies/acm-pca-root-ca-disabled.sentinel) policy.
+This rule is covered by the [acm-pca-root-ca-disabled](../../policies/acm/acm-pca-root-ca-disabled.sentinel) policy.
 
 ## Policy Results (Pass)
 
