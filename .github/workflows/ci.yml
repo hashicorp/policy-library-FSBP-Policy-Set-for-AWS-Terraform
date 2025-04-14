@@ -20,7 +20,7 @@ jobs:
           version: ${{ inputs.sentinel-version }}
       - name: Sentinel Format
         run: |
-          make replace_plugin_paths
+          make replace_plugin_paths os=linux arch=amd64
           sentinel fmt -check=true $(find . -name "*.sentinel" -type f)
       - name: Sentinel test
         run: |
