@@ -20,7 +20,7 @@ jobs:
           version: ${{ inputs.sentinel-version }}
       - name: Sentinel Format
         run: |
-          make replace_plugin_paths os=linux arch=amd64
+          find '${GITHUB_WORKSPACE}/policies/*/test' -type f -name '*.hcl' -exec sed -i 's|plugins/darwin/arm64|plugins/linux/amd64|g' {} +
           sentinel fmt -check=true $(find . -name "*.sentinel" -type f)
       - name: Sentinel test
         run: |
