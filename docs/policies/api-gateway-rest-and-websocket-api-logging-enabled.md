@@ -10,7 +10,7 @@ This control checks whether all stages of an Amazon API Gateway REST or WebSocke
 
 API Gateway REST or WebSocket API stages should have relevant logs enabled. API Gateway REST and WebSocket API execution logging provides detailed records of requests made to API Gateway REST and WebSocket API stages. The stages include API integration backend responses, Lambda authorizer responses, and the requestId for AWS integration endpoints.
 
-This rule is covered by the [api-gateway-rest-and-websocket-api-logging-enabled](../../policies/api-gateway-rest-and-websocket-api-logging-enabled.sentinel) policy.
+This rule is covered by the [api-gateway-rest-and-websocket-api-logging-enabled](../../policies/api-gateway/api-gateway-rest-and-websocket-api-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

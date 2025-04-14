@@ -10,7 +10,7 @@ This control checks if Amazon API Gateway routes have an authorization type. The
 
 API Gateway supports multiple mechanisms for controlling and managing access to your API. By specifying an authorization type, you can restrict access to your API to only authorized users or processes.
 
-This rule is covered by the [api-gateway-routes-should-specify-an-authorization-type](../../policies/api-gateway-routes-should-specify-an-authorization-type.sentinel) policy.
+This rule is covered by the [api-gateway-routes-should-specify-an-authorization-type](../../policies/api-gateway/api-gateway-routes-should-specify-an-authorization-type.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

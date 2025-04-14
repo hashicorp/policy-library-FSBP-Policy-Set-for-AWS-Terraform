@@ -10,7 +10,7 @@ This control checks if Amazon API Gateway V2 stages have access logging configur
 
 API Gateway access logs provide detailed information about who has accessed your API and how the caller accessed the API. These logs are useful for applications such as security and access audits and forensics investigation. Enable these access logs to analyze traffic patterns and to troubleshoot issues.
 
-This rule is covered by the [api-gateway-access-logging-should-be-configured](../../policies/api-gateway-access-logging-should-be-configured.sentinel) policy.
+This rule is covered by the [api-gateway-access-logging-should-be-configured](../../policies/api-gateway/api-gateway-access-logging-should-be-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -12,7 +12,7 @@ Encrypting data at rest reduces the risk of data stored on disk being accessed b
 
 API Gateway REST API caches should be encrypted at rest for an added layer of security.
 
-This rule is covered by the [api-gateway-rest-cache-have-encryption-enabled](../../policies/api-gateway-rest-cache-have-encryption-enabled.sentinel) policy.
+This rule is covered by the [api-gateway-rest-cache-have-encryption-enabled](../../policies/api-gateway/api-gateway-rest-cache-have-encryption-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

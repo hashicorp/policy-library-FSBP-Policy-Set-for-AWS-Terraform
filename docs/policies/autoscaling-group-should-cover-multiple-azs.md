@@ -10,7 +10,7 @@ This control checks whether an Amazon EC2 Auto Scaling group spans at least the 
 
 An Auto Scaling group that doesn't span multiple AZs can't launch instances in another AZ to compensate if the configured single AZ becomes unavailable. However, an Auto Scaling group with a single Availability Zone may be preferred in some use cases, such as batch jobs or when inter-AZ transfer costs need to be kept to a minimum. In such cases, you can disable this control or suppress its findings.
 
-This rule is covered by the [autoscaling-group-should-cover-multiple-azs](../../policies/autoscaling-group-should-cover-multiple-azs.sentinel) policy.
+This rule is covered by the [autoscaling-group-should-cover-multiple-azs](../../policies/autoscaling/autoscaling-group-should-cover-multiple-azs.sentinel) policy.
 
 ## Policy Results (Pass)
 

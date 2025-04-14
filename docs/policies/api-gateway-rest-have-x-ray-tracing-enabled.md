@@ -10,7 +10,7 @@ This control checks whether AWS X-Ray active tracing is enabled for your Amazon 
 
 X-Ray active tracing enables a more rapid response to performance changes in the underlying infrastructure. Changes in performance could result in a lack of availability of the API. X-Ray active tracing provides real-time metrics of user requests that flow through your API Gateway REST API operations and connected services.
 
-This rule is covered by the [api-gateway-rest-have-x-ray-tracing-enabled](../../policies/api-gateway-rest-have-x-ray-tracing-enabled.sentinel) policy.
+This rule is covered by the [api-gateway-rest-have-x-ray-tracing-enabled](../../policies/api-gateway/api-gateway-rest-have-x-ray-tracing-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
