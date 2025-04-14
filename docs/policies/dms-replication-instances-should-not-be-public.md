@@ -10,7 +10,7 @@ This control checks whether AWS DMS replication instances are public. To do this
 
 A private replication instance has a private IP address that you cannot access outside of the replication network. A replication instance should have a private IP address when the source and target databases are in the same network. The network must also be connected to the replication instance's VPC using a VPN, AWS Direct Connect, or VPC peering.
 
-This rule is covered by the [dms-replication-instances-should-not-be-public](../../policies/dms-replication-instances-should-not-be-public.sentinel) policy.
+This rule is covered by the [dms-replication-instances-should-not-be-public](../../policies/dms/dms-replication-instances-should-not-be-public.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ This control checks whether an AWS DMS endpoint for Redis OSS is configured with
 
 TLS provides end-to-end security when data is sent between applications or databases over the internet. When you configure SSL encryption for your DMS endpoint, it enables encrypted communication between the source and target databases during the migration process. This helps prevent eavesdropping and interception of sensitive data by malicious actors
 
-This rule is covered by the [dms-redis-tls-enabled](../../policies/dms-redis-tls-enabled.sentinel) policy.
+This rule is covered by the [dms-redis-tls-enabled](../../policies/dms/dms-redis-tls-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

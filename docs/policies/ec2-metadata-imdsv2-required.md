@@ -8,7 +8,7 @@
 
 This controls ensures that Ec2 metadata service only allows IMDSv2. With IMDSv2, every request is now protected by session authentication.
 
-This rule is covered by the [ec2-metadata-imdsv2-required](../../policies/ec2-metadata-imdsv2-required.sentinel) policy.
+This rule is covered by the [ec2-metadata-imdsv2-required](../../policies/ec2/ec2-metadata-imdsv2-required.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

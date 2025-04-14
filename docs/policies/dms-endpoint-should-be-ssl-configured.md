@@ -10,7 +10,7 @@ This control checks whether an AWS DMS endpoint uses an SSL connection. The cont
 
 SSL/TLS connections provide a layer of security by encrypting connections between DMS replication instances and your database. Using certificates provides an extra layer of security by validating that the connection is being made to the expected database. It does so by checking the server certificate that is automatically installed on all database instances that you provision. By enabling SSL connection on your DMS endpoints, you protect the confidentiality of the data during the migration.
 
-This rule is covered by the [dms-endpoint-should-be-ssl-configured](../../policies/dms-endpoint-should-be-ssl-configured.sentinel) policy.
+This rule is covered by the [dms-endpoint-should-be-ssl-configured](../../policies/dms/dms-endpoint-should-be-ssl-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 

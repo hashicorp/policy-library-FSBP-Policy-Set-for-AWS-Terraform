@@ -13,7 +13,7 @@ This control checks whether unrestricted incoming traffic for an Amazon EC2 secu
 
 Security groups provide stateful filtering of ingress and egress network traffic to AWS resources. Unrestricted access (0.0.0.0/0) increases opportunities for malicious activity, such as hacking, denial-of-service attacks, and loss of data.
 
-This rule is covered by the [ec2-security-group-ingress-traffic-restriction-to-common-ports](../../policies/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel) policy when the `port` parameter is passed as `22`.
+This rule is covered by the [ec2-security-group-ingress-traffic-restriction-to-common-ports](../../policies/ec2/ec2-security-group-ingress-traffic-restriction-to-common-ports.sentinel) policy when the `port` parameter is passed as `22`.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This policy checks whether an Amazon DocumentDB cluster is encrypted at rest. Th
 
 Data at rest refers to any data that's stored in persistent, non-volatile storage for any duration. Encryption helps you protect the confidentiality of such data, reducing the risk that an unauthorized user gets access to it. Data in Amazon DocumentDB clusters should be encrypted at rest for an added layer of security. Amazon DocumentDB uses the 256-bit Advanced Encryption Standard (AES-256) to encrypt your data using encryption keys stored in AWS Key Management Service (AWS KMS).
 
-This rule is covered by the [docdb-cluster-storage-encrypted](../../policies/docdb-cluster-storage-encrypted.sentinel) policy.
+This rule is covered by the [docdb-cluster-storage-encrypted](../../policies/docdb/docdb-cluster-storage-encrypted.sentinel) policy.
 
 ## Policy Results (Pass)
 

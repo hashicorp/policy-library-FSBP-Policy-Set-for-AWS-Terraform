@@ -10,7 +10,7 @@ This control checks whether an Amazon DocumentDB cluster publishes audit logs to
 
 Amazon DocumentDB (with MongoDB compatibility) allows you to audit events that were performed in your cluster. Examples of logged events include successful and failed authentication attempts, dropping a collection in a database, or creating an index. By default, auditing is disabled in Amazon DocumentDB and requires that you take action to enable it.
 
-This rule is covered by the [docdb-cluster-audit-logging-enabled](../../policies/docdb-cluster-audit-logging-enabled.sentinel) policy.
+This rule is covered by the [docdb-cluster-audit-logging-enabled](../../policies/docdb/docdb-cluster-audit-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

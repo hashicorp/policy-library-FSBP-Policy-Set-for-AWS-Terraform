@@ -10,7 +10,7 @@ This control checks whether an Amazon DocumentDB cluster has a backup retention 
 
 Backups help you recover more quickly from a security incident and strengthen the resilience of your systems. By automating backups for your Amazon DocumentDB clusters, you'll be able to restore your systems to a point in time and minimize downtime and data loss. In Amazon DocumentDB, clusters have a default backup retention period of 1 day. This must be increased to a value between 7 and 35 days to pass this control.
 
-This rule is covered by the [docdb-cluster-backup-retention-check](../../policies/docdb-cluster-backup-retention-check.sentinel) policy.
+This rule is covered by the [docdb-cluster-backup-retention-check](../../policies/docdb/docdb-cluster-backup-retention-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

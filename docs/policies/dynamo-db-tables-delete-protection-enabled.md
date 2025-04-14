@@ -8,7 +8,7 @@
 
 This control checks whether an Amazon DynamoDB table has deletion protection enabled. The control fails if a DynamoDB table doesn't have deletion protection enabled.
 
-This rule is covered by the [dynamo-db-tables-delete-protection-enabled](../../policies/dynamo-db-tables-delete-protection-enabled.sentinel) policy.
+This rule is covered by the [dynamo-db-tables-delete-protection-enabled](../../policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

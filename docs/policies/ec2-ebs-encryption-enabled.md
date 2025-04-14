@@ -8,7 +8,7 @@
 
 This control checks whether encryption is enabled for Amazon Elastic Block Store(Amazon EBS).
 
-This rule is covered by the [ec2-ebs-encryption-enabled](../../policies/ec2-ebs-encryption-enabled.sentinel) policy.
+This rule is covered by the [ec2-ebs-encryption-enabled](../../policies/ec2/ec2-ebs-encryption-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

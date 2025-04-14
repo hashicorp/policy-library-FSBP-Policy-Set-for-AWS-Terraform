@@ -9,7 +9,7 @@
 This control checks whether an Amazon DynamoDB table can scale its read and write capacity as needed. The control fails if the table doesn't use on-demand capacity mode or provisioned mode with auto scaling configured. By default, this control only requires that one of these modes be configured, without regard to specific levels of read or write capacity. Optionally, you can provide custom parameter values to require specific levels of read and write capacity or target utilization.
 
 
-This rule is covered by the [dynamo-db-tables-scales-capacity-with-demand](../../policies/dynamo-db-tables-scales-capacity-with-demand.sentinel) policy.
+This rule is covered by the [dynamo-db-tables-scales-capacity-with-demand](../../policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

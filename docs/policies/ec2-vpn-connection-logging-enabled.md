@@ -10,7 +10,7 @@ This control checks whether an AWS Site-to-Site VPN connection has Amazon CloudW
 
 AWS Site-to-Site VPN logs provide you with deeper visibility into your Site-to-Site VPN deployments. With this feature, you have access to Site-to-Site VPN connection logs that provide details on IP Security (IPsec) tunnel establishment, Internet Key Exchange (IKE) negotiations, and dead peer detection (DPD) protocol messages. Site-to-Site VPN logs can be published to CloudWatch Logs. This feature provides customers with a single consistent way to access and analyze detailed logs for all of their Site-to-Site VPN connections.
 
-This rule is covered by the [ec2-vpn-connection-logging-enabled](../../policies/ec2-vpn-connection-logging-enabled.sentinel) policy.
+This rule is covered by the [ec2-vpn-connection-logging-enabled](../../policies/ec2/ec2-vpn-connection-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
