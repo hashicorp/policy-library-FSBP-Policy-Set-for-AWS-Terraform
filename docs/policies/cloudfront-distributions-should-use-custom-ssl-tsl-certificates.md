@@ -10,7 +10,7 @@ This control checks whether CloudFront distributions are using the default SSL/T
 
 Custom SSL/TLS allow your users to access content by using alternate domain names. You can store custom certificates in AWS Certificate Manager (recommended), or in IAM.
 
-This rule is covered by the [cloudfront-distributions-should-use-custom-ssl-tsl-certificates](../../policies/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-use-custom-ssl-tsl-certificates](../../policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

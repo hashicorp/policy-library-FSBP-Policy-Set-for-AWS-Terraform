@@ -12,7 +12,7 @@ CloudFront access logs provide detailed information about every user request tha
 
 These logs are useful for applications such as security and access audits and forensics investigation. For additional guidance on how to analyze access logs, see Querying Amazon CloudFront logs in the Amazon Athena User Guide.
 
-This rule is covered by the [cloudfront-distributions-should-have-logging-enabled](../../policies/cloudfront-distributions-should-have-logging-enabled.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-have-logging-enabled](../../policies/cloudfront/cloudfront-distributions-should-have-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

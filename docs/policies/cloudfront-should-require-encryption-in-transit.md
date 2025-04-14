@@ -10,7 +10,7 @@ This control checks whether an Amazon CloudFront distribution requires viewers t
 
 HTTPS (TLS) can be used to help prevent potential attackers from using person-in-the-middle or similar attacks to eavesdrop on or manipulate network traffic. Only encrypted connections over HTTPS (TLS) should be allowed. Encrypting data in transit can affect performance. You should test your application with this feature to understand the performance profile and the impact of TLS.
 
-This rule is covered by the [cloudfront-should-require-encryption-in-transit](../../policies/cloudfront-should-require-encryption-in-transit.sentinel) policy.
+This rule is covered by the [cloudfront-should-require-encryption-in-transit](../../policies/cloudfront/cloudfront-should-require-encryption-in-transit.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

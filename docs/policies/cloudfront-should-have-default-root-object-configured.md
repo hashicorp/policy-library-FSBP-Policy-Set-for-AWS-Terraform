@@ -10,7 +10,7 @@ This control checks whether an Amazon CloudFront distribution is configured to r
 
 A user might sometimes request the distribution's root URL instead of an object in the distribution. When this happens, specifying a default root object can help you to avoid exposing the contents of your web distribution.
 
-This rule is covered by the [cloudfront-should-have-default-root-object-configured](../../policies/cloudfront-should-have-default-root-object-configured.sentinel) policy.
+This rule is covered by the [cloudfront-should-have-default-root-object-configured](../../policies/cloudfront/cloudfront-should-have-default-root-object-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

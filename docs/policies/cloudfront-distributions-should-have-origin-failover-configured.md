@@ -10,7 +10,7 @@ This control checks whether an Amazon CloudFront distribution is configured with
 
 CloudFront origin failover can increase availability. Origin failover automatically redirects traffic to a secondary origin if the primary origin is unavailable or if it returns specific HTTP response status codes.
 
-This rule is covered by the [cloudfront-distributions-should-have-origin-failover-configured](../../policies/cloudfront-distributions-should-have-origin-failover-configured.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-have-origin-failover-configured](../../policies/cloudfront/cloudfront-distributions-should-have-origin-failover-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

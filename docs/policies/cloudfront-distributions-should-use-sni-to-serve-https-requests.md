@@ -10,7 +10,7 @@ This control checks if Amazon CloudFront distributions are using a custom SSL/TL
 
 Server Name Indication (SNI) is an extension to the TLS protocol that is supported by browsers and clients released after 2010. If you configure CloudFront to serve HTTPS requests using SNI, CloudFront associates your alternate domain name with an IP address for each edge location. When a viewer submits an HTTPS request for your content, DNS routes the request to the IP address for the correct edge location. The IP address to your domain name is determined during the SSL/TLS handshake negotiation; the IP address isn't dedicated to your distribution.
 
-This rule is covered by the [cloudfront-distributions-should-use-sni-to-serve-https-requests](../../policies/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-use-sni-to-serve-https-requests](../../policies/cloudfront/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

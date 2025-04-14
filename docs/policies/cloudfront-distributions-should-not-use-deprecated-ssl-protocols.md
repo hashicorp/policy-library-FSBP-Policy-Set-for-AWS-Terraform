@@ -10,7 +10,7 @@ This control checks if Amazon CloudFront distributions are using deprecated SSL 
 
 In 2015, the Internet Engineering Task Force (IETF) officially announced that SSL 3.0 should be deprecated due to the protocol being insufficiently secure. It is recommended that you use TLSv1.2 or later for HTTPS communication to your custom origins.
 
-This rule is covered by the [cloudfront-distributions-should-not-use-deprecated-ssl-protocols](../../policies/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-not-use-deprecated-ssl-protocols](../../policies/cloudfront/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
