@@ -10,7 +10,7 @@ This control checks whether an Elasticsearch domain has node-to-node encryption 
 
 HTTPS (TLS) can be used to help prevent potential attackers from eavesdropping on or manipulating network traffic using person-in-the-middle or similar attacks. Only encrypted connections over HTTPS (TLS) should be allowed. Enabling node-to-node encryption for Elasticsearch domains ensures that intra-cluster communications are encrypted in transit.
 
-This rule is covered by the [elasticsearch-node-to-node-encryption-check](../../policies/elasticsearch-node-to-node-encryption-check.sentinel) policy.
+This rule is covered by the [elasticsearch-node-to-node-encryption-check](../../policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

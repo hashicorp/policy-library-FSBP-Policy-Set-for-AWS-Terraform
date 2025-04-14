@@ -8,7 +8,7 @@
 
 This control checks whether enhanced health reporting is enabled for your AWS Elastic Beanstalk environments.
 
-This rule is covered by the [elasticbeanstalk-enhanced-health-reporting-enabled](../../policies/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel) policy.
+This rule is covered by the [elasticbeanstalk-enhanced-health-reporting-enabled](../../policies/elasticbeanstalk/elasticbeanstalk-enhanced-health-reporting-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

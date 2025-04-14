@@ -8,7 +8,7 @@
 
 This policy evaluates AWS Application Load Balancers to ensure they are configured to drop invalid HTTP headers. 
 
-This rule is covered by the [elb-drop-invalid-http-headers](../../policies/elb-drop-invalid-http-headers.sentinel) policy.
+This rule is covered by the [elb-drop-invalid-http-headers](../../policies/elb/elb-drop-invalid-http-headers.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

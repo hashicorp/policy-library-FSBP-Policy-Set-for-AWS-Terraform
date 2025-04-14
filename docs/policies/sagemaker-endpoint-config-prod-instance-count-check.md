@@ -10,7 +10,7 @@ This control checks whether production variants of an Amazon SageMaker endpoint 
 
 Production variants running with an instance count greater than 1 permit multi-AZ instance redundancy managed by SageMaker. Deploying resources across multiple Availability Zones is an AWS best practice to provide high availability within your architecture. High availability helps you to recover from security incidents.
 
-This rule is covered by the [sagemaker-endpoint-config-prod-instance-count-check](../../policies/sagemaker-endpoint-config-prod-instance-count-check.sentinel) policy.
+This rule is covered by the [sagemaker-endpoint-config-prod-instance-count-check](../../policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

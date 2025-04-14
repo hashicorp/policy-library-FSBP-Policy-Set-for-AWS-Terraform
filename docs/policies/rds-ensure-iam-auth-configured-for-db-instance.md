@@ -10,7 +10,7 @@ This control checks whether an RDS DB instance has IAM database authentication e
 The control fails if IAM authentication is not configured for RDS DB instances. 
 This control only evaluates RDS instances with the following engine types: mysql, postgres, aurora, aurora-mysql, aurora-postgresql, and mariadb.
 
-This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds-ensure-deletion-protection-enabled.sentinel) policy.
+This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds/rds-ensure-deletion-protection-enabled.sentinel) policy.
 Param which needs to be passed is "resource_type" with value - "aws_db_instance"
 
 ```bash

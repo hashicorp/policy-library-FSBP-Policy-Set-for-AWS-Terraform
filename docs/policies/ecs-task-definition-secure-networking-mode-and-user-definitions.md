@@ -12,7 +12,7 @@ This policy only evaluates the latest active revision of an Amazon ECS task defi
 
 The purpose of this policy is to ensure that access is defined intentionally when you run tasks that use the host network mode. If a task definition has elevated privileges, it is because you have chosen that configuration. This control checks for unexpected privilege escalation when a task definition has host networking enabled, and you don't choose elevated privileges.
 
-This rule is covered by the [ecs-task-definition-secure-networking-mode-and-user-definitions](../../policies/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel) policy.
+This rule is covered by the [ecs-task-definition-secure-networking-mode-and-user-definitions](../../policies/ecs/ecs-task-definition-secure-networking-mode-and-user-definitions.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

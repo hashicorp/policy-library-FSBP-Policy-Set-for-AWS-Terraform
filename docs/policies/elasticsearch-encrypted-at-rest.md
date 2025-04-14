@@ -10,7 +10,7 @@ This control checks whether Elasticsearch domains have encryption at rest config
 
 For an added layer of security for your sensitive data in OpenSearch, you should configure your OpenSearch to be encrypted at rest. Elasticsearch domains offer encryption of data at rest. The feature uses AWS KMS to store and manage your encryption keys. To perform the encryption, it uses the Advanced Encryption Standard algorithm with 256-bit keys (AES-256).
 
-This rule is covered by the [elasticsearch-encrypted-at-rest](../../policies/elasticsearch-encrypted-at-rest.sentinel) policy.
+This rule is covered by the [elasticsearch-encrypted-at-rest](../../policies/elasticsearch/elasticsearch-encrypted-at-rest.sentinel) policy.
 
 ## Policy Results (Pass)
 

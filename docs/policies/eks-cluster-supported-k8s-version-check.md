@@ -10,7 +10,7 @@ This policy checks whether an Amazon Elastic Kubernetes Service (Amazon EKS clus
 
 If your application doesn't require a specific version of Kubernetes, we recommend that you use the latest available Kubernetes version that's supported by EKS for your clusters.
 
-This rule is covered by the [eks-cluster-supported-k8s-version-check](../../policies/eks-cluster-supported-k8s-version-check.sentinel) policy.
+This rule is covered by the [eks-cluster-supported-k8s-version-check](../../policies/eks/eks-cluster-supported-k8s-version-check.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

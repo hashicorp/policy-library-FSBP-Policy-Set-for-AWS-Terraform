@@ -10,7 +10,7 @@ This control checks whether enhanced monitoring is enabled for an Amazon Relatio
 The control fails if enhanced monitoring isn't enabled for the instance. 
 If you provide a custom value for the monitoringInterval parameter, the control passes only if enhanced monitoring metrics are collected for the instance at the specified interval.
 
-This rule is covered by the [rds-ensure-monitoring-configured](../../policies/rds-ensure-monitoring-configured.sentinel) policy.
+This rule is covered by the [rds-ensure-monitoring-configured](../../policies/rds/rds-ensure-monitoring-configured.sentinel) policy.
 
 ```bash
 trace:

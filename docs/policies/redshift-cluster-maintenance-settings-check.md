@@ -10,7 +10,7 @@ This control checks whether automatic major version upgrades are enabled for the
 
 Enabling automatic major version upgrades ensures that the latest major version updates to Amazon Redshift clusters are installed during the maintenance window. These updates might include security patches and bug fixes. Keeping up to date with patch installation is an important step in securing systems.
 
-This rule is covered by the [redshift-cluster-maintenance-settings-check](../../policies/redshift-cluster-maintenance-settings-check.sentinel) policy.
+This rule is covered by the [redshift-cluster-maintenance-settings-check](../../policies/redshift/redshift-cluster-maintenance-settings-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

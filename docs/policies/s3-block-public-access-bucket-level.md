@@ -10,7 +10,7 @@ DISCLAIMER - This policy works when all resources are present in root module
 
 Amazon S3 provides Block public access (bucket settings) and Block public access (account settings) to help you manage public access to Amazon S3 resources. By default, S3 buckets and objects are created with public access disabled. However, an IAM principal with sufficient S3 permissions can enable public access at the bucket and/or object level. While enabled, Block public access (bucket settings) prevents an individual bucket, and its contained objects, from becoming publicly accessible. Similarly, Block public access (account settings) prevents all buckets, and contained objects, from becoming publicly accessible across the entire account
 
-This rule is covered by the [s3-block-public-access-bucket-level](../../policies/s3-block-public-access-bucket-level.sentinel) policy.
+This rule is covered by the [s3-block-public-access-bucket-level](../../policies/s3/s3-block-public-access-bucket-level.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

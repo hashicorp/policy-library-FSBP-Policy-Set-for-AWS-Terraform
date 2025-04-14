@@ -8,7 +8,7 @@
 
 This control checks if a Neptune DB cluster has IAM database authentication enabled. The control fails if IAM database authentication isn't enabled for a Neptune DB cluster.
 
-This rule is covered by the [neptune-cluster-db-auth-enabled](../../policies/neptune-cluster-db-auth-enabled.sentinel) policy.
+This rule is covered by the [neptune-cluster-db-auth-enabled](../../policies/neptune/neptune-cluster-db-auth-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

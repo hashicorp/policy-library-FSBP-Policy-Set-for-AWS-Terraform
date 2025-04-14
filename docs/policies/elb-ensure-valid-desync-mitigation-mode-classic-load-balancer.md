@@ -10,7 +10,7 @@ This policy checks whether a Classic Load Balancer is configured with defensive 
 
 HTTP Desync issues can lead to request smuggling and make applications vulnerable to request queue or cache poisoning. In turn, these vulnerabilities can lead to credential hijacking or execution of unauthorized commands. Classic Load Balancers configured with defensive or strictest desync mitigation mode protect your application from security issues that may be caused by HTTP Desync.
 
-This rule is covered by the [elb-ensure-valid-desync-mitigation-mode](../../policies/elb-ensure-valid-desync-mitigation-mode.sentinel) policy with the `classic` as the `lb_type` parameter.
+This rule is covered by the [elb-ensure-valid-desync-mitigation-mode](../../policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel) policy with the `classic` as the `lb_type` parameter.
 
 ## Policy Results (Pass)
 ```bash

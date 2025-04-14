@@ -12,7 +12,7 @@ VPCs provide a number of network controls to secure access to RDS resources.
 These controls include VPC Endpoints, network ACLs, and security groups. 
 To take advantage of these controls, we recommend that you create your RDS instances on an EC2-VPC.
 
-This rule is covered by the [rds-instance-deployed-in-vpc](../../policies/rds-instance-deployed-in-vpc.sentinel) policy.
+This rule is covered by the [rds-instance-deployed-in-vpc](../../policies/rds/rds-instance-deployed-in-vpc.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

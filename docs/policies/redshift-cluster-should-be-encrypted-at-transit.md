@@ -10,7 +10,7 @@ This control checks whether connections to Amazon Redshift clusters are required
 
 TLS can be used to help prevent potential attackers from using person-in-the-middle or similar attacks to eavesdrop on or manipulate network traffic. Only encrypted connections over TLS should be allowed. Encrypting data in transit can affect performance. You should test your application with this feature to understand the performance profile and the impact of TLS.
 
-This rule is covered by the [redshift-cluster-should-be-encrypted-at-transit](../../policies/redshift-cluster-should-be-encrypted-at-transit.sentinel) policy.
+This rule is covered by the [redshift-cluster-should-be-encrypted-at-transit](../../policies/redshift/redshift-cluster-should-be-encrypted-at-transit.sentinel) policy.
 
 ## Policy Results (Pass)
 

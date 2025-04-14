@@ -10,7 +10,7 @@ This policy checks if the privileged parameter in the container definition of Am
 
 We recommend that you remove elevated privileges from your ECS task definitions. When the privilege parameter is true, the container is given elevated privileges on the host container instance (similar to the root user).
 
-This rule is covered by the [ecs-non-privileged-container-definitions](../../policies/ecs-non-privileged-container-definitions.sentinel) policy.
+This rule is covered by the [ecs-non-privileged-container-definitions](../../policies/ecs/ecs-non-privileged-container-definitions.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks whether Amazon Redshift clusters are publicly accessible. It
 
 The PubliclyAccessible attribute of the Amazon Redshift cluster configuration indicates whether the cluster is publicly accessible. When the cluster is configured with PubliclyAccessible set to true, it is an Internet-facing instance that has a publicly resolvable DNS name, which resolves to a public IP address.
 
-This rule is covered by the [redshift-cluster-public-access-check](../../policies/redshift-cluster-public-access-check.sentinel) policy.
+This rule is covered by the [redshift-cluster-public-access-check](../../policies/redshift/redshift-cluster-public-access-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

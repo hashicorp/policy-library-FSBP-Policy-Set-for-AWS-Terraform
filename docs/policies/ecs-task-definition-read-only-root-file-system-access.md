@@ -10,7 +10,7 @@ This policy checks if Amazon ECS containers are limited to read-only access to m
 
 Enabling this option reduces security attack vectors since the container instance's filesystem cannot be tampered with or written to unless it has explicit read-write permissions on its filesystem folder and directories. This policy also adheres to the principle of least privilege.
 
-This rule is covered by the [ecs-task-definition-read-only-root-file-system-access](../../policies/ecs-task-definition-read-only-root-file-system-access.sentinel) policy.
+This rule is covered by the [ecs-task-definition-read-only-root-file-system-access](../../policies/ecs/ecs-task-definition-read-only-root-file-system-access.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

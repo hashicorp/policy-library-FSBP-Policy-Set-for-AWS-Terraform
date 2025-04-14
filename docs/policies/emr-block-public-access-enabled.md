@@ -8,7 +8,7 @@
 
 This control checks whether your account is configured with Amazon EMR block public access. The control fails if the block public access setting isn't enabled or if any port other than port 22 is allowed.
 
-This rule is covered by the [emr-block-public-access-enabled](../../policies/emr-block-public-access-enabled.sentinel) policy.
+This rule is covered by the [emr-block-public-access-enabled](../../policies/emr/emr-block-public-access-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

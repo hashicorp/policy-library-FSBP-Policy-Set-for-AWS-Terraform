@@ -10,7 +10,7 @@ This control checks whether direct internet access is disabled for an SageMaker 
 
 If you configure your SageMaker instance without a VPC, then by default direct internet access is enabled on your instance. You should configure your instance with a VPC and change the default setting to Disable—Access the internet through a VPC. To train or host models from a notebook, you need internet access.
 
-This rule is covered by the [sagemaker-notebook-no-direct-internet-access](../../policies/sagemaker-notebook-no-direct-internet-access.sentinel) policy.
+This rule is covered by the [sagemaker-notebook-no-direct-internet-access](../../policies/sagemaker/sagemaker-notebook-no-direct-internet-access.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ This control checks whether you've changed the administrative username for Amazo
 
 Default administrative usernames on Amazon RDS databases are public knowledge. When creating an Amazon RDS database, you should change the default administrative username to a unique value to reduce the risk of unintended access.
 
-This rule is covered by the [rds-instance-default-admin-check](../../policies/rds-instance-default-admin-check.sentinel) policy.
+This rule is covered by the [rds-instance-default-admin-check](../../policies/rds/rds-instance-default-admin-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ This control checks if a stateless rule group in AWS Network Firewall contains r
 
 A rule group contains rules that define how your firewall processes traffic in your VPC. An empty stateless rule group, when present in a firewall policy, might give the impression that the rule group will process traffic. However, when the stateless rule group is empty, it does not process traffic.
 
-This rule is covered by the [network-firewall-stateless-rule-group](../../policies/network-firewall-stateless-rule-group.sentinel) policy.
+This rule is covered by the [network-firewall-stateless-rule-group](../../policies/network-firewall/network-firewall-stateless-rule-group.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

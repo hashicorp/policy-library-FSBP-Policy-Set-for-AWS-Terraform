@@ -10,7 +10,7 @@ This policy checks whether an Application, Gateway, or Network Load Balancer has
 
 Enable deletion protection to protect your Application, Gateway, or Network Load Balancer from deletion.
 
-This rule is covered by the [elb-ensure-deletion-protection-enabled](../../policies/elb-ensure-deletion-protection-enabled.sentinel) policy.
+This rule is covered by the [elb-ensure-deletion-protection-enabled](../../policies/elb/elb-ensure-deletion-protection-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

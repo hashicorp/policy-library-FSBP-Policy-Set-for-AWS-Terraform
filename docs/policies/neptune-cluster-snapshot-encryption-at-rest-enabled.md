@@ -8,7 +8,7 @@
 
 This control checks whether a Neptune DB cluster snapshot is encrypted at rest. The control fails if a Neptune DB cluster isn't encrypted at rest.
 
-This rule is covered by the [neptune-cluster-snapshot-encryption-at-rest-enabled](../../policies/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel) policy.
+This rule is covered by the [neptune-cluster-snapshot-encryption-at-rest-enabled](../../policies/neptune/neptune-cluster-snapshot-encryption-at-rest-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

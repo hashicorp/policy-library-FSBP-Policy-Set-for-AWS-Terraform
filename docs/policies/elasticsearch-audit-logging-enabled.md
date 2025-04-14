@@ -10,7 +10,7 @@ This control checks whether Elasticsearch domains have audit logging enabled. Th
 
 Audit logs are highly customizable. They allow you to track user activity on your Elasticsearch clusters, including authentication successes and failures, requests to OpenSearch, index changes, and incoming search queries.
 
-This rule is covered by the [elasticsearch-audit-logging-enabled](../../policies/elasticsearch-audit-logging-enabled.sentinel) policy.
+This rule is covered by the [elasticsearch-audit-logging-enabled](../../policies/elasticsearch/elasticsearch-audit-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ This control checks whether an Amazon S3 general purpose bucket policy prevents 
 
 Implementing least privilege access is fundamental to reducing security risk and the impact of errors or malicious intent. If an S3 bucket policy allows access from external accounts, it could result in data exfiltration by an insider threat or an attacker.
 
-This rule is covered by the [s3-bucket-policy-restrict-access-to-other-accounts](../../policies/s3-bucket-policy-restrict-access-to-other-accounts.sentinel) policy.
+This rule is covered by the [s3-bucket-policy-restrict-access-to-other-accounts](../../policies/s3/s3-bucket-policy-restrict-access-to-other-accounts.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

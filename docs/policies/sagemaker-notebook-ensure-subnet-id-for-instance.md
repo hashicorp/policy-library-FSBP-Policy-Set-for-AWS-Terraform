@@ -10,7 +10,7 @@ This control checks if an Amazon SageMaker notebook instance is launched within 
 
 Subnets are a range of IP addresses within a VPC. We recommend keeping your resources inside a custom VPC whenever possible to ensure secure network protection of your infrastructure. An Amazon VPC is a virtual network dedicated to your AWS account. With an Amazon VPC, you can control the network access and internet connectivity of your SageMaker Studio and notebook instances.
 
-This rule is covered by the [sagemaker-notebook-ensure-subnet-id-for-instance](../../policies/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel) policy.
+This rule is covered by the [sagemaker-notebook-ensure-subnet-id-for-instance](../../policies/sagemaker/sagemaker-notebook-ensure-subnet-id-for-instance.sentinel) policy.
 
 ## Policy Results (Pass)
 

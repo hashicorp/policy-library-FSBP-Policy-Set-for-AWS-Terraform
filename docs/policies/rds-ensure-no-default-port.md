@@ -9,7 +9,7 @@
 This control checks whether an RDS cluster or instance uses a port other than the default port of the database engine. 
 The control fails if the RDS cluster or instance uses the default port.
 
-This rule is covered by the [rds-ensure-no-default-port](../../policies/rds-ensure-no-default-port.sentinel) policy.
+This rule is covered by the [rds-ensure-no-default-port](../../policies/rds/rds-ensure-no-default-port.sentinel) policy.
 
 ```bash
 trace:

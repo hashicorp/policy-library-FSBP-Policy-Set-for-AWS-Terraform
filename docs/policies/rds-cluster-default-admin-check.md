@@ -10,7 +10,7 @@ This control checks whether an Amazon RDS database cluster has changed the admin
 
 When creating an Amazon RDS database, you should change the default admin username to a unique value. Default usernames are public knowledge and should be changed during RDS database creation. Changing the default usernames reduces the risk of unintended access.
 
-This rule is covered by the [rds-cluster-default-admin-check](../../policies/rds-cluster-default-admin-check.sentinel) policy.
+This rule is covered by the [rds-cluster-default-admin-check](../../policies/rds/rds-cluster-default-admin-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

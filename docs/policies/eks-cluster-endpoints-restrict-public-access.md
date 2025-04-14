@@ -10,7 +10,7 @@ This policy checks whether an Amazon EKS cluster endpoint is publicly accessible
 
 When your create a new cluster, Amazon EKS creates an endpoint for the managed Kubernetes API server that you use to communicate with your cluster. By default, this API server endpoint is publicly available to the internet. Access to the API server is secured using a combination of AWS Identity and Access Management (IAM) and native Kubernetes Role Based Access Control (RBAC). By removing public access to the endpoint, you can avoid unintentional exposure and access to your cluster.
 
-This rule is covered by the [eks-cluster-endpoints-restrict-public-access](../../policies/eks-cluster-endpoints-restrict-public-access.sentinel) policy.
+This rule is covered by the [eks-cluster-endpoints-restrict-public-access](../../policies/eks/eks-cluster-endpoints-restrict-public-access.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

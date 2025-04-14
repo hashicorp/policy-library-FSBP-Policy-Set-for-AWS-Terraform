@@ -8,7 +8,7 @@
 
 This control evaluates whether ElastiCache for Redis automatically applies minor version upgrades to cache clusters. This control fails if ElastiCache for Redis cache clusters do not have minor version upgrades automatically applied.
 
-This rule is covered by the [elasticache-redis-cluster-auto-minor-version-upgrade-enabled](../../policies/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel) policy.
+This rule is covered by the [elasticache-redis-cluster-auto-minor-version-upgrade-enabled](../../policies/elasticache/elasticache-redis-cluster-auto-minor-version-upgrade-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

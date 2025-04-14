@@ -12,7 +12,7 @@ DBParameterGroup: ["configuration change"]
 
 RDS event notifications use Amazon SNS to make you aware of changes in the availability or configuration of your RDS resources. These notifications allow for rapid response. For additional information about RDS event notifications, see Using Amazon RDS event notification in the Amazon RDS User Guide.
 
-This rule is covered by the [rds-event-notifications-configured-for-critical-events](../../policies/rds-event-notifications-configured-for-critical-events.sentinel) policy.
+This rule is covered by the [rds-event-notifications-configured-for-critical-events](../../policies/rds/rds-event-notifications-configured-for-critical-events.sentinel) policy.
 
 ## Policy Results (Pass)
 

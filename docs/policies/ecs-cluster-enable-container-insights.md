@@ -10,7 +10,7 @@ This policy checks if ECS clusters use Container Insights. This policy fails if 
 
 Monitoring is an important part of maintaining the reliability, availability, and performance of Amazon ECS clusters. Use CloudWatch Container Insights to collect, aggregate, and summarize metrics and logs from your containerized applications and microservices. CloudWatch automatically collects metrics for many resources, such as CPU, memory, disk, and network. Container Insights also provides diagnostic information, such as container restart failures, to help you isolate issues and resolve them quickly. You can also set CloudWatch alarms on metrics that Container Insights collects.
 
-This rule is covered by the [ecs-cluster-enable-container-insights](../../policies/ecs-cluster-enable-container-insights.sentinel) policy.
+This rule is covered by the [ecs-cluster-enable-container-insights](../../policies/ecs/ecs-cluster-enable-container-insights.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

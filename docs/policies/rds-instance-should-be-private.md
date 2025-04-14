@@ -8,7 +8,7 @@
 
 This control checks whether Amazon RDS instances are publicly accessible by evaluating the PubliclyAccessible field in the instance configuration item.
 
-This rule is covered by the [rds-instance-should-be-private](../../policies/rds-instance-should-be-private.sentinel) policy.
+This rule is covered by the [rds-instance-should-be-private](../../policies/rds/rds-instance-should-be-private.sentinel) policy.
 
 ```bash
 trace:

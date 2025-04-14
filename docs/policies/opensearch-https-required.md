@@ -10,7 +10,7 @@ This controls checks whether an Amazon OpenSearch Service domain endpoint is con
 
 HTTPS (TLS) can be used to help prevent potential attackers from using person-in-the-middle or similar attacks to eavesdrop on or manipulate network traffic. Only encrypted connections over HTTPS (TLS) should be allowed. Encrypting data in transit can affect performance. You should test your application with this feature to understand the performance profile and the impact of TLS. TLS 1.2 provides several security enhancements over previous versions of TLS.
 
-This rule is covered by the [opensearch-https-required](../../policies/opensearch-https-required.sentinel) policy.
+This rule is covered by the [opensearch-https-required](../../policies/opensearch/opensearch-https-required.sentinel) policy.
 
 ## Policy Results (Pass)
 

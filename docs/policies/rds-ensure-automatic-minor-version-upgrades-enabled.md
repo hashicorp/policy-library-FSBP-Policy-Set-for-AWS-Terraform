@@ -11,7 +11,7 @@ This control checks whether automatic minor version upgrades are enabled for the
 Enabling automatic minor version upgrades ensures that the latest minor version updates to the relational database management system (RDBMS) are installed. These upgrades might include security patches and bug fixes. Keeping up to date with patch installation is an important step in securing systems.
 
 
-This rule is covered by the [rds-ensure-automatic-minor-version-upgrades-enabled](../../policies/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel) policy.
+This rule is covered by the [rds-ensure-automatic-minor-version-upgrades-enabled](../../policies/rds/rds-ensure-automatic-minor-version-upgrades-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

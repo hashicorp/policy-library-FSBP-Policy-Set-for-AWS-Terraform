@@ -11,7 +11,7 @@ DISCLAIMER - This policy works when all resources are present in the same module
 This control checks whether logging is enabled for an AWS Network Firewall firewall. The control fails if logging isn't enabled for at least one log type or if the logging destination doesn't exist.
 
 
-This rule is covered by the [network-firewall-logging-enabled](../../policies/network-firewall-logging-enabled.sentinel) policy.
+This rule is covered by the [network-firewall-logging-enabled](../../policies/network-firewall/network-firewall-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

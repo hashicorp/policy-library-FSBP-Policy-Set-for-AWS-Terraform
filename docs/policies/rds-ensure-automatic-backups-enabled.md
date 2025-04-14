@@ -12,7 +12,7 @@ Read replicas are excluded from evaluation.
 The control fails if backups aren't enabled for the instance, or if the retention period is less than the specified time frame. 
 Unless you provide a custom parameter value for the backup retention period, Security Hub uses a default value of 7 days.
 
-This rule is covered by the [rds-ensure-automatic-backups-enabled](../../policies/rds-ensure-automatic-backups-enabled.sentinel) policy.
+This rule is covered by the [rds-ensure-automatic-backups-enabled](../../policies/rds/rds-ensure-automatic-backups-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

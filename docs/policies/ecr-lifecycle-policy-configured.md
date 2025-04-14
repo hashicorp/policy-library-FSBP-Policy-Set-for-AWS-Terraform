@@ -12,7 +12,7 @@ This policy checks whether an Amazon ECR repository has at least one lifecycle p
 
 Amazon ECR lifecycle policies enable you to specify the lifecycle management of images in a repository. By configuring lifecycle policies, you can automate the cleanup of unused images and the expiration of images based on age or count. Automating these tasks can help you avoid unintentionally using outdated images in your repository.
 
-This rule is covered by the [ecr-lifecycle-policy-configured](../../policies/ecr-lifecycle-policy-configured.sentinel) policy.
+This rule is covered by the [ecr-lifecycle-policy-configured](../../policies/ecr/ecr-lifecycle-policy-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

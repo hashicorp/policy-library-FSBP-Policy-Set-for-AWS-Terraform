@@ -10,7 +10,7 @@ This control checks whether OpenSearch domains have node-to-node encryption enab
 
 HTTPS (TLS) can be used to help prevent potential attackers from eavesdropping on or manipulating network traffic using person-in-the-middle or similar attacks. Only encrypted connections over HTTPS (TLS) should be allowed. Enabling node-to-node encryption for OpenSearch domains ensures that intra-cluster communications are encrypted in transit.
 
-This rule is covered by the [opensearch-node-to-node-encryption-check](../../policies/opensearch-node-to-node-encryption-check.sentinel) policy.
+This rule is covered by the [opensearch-node-to-node-encryption-check](../../policies/opensearch/opensearch-node-to-node-encryption-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

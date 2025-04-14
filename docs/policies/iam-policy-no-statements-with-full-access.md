@@ -10,7 +10,7 @@ This control checks whether the IAM identity-based policies that you create have
 
 The control also fails if you use "Effect": "Allow" with "NotAction": "service:*". In that case, the NotAction element provides access to all of the actions in an AWS service, except for the actions specified in NotAction.
 
-This rule is covered by the [iam-policy-no-statements-with-full-access](../../policies/iam-policy-no-statements-with-full-access.sentinel) policy.
+This rule is covered by the [iam-policy-no-statements-with-full-access](../../policies/iam/iam-policy-no-statements-with-full-access.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

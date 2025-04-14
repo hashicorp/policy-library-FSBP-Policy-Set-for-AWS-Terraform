@@ -10,7 +10,7 @@ This controls checks whether an Amazon MSK cluster is encrypted in transit with 
 
 HTTPS offers an extra layer of security as it uses TLS to move data and can be used to help prevent potential attackers from using person-in-the-middle or similar attacks to eavesdrop on or manipulate network traffic. By default, Amazon MSK encrypts data in transit with TLS. However, you can override this default at the time that you create the cluster. We recommend using encrypted connections over HTTPS (TLS) for-broker node connections.
 
-This rule is covered by the [msk-in-cluster-node-require-encrypted-in-transit](../../policies/msk-in-cluster-node-require-encrypted-in-transit.sentinel) policy.
+This rule is covered by the [msk-in-cluster-node-require-encrypted-in-transit](../../policies/msk/msk-in-cluster-node-require-encrypted-in-transit.sentinel) policy.
 
 ## Policy Results (Pass)
 

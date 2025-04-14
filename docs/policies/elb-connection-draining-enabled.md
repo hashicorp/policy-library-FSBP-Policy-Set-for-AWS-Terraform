@@ -10,7 +10,7 @@ This policy checks whether Classic Load Balancers have connection draining enabl
 
 Enabling connection draining on Classic Load Balancers ensures that the load balancer stops sending requests to instances that are de-registering or unhealthy. It keeps the existing connections open. This is particularly useful for instances in Auto Scaling groups, to ensure that connections aren't severed abruptly.
 
-This rule is covered by the [elb-connection-draining-enabled](../../policies/elb-connection-draining-enabled.sentinel) policy.
+This rule is covered by the [elb-connection-draining-enabled](../../policies/elb/elb-connection-draining-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

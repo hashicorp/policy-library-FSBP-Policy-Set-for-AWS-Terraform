@@ -10,7 +10,7 @@ This policy checks whether HTTP to HTTPS redirection is configured on all HTTP l
 
 Before you start to use your Application Load Balancer, you must add one or more listeners. A listener is a process that uses the configured protocol and port to check for connection requests. Listeners support both the HTTP and HTTPS protocols. You can use an HTTPS listener to offload the work of encryption and decryption to your load balancer. To enforce encryption in transit, you should use redirect actions with Application Load Balancers to redirect client HTTP requests to an HTTPS request on port 443.
 
-This rule is covered by the [elb-ensure-http-request-redirection](../../policies/elb-ensure-http-request-redirection.sentinel) policy.
+This rule is covered by the [elb-ensure-http-request-redirection](../../policies/elb/elb-ensure-http-request-redirection.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -9,7 +9,7 @@
 This control checks whether an Amazon RDS DB cluster has IAM database authentication enabled.
 
 
-This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds-ensure-deletion-protection-enabled.sentinel) policy.
+This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds/rds-ensure-deletion-protection-enabled.sentinel) policy.
 Param which needs to be passed is "resource_type" with value - "aws_rds_cluster"
 
 ```bash

@@ -8,7 +8,7 @@
 
 This control checks whether the account password policy for IAM users uses strong configurations. The control fails if the password policy doesn't use strong configurations. Unless you provide custom parameter values, Security Hub uses the default values mentioned in the preceding table. The PasswordReusePrevention and MaxPasswordAge parameters have no default value, so if you exclude these parameters, Security Hub ignores number of password rotations and password age when evaluating this control.
 
-This rule is covered by the [iam-password-policy-strong-configuration](../../policies/iam-password-policy-strong-configuration.sentinel) policy.
+This rule is covered by the [iam-password-policy-strong-configuration](../../policies/iam/iam-password-policy-strong-configuration.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

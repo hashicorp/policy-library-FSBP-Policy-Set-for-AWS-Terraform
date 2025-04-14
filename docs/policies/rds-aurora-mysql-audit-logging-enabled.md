@@ -10,7 +10,7 @@ This control checks whether an Amazon Aurora MySQL DB cluster is configured to p
 
 Audit logs capture a record of database activity, including login attempts, data modifications, schema changes, and other events that can be audited for security and compliance purposes. When you configure an Aurora MySQL DB cluster to publish audit logs to a log group in Amazon CloudWatch Logs, you can perform real-time analysis of the log data. CloudWatch Logs retains logs in highly durable storage. You can also create alarms and view metrics in CloudWatch.
 
-This rule is covered by the [rds-aurora-mysql-audit-logging-enabled](../../policies/rds-aurora-mysql-audit-logging-enabled.sentinel) policy.
+This rule is covered by the [rds-aurora-mysql-audit-logging-enabled](../../policies/rds/rds-aurora-mysql-audit-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

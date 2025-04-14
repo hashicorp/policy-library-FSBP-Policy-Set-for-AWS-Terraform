@@ -10,7 +10,7 @@ This control checks whether Elasticsearch domains are in a VPC. It does not eval
 
 Elasticsearch domains deployed within a VPC can communicate with VPC resources over the private AWS network, without the need to traverse the public internet. This configuration increases the security posture by limiting access to the data in transit. VPCs provide a number of network controls to secure access to Elasticsearch domains, including network ACL and security groups. Security Hub recommends that you migrate public Elasticsearch domains to VPCs to take advantage of these controls.
 
-This rule is covered by the [elasticsearch-in-vpc-only](../../policies/elasticsearch-in-vpc-only.sentinel) policy.
+This rule is covered by the [elasticsearch-in-vpc-only](../../policies/elasticsearch/elasticsearch-in-vpc-only.sentinel) policy.
 
 ## Policy Results (Pass)
 

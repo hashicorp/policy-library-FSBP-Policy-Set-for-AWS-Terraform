@@ -8,7 +8,7 @@
 
 This control checks if ElastiCache for Redis replication groups have automatic failover enabled. This control fails if automatic failover isn't enabled for a Redis replication group.
 
-This rule is covered by the [elasticache-redis-replication-group-auto-failover-enabled](../../policies/elasticache-redis-replication-group-auto-failover-enabled.sentinel) policy.
+This rule is covered by the [elasticache-redis-replication-group-auto-failover-enabled](../../policies/elasticache/elasticache-redis-replication-group-auto-failover-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks whether an Amazon Redshift cluster has automated snapshots e
 
 Backups help you to recover more quickly from a security incident. They strengthen the resilience of your systems. Amazon Redshift takes periodic snapshots by default. This control checks whether automatic snapshots are enabled and retained for at least seven days.
 
-This rule is covered by the [redshift-cluster-automated-snapshot-retention-enabled](../../policies/redshift-cluster-automated-snapshot-retention-enabled.sentinel) policy.
+This rule is covered by the [redshift-cluster-automated-snapshot-retention-enabled](../../policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

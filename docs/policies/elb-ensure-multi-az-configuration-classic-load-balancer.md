@@ -10,7 +10,7 @@ This policy checks whether a Classic Load Balancer has been configured to span a
 
 A Classic Load Balancer can be set up to distribute incoming requests across Amazon EC2 instances in a single Availability Zone or multiple Availability Zones. A Classic Load Balancer that does not span multiple Availability Zones is unable to redirect traffic to targets in another Availability Zone if the sole configured Availability Zone becomes unavailable.
 
-This rule is covered by the [elb-ensure-multi-az-configuration-classic-load-balancer](../../policies/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel) policy.
+This rule is covered by the [elb-ensure-multi-az-configuration-classic-load-balancer](../../policies/elb/elb-ensure-multi-az-configuration-classic-load-balancer.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

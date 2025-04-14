@@ -10,7 +10,7 @@ This control checks whether an Amazon S3 general purpose bucket permits public r
 
 Some use cases may require that everyone on the internet be able to read from your S3 bucket. However, those situations are rare. To ensure the integrity and security of your data, your S3 bucket should not be publicly readable.
 
-This rule is covered by the [s3-bucket-block-public-read-access](../../policies/s3-bucket-block-public-read-access.sentinel) policy.
+This rule is covered by the [s3-bucket-block-public-read-access](../../policies/s3/s3-bucket-block-public-read-access.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

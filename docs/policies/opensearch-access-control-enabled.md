@@ -10,7 +10,7 @@ This control checks whether OpenSearch domains have fine-grained access control 
 
 Fine-grained access control offers additional ways of controlling access to your data on Amazon OpenSearch Service.
 
-This rule is covered by the [opensearch-access-control-enabled](../../policies/opensearch-access-control-enabled.sentinel) policy.
+This rule is covered by the [opensearch-access-control-enabled](../../policies/opensearch/opensearch-access-control-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

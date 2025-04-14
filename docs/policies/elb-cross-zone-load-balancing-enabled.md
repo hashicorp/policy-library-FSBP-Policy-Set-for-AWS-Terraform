@@ -10,7 +10,7 @@ This policy checks if cross-zone load balancing is enabled for the Classic Load 
 
 A load balancer node distributes traffic only across the registered targets in its Availability Zone. When cross-zone load balancing is disabled, each load balancer node distributes traffic only across the registered targets in its Availability Zone. If the number of registered targets is not same across the Availability Zones, traffic wont be distributed evenly and the instances in one zone may end up over utilized compared to the instances in another zone. With cross-zone load balancing enabled, each load balancer node for your Classic Load Balancer distributes requests evenly across the registered instances in all enabled Availability Zones.
 
-This rule is covered by the [elb-cross-zone-load-balancing-enabled](../../policies/elb-cross-zone-load-balancing-enabled.sentinel) policy.
+This rule is covered by the [elb-cross-zone-load-balancing-enabled](../../policies/elb/elb-cross-zone-load-balancing-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

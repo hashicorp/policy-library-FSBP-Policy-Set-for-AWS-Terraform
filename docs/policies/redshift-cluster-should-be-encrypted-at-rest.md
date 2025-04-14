@@ -10,7 +10,7 @@ This control checks if Amazon Redshift clusters are encrypted at rest. The contr
 
 In Amazon Redshift, you can turn on database encryption for your clusters to help protect data at rest. When you turn on encryption for a cluster, the data blocks and system metadata are encrypted for the cluster and its snapshots. Encryption of data at rest is a recommended best practice because it adds a layer of access management to your data. Encrypting Redshift clusters at rest reduces the risk that an unauthorized user can access the data stored on disk.
 
-This rule is covered by the [redshift-cluster-should-be-encrypted-at-rest](../../policies/redshift-cluster-should-be-encrypted-at-rest.sentinel) policy.
+This rule is covered by the [redshift-cluster-should-be-encrypted-at-rest](../../policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel) policy.
 
 ## Policy Results (Pass)
 

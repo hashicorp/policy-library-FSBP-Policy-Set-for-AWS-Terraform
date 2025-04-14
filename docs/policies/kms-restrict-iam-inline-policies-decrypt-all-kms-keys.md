@@ -14,7 +14,7 @@ With AWS KMS, you control who can use your KMS keys and gain access to your encr
 
 Instead of granting permission for all keys, determine the minimum set of keys that users need to access encrypted data. Then design policies that allow the users to use only those keys. For example, do not allow kms:Decrypt permission on all KMS keys. Instead, allow the permission only on specific keys in a specific Region for your account. By adopting the principle of least privilege, you can reduce the risk of unintended disclosure of your data.
 
-This rule is covered by the [kms-restrict-iam-inline-policies-decrypt-all-kms-keys](../../policies/kms-restrict-iam-inline-policies-decrypt-all-kms-keys.sentinel) policy.
+This rule is covered by the [kms-restrict-iam-inline-policies-decrypt-all-kms-keys](../../policies/kms/kms-restrict-iam-inline-policies-decrypt-all-kms-keys.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

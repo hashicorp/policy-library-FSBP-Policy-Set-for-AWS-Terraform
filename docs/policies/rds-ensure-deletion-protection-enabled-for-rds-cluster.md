@@ -12,7 +12,7 @@ The control fails if an RDS DB cluster doesn't have deletion protection enabled.
 This control checks whether your RDS DB instances that use one of the listed database engines have deletion protection enabled.
 The control fails if an RDS DB instance doesn't have deletion protection enabled.
 
-This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds-ensure-deletion-protection-enabled.sentinel) policy.
+This rule is covered by the [rds-ensure-deletion-protection-enabled](../../policies/rds/rds-ensure-deletion-protection-enabled.sentinel) policy.
 Param which needs to be passed is "resource_type" with value - "aws_rds_cluster"
 
 ```bash

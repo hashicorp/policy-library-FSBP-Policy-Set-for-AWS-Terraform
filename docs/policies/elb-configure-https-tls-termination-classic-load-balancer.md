@@ -14,7 +14,7 @@ The policy fails if the listener is not configured with TLS or HTTPS for front-e
 
 Before you start to use a load balancer, you must add one or more listeners. A listener is a process that uses the configured protocol and port to check for connection requests. Listeners can support both HTTP and HTTPS/TLS protocols. You should always use an HTTPS or TLS listener, so that the load balancer does the work of encryption and decryption in transit.
 
-This rule is covered by the [elb-configure-https-tls-termination-classic-load-balancer](../../policies/elb-configure-https-tls-termination-classic-load-balancer.sentinel) policy.
+This rule is covered by the [elb-configure-https-tls-termination-classic-load-balancer](../../policies/elb/elb-configure-https-tls-termination-classic-load-balancer.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks whether an Amazon S3 general purpose bucket permits public w
 
 Some use cases require that everyone on the internet be able to write to your S3 bucket. However, those situations are rare. To ensure the integrity and security of your data, your S3 bucket should not be publicly writable.
 
-This rule is covered by the [s3-bucket-block-public-write-access](../../policies/s3-bucket-block-public-write-access.sentinel) policy.
+This rule is covered by the [s3-bucket-block-public-write-access](../../policies/s3/s3-bucket-block-public-write-access.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks whether OpenSearch domains have audit logging enabled. This 
 
 Audit logs are highly customizable. They allow you to track user activity on your OpenSearch clusters, including authentication successes and failures, requests to OpenSearch, index changes, and incoming search queries.
 
-This rule is covered by the [opensearch-audit-logging-enabled](../../policies/opensearch-audit-logging-enabled.sentinel) policy.
+This rule is covered by the [opensearch-audit-logging-enabled](../../policies/opensearch/opensearch-audit-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ DISCLAIMER - This policy works when all resources of type `aws_s3_bucket_policy`
 
 At the Amazon S3 bucket level, you can configure permissions through a bucket policy making the objects accessible only through HTTPS.
 
-This rule is covered by the [s3-require-ssl](../../policies/s3-require-ssl.sentinel) policy.
+This rule is covered by the [s3-require-ssl](../../policies/s3/s3-require-ssl.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

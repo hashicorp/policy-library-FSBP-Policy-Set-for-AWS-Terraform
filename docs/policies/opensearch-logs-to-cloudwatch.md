@@ -10,7 +10,7 @@ This control checks whether OpenSearch domains are configured to send error logs
 
 You should enable error logs for OpenSearch domains and send those logs to CloudWatch Logs for retention and response. Domain error logs can assist with security and access audits, and can help to diagnose availability issues.
 
-This rule is covered by the [opensearch-logs-to-cloudwatch](../../policies/opensearch-logs-to-cloudwatch.sentinel) policy.
+This rule is covered by the [opensearch-logs-to-cloudwatch](../../policies/opensearch/opensearch-logs-to-cloudwatch.sentinel) policy.
 
 ## Policy Results (Pass)
 

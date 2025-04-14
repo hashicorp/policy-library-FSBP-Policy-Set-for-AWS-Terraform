@@ -11,7 +11,7 @@ This control checks whether an RDS DB snapshot is encrypted. The control fails i
 This control is intended for RDS DB instances. However, it can also generate findings for snapshots of Aurora DB instances, 
 Neptune DB instances, and Amazon DocumentDB clusters. 
 
-This rule is covered by the [rds-cluster-and-db-snapshot-encrypted](../../policies/rds-cluster-and-db-snapshot-encrypted.sentinel) policy.
+This rule is covered by the [rds-cluster-and-db-snapshot-encrypted](../../policies/rds/rds-cluster-and-db-snapshot-encrypted.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

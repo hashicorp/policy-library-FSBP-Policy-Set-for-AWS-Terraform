@@ -10,7 +10,7 @@ This control checks whether OpenSearch domains have encryption-at-rest configura
 
 For an added layer of security for sensitive data, you should configure your OpenSearch Service domain to be encrypted at rest. When you configure encryption of data at rest, AWS KMS stores and manages your encryption keys. To perform the encryption, AWS KMS uses the Advanced Encryption Standard algorithm with 256-bit keys (AES-256).
 
-This rule is covered by the [opensearch-encrypted-at-rest](../../policies/opensearch-encrypted-at-rest.sentinel) policy.
+This rule is covered by the [opensearch-encrypted-at-rest](../../policies/opensearch/opensearch-encrypted-at-rest.sentinel) policy.
 
 ## Policy Results (Pass)
 

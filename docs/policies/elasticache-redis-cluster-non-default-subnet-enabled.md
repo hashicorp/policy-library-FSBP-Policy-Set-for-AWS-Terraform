@@ -8,7 +8,7 @@
 
 This control checks if ElastiCache clusters are configured with a custom subnet group.
 
-This rule is covered by the [elasticache-redis-cluster-non-default-subnet-enabled](../../policies/elasticache-redis-cluster-non-default-subnet-enabled.sentinel) policy.
+This rule is covered by the [elasticache-redis-cluster-non-default-subnet-enabled](../../policies/elasticache/elasticache-redis-cluster-non-default-subnet-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -12,7 +12,7 @@ To create a certificate, you can use either ACM or a tool that supports the SSL 
 
 ACM integrates with Classic Load Balancers so that you can deploy the certificate on your load balancer. You also should automatically renew these certificates.
 
-This rule is covered by the [elb-ensure-ssl-listener-acm-cert-classic-load-balancer](../../policies/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel) policy.
+This rule is covered by the [elb-ensure-ssl-listener-acm-cert-classic-load-balancer](../../policies/elb/elb-ensure-ssl-listener-acm-cert-classic-load-balancer.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -12,7 +12,7 @@ RDS DB instances should be configured for multiple Availability Zones (AZs). Thi
 Multi-AZ deployments allow for automated failover if there is an issue with AZ availability and during regular RDS maintenance.
 
 
-This rule is covered by the [rds-ensure-multi-az-configuration](../../policies/rds-ensure-multi-az-configuration.sentinel) policy.
+This rule is covered by the [rds-ensure-multi-az-configuration](../../policies/rds/rds-ensure-multi-az-configuration.sentinel) policy.
 
 ```bash
 trace:

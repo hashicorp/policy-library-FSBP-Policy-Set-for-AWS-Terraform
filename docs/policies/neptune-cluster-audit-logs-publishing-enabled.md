@@ -8,7 +8,7 @@
 
 This control checks whether a Neptune DB cluster publishes audit logs to Amazon CloudWatch Logs. The control fails if a Neptune DB cluster doesn't publish audit logs to CloudWatch Logs. EnableCloudWatchLogsExport should be set to Audit.
 
-This rule is covered by the [neptune-cluster-audit-logs-publishing-enabled](../../policies/neptune-cluster-audit-logs-publishing-enabled.sentinel) policy.
+This rule is covered by the [neptune-cluster-audit-logs-publishing-enabled](../../policies/neptune/neptune-cluster-audit-logs-publishing-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

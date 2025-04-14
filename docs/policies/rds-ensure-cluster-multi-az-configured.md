@@ -9,7 +9,7 @@
 This control checks whether high availability is enabled for your RDS DB clusters. 
 The control fails if an RDS DB cluster isn't deployed in multiple Availability Zones (AZs).
 
-This rule is covered by the [rds-ensure-cluster-multi-az-configured](../../policies/rds-ensure-cluster-multi-az-configured.sentinel) policy.
+This rule is covered by the [rds-ensure-cluster-multi-az-configured](../../policies/rds/rds-ensure-cluster-multi-az-configured.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

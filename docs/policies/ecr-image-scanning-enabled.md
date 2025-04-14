@@ -10,7 +10,7 @@ This policy checks whether a private Amazon ECR repository has image scanning co
 
 ECR image scanning helps in identifying software vulnerabilities in your container images. Configuring image scanning on ECR repositories adds a layer of verification for the integrity and safety of the images being stored.
 
-This rule is covered by the [ecr-image-scanning-enabled](../../policies/ecr-image-scanning-enabled.sentinel) policy.
+This rule is covered by the [ecr-image-scanning-enabled](../../policies/ecr/ecr-image-scanning-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

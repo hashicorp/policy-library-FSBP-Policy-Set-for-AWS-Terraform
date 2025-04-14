@@ -10,7 +10,7 @@ This policy checks whether an Amazon EKS cluster uses encrypted Kubernetes secre
 
 When you encrypt secrets, you can use AWS Key Management Service (AWS KMS) keys to provide envelope encryption of Kubernetes secrets stored in etcd for your cluster. This encryption is in addition to the EBS volume encryption that is enabled by default for all data (including secrets) that is stored in etcd as part of an EKS cluster. Using secrets encryption for your EKS cluster allows you to deploy a defense in depth strategy for Kubernetes applications by encrypting Kubernetes secrets with a KMS key that you define and manage.
 
-This rule is covered by the [eks-cluster-encrypted-kubernetes-secrets](../../policies/eks-cluster-encrypted-kubernetes-secrets.sentinel) policy.
+This rule is covered by the [eks-cluster-encrypted-kubernetes-secrets](../../policies/eks/eks-cluster-encrypted-kubernetes-secrets.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks if an Amazon FSx for OpenZFS file system is configured to co
 
 Identification and inventory of your IT assets is an important aspect of governance and security. Tags help you categorize your AWS resources in different ways, for example, by purpose, owner, or environment. This is useful when you have many resources of the same type because you can quickly identify a specific resource based on the tags that you assigned to it.
 
-This rule is covered by the [fsx-openzfs-copy-tags-to-backups-and-volumes-enabled](../../policies/fsx-openzfs-copy-tags-to-backups-and-volumes-enabled.sentinel) policy.
+This rule is covered by the [fsx-openzfs-copy-tags-to-backups-and-volumes-enabled](../../policies/fsx/fsx-openzfs-copy-tags-to-backups-and-volumes-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 

@@ -10,7 +10,7 @@ This control checks whether an Amazon OpenSearch Service domain has the latest s
 
 OpenSearch Service software updates provide the latest platform fixes, updates, and features available for the environment. Keeping up-to-date with patch installation helps maintain domain security and availability. If no action is taken on required updates, the service software is updated automatically (typically after 2 weeks). We recommend scheduling updates during a time of low traffic to the domain to minimize service disruption.
 
-This rule is covered by the [opensearch-update-check](../../policies/opensearch-update-check.sentinel) policy.
+This rule is covered by the [opensearch-update-check](../../policies/opensearch/opensearch-update-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

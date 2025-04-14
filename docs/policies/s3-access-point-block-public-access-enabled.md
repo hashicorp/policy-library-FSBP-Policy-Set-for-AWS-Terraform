@@ -10,7 +10,7 @@ This control checks whether an Amazon S3 access point has block public access se
 
 The Amazon S3 Block Public Access feature helps you manage access to your S3 resources at three levels: the account, bucket, and access point levels. The settings at each level can be configured independently, allowing you to have different levels of public access restrictions for your data. The access point settings can't individually override the more restrictive settings at higher levels (account level or bucket assigned to the access point). Instead, the settings at the access point level are additive, meaning they complement and work alongside the settings at the other levels. Unless you intend an S3 access point to be publicly accessible, you should enable block public access settings.
 
-This rule is covered by the [s3-access-point-block-public-access-enabled](../../policies/s3-access-point-block-public-access-enabled.sentinel) policy.
+This rule is covered by the [s3-access-point-block-public-access-enabled](../../policies/s3/s3-access-point-block-public-access-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash

@@ -10,7 +10,7 @@ This control checks whether an Amazon Redshift cluster has changed the database 
 
 When creating a Redshift cluster, you should change the default database name to a unique value. Default names are public knowledge and should be changed upon configuration. As an example, a well-known name could lead to inadvertent access if it was used in IAM policy conditions.
 
-This rule is covered by the [redshift-cluster-default-db-name-check](../../policies/redshift-cluster-default-db-name-check.sentinel) policy.
+This rule is covered by the [redshift-cluster-default-db-name-check](../../policies/redshift/redshift-cluster-default-db-name-check.sentinel) policy.
 
 ## Policy Results (Pass)
 

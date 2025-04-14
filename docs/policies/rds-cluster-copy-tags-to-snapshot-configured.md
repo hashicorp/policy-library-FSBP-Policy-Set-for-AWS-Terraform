@@ -8,7 +8,7 @@
 
 This control checks whether RDS DB clusters are configured to copy all tags to snapshots when the snapshots are created.
 
-This rule is covered by the [rds-copy-tags-to-snapshot-configured](../../policies/rds-copy-tags-to-snapshot-configured.sentinel).
+This rule is covered by the [rds-copy-tags-to-snapshot-configured](../../policies/rds/rds-copy-tags-to-snapshot-configured.sentinel).
 The policy is parameterized and "resource" param value should be "aws_rds_cluster".
 
 ## Policy Results (Pass)

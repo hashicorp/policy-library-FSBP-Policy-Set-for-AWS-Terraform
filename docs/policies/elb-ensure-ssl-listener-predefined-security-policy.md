@@ -10,7 +10,7 @@ This policy checks whether your Classic Load Balancer HTTPS/SSL listeners use th
 
 A security policy is a combination of SSL protocols, ciphers, and the Server Order Preference option. Predefined policies policy the ciphers, protocols, and preference orders to support during SSL negotiations between a client and load balancer.
 
-This rule is covered by the [elb-ensure-ssl-listener-predefined-security-policy](../../policies/elb-ensure-ssl-listener-predefined-security-policy.sentinel) policy.
+This rule is covered by the [elb-ensure-ssl-listener-predefined-security-policy](../../policies/elb/elb-ensure-ssl-listener-predefined-security-policy.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
