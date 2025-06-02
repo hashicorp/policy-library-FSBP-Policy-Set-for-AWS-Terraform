@@ -1,0 +1,65 @@
+# This control checks whether an Amazon RDS for Microsoft SQL Server DB instance is configured to publish logs to Amazon CloudWatch Logs.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+import "strings"
+
+# Constants
+
+const = {
+	"policy_name":              "rds-for-sql-server-db-instances-should-publish-logs-to-cloudwatch-logs",
+	"message":                  "RDS for SQL Server DB instances should publish logs to CloudWatch Logs. Both 'agent' and 'error' log types should be enabled. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-40 for more details.",
+	"resource_aws_db_instance": "aws_db_instance",
+	"required_log_types":       ["agent", "error"],
+}
+
+# Functions
+
+is_sql_server_engine = func(engine) {
+	return engine is not null and strings.has_prefix(engine, "sqlserver")
+}
+
+has_required_log_exports = func(log_exports) {
+	if log_exports is null or log_exports is [] {
+		return false
+	}
+	return all const.required_log_types as required_log {
+		required_log in log_exports
+	}
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_db_instance).resources
+violations = collection.filter(resources, func(res) {
+	engine = maps.get(res, "values.engine", null)
+	log_exports = maps.get(res, "values.enabled_cloudwatch_logs_exports", null)
+
+	return is_sql_server_engine(engine) and not has_required_log_exports(log_exports)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
