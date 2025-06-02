@@ -352,6 +352,11 @@ policy "rds-security-group-event-notifications-configured-for-critical-events" {
   }
 }
 
+policy "aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs" {
+  source = "./policies/rds/aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs.sentinel"
+enforcement_level = "advisory"
+}
+
 policy "s3-block-public-access-account-level" {
     source = "./policies/s3/s3-block-public-access-account-level.sentinel"
     enforcement_level = "advisory"
