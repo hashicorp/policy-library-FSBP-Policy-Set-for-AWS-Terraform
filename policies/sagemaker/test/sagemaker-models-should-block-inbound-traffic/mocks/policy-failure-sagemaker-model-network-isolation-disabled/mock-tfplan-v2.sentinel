@@ -1,0 +1,938 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_role.sagemaker_role": {
+			"address":        "aws_iam_role.sagemaker_role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "sagemaker_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sagemaker.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "sagemaker-execution-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role_policy_attachment.sagemaker_attach": {
+			"address":        "aws_iam_role_policy_attachment.sagemaker_attach",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "sagemaker_attach",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy_attachment",
+			"values": {
+				"policy_arn": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+				"role":       "sagemaker-execution-role",
+			},
+		},
+		"aws_sagemaker_model.compliant_model": {
+			"address":        "aws_sagemaker_model.compliant_model",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "compliant_model",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_model",
+			"values": {
+				"container":                [],
+				"enable_network_isolation": true,
+				"name": "compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+		},
+		"aws_sagemaker_model.default_non_compliant_model": {
+			"address":        "aws_sagemaker_model.default_non_compliant_model",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "default_non_compliant_model",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_model",
+			"values": {
+				"container":                [],
+				"enable_network_isolation": null,
+				"name": "default-non-compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+		},
+		"aws_sagemaker_model.non_compliant_model": {
+			"address":        "aws_sagemaker_model.non_compliant_model",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "non_compliant_model",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_model",
+			"values": {
+				"container":                [],
+				"enable_network_isolation": false,
+				"name": "non-compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_iam_role.sagemaker_role": {
+		"address": "aws_iam_role.sagemaker_role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sagemaker.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "sagemaker-execution-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+			"after_unknown": {
+				"arn":                 true,
+				"create_date":         true,
+				"id":                  true,
+				"inline_policy":       true,
+				"managed_policy_arns": true,
+				"name_prefix":         true,
+				"tags_all":            true,
+				"unique_id":           true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "sagemaker_role",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role",
+	},
+	"aws_iam_role_policy_attachment.sagemaker_attach": {
+		"address": "aws_iam_role_policy_attachment.sagemaker_attach",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"policy_arn": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+				"role":       "sagemaker-execution-role",
+			},
+			"after_unknown": {
+				"id": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "sagemaker_attach",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_iam_role_policy_attachment",
+	},
+	"aws_sagemaker_model.compliant_model": {
+		"address": "aws_sagemaker_model.compliant_model",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"container":                [],
+				"enable_network_isolation": true,
+				"name": "compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+			"after_unknown": {
+				"arn":                true,
+				"container":          [],
+				"execution_role_arn": true,
+				"id":                 true,
+				"inference_execution_config": true,
+				"primary_container": [
+					{
+						"image_config":       [],
+						"model_data_source":  true,
+						"multi_model_config": [],
+					},
+				],
+				"tags_all":   true,
+				"vpc_config": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "compliant_model",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_model",
+	},
+	"aws_sagemaker_model.default_non_compliant_model": {
+		"address": "aws_sagemaker_model.default_non_compliant_model",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"container":                [],
+				"enable_network_isolation": null,
+				"name": "default-non-compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+			"after_unknown": {
+				"arn":                true,
+				"container":          [],
+				"execution_role_arn": true,
+				"id":                 true,
+				"inference_execution_config": true,
+				"primary_container": [
+					{
+						"image_config":       [],
+						"model_data_source":  true,
+						"multi_model_config": [],
+					},
+				],
+				"tags_all":   true,
+				"vpc_config": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "default_non_compliant_model",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_model",
+	},
+	"aws_sagemaker_model.non_compliant_model": {
+		"address": "aws_sagemaker_model.non_compliant_model",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"container":                [],
+				"enable_network_isolation": false,
+				"name": "non-compliant-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+			"after_unknown": {
+				"arn":                true,
+				"container":          [],
+				"execution_role_arn": true,
+				"id":                 true,
+				"inference_execution_config": true,
+				"primary_container": [
+					{
+						"image_config":       [],
+						"model_data_source":  true,
+						"multi_model_config": [],
+					},
+				],
+				"tags_all":   true,
+				"vpc_config": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "non_compliant_model",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_model",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 5.98.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_iam_role.sagemaker_role",
+					"expressions": {
+						"assume_role_policy": {},
+						"name": {
+							"constant_value": "sagemaker-execution-role",
+						},
+					},
+					"mode":                "managed",
+					"name":                "sagemaker_role",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role",
+				},
+				{
+					"address": "aws_iam_role_policy_attachment.sagemaker_attach",
+					"expressions": {
+						"policy_arn": {
+							"constant_value": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+						},
+						"role": {
+							"references": [
+								"aws_iam_role.sagemaker_role.name",
+								"aws_iam_role.sagemaker_role",
+							],
+						},
+					},
+					"mode":                "managed",
+					"name":                "sagemaker_attach",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_iam_role_policy_attachment",
+				},
+				{
+					"address": "aws_sagemaker_model.compliant_model",
+					"expressions": {
+						"enable_network_isolation": {
+							"constant_value": true,
+						},
+						"execution_role_arn": {
+							"references": [
+								"aws_iam_role.sagemaker_role.arn",
+								"aws_iam_role.sagemaker_role",
+							],
+						},
+						"name": {
+							"constant_value": "compliant-model",
+						},
+						"primary_container": [
+							{
+								"image": {
+									"constant_value": "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "compliant_model",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_model",
+				},
+				{
+					"address": "aws_sagemaker_model.default_non_compliant_model",
+					"expressions": {
+						"execution_role_arn": {
+							"references": [
+								"aws_iam_role.sagemaker_role.arn",
+								"aws_iam_role.sagemaker_role",
+							],
+						},
+						"name": {
+							"constant_value": "default-non-compliant-model",
+						},
+						"primary_container": [
+							{
+								"image": {
+									"constant_value": "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "default_non_compliant_model",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_model",
+				},
+				{
+					"address": "aws_sagemaker_model.non_compliant_model",
+					"expressions": {
+						"enable_network_isolation": {
+							"constant_value": false,
+						},
+						"execution_role_arn": {
+							"references": [
+								"aws_iam_role.sagemaker_role.arn",
+								"aws_iam_role.sagemaker_role",
+							],
+						},
+						"name": {
+							"constant_value": "non-compliant-model",
+						},
+						"primary_container": [
+							{
+								"image": {
+									"constant_value": "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "non_compliant_model",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_model",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_iam_role.sagemaker_role",
+					"mode":           "managed",
+					"name":           "sagemaker_role",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"inline_policy":       [],
+						"managed_policy_arns": [],
+						"tags_all":            {},
+					},
+					"type": "aws_iam_role",
+					"values": {
+						"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sagemaker.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+						"description":           null,
+						"force_detach_policies": false,
+						"max_session_duration":  3600,
+						"name":                  "sagemaker-execution-role",
+						"path":                  "/",
+						"permissions_boundary":  null,
+						"tags":                  null,
+					},
+				},
+				{
+					"address":          "aws_iam_role_policy_attachment.sagemaker_attach",
+					"mode":             "managed",
+					"name":             "sagemaker_attach",
+					"provider_name":    "registry.terraform.io/hashicorp/aws",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "aws_iam_role_policy_attachment",
+					"values": {
+						"policy_arn": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+						"role":       "sagemaker-execution-role",
+					},
+				},
+				{
+					"address":        "aws_sagemaker_model.compliant_model",
+					"mode":           "managed",
+					"name":           "compliant_model",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"container":                  [],
+						"inference_execution_config": [],
+						"primary_container": [
+							{
+								"image_config":       [],
+								"model_data_source":  [],
+								"multi_model_config": [],
+							},
+						],
+						"tags_all":   {},
+						"vpc_config": [],
+					},
+					"type": "aws_sagemaker_model",
+					"values": {
+						"container":                [],
+						"enable_network_isolation": true,
+						"name": "compliant-model",
+						"primary_container": [
+							{
+								"container_hostname":           null,
+								"environment":                  null,
+								"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								"image_config":                 [],
+								"inference_specification_name": null,
+								"mode":               "SingleModel",
+								"model_data_url":     null,
+								"model_package_name": null,
+								"multi_model_config": [],
+							},
+						],
+						"tags":       null,
+						"vpc_config": [],
+					},
+				},
+				{
+					"address":        "aws_sagemaker_model.default_non_compliant_model",
+					"mode":           "managed",
+					"name":           "default_non_compliant_model",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"container":                  [],
+						"inference_execution_config": [],
+						"primary_container": [
+							{
+								"image_config":       [],
+								"model_data_source":  [],
+								"multi_model_config": [],
+							},
+						],
+						"tags_all":   {},
+						"vpc_config": [],
+					},
+					"type": "aws_sagemaker_model",
+					"values": {
+						"container":                [],
+						"enable_network_isolation": null,
+						"name": "default-non-compliant-model",
+						"primary_container": [
+							{
+								"container_hostname":           null,
+								"environment":                  null,
+								"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								"image_config":                 [],
+								"inference_specification_name": null,
+								"mode":               "SingleModel",
+								"model_data_url":     null,
+								"model_package_name": null,
+								"multi_model_config": [],
+							},
+						],
+						"tags":       null,
+						"vpc_config": [],
+					},
+				},
+				{
+					"address":        "aws_sagemaker_model.non_compliant_model",
+					"mode":           "managed",
+					"name":           "non_compliant_model",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"container":                  [],
+						"inference_execution_config": [],
+						"primary_container": [
+							{
+								"image_config":       [],
+								"model_data_source":  [],
+								"multi_model_config": [],
+							},
+						],
+						"tags_all":   {},
+						"vpc_config": [],
+					},
+					"type": "aws_sagemaker_model",
+					"values": {
+						"container":                [],
+						"enable_network_isolation": false,
+						"name": "non-compliant-model",
+						"primary_container": [
+							{
+								"container_hostname":           null,
+								"environment":                  null,
+								"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+								"image_config":                 [],
+								"inference_specification_name": null,
+								"mode":               "SingleModel",
+								"model_data_url":     null,
+								"model_package_name": null,
+								"multi_model_config": [],
+							},
+						],
+						"tags":       null,
+						"vpc_config": [],
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"arn",
+			],
+			"resource": "aws_iam_role.sagemaker_role",
+		},
+		{
+			"attribute": [
+				"name",
+			],
+			"resource": "aws_iam_role.sagemaker_role",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_iam_role.sagemaker_role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sagemaker.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+					"description":           null,
+					"force_detach_policies": false,
+					"max_session_duration":  3600,
+					"name":                  "sagemaker-execution-role",
+					"path":                  "/",
+					"permissions_boundary":  null,
+					"tags":                  null,
+				},
+				"after_sensitive": {
+					"inline_policy":       [],
+					"managed_policy_arns": [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"arn":                 true,
+					"create_date":         true,
+					"id":                  true,
+					"inline_policy":       true,
+					"managed_policy_arns": true,
+					"name_prefix":         true,
+					"tags_all":            true,
+					"unique_id":           true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "sagemaker_role",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role",
+		},
+		{
+			"address": "aws_iam_role_policy_attachment.sagemaker_attach",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"policy_arn": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+					"role":       "sagemaker-execution-role",
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"id": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "sagemaker_attach",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_iam_role_policy_attachment",
+		},
+		{
+			"address": "aws_sagemaker_model.compliant_model",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"container":                [],
+					"enable_network_isolation": true,
+					"name": "compliant-model",
+					"primary_container": [
+						{
+							"container_hostname":           null,
+							"environment":                  null,
+							"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+							"image_config":                 [],
+							"inference_specification_name": null,
+							"mode":               "SingleModel",
+							"model_data_url":     null,
+							"model_package_name": null,
+							"multi_model_config": [],
+						},
+					],
+					"tags":       null,
+					"vpc_config": [],
+				},
+				"after_sensitive": {
+					"container":                  [],
+					"inference_execution_config": [],
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  [],
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   {},
+					"vpc_config": [],
+				},
+				"after_unknown": {
+					"arn":                true,
+					"container":          [],
+					"execution_role_arn": true,
+					"id":                 true,
+					"inference_execution_config": true,
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  true,
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   true,
+					"vpc_config": [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "compliant_model",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_model",
+		},
+		{
+			"address": "aws_sagemaker_model.default_non_compliant_model",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"container":                [],
+					"enable_network_isolation": null,
+					"name": "default-non-compliant-model",
+					"primary_container": [
+						{
+							"container_hostname":           null,
+							"environment":                  null,
+							"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+							"image_config":                 [],
+							"inference_specification_name": null,
+							"mode":               "SingleModel",
+							"model_data_url":     null,
+							"model_package_name": null,
+							"multi_model_config": [],
+						},
+					],
+					"tags":       null,
+					"vpc_config": [],
+				},
+				"after_sensitive": {
+					"container":                  [],
+					"inference_execution_config": [],
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  [],
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   {},
+					"vpc_config": [],
+				},
+				"after_unknown": {
+					"arn":                true,
+					"container":          [],
+					"execution_role_arn": true,
+					"id":                 true,
+					"inference_execution_config": true,
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  true,
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   true,
+					"vpc_config": [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "default_non_compliant_model",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_model",
+		},
+		{
+			"address": "aws_sagemaker_model.non_compliant_model",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"container":                [],
+					"enable_network_isolation": false,
+					"name": "non-compliant-model",
+					"primary_container": [
+						{
+							"container_hostname":           null,
+							"environment":                  null,
+							"image":                        "763104351884.dkr.ecr.us-west-2.amazonaws.com/tensorflow-inference:2.1.0-cpu",
+							"image_config":                 [],
+							"inference_specification_name": null,
+							"mode":               "SingleModel",
+							"model_data_url":     null,
+							"model_package_name": null,
+							"multi_model_config": [],
+						},
+					],
+					"tags":       null,
+					"vpc_config": [],
+				},
+				"after_sensitive": {
+					"container":                  [],
+					"inference_execution_config": [],
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  [],
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   {},
+					"vpc_config": [],
+				},
+				"after_unknown": {
+					"arn":                true,
+					"container":          [],
+					"execution_role_arn": true,
+					"id":                 true,
+					"inference_execution_config": true,
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  true,
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   true,
+					"vpc_config": [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "non_compliant_model",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_model",
+		},
+	],
+	"terraform_version": "1.11.4",
+	"timestamp":         "2025-06-02T11:02:55Z",
+}

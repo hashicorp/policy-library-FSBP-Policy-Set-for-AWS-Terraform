@@ -1,0 +1,262 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_sagemaker_model.example": {
+			"address":        "aws_sagemaker_model.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_model",
+			"values": {
+				"container":                [],
+				"enable_network_isolation": null,
+				"execution_role_arn":       "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+				"name":                     "example-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_sagemaker_model.example": {
+		"address": "aws_sagemaker_model.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"container":                [],
+				"enable_network_isolation": null,
+				"execution_role_arn":       "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+				"name":                     "example-model",
+				"primary_container": [
+					{
+						"container_hostname":           null,
+						"environment":                  null,
+						"image":                        "123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest",
+						"image_config":                 [],
+						"inference_specification_name": null,
+						"mode":               "SingleModel",
+						"model_data_url":     null,
+						"model_package_name": null,
+						"multi_model_config": [],
+					},
+				],
+				"tags":       null,
+				"vpc_config": [],
+			},
+			"after_unknown": {
+				"arn":       true,
+				"container": [],
+				"id":        true,
+				"inference_execution_config": true,
+				"primary_container": [
+					{
+						"image_config":       [],
+						"model_data_source":  true,
+						"multi_model_config": [],
+					},
+				],
+				"tags_all":   true,
+				"vpc_config": [],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_model",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 5.98.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_sagemaker_model.example",
+					"expressions": {
+						"execution_role_arn": {
+							"constant_value": "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+						},
+						"name": {
+							"constant_value": "example-model",
+						},
+						"primary_container": [
+							{
+								"image": {
+									"constant_value": "123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest",
+								},
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_model",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_sagemaker_model.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"container":                  [],
+						"inference_execution_config": [],
+						"primary_container": [
+							{
+								"image_config":       [],
+								"model_data_source":  [],
+								"multi_model_config": [],
+							},
+						],
+						"tags_all":   {},
+						"vpc_config": [],
+					},
+					"type": "aws_sagemaker_model",
+					"values": {
+						"container":                [],
+						"enable_network_isolation": null,
+						"execution_role_arn":       "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+						"name":                     "example-model",
+						"primary_container": [
+							{
+								"container_hostname":           null,
+								"environment":                  null,
+								"image":                        "123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest",
+								"image_config":                 [],
+								"inference_specification_name": null,
+								"mode":               "SingleModel",
+								"model_data_url":     null,
+								"model_package_name": null,
+								"multi_model_config": [],
+							},
+						],
+						"tags":       null,
+						"vpc_config": [],
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_sagemaker_model.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"container":                [],
+					"enable_network_isolation": null,
+					"execution_role_arn":       "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+					"name":                     "example-model",
+					"primary_container": [
+						{
+							"container_hostname":           null,
+							"environment":                  null,
+							"image":                        "123456789012.dkr.ecr.us-west-2.amazonaws.com/my-repository:latest",
+							"image_config":                 [],
+							"inference_specification_name": null,
+							"mode":               "SingleModel",
+							"model_data_url":     null,
+							"model_package_name": null,
+							"multi_model_config": [],
+						},
+					],
+					"tags":       null,
+					"vpc_config": [],
+				},
+				"after_sensitive": {
+					"container":                  [],
+					"inference_execution_config": [],
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  [],
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   {},
+					"vpc_config": [],
+				},
+				"after_unknown": {
+					"arn":       true,
+					"container": [],
+					"id":        true,
+					"inference_execution_config": true,
+					"primary_container": [
+						{
+							"image_config":       [],
+							"model_data_source":  true,
+							"multi_model_config": [],
+						},
+					],
+					"tags_all":   true,
+					"vpc_config": [],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_model",
+		},
+	],
+	"terraform_version": "1.11.4",
+	"timestamp":         "2025-06-02T11:01:46Z",
+}
