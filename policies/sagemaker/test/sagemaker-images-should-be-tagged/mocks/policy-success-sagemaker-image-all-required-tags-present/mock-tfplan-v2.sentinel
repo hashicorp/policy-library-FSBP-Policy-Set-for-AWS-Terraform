@@ -1,0 +1,83 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_iam_role.sagemaker_role": {
+			"address":        "aws_iam_role.sagemaker_role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "sagemaker_role",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"sagemaker.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "sagemaker-image-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags": {
+					"Environment": "Production",
+					"Owner":       "DataScience",
+				},
+				"tags_all": {
+					"Environment": "Production",
+					"Owner":       "DataScience",
+				},
+			},
+		},
+		"aws_iam_role_policy.sagemaker_policy": {
+			"address":        "aws_iam_role_policy.sagemaker_policy",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "sagemaker_policy",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy",
+			"values": {
+				"name":   "sagemaker-image-policy",
+				"policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"ecr:BatchCheckLayerAvailability\",\"ecr:BatchGetImage\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\"],\"Effect\":\"Allow\",\"Resource\":\"*\"}]}",
+			},
+		},
+		"aws_sagemaker_image.compliant_image": {
+			"address":        "aws_sagemaker_image.compliant_image",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "compliant_image",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_image",
+			"values": {
+				"description":  "Example SageMaker image with required tags",
+				"display_name": "Example SageMaker Image",
+				"image_name":   "example-sagemaker-image",
+				"tags": {
+					"CostCenter":  "12345",
+					"Department":  "ML",
+					"Environment": "Production",
+					"Owner":       "DataScience",
+					"Project":     "ModelTraining",
+				},
+				"tags_all": {
+					"CostCenter":  "12345",
+					"Department":  "ML",
+					"Environment": "Production",
+					"Owner":       "DataScience",
+					"Project":     "ModelTraining",
+				},
+			},
+		},
+	},
+}
