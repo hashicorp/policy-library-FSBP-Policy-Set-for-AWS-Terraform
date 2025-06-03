@@ -1,0 +1,26 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_sagemaker_image.example": {
+			"address":        "aws_sagemaker_image.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_image",
+			"values": {
+				"description":  "Example SageMaker image with required tags",
+				"display_name": "Example SageMaker Image",
+				"image_name":   "example-sagemaker-image",
+				"role_arn":     "arn:aws:iam::123456789012:role/service-role/AmazonSageMaker-ExecutionRole",
+				"tags":         null,
+			},
+		},
+	},
+}
