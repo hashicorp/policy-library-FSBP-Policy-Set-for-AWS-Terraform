@@ -508,6 +508,11 @@ policy "sagemaker-endpoint-config-prod-instance-count-check" {
   }
 }
 
+policy "sagemaker-app-image-configurations-should-be-tagged" {
+  source = "./policies/sagemaker/sagemaker-app-image-configurations-should-be-tagged.sentinel"
+enforcement_level = "advisory"
+}
+
 policy "redshift-cluster-public-access-check" {
   source = "./policies/redshift/redshift-cluster-public-access-check.sentinel"
   enforcement_level = "advisory"

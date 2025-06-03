@@ -1,0 +1,247 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_sagemaker_app_image_config.example": {
+			"address":        "aws_sagemaker_app_image_config.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_sagemaker_app_image_config",
+			"values": {
+				"app_image_config_name":        "example-app-image-config",
+				"code_editor_app_image_config": [],
+				"jupyter_lab_image_config":     [],
+				"kernel_gateway_image_config": [
+					{
+						"file_system_config": [],
+						"kernel_spec": [
+							{
+								"display_name": null,
+								"name":         "python3",
+							},
+						],
+					},
+				],
+				"tags": null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_sagemaker_app_image_config.example": {
+		"address": "aws_sagemaker_app_image_config.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"app_image_config_name":        "example-app-image-config",
+				"code_editor_app_image_config": [],
+				"jupyter_lab_image_config":     [],
+				"kernel_gateway_image_config": [
+					{
+						"file_system_config": [],
+						"kernel_spec": [
+							{
+								"display_name": null,
+								"name":         "python3",
+							},
+						],
+					},
+				],
+				"tags": null,
+			},
+			"after_unknown": {
+				"arn": true,
+				"code_editor_app_image_config": [],
+				"id": true,
+				"jupyter_lab_image_config": [],
+				"kernel_gateway_image_config": [
+					{
+						"file_system_config": [],
+						"kernel_spec": [
+							{},
+						],
+					},
+				],
+				"tags_all": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_sagemaker_app_image_config",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-east-1",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 5.98.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_sagemaker_app_image_config.example",
+					"expressions": {
+						"app_image_config_name": {
+							"constant_value": "example-app-image-config",
+						},
+						"kernel_gateway_image_config": [
+							{
+								"kernel_spec": [
+									{
+										"name": {
+											"constant_value": "python3",
+										},
+									},
+								],
+							},
+						],
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_sagemaker_app_image_config",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_sagemaker_app_image_config.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"code_editor_app_image_config": [],
+						"jupyter_lab_image_config":     [],
+						"kernel_gateway_image_config": [
+							{
+								"file_system_config": [],
+								"kernel_spec": [
+									{},
+								],
+							},
+						],
+						"tags_all": {},
+					},
+					"type": "aws_sagemaker_app_image_config",
+					"values": {
+						"app_image_config_name":        "example-app-image-config",
+						"code_editor_app_image_config": [],
+						"jupyter_lab_image_config":     [],
+						"kernel_gateway_image_config": [
+							{
+								"file_system_config": [],
+								"kernel_spec": [
+									{
+										"display_name": null,
+										"name":         "python3",
+									},
+								],
+							},
+						],
+						"tags": null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_sagemaker_app_image_config.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"app_image_config_name":        "example-app-image-config",
+					"code_editor_app_image_config": [],
+					"jupyter_lab_image_config":     [],
+					"kernel_gateway_image_config": [
+						{
+							"file_system_config": [],
+							"kernel_spec": [
+								{
+									"display_name": null,
+									"name":         "python3",
+								},
+							],
+						},
+					],
+					"tags": null,
+				},
+				"after_sensitive": {
+					"code_editor_app_image_config": [],
+					"jupyter_lab_image_config":     [],
+					"kernel_gateway_image_config": [
+						{
+							"file_system_config": [],
+							"kernel_spec": [
+								{},
+							],
+						},
+					],
+					"tags_all": {},
+				},
+				"after_unknown": {
+					"arn": true,
+					"code_editor_app_image_config": [],
+					"id": true,
+					"jupyter_lab_image_config": [],
+					"kernel_gateway_image_config": [
+						{
+							"file_system_config": [],
+							"kernel_spec": [
+								{},
+							],
+						},
+					],
+					"tags_all": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_sagemaker_app_image_config",
+		},
+	],
+	"terraform_version": "1.11.4",
+	"timestamp":         "2025-06-03T13:05:09Z",
+}
