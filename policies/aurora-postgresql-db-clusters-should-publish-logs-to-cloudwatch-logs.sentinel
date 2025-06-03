@@ -1,0 +1,57 @@
+# This control checks whether an Amazon Aurora PostgreSQL DB cluster is configured to publish logs to Amazon CloudWatch Logs.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":              "aurora-postgresql-logs-to-cloudwatch",
+	"message":                  "Aurora PostgreSQL DB clusters should publish logs to CloudWatch Logs. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/rds-controls.html#rds-37 for more details.",
+	"resource_aws_rds_cluster": "aws_rds_cluster",
+	"engine":                   "engine",
+	"enabled_cloudwatch_logs_exports": "enabled_cloudwatch_logs_exports",
+}
+
+# Variables
+
+rds_cluster_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_rds_cluster).resources
+
+violations = collection.reject(rds_cluster_resources, func(res) {
+	engine = maps.get(res, "values.engine", "")
+
+	# Only apply to Aurora PostgreSQL clusters
+	if engine != "aurora-postgresql" {
+		return true
+	}
+
+	# Check if PostgreSQL logs are exported to CloudWatch Logs
+	logs_exports = maps.get(res, "values.enabled_cloudwatch_logs_exports", [])
+	return logs_exports is not null and "postgresql" in logs_exports
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
