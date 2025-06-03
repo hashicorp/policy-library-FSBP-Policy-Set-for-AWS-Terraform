@@ -1,0 +1,47 @@
+# This control checks whether an Amazon SageMaker AI notebook instance is configured to run on a supported platform, based on the platform identifier specified for the notebook instance.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name": "sagemaker-notebook-instance-platform-version",
+	"message":     "SageMaker notebook instances should run on supported platforms. The platform_identifier attribute must be set to one of the supported platform versions: notebook-al2-v1, notebook-al2-v2, or notebook-al2-v3. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sagemaker-controls.html#sagemaker-8 for more details.",
+	"resource_aws_sagemaker_notebook_instance": "aws_sagemaker_notebook_instance",
+	"supported_platform_versions":              ["notebook-al2-v1", "notebook-al2-v2", "notebook-al2-v3"],
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_sagemaker_notebook_instance).resources
+violations = collection.reject(resources, func(res) {
+	platform_identifier = maps.get(res, "values.platform_identifier", "")
+	return platform_identifier == "" or (platform_identifier != "" and platform_identifier in const.supported_platform_versions)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
