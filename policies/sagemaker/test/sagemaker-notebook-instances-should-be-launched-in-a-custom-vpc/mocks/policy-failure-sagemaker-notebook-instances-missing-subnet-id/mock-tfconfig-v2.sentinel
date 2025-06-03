@@ -1,0 +1,202 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_iam_role.sagemaker_role": {
+		"address": "aws_iam_role.sagemaker_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "sagemaker-notebook-role",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "sagemaker_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_iam_role_policy_attachment.sagemaker_policy": {
+		"address": "aws_iam_role_policy_attachment.sagemaker_policy",
+		"config": {
+			"policy_arn": {
+				"constant_value": "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess",
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.sagemaker_role.name",
+					"aws_iam_role.sagemaker_role",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "sagemaker_policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role_policy_attachment",
+	},
+	"aws_sagemaker_notebook_instance.compliant_notebook": {
+		"address": "aws_sagemaker_notebook_instance.compliant_notebook",
+		"config": {
+			"direct_internet_access": {
+				"constant_value": "Disabled",
+			},
+			"instance_type": {
+				"constant_value": "ml.t2.medium",
+			},
+			"name": {
+				"constant_value": "compliant-notebook",
+			},
+			"role_arn": {
+				"references": [
+					"aws_iam_role.sagemaker_role.arn",
+					"aws_iam_role.sagemaker_role",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_notebook",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sagemaker_notebook_instance",
+	},
+	"aws_security_group.sagemaker_sg": {
+		"address": "aws_security_group.sagemaker_sg",
+		"config": {
+			"description": {
+				"constant_value": "Security group for SageMaker notebook instances",
+			},
+			"egress": {
+				"constant_value": [
+					{
+						"cidr_blocks": [
+							"0.0.0.0/0",
+						],
+						"description":      null,
+						"from_port":        0,
+						"ipv6_cidr_blocks": null,
+						"prefix_list_ids":  null,
+						"protocol":         "-1",
+						"security_groups":  null,
+						"self":             null,
+						"to_port":          0,
+					},
+				],
+			},
+			"name": {
+				"constant_value": "sagemaker-sg",
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.sagemaker_vpc.id",
+					"aws_vpc.sagemaker_vpc",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "sagemaker_sg",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_security_group",
+	},
+	"aws_subnet.sagemaker_subnet": {
+		"address": "aws_subnet.sagemaker_subnet",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.1.0/24",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "sagemaker-subnet",
+				},
+			},
+			"vpc_id": {
+				"references": [
+					"aws_vpc.sagemaker_vpc.id",
+					"aws_vpc.sagemaker_vpc",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "sagemaker_subnet",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_subnet",
+	},
+	"aws_vpc.sagemaker_vpc": {
+		"address": "aws_vpc.sagemaker_vpc",
+		"config": {
+			"cidr_block": {
+				"constant_value": "10.0.0.0/16",
+			},
+			"tags": {
+				"constant_value": {
+					"Name": "sagemaker-vpc",
+				},
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "sagemaker_vpc",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_vpc",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

@@ -508,6 +508,11 @@ policy "sagemaker-endpoint-config-prod-instance-count-check" {
   }
 }
 
+policy "sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc" {
+  source = "./policies/sagemaker/sagemaker-notebook-instances-should-be-launched-in-a-custom-vpc.sentinel"
+enforcement_level = "advisory"
+}
+
 policy "redshift-cluster-public-access-check" {
   source = "./policies/redshift/redshift-cluster-public-access-check.sentinel"
   enforcement_level = "advisory"
