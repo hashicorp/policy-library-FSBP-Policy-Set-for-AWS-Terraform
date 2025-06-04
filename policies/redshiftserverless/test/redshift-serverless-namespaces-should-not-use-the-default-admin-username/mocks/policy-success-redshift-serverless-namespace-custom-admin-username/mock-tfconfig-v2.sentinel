@@ -1,0 +1,63 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_redshiftserverless_namespace.compliant_namespace": {
+		"address": "aws_redshiftserverless_namespace.compliant_namespace",
+		"config": {
+			"admin_user_password": {
+				"constant_value": "StrongPassword123!",
+			},
+			"admin_username": {
+				"constant_value": "custom_admin",
+			},
+			"db_name": {
+				"constant_value": "compliantdb",
+			},
+			"namespace_name": {
+				"constant_value": "compliant-namespace",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_namespace",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_redshiftserverless_namespace",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
