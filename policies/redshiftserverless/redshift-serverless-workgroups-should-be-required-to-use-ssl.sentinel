@@ -1,0 +1,64 @@
+# This control checks whether connections to an Amazon Redshift Serverless workgroup are required to encrypt data in transit.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name": "redshift-serverless-require-ssl",
+	"message":     "Connections to Redshift Serverless workgroups should be required to use SSL. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-2 for more details.",
+	"resource_aws_redshiftserverless_workgroup": "aws_redshiftserverless_workgroup",
+	"parameter_key":                             "parameter_key",
+	"parameter_value":                           "parameter_value",
+	"require_ssl":                               "require_ssl",
+}
+
+# Functions
+
+is_ssl_required = func(res) {
+	config_parameters = maps.get(res, "values.config_parameter", [])
+	if config_parameters is empty {
+		return false
+	}
+
+	ssl_params = collection.filter(config_parameters, func(parameter) {
+		return maps.get(parameter, const.parameter_key, "") == const.require_ssl and
+			maps.get(parameter, const.parameter_value, "") == "true"
+	})
+
+	return ssl_params is not empty
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshiftserverless_workgroup).resources
+violations = collection.reject(resources, func(res) {
+	return is_ssl_required(res)
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

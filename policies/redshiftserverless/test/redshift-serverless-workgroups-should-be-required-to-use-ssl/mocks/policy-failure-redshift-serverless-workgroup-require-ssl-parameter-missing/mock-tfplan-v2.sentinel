@@ -1,0 +1,415 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_redshiftserverless_namespace.example": {
+			"address":        "aws_redshiftserverless_namespace.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshiftserverless_namespace",
+			"values": {
+				"admin_user_password":            "REDACTED_SENSITIVE",
+				"admin_user_password_wo":         null,
+				"admin_user_password_wo_version": null,
+				"default_iam_role_arn":           null,
+				"log_exports":                    null,
+				"manage_admin_password":          null,
+				"namespace_name":                 "example-namespace",
+				"tags":                           null,
+			},
+		},
+		"aws_redshiftserverless_workgroup.example": {
+			"address":        "aws_redshiftserverless_workgroup.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshiftserverless_workgroup",
+			"values": {
+				"config_parameter": [
+					{
+						"parameter_key":   "datestyle",
+						"parameter_value": "ISO, MDY",
+					},
+					{
+						"parameter_key":   "enable_user_activity_logging",
+						"parameter_value": "true",
+					},
+				],
+				"enhanced_vpc_routing": null,
+				"max_capacity":         null,
+				"namespace_name":       "example-namespace",
+				"publicly_accessible":  null,
+				"tags":                 null,
+				"timeouts":             null,
+				"workgroup_name":       "example-workgroup",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_redshiftserverless_namespace.example": {
+		"address": "aws_redshiftserverless_namespace.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"admin_user_password":            "REDACTED_SENSITIVE",
+				"admin_user_password_wo":         null,
+				"admin_user_password_wo_version": null,
+				"default_iam_role_arn":           null,
+				"log_exports":                    null,
+				"manage_admin_password":          null,
+				"namespace_name":                 "example-namespace",
+				"tags":                           null,
+			},
+			"after_unknown": {
+				"admin_password_secret_arn":        true,
+				"admin_password_secret_kms_key_id": true,
+				"admin_username":                   true,
+				"arn":                              true,
+				"db_name":                          true,
+				"iam_roles":                        true,
+				"id":                               true,
+				"kms_key_id":                       true,
+				"namespace_id":                     true,
+				"tags_all":                         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_redshiftserverless_namespace",
+	},
+	"aws_redshiftserverless_workgroup.example": {
+		"address": "aws_redshiftserverless_workgroup.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"config_parameter": [
+					{
+						"parameter_key":   "datestyle",
+						"parameter_value": "ISO, MDY",
+					},
+					{
+						"parameter_key":   "enable_user_activity_logging",
+						"parameter_value": "true",
+					},
+				],
+				"enhanced_vpc_routing": null,
+				"max_capacity":         null,
+				"namespace_name":       "example-namespace",
+				"publicly_accessible":  null,
+				"tags":                 null,
+				"timeouts":             null,
+				"workgroup_name":       "example-workgroup",
+			},
+			"after_unknown": {
+				"arn":           true,
+				"base_capacity": true,
+				"config_parameter": [
+					{},
+					{},
+				],
+				"endpoint": true,
+				"id":       true,
+				"port":     true,
+				"price_performance_target": true,
+				"security_group_ids":       true,
+				"subnet_ids":               true,
+				"tags_all":                 true,
+				"track_name":               true,
+				"workgroup_id":             true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_redshiftserverless_workgroup",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 5.98.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_redshiftserverless_namespace.example",
+					"expressions": {
+						"namespace_name": {
+							"constant_value": "example-namespace",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_redshiftserverless_namespace",
+				},
+				{
+					"address": "aws_redshiftserverless_workgroup.example",
+					"expressions": {
+						"config_parameter": [
+							{
+								"parameter_key": {
+									"constant_value": "datestyle",
+								},
+								"parameter_value": {
+									"constant_value": "ISO, MDY",
+								},
+							},
+							{
+								"parameter_key": {
+									"constant_value": "enable_user_activity_logging",
+								},
+								"parameter_value": {
+									"constant_value": "true",
+								},
+							},
+						],
+						"namespace_name": {
+							"references": [
+								"aws_redshiftserverless_namespace.example.namespace_name",
+								"aws_redshiftserverless_namespace.example",
+							],
+						},
+						"workgroup_name": {
+							"constant_value": "example-workgroup",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_redshiftserverless_workgroup",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_redshiftserverless_namespace.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"admin_user_password": true,
+						"admin_username":      true,
+						"iam_roles":           [],
+						"tags_all":            {},
+					},
+					"type": "aws_redshiftserverless_namespace",
+					"values": {
+						"admin_user_password":            "REDACTED_SENSITIVE",
+						"admin_user_password_wo":         null,
+						"admin_user_password_wo_version": null,
+						"default_iam_role_arn":           null,
+						"log_exports":                    null,
+						"manage_admin_password":          null,
+						"namespace_name":                 "example-namespace",
+						"tags":                           null,
+					},
+				},
+				{
+					"address":        "aws_redshiftserverless_workgroup.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"config_parameter": [
+							{},
+							{},
+						],
+						"endpoint":                 [],
+						"price_performance_target": [],
+						"security_group_ids":       [],
+						"subnet_ids":               [],
+						"tags_all":                 {},
+					},
+					"type": "aws_redshiftserverless_workgroup",
+					"values": {
+						"config_parameter": [
+							{
+								"parameter_key":   "datestyle",
+								"parameter_value": "ISO, MDY",
+							},
+							{
+								"parameter_key":   "enable_user_activity_logging",
+								"parameter_value": "true",
+							},
+						],
+						"enhanced_vpc_routing": null,
+						"max_capacity":         null,
+						"namespace_name":       "example-namespace",
+						"publicly_accessible":  null,
+						"tags":                 null,
+						"timeouts":             null,
+						"workgroup_name":       "example-workgroup",
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"namespace_name",
+			],
+			"resource": "aws_redshiftserverless_namespace.example",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "aws_redshiftserverless_namespace.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"admin_user_password":            "REDACTED_SENSITIVE",
+					"admin_user_password_wo":         null,
+					"admin_user_password_wo_version": null,
+					"default_iam_role_arn":           null,
+					"log_exports":                    null,
+					"manage_admin_password":          null,
+					"namespace_name":                 "example-namespace",
+					"tags":                           null,
+				},
+				"after_sensitive": {
+					"admin_user_password": true,
+					"admin_username":      true,
+					"iam_roles":           [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"admin_password_secret_arn":        true,
+					"admin_password_secret_kms_key_id": true,
+					"admin_username":                   true,
+					"arn":                              true,
+					"db_name":                          true,
+					"iam_roles":                        true,
+					"id":                               true,
+					"kms_key_id":                       true,
+					"namespace_id":                     true,
+					"tags_all":                         true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_redshiftserverless_namespace",
+		},
+		{
+			"address": "aws_redshiftserverless_workgroup.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"config_parameter": [
+						{
+							"parameter_key":   "datestyle",
+							"parameter_value": "ISO, MDY",
+						},
+						{
+							"parameter_key":   "enable_user_activity_logging",
+							"parameter_value": "true",
+						},
+					],
+					"enhanced_vpc_routing": null,
+					"max_capacity":         null,
+					"namespace_name":       "example-namespace",
+					"publicly_accessible":  null,
+					"tags":                 null,
+					"timeouts":             null,
+					"workgroup_name":       "example-workgroup",
+				},
+				"after_sensitive": {
+					"config_parameter": [
+						{},
+						{},
+					],
+					"endpoint":                 [],
+					"price_performance_target": [],
+					"security_group_ids":       [],
+					"subnet_ids":               [],
+					"tags_all":                 {},
+				},
+				"after_unknown": {
+					"arn":           true,
+					"base_capacity": true,
+					"config_parameter": [
+						{},
+						{},
+					],
+					"endpoint": true,
+					"id":       true,
+					"port":     true,
+					"price_performance_target": true,
+					"security_group_ids":       true,
+					"subnet_ids":               true,
+					"tags_all":                 true,
+					"track_name":               true,
+					"workgroup_id":             true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_redshiftserverless_workgroup",
+		},
+	],
+	"terraform_version": "1.11.4",
+	"timestamp":         "2025-06-04T06:24:50Z",
+}
