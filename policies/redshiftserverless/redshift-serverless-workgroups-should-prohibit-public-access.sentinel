@@ -1,0 +1,46 @@
+# This control checks whether public access is disabled for an Amazon Redshift Serverless workgroup.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name": "redshift-serverless-workgroup-no-public-access",
+	"message":     "Redshift Serverless workgroups should prohibit public access. Set 'publicly_accessible' to false. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-3 for more details.",
+	"resource_aws_redshiftserverless_workgroup": "aws_redshiftserverless_workgroup",
+	"publicly_accessible":                       "publicly_accessible",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshiftserverless_workgroup).resources
+violations = collection.reject(resources, func(res) {
+	return maps.get(res, "values.publicly_accessible", true) is false
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

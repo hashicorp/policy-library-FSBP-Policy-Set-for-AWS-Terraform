@@ -1,0 +1,28 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_redshiftserverless_workgroup.default_compliant_workgroup": {
+			"address":        "aws_redshiftserverless_workgroup.default_compliant_workgroup",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "default_compliant_workgroup",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshiftserverless_workgroup",
+			"values": {
+				"enhanced_vpc_routing": null,
+				"max_capacity":         null,
+				"namespace_name":       "example-namespace",
+				"publicly_accessible":  null,
+				"tags":                 null,
+				"timeouts":             null,
+				"workgroup_name":       "default-compliant-workgroup",
+			},
+		},
+	},
+}

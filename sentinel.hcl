@@ -562,6 +562,12 @@ policy "redshift-cluster-unrestricted-port-access-check" {
   enforcement_level = "advisory"
 }
 
+policy "redshift-serverless-workgroups-should-prohibit-public-access" {
+  source = "./policies/redshiftserverless/redshift-serverless-workgroups-should-prohibit-public-access.sentinel"
+  enforcement_level = "advisory"
+}
+
+
 policy "dms-replication-instances-should-not-be-public" {
   source = "./policies/dms/dms-replication-instances-should-not-be-public.sentinel"
   enforcement_level = "advisory"
