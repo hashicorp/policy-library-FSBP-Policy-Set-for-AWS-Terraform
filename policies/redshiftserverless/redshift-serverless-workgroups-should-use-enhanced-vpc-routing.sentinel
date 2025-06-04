@@ -1,0 +1,46 @@
+# This control checks whether enhanced VPC routing is enabled for an Amazon Redshift Serverless workgroup
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name": "redshift-serverless-enhanced-vpc-routing-enabled",
+	"message":     "Attribute 'enhanced_vpc_routing' must be set to true for 'aws_redshiftserverless_workgroup' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-1 for more details.",
+	"resource_aws_redshiftserverless_workgroup": "aws_redshiftserverless_workgroup",
+	"enhanced_vpc_routing":                      "enhanced_vpc_routing",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshiftserverless_workgroup).resources
+violations = collection.reject(resources, func(res) {
+	return maps.get(res, "values.enhanced_vpc_routing", false) is true
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
