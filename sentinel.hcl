@@ -562,6 +562,11 @@ policy "redshift-cluster-unrestricted-port-access-check" {
   enforcement_level = "advisory"
 }
 
+policy "redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs"{
+  source = "./policies/redshiftserverless/redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "dms-replication-instances-should-not-be-public" {
   source = "./policies/dms/dms-replication-instances-should-not-be-public.sentinel"
   enforcement_level = "advisory"

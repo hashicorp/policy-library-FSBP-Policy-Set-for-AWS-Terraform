@@ -1,0 +1,32 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_redshiftserverless_namespace.example": {
+			"address":        "aws_redshiftserverless_namespace.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshiftserverless_namespace",
+			"values": {
+				"admin_user_password":            "REDACTED_SENSITIVE",
+				"admin_user_password_wo":         null,
+				"admin_user_password_wo_version": null,
+				"default_iam_role_arn":           null,
+				"log_exports": [
+					"connectionlog",
+					"userlog",
+				],
+				"manage_admin_password": null,
+				"namespace_name":        "example-namespace",
+				"tags":                  null,
+			},
+		},
+	},
+}
