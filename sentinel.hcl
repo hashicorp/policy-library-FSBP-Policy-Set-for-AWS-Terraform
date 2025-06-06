@@ -1204,3 +1204,8 @@ policy "sqs-queue-block-public-access" {
   source = "./policies/sqs/sqs-queue-block-public-access.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "transfer-family-connectors-should-have-logging-enabled" {
+  source = "./policies/transfer/transfer-family-connectors-should-have-logging-enabled.sentinel"
+  enforcement_level = "advisory"
+}

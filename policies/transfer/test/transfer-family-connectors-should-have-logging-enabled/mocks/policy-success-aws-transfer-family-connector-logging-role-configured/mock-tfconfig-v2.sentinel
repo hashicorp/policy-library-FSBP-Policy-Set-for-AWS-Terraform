@@ -1,0 +1,132 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_iam_role.transfer_access_role": {
+		"address": "aws_iam_role.transfer_access_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "transfer-connector-access-role",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "transfer_access_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_iam_role.transfer_logging_role": {
+		"address": "aws_iam_role.transfer_logging_role",
+		"config": {
+			"assume_role_policy": {
+				"constant_value": null,
+			},
+			"name": {
+				"constant_value": "transfer-connector-logging-role",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "transfer_logging_role",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role",
+	},
+	"aws_iam_role_policy.transfer_logging_policy": {
+		"address": "aws_iam_role_policy.transfer_logging_policy",
+		"config": {
+			"name": {
+				"constant_value": "transfer-connector-logging-policy",
+			},
+			"policy": {
+				"constant_value": null,
+			},
+			"role": {
+				"references": [
+					"aws_iam_role.transfer_logging_role.id",
+					"aws_iam_role.transfer_logging_role",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "transfer_logging_policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_role_policy",
+	},
+	"aws_transfer_connector.compliant_connector": {
+		"address": "aws_transfer_connector.compliant_connector",
+		"config": {
+			"access_role": {
+				"references": [
+					"aws_iam_role.transfer_access_role.arn",
+					"aws_iam_role.transfer_access_role",
+				],
+			},
+			"logging_role": {
+				"references": [
+					"aws_iam_role.transfer_logging_role.arn",
+					"aws_iam_role.transfer_logging_role",
+				],
+			},
+			"url": {
+				"constant_value": "sftp://example.com",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_connector",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_transfer_connector",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
