@@ -14,26 +14,25 @@ This rule is covered by the [redshift-serverless-namespaces-should-export-logs-t
 
 ## Policy Results (Pass)
 
-```bash
+````bash
 trace:
-        Pass - s3-access-point-block-public-access-enabled.sentinel
+        Pass - redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel
 
         Description:
-        This policy requires resources of type `aws_s3_access_point` to have all
-        attributes
-        in the `public_access_block_configuration` set to true.
+            This control checks whether an Amazon Redshift Serverless namespace is
+            configured to export connection and user logs to Amazon CloudWatch Logs.
 
         Print messages:
 
         → → Overall Result: true
 
-        This result means that all resources have passed the policy check for the policy s3-access-point-block-public-access-enabled.
+        This result means that all resources have passed the policy check for the policy redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.
 
         ✓ Found 0 resource violations
 
-        s3-access-point-block-public-access-enabled.sentinel:62:1 - Rule "main"
-        Value:
-            true
+        redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel:55:1 - Rule "main"
+            Value:
+                true
 ```
 
 ---
@@ -42,30 +41,28 @@ trace:
 
 ```bash
 trace:
-        Fail - s3-access-point-block-public-access-enabled.sentinel
+        Fail - redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel
 
         Description:
-        This policy requires resources of type `aws_s3_access_point` to have all
-        attributes
-        in the `public_access_block_configuration` set to true.
+            This control checks whether an Amazon Redshift Serverless namespace is
+            configured to export connection and user logs to Amazon CloudWatch Logs.
 
         Print messages:
 
         → → Overall Result: false
 
-        This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy s3-access-point-block-public-access-enabled.
+        This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.
 
         Found 1 resource violations
 
         → Module name: root
-        ↳ Resource Address: aws_s3_access_point.example
-            | ✗ failed
-            | All attributes in 'public_access_block_configuration' must be set to true for 'aws_s3_access_point' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-19 for more details.
+            ↳ Resource Address: aws_redshiftserverless_namespace.example
+                | ✗ failed
+                | Redshift Serverless namespaces should export logs to CloudWatch Logs. Both 'connectionlog' and 'userlog' should be configured. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-6 for more details.
 
 
-        s3-access-point-block-public-access-enabled.sentinel:62:1 - Rule "main"
-        Value:
-            false
-```
-
+        redshift-serverless-namespaces-should-export-logs-to-cloudwatch-logs.sentinel:55:1 - Rule "main"
+            Value:
+                false
 ---
+````
