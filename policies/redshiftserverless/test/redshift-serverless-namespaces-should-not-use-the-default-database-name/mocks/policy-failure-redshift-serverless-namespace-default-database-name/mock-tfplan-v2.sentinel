@@ -1,0 +1,188 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_redshiftserverless_namespace.example": {
+			"address":        "aws_redshiftserverless_namespace.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_redshiftserverless_namespace",
+			"values": {
+				"admin_user_password":            "REDACTED_SENSITIVE",
+				"admin_user_password_wo":         null,
+				"admin_user_password_wo_version": null,
+				"default_iam_role_arn":           null,
+				"log_exports":                    null,
+				"manage_admin_password":          null,
+				"namespace_name":                 "example-namespace",
+				"tags":                           null,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"aws_redshiftserverless_namespace.example": {
+		"address": "aws_redshiftserverless_namespace.example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"admin_user_password":            "REDACTED_SENSITIVE",
+				"admin_user_password_wo":         null,
+				"admin_user_password_wo_version": null,
+				"default_iam_role_arn":           null,
+				"log_exports":                    null,
+				"manage_admin_password":          null,
+				"namespace_name":                 "example-namespace",
+				"tags":                           null,
+			},
+			"after_unknown": {
+				"admin_password_secret_arn":        true,
+				"admin_password_secret_kms_key_id": true,
+				"admin_username":                   true,
+				"arn":                              true,
+				"db_name":                          true,
+				"iam_roles":                        true,
+				"id":                               true,
+				"kms_key_id":                       true,
+				"namespace_id":                     true,
+				"tags_all":                         true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example",
+		"provider_name":  "registry.terraform.io/hashicorp/aws",
+		"type":           "aws_redshiftserverless_namespace",
+	},
+}
+
+resource_drift = {}
+
+output_changes = {}
+
+raw = {
+	"complete": true,
+	"configuration": {
+		"provider_config": {
+			"aws": {
+				"expressions": {
+					"region": {
+						"constant_value": "us-west-2",
+					},
+				},
+				"full_name":          "registry.terraform.io/hashicorp/aws",
+				"name":               "aws",
+				"version_constraint": "~> 5.98.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "aws_redshiftserverless_namespace.example",
+					"expressions": {
+						"namespace_name": {
+							"constant_value": "example-namespace",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example",
+					"provider_config_key": "aws",
+					"schema_version":      0,
+					"type":                "aws_redshiftserverless_namespace",
+				},
+			],
+		},
+	},
+	"format_version": "1.2",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "aws_redshiftserverless_namespace.example",
+					"mode":           "managed",
+					"name":           "example",
+					"provider_name":  "registry.terraform.io/hashicorp/aws",
+					"schema_version": 0,
+					"sensitive_values": {
+						"admin_user_password": true,
+						"admin_username":      true,
+						"iam_roles":           [],
+						"tags_all":            {},
+					},
+					"type": "aws_redshiftserverless_namespace",
+					"values": {
+						"admin_user_password":            "REDACTED_SENSITIVE",
+						"admin_user_password_wo":         null,
+						"admin_user_password_wo_version": null,
+						"default_iam_role_arn":           null,
+						"log_exports":                    null,
+						"manage_admin_password":          null,
+						"namespace_name":                 "example-namespace",
+						"tags":                           null,
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "aws_redshiftserverless_namespace.example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"admin_user_password":            "REDACTED_SENSITIVE",
+					"admin_user_password_wo":         null,
+					"admin_user_password_wo_version": null,
+					"default_iam_role_arn":           null,
+					"log_exports":                    null,
+					"manage_admin_password":          null,
+					"namespace_name":                 "example-namespace",
+					"tags":                           null,
+				},
+				"after_sensitive": {
+					"admin_user_password": true,
+					"admin_username":      true,
+					"iam_roles":           [],
+					"tags_all":            {},
+				},
+				"after_unknown": {
+					"admin_password_secret_arn":        true,
+					"admin_password_secret_kms_key_id": true,
+					"admin_username":                   true,
+					"arn":                              true,
+					"db_name":                          true,
+					"iam_roles":                        true,
+					"id":                               true,
+					"kms_key_id":                       true,
+					"namespace_id":                     true,
+					"tags_all":                         true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example",
+			"provider_name": "registry.terraform.io/hashicorp/aws",
+			"type":          "aws_redshiftserverless_namespace",
+		},
+	],
+	"terraform_version": "1.11.4",
+	"timestamp":         "2025-06-04T06:24:50Z",
+}

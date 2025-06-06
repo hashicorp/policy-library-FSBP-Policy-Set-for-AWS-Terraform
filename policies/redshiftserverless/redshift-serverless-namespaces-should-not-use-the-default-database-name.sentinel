@@ -1,0 +1,47 @@
+# This control checks whether an Amazon Redshift Serverless namespace uses the default database name, dev.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                           "redshift-serverless-namespaces-should-not-use-the-default-database-name",
+	"message":                               "Redshift Serverless namespaces should not use the default database name 'dev'. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/redshiftserverless-controls.html#redshiftserverless-7 for more details.",
+	"resource_aws_redshiftserverless_namespace": "aws_redshiftserverless_namespace",
+	"default_db_name":                       "dev",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_redshiftserverless_namespace).resources
+violations = collection.filter(resources, func(res) {
+	db_name = maps.get(res, "values.db_name", const.default_db_name)
+	return db_name == const.default_db_name
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
