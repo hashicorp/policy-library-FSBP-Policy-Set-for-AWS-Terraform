@@ -1,0 +1,46 @@
+# This control checks whether a user volume in an Amazon WorkSpaces WorkSpace is encrypted at rest.
+
+# Imports
+
+import "tfplan/v2" as tfplan
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                       "workspaces-user-volume-encryption-enabled",
+	"message":                           "WorkSpaces user volumes should be encrypted at rest. Set 'user_volume_encryption_enabled' to true for 'aws_workspaces_workspace' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/workspaces-controls.html#workspaces-1 for more details.",
+	"resource_aws_workspaces_workspace": "aws_workspaces_workspace",
+	"user_volume_encryption_enabled":    "user_volume_encryption_enabled",
+}
+
+# Variables
+
+resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_workspaces_workspace).resources
+violations = collection.reject(resources, func(res) {
+	return maps.get(res, "values.user_volume_encryption_enabled", false) is true
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
