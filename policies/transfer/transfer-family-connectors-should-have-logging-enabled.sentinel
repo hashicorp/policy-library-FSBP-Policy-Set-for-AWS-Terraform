@@ -1,0 +1,72 @@
+# This control checks whether Amazon CloudWatch logging is enabled for an AWS Transfer Family connector.
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                     "transfer-connector-logging-enabled",
+	"message":                         "Transfer Family connectors should have logging enabled by setting the 'logging_role' attribute. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/transfer-controls.html#transfer-3 for more details.",
+	"resource_aws_transfer_connector": "aws_transfer_connector",
+	"logging_role":                    "logging_role",
+}
+
+# Variables
+
+resources = tf.config(tfconfig.resources).type(const.resource_aws_transfer_connector).resources
+role_resources = tf.config(tfconfig.resources).type("aws_iam_role").resources
+roles_addresses = map role_resources as role {
+	role.address
+}
+
+violations = collection.reject(resources, func(res) {
+	config = maps.get(res, "config", {})
+	if config is null {
+		return false
+	}
+	logging_role = maps.get(config, const.logging_role, {})
+	if logging_role is {} {
+		return false
+	}
+	constant_value = maps.get(logging_role, "constant_value", "")
+	references = maps.get(logging_role, "references", [])
+	if (constant_value is null or constant_value == "") and references is [] {
+		return false
+	}
+	if (constant_value != "") {
+		return true
+	}
+	for references as ref {
+		if ref in roles_addresses {
+			return true
+		}
+	}
+	return false
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}
