@@ -1,0 +1,97 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  ">= 5.98.0",
+	},
+}
+
+resources = {
+	"aws_cloudwatch_log_group.route53_query_logs": {
+		"address": "aws_cloudwatch_log_group.route53_query_logs",
+		"config": {
+			"name": {
+				"constant_value": "/aws/route53/queries",
+			},
+			"retention_in_days": {
+				"constant_value": 30,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "route53_query_logs",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_cloudwatch_log_group",
+	},
+	"aws_route53_query_log.query_log_1": {
+		"address": "aws_route53_query_log.query_log_1",
+		"config": {
+			"cloudwatch_log_group_arn": {
+				"constant_value": "",
+			},
+			"zone_id": {
+				"references": [
+					"aws_route53_zone.public_zone_1.zone_id",
+					"aws_route53_zone.public_zone_1",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "query_log_1",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_route53_query_log",
+	},
+	"aws_route53_zone.public_zone_1": {
+		"address": "aws_route53_zone.public_zone_1",
+		"config": {
+			"name": {
+				"constant_value": "example1.com",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "public_zone_1",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_route53_zone",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}

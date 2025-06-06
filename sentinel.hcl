@@ -1204,3 +1204,8 @@ policy "sqs-queue-block-public-access" {
   source = "./policies/sqs/sqs-queue-block-public-access.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "route-53-public-hosted-zones-should-log-dns-queries" {
+  source = "./policies/route53/route-53-public-hosted-zones-should-log-dns-queries.sentinel"
+  enforcement_level = "advisory"
+}
