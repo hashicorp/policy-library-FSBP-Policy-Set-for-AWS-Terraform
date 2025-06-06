@@ -1,0 +1,29 @@
+terraform_version = "1.11.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_workspaces_workspace.explicitly_non_compliant": {
+			"address":        "aws_workspaces_workspace.explicitly_non_compliant",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "explicitly_non_compliant",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_workspaces_workspace",
+			"values": {
+				"bundle_id":                      "wsb-gk1wpk43z",
+				"directory_id":                   "",
+				"root_volume_encryption_enabled": false,
+				"tags":                           null,
+				"timeouts":                       null,
+				"user_name":                      "user3",
+				"user_volume_encryption_enabled": false,
+				"volume_encryption_key":          null,
+			},
+		},
+	},
+}
