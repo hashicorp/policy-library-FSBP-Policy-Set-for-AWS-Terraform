@@ -1,0 +1,102 @@
+# This control checks if the Amazon SNS topic access policy allows public access.
+
+# Imports
+
+import "tfconfig/v2" as tfconfig
+import "tfresources" as tf
+import "report" as report
+import "collection" as collection
+import "collection/maps" as maps
+
+# Constants
+
+const = {
+	"policy_name":                   "sns-topic-access-policies-should-not-allow-public-access",
+	"message":                       "SNS topic access policies should not allow public access. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/sns-controls.html#sns-4 for more details.",
+	"resource_aws_sns_topic":        "aws_sns_topic",
+	"resource_aws_sns_topic_policy": "aws_sns_topic_policy",
+	"data_aws_iam_policy_document":  "aws_iam_policy_document",
+}
+
+# Functions
+
+is_policy_public = func(statements) {
+
+	if statements is null or statements is [] {
+		return false
+	}
+
+	for statements as statement {
+		effect = maps.get(statement, "effect.constant_value", "")
+		if effect is null or effect == "" {
+			continue
+		}
+
+		principals = maps.get(statement, "principals", null)
+
+		if principals is null or principals is [] {
+			continue
+		}
+		conditions = maps.get(statement, "condition", [])
+		for principals as principal {
+			type = maps.get(principal, "type.constant_value", null)
+			if type is "*" {
+				return true
+			}
+			identifiers = maps.get(principal, "identifiers.constant_value", [])
+			if conditions is [] and identifiers is [] {
+				return true
+			}
+		}
+	}
+
+	return false
+}
+
+# Variables
+
+data_iam_policy_document = tf.config(tfconfig.resources).type(const.data_aws_iam_policy_document).resources
+sns_topic_policy_resources = tf.config(tfconfig.resources).type(const.resource_aws_sns_topic_policy).resources
+
+sns_topic_iam_policy_violations = []
+for data_iam_policy_document as res {
+	policy = maps.get(res, "config.statement", null)
+	if is_policy_public(policy) {
+		append(sns_topic_iam_policy_violations, res.address)
+	}
+}
+
+violations = collection.filter(sns_topic_policy_resources, func(res) {
+	config = maps.get(res, "config", {})
+	if config is null {
+		return false
+	}
+	references = maps.get(config, "policy.references", [])
+	for references as ref {
+		if ref in sns_topic_iam_policy_violations {
+			return true
+		}
+	}
+	return false
+})
+
+summary = {
+	"policy_name": const.policy_name,
+	"violations": map violations as _, v {
+		{
+			"address":        v.address,
+			"module_address": v.module_address,
+			"message":        const.message,
+		}
+	},
+}
+
+# Outputs
+
+print(report.generate_policy_report(summary))
+
+# Rules
+
+main = rule {
+	violations is empty
+}

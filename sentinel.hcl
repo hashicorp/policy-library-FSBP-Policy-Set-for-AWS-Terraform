@@ -1204,3 +1204,8 @@ policy "sqs-queue-block-public-access" {
   source = "./policies/sqs/sqs-queue-block-public-access.sentinel"
   enforcement_level = "advisory"
 }
+
+policy "sns-topic-access-policies-should-not-allow-public-access" {
+  source = "./policies/sns/sns-topic-access-policies-should-not-allow-public-access.sentinel"
+  enforcement_level = "advisory"
+}

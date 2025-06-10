@@ -1,0 +1,130 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-east-1",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_sns_topic.compliant_topic": {
+		"address": "aws_sns_topic.compliant_topic",
+		"config": {
+			"name": {
+				"constant_value": "compliant-topic",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_topic",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic",
+	},
+	"aws_sns_topic_policy.compliant_topic_policy": {
+		"address": "aws_sns_topic_policy.compliant_topic_policy",
+		"config": {
+			"arn": {
+				"references": [
+					"aws_sns_topic.compliant_topic.arn",
+					"aws_sns_topic.compliant_topic",
+				],
+			},
+			"policy": {
+				"references": [
+					"data.aws_iam_policy_document.sns_topic_policy.id",
+					"data.aws_iam_policy_document.sns_topic_policy",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "compliant_topic_policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_sns_topic_policy",
+	},
+	"data.aws_iam_policy_document.sns_topic_policy": {
+		"address": "data.aws_iam_policy_document.sns_topic_policy",
+		"config": {
+			"policy_id": {
+				"constant_value": "sns-topic-policy",
+			},
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"sns:Publish",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"principals": [
+						{
+							"identifiers": {
+								"constant_value": [
+									"*",
+								],
+							},
+							"type": {
+								"constant_value": "AWS",
+							},
+						},
+					],
+					"resources": {
+						"references": [
+							"aws_sns_topic.compliant_topic.arn",
+							"aws_sns_topic.compliant_topic",
+						],
+					},
+					"sid": {
+						"constant_value": "AllowPublicAccess",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "sns_topic_policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
