@@ -1,0 +1,101 @@
+import "strings"
+
+providers = {
+	"aws": {
+		"alias": "",
+		"config": {
+			"region": {
+				"constant_value": "us-west-2",
+			},
+		},
+		"full_name":           "registry.terraform.io/hashicorp/aws",
+		"module_address":      "",
+		"name":                "aws",
+		"provider_config_key": "aws",
+		"version_constraint":  "~> 5.98.0",
+	},
+}
+
+resources = {
+	"aws_s3_bucket.bucket": {
+		"address": "aws_s3_bucket.bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "example-bucket-1",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3control_multi_region_access_point.example": {
+		"address": "aws_s3control_multi_region_access_point.example",
+		"config": {
+			"details": [
+				{
+					"name": {
+						"constant_value": "example-mrap",
+					},
+					"public_access_block": [
+						{
+							"block_public_acls": {
+								"constant_value": true,
+							},
+							"block_public_policy": {
+								"constant_value": true,
+							},
+							"ignore_public_acls": {
+								"constant_value": true,
+							},
+							"restrict_public_buckets": {
+								"constant_value": false,
+							},
+						},
+					],
+					"region": [
+						{
+							"bucket": {
+								"references": [
+									"aws_s3_bucket.bucket.id",
+									"aws_s3_bucket.bucket",
+								],
+							},
+						},
+					],
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3control_multi_region_access_point",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
