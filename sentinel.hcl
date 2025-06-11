@@ -175,17 +175,11 @@ policy "elb-ensure-multi-az-configuration-classic-load-balancer" {
 policy "elb-ensure-valid-desync-mitigation-mode-application-load-balancer" {
   source = "./policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel"
   enforcement_level = "advisory"
-  params = {
-    lb_type = "application"
-  }
 }
 
 policy "elb-ensure-valid-desync-mitigation-mode-classic-load-balancer" {
   source = "./policies/elb/elb-ensure-valid-desync-mitigation-mode.sentinel"
   enforcement_level = "advisory"
-  params = {
-    lb_type = "classic"
-  }
 }
 
 policy "rds-instance-should-be-private" {
@@ -226,49 +220,31 @@ policy "rds-ensure-cluster-multi-az-configured" {
 policy "rds-cluster-copy-tags-to-snapshot-configured" {
   source = "./policies/rds/rds-copy-tags-to-snapshot-configured.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource = "aws_rds_cluster"
-  }
 }
 
 policy "rds-instance-copy-tags-to-snapshot-configured" {
   source = "./policies/rds/rds-copy-tags-to-snapshot-configured.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource = "aws_db_instance"
-  }
 }
 
 policy "rds-ensure-cluster-deletion-protection-enabled" {
   source = "./policies/rds/rds-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource_type = "aws_rds_cluster"
-  }
 }
 
 policy "rds-ensure-db-instance-deletion-protection-enabled" {
   source = "./policies/rds/rds-ensure-deletion-protection-enabled.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource_type = "aws_db_instance"
-  }
 }
 
 policy "rds-ensure-cluster-iam-auth-configured" {
   source = "./policies/rds/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource_type = "aws_rds_cluster"
-  }
 }
 
 policy "rds-ensure-db-instance-iam-auth-configured" {
   source            = "./policies/rds/rds-ensure-cluster-and-db-instance-iam-auth-configured.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource_type = "aws_db_instance"
-  }
 }
 
 policy "rds-ensure-automatic-backups-enabled" {
@@ -319,37 +295,21 @@ policy "rds-aurora-mysql-audit-logging-enabled" {
 policy "rds-cluster-event-notifications-configured-for-critical-events" {
   source = "./policies/rds/rds-event-notifications-configured-for-critical-events.sentinel"
   enforcement_level = "advisory"
-  params = {
-    "resource_type" = "aws_rds_cluster"
-    "source_type" = "db-cluster"
-  }
 }
 
 policy "rds-instance-event-notifications-configured-for-critical-events" {
   source = "./policies/rds/rds-event-notifications-configured-for-critical-events.sentinel"
   enforcement_level = "advisory"
-  params = {
-    resource_type = "aws_rds_cluster_instance"
-    source_type = "db-instance"
-  }
 }
 
 policy "rds-parameter-group-event-notifications-configured-for-critical-events" {
   source = "./policies/rds/rds-event-notifications-configured-for-critical-events.sentinel"
   enforcement_level = "advisory"
-  params = {
-    "resource_type" = "aws_rds_cluster_parameter_group"
-    "source_type" = "db-parameter-group"
-  }
 }
 
 policy "rds-security-group-event-notifications-configured-for-critical-events" {
   source = "./policies/rds/rds-event-notifications-configured-for-critical-events.sentinel"
   enforcement_level = "advisory"
-  params = {
-    "resource_type" = "aws_security_group",
-    "source_type" = "db-security-group",
-  }
 }
 
 policy "s3-block-public-access-account-level" {
@@ -420,16 +380,6 @@ policy "elasticbeanstalk-enhanced-health-reporting-enabled" {
 policy "dynamo-db-tables-scales-capacity-with-demand" {
   source = "./policies/dynamo-db/dynamo-db-tables-scales-capacity-with-demand.sentinel"
   enforcement_level = "advisory"
-  params = {
-      min_read_capacity = 1
-      max_read_capacity = 40000
-      min_write_capacity = 1
-      max_write_capacity = 40000
-      min_target_read_utilization = 20
-      max_target_read_utilization = 90
-      min_target_write_utilization = 20
-      max_target_write_utilization = 90
- }
 }
 
 policy "elasticbeanstalk-managed-platform-updates-enabled" {
@@ -465,9 +415,6 @@ policy "neptune-cluster-deletion-protection-enabled" {
 policy "neptune-cluster-automated-backups-enabled" {
  source = "./policies/neptune/neptune-cluster-automated-backups-enabled.sentinel"
   enforcement_level = "advisory"
-  params = {
-      backup_retention_period = 7
-  }
 }
 
 policy "neptune-cluster-db-auth-enabled" {
@@ -503,9 +450,6 @@ policy "sagemaker-notebook-instance-root-access-check" {
 policy "sagemaker-endpoint-config-prod-instance-count-check" {
   source = "./policies/sagemaker/sagemaker-endpoint-config-prod-instance-count-check.sentinel"
   enforcement_level = "advisory"
-  params = {
-    initial_instance_count_limit = 1
-  }
 }
 
 policy "redshift-cluster-public-access-check" {
@@ -521,10 +465,6 @@ policy "redshift-cluster-should-be-encrypted-at-transit" {
 policy "redshift-cluster-automated-snapshot-retention-enabled" {
  source = "./policies/redshift/redshift-cluster-automated-snapshot-retention-enabled.sentinel"
  enforcement_level = "advisory"
- params = {
-  automated_snapshot_retention_period_lower_limit = 7
-  automated_snapshot_retention_period_upper_limit = 35
- }
 }
 
 policy "redshift-cluster-maintenance-settings-check" {
@@ -590,17 +530,11 @@ policy "dms-redis-tls-enabled" {
 policy "dms-repliction-task-targetdb-logging-enabled" {
   source = "./policies/dms/dms-repliction-task-logging-enabled.sentinel"
   enforcement_level = "advisory"
-  params = {
-    "db_type" = "target"
-  }
 }
 
 policy "dms-repliction-task-sourcedb-logging-enabled" {
   source = "./policies/dms/dms-repliction-task-logging-enabled.sentinel"
   enforcement_level = "advisory"
-  params = {
-    "db_type" = "source"
-  }
 }
 
 policy "network-firewall-logging-enabled" {
@@ -826,9 +760,6 @@ policy "elasticsearch-https-required" {
 policy "elasticsearch-primary-node-fault-tolerance" {
   source = "./policies/elasticsearch/elasticsearch-primary-node-fault-tolerance.sentinel"
   enforcement_level = "advisory"
-  params = {
-    master_count_value = 3
-  }
 }
 
 policy "fsx-openzfs-copy-tags-to-backups-and-volumes-enabled" {
@@ -899,9 +830,6 @@ policy "opensearch-audit-logging-enabled" {
 policy "opensearch-data-node-fault-tolerance" {
   source = "./policies/opensearch/opensearch-data-node-fault-tolerance.sentinel"
   enforcement_level = "advisory"
-  params = {
-    instance_count = 3
-  }
 }
 
 policy "opensearch-access-control-enabled" {
@@ -937,17 +865,6 @@ policy "iam-no-policies-attached-to-users" {
 policy "iam-password-policy-strong-configuration" {
   source = "./policies/iam/iam-password-policy-strong-configuration.sentinel"
   enforcement_level = "advisory"
-  params = {
-    minimum_password_length_param = 14
-    require_lowercase_characters_param = true
-    require_uppercase_characters_param = true
-    require_numbers_param = true
-    require_symbols_param = true
-    allow_users_to_change_password_param = true
-    max_password_age_param = 90
-    min_password_reuse_prevention_param = 12
-    min_password_reuse_prevention_param = 24
-  }
 }
 
 policy "s3-access-point-block-public-access-enabled" {
@@ -1108,10 +1025,6 @@ policy "ec2-instance-should-not-have-public-ip" {
 policy "ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports" {
   source = "./policies/ec2/ec2-security-group-ingress-traffic-restriction-to-unauthorized-ports.sentinel"
   enforcement_level = "advisory"
-  params = {
-    authorized_tcp_ports = [80, 443]
-    authorized_udp_ports = []
-  }
 }
 
 policy "guardduty-malware-protection-enabled" {
