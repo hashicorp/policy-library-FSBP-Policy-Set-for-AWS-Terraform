@@ -11,7 +11,7 @@ import "collection/maps" as maps
 
 # Constants
 const = {
-	"policy_name":                          "cloudfront-distributions-should-use-custom-ssl-tsl-certificates",
+	"policy_name":                          "cloudfront-distributions-should-use-custom-ssl-tls-certificates",
 	"resource_aws_cloudfront_distribution": "aws_cloudfront_distribution",
 	"message": "'aws_cloudfront_distribution' are using the default SSL/TLS certificate CloudFront provides. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-7 for more details.",
 }

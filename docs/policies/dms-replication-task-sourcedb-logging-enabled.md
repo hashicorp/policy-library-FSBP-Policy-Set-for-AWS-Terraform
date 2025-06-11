@@ -1,4 +1,4 @@
-# AWS DMS Replication Task should have Logging enabled for the attrinute 'replication_task_settings' for source db
+# AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for source db
 
 | Provider            |    Category   |
 | ------------------- |   ---------   |
@@ -13,13 +13,13 @@ DMS uses Amazon CloudWatch to log information during the migration process. Usin
   - SOURCE_CAPTURE – Ongoing replication or change data capture (CDC) data is captured from the source database or service, and passed to the SORTER service component.
   - SOURCE_UNLOAD – Data is unloaded from the source database or service during full load.
 
-This rule is covered by the [dms-replication-task-logging-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms-replication-task-logging-enabled.sentinel) policy.
+This rule is covered by the [dms-replication-task-logging-enabled](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-replication-task-logging-enabled.sentinel) policy.
 
 ## Policy Results (Pass)
 
 ```bash
 trace:
-      Pass - dms-repliction-task-sourcedb-logging-enabled.sentinel
+      Pass - dms-replication-task-sourcedb-logging-enabled.sentinel
 
       Description:
         This policy checks if resources of type 'aws_dms_replication_task' have the
@@ -30,11 +30,11 @@ trace:
 
       → → Overall Result: true
 
-      This result means that all resources have passed the policy check for the policy dms-replication-instances-should-not-be-public.
+      This result means that all resources have passed the policy check for the policy dms-replication-task-sourcedb-logging-enabled.
 
       ✓ Found 0 resource violations
 
-      dms-repliction-task-sourcedb-logging-enabled.sentinel:84:1 - Rule "main"
+      dms-replication-task-sourcedb-logging-enabled.sentinel:84:1 - Rule "main"
         Value:
           true
 ```
@@ -45,7 +45,7 @@ trace:
 
 ```bash
 trace:
-      Fail - dms-repliction-task-sourcedb-logging-enabled.sentinel
+      Fail - dms-replication-task-sourcedb-logging-enabled.sentinel
 
       Description:
         This policy checks if resources of type 'aws_dms_replication_task' have the
@@ -66,7 +66,7 @@ trace:
           | Attribute 'replication_task-settings' should have the logging enabled for AWS DMS Replication Task.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dms-controls.html#dms-8 for more details.
 
 
-      dms-repliction-task-sourcedb-logging-enabled.sentinel:84:1 - Rule "main"
+      dms-replication-task-sourcedb-logging-enabled.sentinel:84:1 - Rule "main"
         Value:
           false
 ```

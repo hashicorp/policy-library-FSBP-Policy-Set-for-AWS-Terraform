@@ -3,7 +3,7 @@
 
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-autoscaling-group-with-only-one-overide-specified/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-failure-elasticsearch-with-log-publishing-options-attribute-not-present/mock-tfplan-v2.sentinel"
 	}
 }
 

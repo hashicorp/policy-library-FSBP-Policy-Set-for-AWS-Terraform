@@ -1,4 +1,4 @@
-#  Amazon ElastiCache for Redis replication groups should have auth token set when redis version is belxow 6.0
+#  Amazon ElastiCache for Redis replication groups should have auth token set when redis version is below 6.0
 
 | Provider            | Category     |
 |---------------------|--------------|

@@ -3,7 +3,7 @@
 
 mock "tfplan/v2" {
 	module {
-		source = "./mocks/policy-failure-autoscaling-group-with-multiple-instace-types-but-maz-size-1/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-failure-autoscaling-group-with-only-one-override-specified/mock-tfplan-v2.sentinel"
 	}
 }
 

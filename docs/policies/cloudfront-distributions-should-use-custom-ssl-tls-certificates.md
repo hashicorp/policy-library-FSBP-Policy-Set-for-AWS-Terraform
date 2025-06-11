@@ -10,12 +10,12 @@ This control checks whether CloudFront distributions are using the default SSL/T
 
 Custom SSL/TLS allow your users to access content by using alternate domain names. You can store custom certificates in AWS Certificate Manager (recommended), or in IAM.
 
-This rule is covered by the [cloudfront-distributions-should-use-custom-ssl-tsl-certificates](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel) policy.
+This rule is covered by the [cloudfront-distributions-should-use-custom-ssl-tls-certificates](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel) policy.
 
 ## Policy Results (Pass)
 ```bash
 trace:
-      Pass - cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel
+      Pass - cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel
 
       Description:
         This control checks whether 'aws_cloudfront_distribution' are using the
@@ -25,11 +25,11 @@ trace:
 
       → → Overall Result: true
 
-      This result means that all resources have passed the policy check for the policy cloudfront-distributions-should-use-custom-ssl-tsl-certificates.
+      This result means that all resources have passed the policy check for the policy cloudfront-distributions-should-use-custom-ssl-tls-certificates.
 
       ✓ Found 0 resource violations
 
-      cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel:49:1 - Rule "main"
+      cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel:49:1 - Rule "main"
         Value:
           true
 ```
@@ -39,7 +39,7 @@ trace:
 ## Policy Results (Fail)
 ```bash
 trace:
-      Fail - cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel
+      Fail - cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel
 
       Description:
         This control checks whether 'aws_cloudfront_distribution' are using the
@@ -49,7 +49,7 @@ trace:
 
       → → Overall Result: false
 
-      This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy cloudfront-distributions-should-use-custom-ssl-tsl-certificates.
+      This result means that not all resources passed the policy check and the protected behavior is not allowed for the policy cloudfront-distributions-should-use-custom-ssl-tls-certificates.
 
       Found 1 resource violations
 
@@ -59,7 +59,7 @@ trace:
           | 'aws_cloudfront_distribution' are using the default SSL/TLS certificate CloudFront provides. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/cloudfront-controls.html#cloudfront-7 for more details.
 
 
-      cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel:49:1 - Rule "main"
+      cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel:49:1 - Rule "main"
         Value:
           false
 ```

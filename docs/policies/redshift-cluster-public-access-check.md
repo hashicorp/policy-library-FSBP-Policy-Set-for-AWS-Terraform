@@ -1,4 +1,4 @@
-# AWS Redshift Cluster should have the publicly_accessable attribute set to false
+# AWS Redshift Cluster should have the publicly_accessible attribute set to false
 
 | Provider            | Category |
 | ------------------- | -------- |

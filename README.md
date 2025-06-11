@@ -36,11 +36,11 @@ By default, the module will enable all policies within the library, and they wil
 
 **Example:**
 ```
-policy "iam-password-expiry" {
-  source = "./policies/iam/iam-password-expiry.sentinel"
+policy "iam-password-policy-strong-configuration" {
+  source = "./policies/iam/iam-password-policy-strong-configuration.sentinel"
   enforcement_level = "advisory"
   params = {
-    password_expiry_days = 90
+    minimum_password_length_param = 14
   }
 }
 ```
@@ -138,7 +138,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - CloudFront distributions should not use deprecated SSL protocols between edge locations and custom origins ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-not-use-deprecated-ssl-protocols.sentinel))
 
-- CloudFront distributions should use custom SSL/TLS certificates ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel))
+- CloudFront distributions should use custom SSL/TLS certificates ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/cloudfront-distributions-should-use-custom-ssl-tls-certificates.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel))
 
 - CloudFront distributions should use SNI to serve HTTPS requests ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/cloudfront-distributions-should-use-sni-to-serve-https-requests.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/cloudfront/cloudfront-distributions-should-use-sni-to-serve-https-requests.sentinel))
 
@@ -168,9 +168,9 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS DMS Replication Instances should have the publicly_accessible attribute set to false ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dms-replication-instances-should-not-be-public.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-replication-instances-should-not-be-public.sentinel))
 
-- AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for source db ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dms-repliction-task-sourcedb-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-repliction-task-logging-enabled.sentinel))
+- AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for source db ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dms-replication-task-sourcedb-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-replication-task-logging-enabled.sentinel))
 
-- AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for target db ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dms-repliction-task-targetdb-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-repliction-task-logging-enabled.sentinel))
+- AWS DMS Replication Task should have Logging enabled for the attribute 'replication_task_settings' for target db ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dms-replication-task-targetdb-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dms/dms-replication-task-logging-enabled.sentinel))
 
 - AWS DocumentDB clusters should have enabled_cloudwatch_logs_exports attribute set to 'audit' ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/docdb-cluster-audit-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/docdb/docdb-cluster-audit-logging-enabled.sentinel))
 
@@ -226,7 +226,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - EC2 VPC Flow Logging Enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/ec2-vpc-flow-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-vpc-flow-logging-enabled.sentinel))
 
-- AWS Site-to-Site VPN Connection should have AWS CLoudwatch Logs enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/ec2-vpn-connection-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-vpn-connection-logging-enabled.sentinel))
+- AWS Site-to-Site VPN Connection should have AWS CloudWatch Logs enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/ec2-vpn-connection-logging-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ec2/ec2-vpn-connection-logging-enabled.sentinel))
 
 - ECR private repositories should have image scanning configured ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/ecr-image-scanning-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/ecr/ecr-image-scanning-enabled.sentinel))
 
@@ -272,7 +272,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Amazon ElastiCache for Redis replication groups should have encryption at transit enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticache-redis-replication-group-encryption-at-transit-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticache/elasticache-redis-replication-group-encryption-at-transit-enabled.sentinel))
 
-- Amazon ElastiCache for Redis replication groups should have auth token set when redis version is belxow 6.0 ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticache-redis-replication-group-redis-auth-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticache/elasticache-redis-replication-group-redis-auth-enabled.sentinel))
+- Amazon ElastiCache for Redis replication groups should have auth token set when redis version is below 6.0 ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticache-redis-replication-group-redis-auth-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticache/elasticache-redis-replication-group-redis-auth-enabled.sentinel))
 
 - Amazon Elastic Beanstalk environments should have cloudwatch log streaming enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticbeanstalk-cloudwatch-log-streaming-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticbeanstalk/elasticbeanstalk-cloudwatch-log-streaming-enabled.sentinel))
 
@@ -292,7 +292,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Elasticsearch domain error logging to CloudWatch Logs should be enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticsearch-logs-to-cloudwatch.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticsearch/elasticsearch-logs-to-cloudwatch.sentinel))
 
-- AWS Elasticsearch domain should be encrypt data between nodes ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticsearch-node-to-node-encryption-check.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel))
+- AWS Elasticsearch domain should encrypt data between nodes ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticsearch-node-to-node-encryption-check.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticsearch/elasticsearch-node-to-node-encryption-check.sentinel))
 
 - Elasticsearch domains should be configured with at least three dedicated master nodes ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/elasticsearch-primary-node-fault-tolerance.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/elasticsearch/elasticsearch-primary-node-fault-tolerance.sentinel))
 
@@ -474,7 +474,7 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - AWS Redshift Cluster should have the allow_version_upgrade attribute set to true ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/redshift-cluster-maintenance-settings-check.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-maintenance-settings-check.sentinel))
 
-- AWS Redshift Cluster should have the publicly_accessable attribute set to false ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/redshift-cluster-public-access-check.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-public-access-check.sentinel))
+- AWS Redshift Cluster should have the publicly_accessible attribute set to false ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/redshift-cluster-public-access-check.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-public-access-check.sentinel))
 
 - AWS Redshift Cluster should have the encrypted attribute set to true ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/redshift-cluster-should-be-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/redshift/redshift-cluster-should-be-encrypted-at-rest.sentinel))
 

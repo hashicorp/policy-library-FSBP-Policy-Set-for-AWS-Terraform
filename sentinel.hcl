@@ -587,16 +587,16 @@ policy "dms-redis-tls-enabled" {
   enforcement_level = "advisory"
 }
 
-policy "dms-repliction-task-targetdb-logging-enabled" {
-  source = "./policies/dms/dms-repliction-task-logging-enabled.sentinel"
+policy "dms-replication-task-targetdb-logging-enabled" {
+  source = "./policies/dms/dms-replication-task-logging-enabled.sentinel"
   enforcement_level = "advisory"
   params = {
     "db_type" = "target"
   }
 }
 
-policy "dms-repliction-task-sourcedb-logging-enabled" {
-  source = "./policies/dms/dms-repliction-task-logging-enabled.sentinel"
+policy "dms-replication-task-sourcedb-logging-enabled" {
+  source = "./policies/dms/dms-replication-task-logging-enabled.sentinel"
   enforcement_level = "advisory"
   params = {
     "db_type" = "source"
@@ -713,8 +713,8 @@ policy "cloudfront-distributions-should-use-sni-to-serve-https-requests" {
   enforcement_level = "advisory"
 }
 
-policy "cloudfront-distributions-should-use-custom-ssl-tsl-certificates" {
-  source = "./policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tsl-certificates.sentinel"
+policy "cloudfront-distributions-should-use-custom-ssl-tls-certificates" {
+  source = "./policies/cloudfront/cloudfront-distributions-should-use-custom-ssl-tls-certificates.sentinel"
   enforcement_level = "advisory"
 }
 

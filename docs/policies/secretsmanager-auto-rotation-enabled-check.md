@@ -60,7 +60,7 @@ trace:
         → Module name: root
         ↳ Resource Address: aws_secretsmanager_secret.example
             | ✗ failed
-            | Secrets Manager secrets should be configured for automatic rotation. Refer to https://docs.aws.amazon.com/secretsmanager/latest/userguide/secretsmanager-1.html for more details.
+            | Secrets Manager secrets should be configured for automatic rotation. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/secretsmanager-controls.html#secretsmanager-1 for more details.
 
 
         secretsmanager-auto-rotation-enabled-check.sentinel:68:1 - Rule "main"
