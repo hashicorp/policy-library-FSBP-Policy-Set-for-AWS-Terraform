@@ -187,6 +187,8 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Amazon Dynamo DB accelerator clusters should have encryption at rest enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-at-rest-enabled.sentinel))
 
+- Amazon Dynamo DB accelerator clusters should have encryption in transit enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dynamo-db-accelerator-clusters-encryption-in-transit-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-in-transit-enabled.sentinel))
+
 - Amazon Dynamo DB tables should have delete protection enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dynamo-db-tables-delete-protection-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel))
 
 - Amazon Dynamo DB tables should have point in time recovery enabled ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/dynamo-db-tables-point-in-time-recovery-enabled.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/dynamo-db/dynamo-db-tables-point-in-time-recovery-enabled.sentinel))

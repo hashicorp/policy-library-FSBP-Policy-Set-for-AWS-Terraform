@@ -1,0 +1,77 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+terraform_version = "1.7.4"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"aws_dax_cluster.example": {
+			"address":        "aws_dax_cluster.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_dax_cluster",
+			"values": {
+				"availability_zones":               null,
+				"cluster_endpoint_encryption_type": null,
+				"cluster_name":                     "example-dax-cluster",
+				"description":                      null,
+				"node_type":                        "dax.r4.large",
+				"notification_topic_arn":           null,
+				"parameter_group_name":             "default.dax1.0",
+				"replication_factor":               3,
+				"tags": {
+					"Name": "example-dax-cluster",
+				},
+				"tags_all": {
+					"Name": "example-dax-cluster",
+				},
+				"timeouts": null,
+			},
+		},
+		"aws_iam_role.example": {
+			"address":        "aws_iam_role.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role",
+			"values": {
+				"assume_role_policy":    "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"dax.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+				"description":           null,
+				"force_detach_policies": false,
+				"max_session_duration":  3600,
+				"name":                  "example-dax-role",
+				"path":                  "/",
+				"permissions_boundary":  null,
+				"tags":                  null,
+			},
+		},
+		"aws_iam_role_policy_attachment.example": {
+			"address":        "aws_iam_role_policy_attachment.example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example",
+			"provider_name":  "registry.terraform.io/hashicorp/aws",
+			"tainted":        false,
+			"type":           "aws_iam_role_policy_attachment",
+			"values": {
+				"policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonDAXServiceRolePolicy",
+				"role":       "example-dax-role",
+			},
+		},
+	},
+}

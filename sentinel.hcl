@@ -442,6 +442,11 @@ policy "dynamo-db-accelerator-clusters-encryption-at-rest-enabled" {
   enforcement_level = "advisory"
 }
 
+policy "dynamo-db-accelerator-clusters-encryption-in-transit-enabled" {
+  source = "./policies/dynamo-db/dynamo-db-accelerator-clusters-encryption-in-transit-enabled.sentinel"
+  enforcement_level = "advisory"
+}
+
 policy "dynamo-db-tables-delete-protection-enabled" {
   source = "./policies/dynamo-db/dynamo-db-tables-delete-protection-enabled.sentinel"
   enforcement_level = "advisory"
