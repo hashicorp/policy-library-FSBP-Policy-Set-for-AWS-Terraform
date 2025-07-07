@@ -6,7 +6,7 @@
 
 ## Description
 
-DISCLAIMER - This policy works when all resources of type aws_instance and aws_ami to be in the root module.
+DISCLAIMER - This policy works when all resources of type aws_instance and aws_ami to be in the root module and Even if the virtualization is not pare-virtualized, using Packer images will cause the policy to fail.
 
 This control checks whether the virtualization type of an EC2 instance is paravirtual. The control fails if the virtualizationType of the EC2 instance is set to paravirtual.
 

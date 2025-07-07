@@ -45,7 +45,7 @@ get_violations = func(ami_complaint, instance_resources) {
 		}
 
 		ami = get_referenced_resource_address(res, "config.ami")
-		if ami is empty {
+		if ami is not defined or ami is empty {
 			return false
 		}
 		if ami_complaint is empty {

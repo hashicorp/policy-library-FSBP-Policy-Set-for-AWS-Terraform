@@ -6,6 +6,7 @@
 # Imports
 
 import "tfconfig/v2" as tfconfig
+import "tfplan/v2" as tfplan
 import "tfresources" as tf
 import "report" as report
 import "collection" as collection
@@ -31,20 +32,21 @@ const = {
 
 get_endpoint_complaint = func(resources) {
 	return collection.reject(resources, func(res) {
-		endpoint_type_values = maps.get(res, "config." + const.vpc_endpoint_type, {})
+		endpoint_type_values = maps.get(res, "values." + const.vpc_endpoint_type, const.Gateway)
 		if endpoint_type_values is empty {
 			return true
 		}
-		service_name_values = maps.get(res, "config." + const.service_name, {})
+		service_name_values = maps.get(res, "values." + const.service_name, {})
 		if service_name_values is empty {
 			return true
 		}
-		return maps.get(endpoint_type_values, const.constant_value, const.Gateway) is not const.Interface or not strings.has_suffix(maps.get(service_name_values, const.constant_value, ""), "ec2")
+		return endpoint_type_values is not const.Interface or not strings.has_suffix(service_name_values, "ec2")
 	})
 }
 
 get_referenced_resource_address = func(res, attr) {
-	references_list = maps.get(res, attr, [])
+	vpc_endpoint_config_resource = tf.config(tfconfig.resources).type(const.resource_aws_vpc_endpoint).address(res.address).resources[0]
+	references_list = maps.get(vpc_endpoint_config_resource, attr, [])
 	if references_list.references is empty {
 		return ""
 	}
@@ -58,8 +60,8 @@ get_referenced_resource_address = func(res, attr) {
 # Variables
 
 config_resources = tf.config(tfconfig.resources)
-vpc_endpoint_resources = config_resources.type(const.resource_aws_vpc_endpoint).resources
 vpc_resources = config_resources.type(const.resource_aws_vpc).resources
+vpc_endpoint_resources = tf.plan(tfplan.planned_values.resources).type(const.resource_aws_vpc_endpoint).resources
 
 vpc_endpoint_complaint = get_endpoint_complaint(vpc_endpoint_resources)
 if vpc_endpoint_complaint is not defined {
