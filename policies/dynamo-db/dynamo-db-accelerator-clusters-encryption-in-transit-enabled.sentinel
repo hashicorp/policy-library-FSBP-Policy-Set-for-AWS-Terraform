@@ -36,7 +36,7 @@ summary = {
 		{
 			"address":        v.address,
 			"module_address": v.module_address,
-			"message":        "Attribute 'cluster_endpoint_encryption_type' must be set to 'TLS' for 'aws_dax_cluster' resources.Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-7 for more details.",
+			"message":        "Attribute 'cluster_endpoint_encryption_type' must be set to 'TLS' for 'aws_dax_cluster' resources. Refer to https://docs.aws.amazon.com/securityhub/latest/userguide/dynamodb-controls.html#dynamodb-7 for more details.",
 		}
 	},
 }
