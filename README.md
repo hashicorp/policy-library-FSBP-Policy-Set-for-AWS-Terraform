@@ -603,6 +603,8 @@ Following methods outlines various ways to consume and implement pre-written Sen
 
 - Aurora PostgreSQL DB clusters should publish logs to CloudWatch Logs ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/rds/aurora-postgresql-db-clusters-should-publish-logs-to-cloudwatch-logs.sentinel))
 
+- SNS topics should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/sns-topic-should-be-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/sns/sns-topic-should-be-encrypted-at-rest.sentinel))
+
 - SNS topic access policies should not allow public access([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/sns-topic-access-policies-should-not-allow-public-access.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/sns/sns-topic-access-policies-should-not-allow-public-access.sentinel))
 
 - AWS WorkSpaces root volumes should be encrypted at rest ([docs](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/docs/policies/workspaces-root-volumes-should-be-encrypted-at-rest.md) | [code](https://github.com/hashicorp/policy-library-FSBP-Policy-Set-for-AWS-Terraform/blob/main/policies/workspaces/workspaces-root-volumes-should-be-encrypted-at-rest.sentinel))
