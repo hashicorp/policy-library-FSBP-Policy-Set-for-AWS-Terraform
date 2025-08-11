@@ -1,0 +1,57 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"aws_s3_bucket.insecure_bucket": {
+		"address": "aws_s3_bucket.insecure_bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "insecure-bucket",
+			},
+			"force_destroy": {
+				"constant_value": false,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "insecure_bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_public_access_block.example": {
+		"address": "aws_s3_bucket_public_access_block.example",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.insecure_bucket.id",
+					"aws_s3_bucket.insecure_bucket",
+				],
+			},
+			"block_public_acls": {
+				"constant_value": false,
+			},
+			"block_public_policy": {
+				"constant_value": false,
+			},
+			"ignore_public_acls": {
+				"constant_value": false,
+			},
+			"restrict_public_buckets": {
+				"constant_value": false,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_public_access_block",
+	},
+}

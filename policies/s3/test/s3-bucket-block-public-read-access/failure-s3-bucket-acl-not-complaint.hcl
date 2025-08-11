@@ -1,9 +1,9 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: BUSL-1.1
 
-mock "tfplan/v2" {
+mock "tfconfig/v2" {
 	module {
-		source = "./mocks/policy-failure-s3-bucket-acl-not-complaint/mock-tfplan-v2.sentinel"
+		source = "./mocks/policy-failure-s3-bucket-acl-not-complaint/mock-tfconfig-v2.sentinel"
 	}
 }
 
