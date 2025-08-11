@@ -1,19 +1,16 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: BUSL-1.1
-
 mock "tfconfig/v2" {
 	module {
-		source = "./mocks/policy-success-s3-bucket-public-access-block-complaint/mock-tfconfig-v2.sentinel"
+		source = "./mocks/policy-success-s3-traffic-deny-enabled-with-datasource-in-config/mock-tfconfig-v2.sentinel"
 	}
 }
-
 
 
 mock "tfstate/v2" {
 	module {
-		source = "./mocks/policy-success-s3-bucket-public-access-block-complaint/mock-tfstate-v2.sentinel"
+		source = "./mocks/policy-success-s3-traffic-deny-enabled-with-datasource-in-config/mock-tfstate-v2.sentinel"
 	}
 }
+
 
 mock "tfresources" {
   module {

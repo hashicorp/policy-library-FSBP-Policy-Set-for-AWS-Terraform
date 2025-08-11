@@ -1,0 +1,99 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: BUSL-1.1
+
+resources = {
+	"aws_s3_bucket.insecure_bucket": {
+		"address": "aws_s3_bucket.insecure_bucket",
+		"config": {
+			"bucket": {
+				"constant_value": "insecure-bucket",
+			},
+			"force_destroy": {
+				"constant_value": false,
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "insecure_bucket",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket",
+	},
+	"aws_s3_bucket_policy.example": {
+		"address": "aws_s3_bucket_policy.example",
+		"config": {
+			"bucket": {
+				"references": [
+					"aws_s3_bucket.insecure_bucket.id",
+					"aws_s3_bucket.insecure_bucket",
+				],
+			},
+			"policy": {
+				"references": [
+					"data.aws_iam_policy_document.policy.json",
+					"data.aws_iam_policy_document.policy",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "example",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_s3_bucket_policy",
+	},
+	"data.aws_iam_policy_document.policy": {
+		"address": "data.aws_iam_policy_document.policy",
+		"config": {
+			"statement": [
+				{
+					"actions": {
+						"constant_value": [
+							"s3:PutObject",
+							"s3:PutObjectAcl",
+						],
+					},
+					"effect": {
+						"constant_value": "Allow",
+					},
+					"principals": [
+						{
+							"identifiers": {
+								"constant_value": [
+									"*",
+								],
+							},
+							"type": {
+								"constant_value": "AWS",
+							},
+						},
+					],
+					"resources": {
+						"constant_value": [
+							"arn:aws:s3:::insecure-bucket",
+							"arn:aws:s3:::insecure-bucket/*",
+						],
+					},
+					"sid": {
+						"constant_value": "AllowPublicWriteAccess",
+					},
+				},
+			],
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "data",
+		"module_address":      "",
+		"name":                "policy",
+		"provider_config_key": "aws",
+		"provisioners":        [],
+		"type":                "aws_iam_policy_document",
+	},
+}
