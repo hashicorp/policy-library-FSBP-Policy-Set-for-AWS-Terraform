@@ -24,14 +24,14 @@ const = {
 	"resource_aws_iam_policy_document":    "aws_iam_policy_document",
 	"resource_aws_s3_public_access_block": "aws_s3_bucket_public_access_block",
 	"resource_aws_s3_bucket_acl":          "aws_s3_bucket_acl",
-	"Allow":                               "Allow",
-	"address":                             "address",
-	"module_address":                      "module_address",
-	"module_prefix":                       "module.",
-	"values":                              "values",
-	"variable":                            "variable",
-	"references":                          "references",
-	"acl_not_valid_values":                ["public-read", "public-read-write", "authenticated-read", "aws-exec-read"],
+	"Allow":                                  "Allow",
+	"address":                                "address",
+	"module_address":                         "module_address",
+	"module_prefix":                          "module.",
+	"values":                                 "values",
+	"variable":                               "variable",
+	"references":                             "references",
+	"acl_not_valid_values":                   ["public-read", "public-read-write", "authenticated-read", "aws-exec-read"],
 	"access_control_policy_not_valid_values": ["FULL_CONTROL", "READ", "READ_ACP"],
 }
 
@@ -67,7 +67,7 @@ has_public_read_policy_violation = func(res) {
 	}
 	datasource = tf.state(tfstate.resources).mode("data").address(address).resources
 	if datasource is null or datasource is not defined or datasource is empty {
-		address = "data." + address	
+		address = "data." + address
 		datasource = tf.config(tfconfig.resources).mode("data").address(address).resources
 		if datasource is null or datasource is not defined {
 			return false
@@ -98,7 +98,7 @@ has_public_read_policy_violation = func(res) {
 		}
 		return false
 	}
-	
+
 	statements = datasource[0].values.statement
 	if statements is undefined {
 		return false
@@ -185,6 +185,7 @@ bucket_policy_violations = filter config_resources.type(const.resource_aws_s3_bu
 public_access_block_violations = filter config_resources.type(const.resource_aws_s3_public_access_block).resources as _, res {
 	has_public_access_block_violation(res.config)
 }
+
 # Get bucket ACL resources that have violations
 bucket_acl_violations = filter config_resources.type(const.resource_aws_s3_bucket_acl).resources as _, res {
 	has_bucket_acl_violation(res.config)
@@ -208,8 +209,8 @@ bucket_addresses_with_acl_violations = map bucket_acl_violations as _, res {
 # Find violations: buckets that have policy violations OR have access block violations OR have ACL violations
 violations = filter s3_bucket_resources as _, res {
 	res.address in bucket_addresses_with_policy_violations or
-	res.address in bucket_addresses_with_access_block_violations or
-	res.address in bucket_addresses_with_acl_violations
+		res.address in bucket_addresses_with_access_block_violations or
+		res.address in bucket_addresses_with_acl_violations
 }
 
 summary = {

@@ -24,14 +24,14 @@ const = {
 	"resource_aws_iam_policy_document":    "aws_iam_policy_document",
 	"resource_aws_s3_public_access_block": "aws_s3_bucket_public_access_block",
 	"resource_aws_s3_bucket_acl":          "aws_s3_bucket_acl",
-	"Allow":                               "Allow",
-	"address":                             "address",
-	"module_address":                      "module_address",
-	"module_prefix":                       "module.",
-	"values":                              "values",
-	"variable":                            "variable",
-	"references":                          "references",
-	"acl_not_valid_values":                ["log-delivery-write", "public-read-write"],
+	"Allow":                                  "Allow",
+	"address":                                "address",
+	"module_address":                         "module_address",
+	"module_prefix":                          "module.",
+	"values":                                 "values",
+	"variable":                               "variable",
+	"references":                             "references",
+	"acl_not_valid_values":                   ["log-delivery-write", "public-read-write"],
 	"access_control_policy_not_valid_values": ["FULL_CONTROL", "WRITE", "WRITE_ACP"],
 }
 
@@ -67,7 +67,7 @@ has_public_write_policy_violation = func(res) {
 	}
 	datasource = tf.state(tfstate.resources).mode("data").address(address).resources
 	if datasource is null or datasource is not defined or datasource is empty {
-		address = "data." + address	
+		address = "data." + address
 		datasource = tf.config(tfconfig.resources).mode("data").address(address).resources
 		if datasource is null or datasource is not defined {
 			return false
@@ -98,7 +98,7 @@ has_public_write_policy_violation = func(res) {
 		}
 		return false
 	}
-	
+
 	statements = datasource[0].values.statement
 	if statements is not defined {
 		return false
@@ -202,8 +202,8 @@ bucket_addresses_with_acl_violations = map bucket_acl_violations as _, res {
 # Find violations: buckets that have policy violations OR have access block violations OR have ACL violations
 violations = filter s3_bucket_resources as _, res {
 	res.address in bucket_addresses_with_policy_violations or
-	res.address in bucket_addresses_with_access_block_violations or
-	res.address in bucket_addresses_with_acl_violations
+		res.address in bucket_addresses_with_access_block_violations or
+		res.address in bucket_addresses_with_acl_violations
 }
 
 summary = {

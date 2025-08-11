@@ -38,7 +38,7 @@ resources = {
 							{
 								"grantee": [
 									{
-										"id": "owner-id",
+										"id":   "owner-id",
 										"type": "CanonicalUser",
 									},
 								],
